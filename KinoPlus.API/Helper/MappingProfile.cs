@@ -24,8 +24,13 @@ namespace KinoPlus.API.Helper
             CreateMap<CategoryInsertObject, Category>();
             CreateMap<CategoryUpdateObject, Category>();
 
-            CreateMap<Genre, GenreDto>();
+            CreateMap<ActorUpsertObject, Actor>();
             CreateMap<Actor, ActorDto>();
+
+            CreateMap<Genre, GenreDto>();
+            CreateMap<GenreUpsertObject, Genre>();
+
+
             CreateMap<MovieReaction, ReactionDto>();
             CreateMap<MovieStatus, MovieStatusDto>();
             CreateMap<Projection, ProjectionDto>();
