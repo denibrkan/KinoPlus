@@ -1,16 +1,70 @@
-﻿using KinoPlus.Models;
+﻿using AutoMapper;
+using KinoPlus.Models;
 using KinoPlus.Services.Database;
 using KinoPlus.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace KinoPlus.Services
 {
-    public class MovieService : BaseService<Movie, MovieSearchObject>, IMovieService
+    public class MovieService : BaseCRUDService<Movie, MovieUpsertObject, MovieUpsertObject, MovieSearchObject>, IMovieService
     {
+        private readonly KinoplusContext _context;
 
-        public MovieService(KinoplusContext context) : base(context) { }
+        public MovieService(KinoplusContext context, IMapper mapper) : base(context, mapper)
+        {
+            _context = context;
+        }
 
-        public override IQueryable<Movie> AddInclude(IQueryable<Movie> query, MovieSearchObject search)
+        public override async Task<Movie?> GetByIdAsync(int id)
+        {
+            var query = _context.Movies.AsQueryable();
+
+            query = AddInclude(query, null);
+
+            return await query.SingleOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async override Task<Movie> InsertAsync(MovieUpsertObject insert)
+        {
+            var movie = await base.InsertAsync(insert);
+            //insert related data
+            InsertRelatedEntities(insert, movie.Id);
+
+            await _context.SaveChangesAsync();
+
+            return (await GetByIdAsync(movie.Id))!;
+        }
+
+        public async override Task<Movie> UpdateAsync(int id, MovieUpsertObject update)
+        {
+            await base.UpdateAsync(id, update);
+            var movie = await GetByIdAsync(id);
+
+            if (!movie!.MovieCategories.Select(x => x.CategoryId).SequenceEqual(update.CategoryIds))
+            {
+                _context.RemoveRange(movie.MovieCategories);
+
+                InsertRelatedCategories(update, movie.Id);
+            }
+            if (!movie.MovieActors.Select(x => x.ActorId).SequenceEqual(update.ActorIds))
+            {
+                _context.RemoveRange(movie.MovieActors);
+
+                InsertRelatedActors(update, movie.Id);
+            }
+            if (!movie.MovieGenres.Select(mc => mc.GenreId).SequenceEqual(update.GenreIds))
+            {
+                _context.RemoveRange(movie.MovieGenres);
+
+                InsertRelatedGenres(update, movie.Id);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return (await GetByIdAsync(movie.Id))!;
+        }
+
+        public override IQueryable<Movie> AddInclude(IQueryable<Movie> query, MovieSearchObject? search)
         {
             query = query
                 .Include(x => x.MovieCategories).ThenInclude(x => x.Category)
@@ -42,6 +96,76 @@ namespace KinoPlus.Services
             }
 
             return query;
+        }
+
+        public void InsertRelatedEntities(MovieUpsertObject movie, int movieId)
+        {
+            foreach (var item in movie.GenreIds)
+            {
+                var movieGenre = new MovieGenre
+                {
+                    MovieId = movieId,
+                    GenreId = item
+                };
+                _context.MovieGenres.Add(movieGenre);
+            }
+            foreach (var item in movie.CategoryIds)
+            {
+                var movieCategory = new MovieCategory
+                {
+                    MovieId = movieId,
+                    CategoryId = item
+                };
+                _context.MovieCategories.Add(movieCategory);
+            }
+            foreach (var item in movie.ActorIds)
+            {
+                var actors = new MovieActor
+                {
+                    MovieId = movieId,
+                    ActorId = item
+                };
+                _context.MovieActors.Add(actors);
+            }
+        }
+
+        public void InsertRelatedCategories(MovieUpsertObject movie, int movieId)
+        {
+            foreach (var item in movie.CategoryIds)
+            {
+                var movieCategory = new MovieCategory
+                {
+                    MovieId = movieId,
+                    CategoryId = item
+                };
+                _context.MovieCategories.Add(movieCategory);
+            }
+        }
+
+        public void InsertRelatedGenres(MovieUpsertObject movie, int movieId)
+        {
+            foreach (var item in movie.GenreIds)
+            {
+                var movieGenre = new MovieGenre
+                {
+                    MovieId = movieId,
+                    GenreId = item
+                };
+                _context.MovieGenres.Add(movieGenre);
+            }
+        }
+
+        public void InsertRelatedActors(MovieUpsertObject movie, int movieId)
+        {
+            foreach (var item in movie.ActorIds)
+            {
+                var actors = new MovieActor
+                {
+                    MovieId = movieId,
+                    ActorId = item
+                };
+                _context.MovieActors.Add(actors);
+            }
         }
     }
 }

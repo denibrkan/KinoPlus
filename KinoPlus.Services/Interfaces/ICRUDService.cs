@@ -6,6 +6,6 @@ namespace KinoPlus.Services.Interfaces
             where T : class where TInsert : class where TUpdate : class where TSearch : BaseSearchObject
     {
         Task<T> InsertAsync(TInsert insert);
-        Task<bool> UpdateAsync(int id, TUpdate update);
+        Task<T> UpdateAsync(int id, TUpdate update);
     }
 }

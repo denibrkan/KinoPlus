@@ -28,13 +28,13 @@ namespace KinoPlus.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<bool>> Put(int id, TUpdate insert)
+        public async Task<ActionResult<TDto>> Put(int id, TUpdate insert)
         {
             if (insert == null) return BadRequest();
 
-            await _service.UpdateAsync(id, insert);
+            var updated = await _service.UpdateAsync(id, insert);
 
-            return Ok(true);
+            return Ok(_mapper.Map<TDto>(updated));
         }
     }
 }

@@ -17,6 +17,9 @@ namespace KinoPlus.API.Helper
                 .ForMember(x => x.Status, options => options.MapFrom(y => y.MovieStatus))
                 .ForMember(x => x.AverageRating, options => options.MapFrom(y => CalculateAverageRating(y.MovieReactions)));
 
+            CreateMap<MovieUpsertObject, Movie>()
+                .ForMember(x => x.MovieStatusId, opt => opt.MapFrom(y => y.StatusId));
+
             CreateMap<Category, CategoryDto>();
             CreateMap<CategoryInsertObject, Category>();
             CreateMap<CategoryUpdateObject, Category>();

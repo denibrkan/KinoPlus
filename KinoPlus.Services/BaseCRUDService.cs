@@ -17,7 +17,7 @@ namespace KinoPlus.Services
             _context = context;
         }
 
-        public async Task<T> InsertAsync(TInsert insert)
+        public virtual async Task<T> InsertAsync(TInsert insert)
         {
             var entity = _mapper.Map<T>(insert);
 
@@ -27,7 +27,7 @@ namespace KinoPlus.Services
             return entity;
         }
 
-        public async Task<bool> UpdateAsync(int id, TUpdate update)
+        public virtual async Task<T> UpdateAsync(int id, TUpdate update)
         {
             var entity = _context.Set<T>().Find(id);
 
@@ -35,7 +35,7 @@ namespace KinoPlus.Services
 
             await _context.SaveChangesAsync();
 
-            return true;
+            return entity;
         }
     }
 }
