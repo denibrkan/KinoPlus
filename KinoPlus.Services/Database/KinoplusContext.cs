@@ -31,6 +31,8 @@ public partial class KinoplusContext : DbContext
 
     public virtual DbSet<Location> Locations { get; set; }
 
+    public virtual DbSet<LocationProjectionType> LocationProjectionTypes { get; set; }
+
     public virtual DbSet<Movie> Movies { get; set; }
 
     public virtual DbSet<MovieActor> MovieActors { get; set; }
@@ -117,6 +119,11 @@ public partial class KinoplusContext : DbContext
             entity.ToTable("Hall");
 
             entity.Property(e => e.Name).HasMaxLength(50);
+
+            entity.HasOne(d => d.Location).WithMany(p => p.Halls)
+                .HasForeignKey(d => d.LocationId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Hall_Location");
         });
 
         modelBuilder.Entity<HallSeat>(entity =>
@@ -145,6 +152,23 @@ public partial class KinoplusContext : DbContext
                 .HasForeignKey(d => d.CityId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Location_City");
+        });
+
+        modelBuilder.Entity<LocationProjectionType>(entity =>
+        {
+            entity.ToTable("LocationProjectionType");
+
+            entity.HasIndex(e => new { e.LocationId, e.ProjectionTypeId }, "IX_LocationProjectionType").IsUnique();
+
+            entity.HasOne(d => d.Location).WithMany(p => p.LocationProjectionTypes)
+                .HasForeignKey(d => d.LocationId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_LocationProjectionType_Location");
+
+            entity.HasOne(d => d.ProjectionType).WithMany(p => p.LocationProjectionTypes)
+                .HasForeignKey(d => d.ProjectionTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_LocationProjectionType_ProjectionType");
         });
 
         modelBuilder.Entity<Movie>(entity =>

@@ -1,4 +1,7 @@
-﻿namespace KinoPlus.Services.Database;
+﻿using System;
+using System.Collections.Generic;
+
+namespace KinoPlus.Services.Database;
 
 public partial class Location
 {
@@ -11,6 +14,10 @@ public partial class Location
     public int CityId { get; set; }
 
     public virtual City City { get; set; } = null!;
+
+    public virtual ICollection<Hall> Halls { get; } = new List<Hall>();
+
+    public virtual ICollection<LocationProjectionType> LocationProjectionTypes { get; } = new List<LocationProjectionType>();
 
     public virtual ICollection<ProjectionLocation> ProjectionLocations { get; } = new List<ProjectionLocation>();
 }
