@@ -18,6 +18,9 @@ namespace KinoPlus.API.Helper
                 .ForMember(x => x.AverageRating, options => options.MapFrom(y => CalculateAverageRating(y.MovieReactions)));
 
             CreateMap<Category, CategoryDto>();
+            CreateMap<CategoryInsertObject, Category>();
+            CreateMap<CategoryUpdateObject, Category>();
+
             CreateMap<Genre, GenreDto>();
             CreateMap<Actor, ActorDto>();
             CreateMap<MovieReaction, ReactionDto>();

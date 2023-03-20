@@ -18,6 +18,7 @@ builder.Services.AddDbContext<KinoplusContext>(options =>
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 

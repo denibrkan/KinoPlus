@@ -1,4 +1,4 @@
-﻿using KinoPlus.Models.SearchObjects;
+﻿using KinoPlus.Models;
 using KinoPlus.Services.Database;
 using KinoPlus.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +19,7 @@ namespace KinoPlus.Services
             var entities = _context.Set<T>().AsQueryable();
 
             entities = AddInclude(entities, search);
+            entities = AddFilter(entities, search);
 
             if (search.Page.HasValue == true && search.PageSize.HasValue == true)
             {
@@ -34,6 +35,11 @@ namespace KinoPlus.Services
         }
 
         public virtual IQueryable<T> AddInclude(IQueryable<T> query, TSearch search)
+        {
+            return query;
+        }
+
+        public virtual IQueryable<T> AddFilter(IQueryable<T> query, TSearch search)
         {
             return query;
         }

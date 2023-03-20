@@ -1,4 +1,4 @@
-﻿using KinoPlus.Models.SearchObjects;
+﻿using KinoPlus.Models;
 
 namespace KinoPlus.Services.Interfaces
 {

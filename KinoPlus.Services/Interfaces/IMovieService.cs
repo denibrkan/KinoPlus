@@ -1,9 +1,9 @@
-﻿using KinoPlus.Models.SearchObjects;
+﻿using KinoPlus.Models;
 using KinoPlus.Services.Database;
 
 namespace KinoPlus.Services.Interfaces
 {
-    public interface IMovieService : IService<Movie, BaseSearchObject>
+    public interface IMovieService : IService<Movie, MovieSearchObject>
     {
     }
 }

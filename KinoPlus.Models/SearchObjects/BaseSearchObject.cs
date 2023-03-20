@@ -1,4 +1,4 @@
-﻿namespace KinoPlus.Models.SearchObjects
+﻿namespace KinoPlus.Models
 {
     public class BaseSearchObject
     {

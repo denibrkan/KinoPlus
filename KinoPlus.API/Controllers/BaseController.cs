@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using KinoPlus.Models.SearchObjects;
+using KinoPlus.Models;
 using KinoPlus.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
