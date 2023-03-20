@@ -1,9 +1,9 @@
-﻿using KinoPlus.Services.Database;
+﻿using KinoPlus.Models.SearchObjects;
+using KinoPlus.Services.Database;
 
 namespace KinoPlus.Services.Interfaces
 {
-    public interface IMovieService
+    public interface IMovieService : IService<Movie, BaseSearchObject>
     {
-        Task<IEnumerable<Movie>> GetMoviesAsync();
     }
 }
