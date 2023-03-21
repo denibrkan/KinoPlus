@@ -34,8 +34,13 @@ namespace KinoPlus.Services
             return await _context.Set<T>().FindAsync(id);
         }
 
-        public virtual IQueryable<T> AddInclude(IQueryable<T> query, TSearch search)
+        public virtual IQueryable<T> AddInclude(IQueryable<T> query, TSearch? search)
         {
+            if (!string.IsNullOrEmpty(search?.Include))
+            {
+                query = query.Include(search.Include);
+            }
+
             return query;
         }
 

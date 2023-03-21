@@ -23,7 +23,9 @@ namespace KinoPlus.Services
 
             _context.Set<T>().Add(entity);
 
+            BeforeInsert(insert, entity);
             await _context.SaveChangesAsync();
+
             return entity;
         }
 
@@ -36,6 +38,11 @@ namespace KinoPlus.Services
             await _context.SaveChangesAsync();
 
             return entity;
+        }
+
+        public virtual void BeforeInsert(TInsert insert, T entity)
+        {
+            return;
         }
     }
 }

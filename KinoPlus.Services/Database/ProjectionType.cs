@@ -7,4 +7,6 @@ public partial class ProjectionType
     public string Name { get; set; } = null!;
 
     public virtual ICollection<Projection> Projections { get; } = new List<Projection>();
+
+    public virtual ICollection<LocationProjectionType> LocationProjectionTypes { get; } = new List<LocationProjectionType>();
 }

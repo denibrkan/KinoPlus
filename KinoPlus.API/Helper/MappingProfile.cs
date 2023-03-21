@@ -24,6 +24,13 @@ namespace KinoPlus.API.Helper
             CreateMap<CategoryInsertObject, Category>();
             CreateMap<CategoryUpdateObject, Category>();
 
+            CreateMap<User, UserDto>()
+                .ForMember(x => x.Roles, opt => opt.MapFrom(y => y.UserRoles.Select(z => z.Role)));
+            CreateMap<UserInsertObject, User>();
+            CreateMap<UserUpdateObject, User>();
+
+            CreateMap<Role, RoleDto>();
+
             CreateMap<ActorUpsertObject, Actor>();
             CreateMap<Actor, ActorDto>();
 

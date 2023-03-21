@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using KinoPlus.Models;
 using KinoPlus.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KinoPlus.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BaseController<T, TDto, TSearch> : ControllerBase where T : class where TDto : class where TSearch : BaseSearchObject
