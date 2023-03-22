@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinoPlus.Services", "KinoPl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinoPlus.Models", "KinoPlus.Models\KinoPlus.Models.csproj", "{3F85DF99-26B1-4309-B06D-D6F23E06589A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinoPlus.WinUI", "KinoPlus.WinUI\KinoPlus.WinUI.csproj", "{7D47E7C8-8363-438C-9F97-80B4CA704A63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3F85DF99-26B1-4309-B06D-D6F23E06589A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F85DF99-26B1-4309-B06D-D6F23E06589A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F85DF99-26B1-4309-B06D-D6F23E06589A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D47E7C8-8363-438C-9F97-80B4CA704A63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D47E7C8-8363-438C-9F97-80B4CA704A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D47E7C8-8363-438C-9F97-80B4CA704A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D47E7C8-8363-438C-9F97-80B4CA704A63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
