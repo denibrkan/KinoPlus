@@ -32,7 +32,7 @@ namespace KinoPlus.WinUI
 
             var bindMovies = movies!.Select(m => new
             {
-                Slika = ImageUtility.Base64ToImage(m.Image, 70, 90),
+                Slika = ImageUtility.Base64ToImage(m.Image, 55, 80),
                 Naziv = m.Title,
                 Zanr = string.Join(", ", m.Genres.Select(g => g.Name)),
                 Trajanje = m.Duration,
@@ -54,10 +54,9 @@ namespace KinoPlus.WinUI
 
         public void checkScreenSize()
         {
-            var size = Screen.PrimaryScreen!.WorkingArea.Size;
-
-            dgvMovies.Size = size;
-            btnDodaj.Location = new Point(size.Width - btnDodaj.Width, btnDodaj.Location.Y);
+            var screenSize = Screen.PrimaryScreen!.WorkingArea.Size;
+            dgvMovies.Size = new Size(screenSize.Width - 300, (int)(screenSize.Height * 0.6));
+            btnDodaj.Location = new Point(dgvMovies.Size.Width + 100 - btnDodaj.Width, btnDodaj.Location.Y);
         }
 
     }

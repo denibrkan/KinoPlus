@@ -32,12 +32,11 @@
             // 
             // frmKategorije
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1478, 744);
-            Margin = new Padding(4, 5, 4, 5);
+            ClientSize = new Size(1144, 699);
+            ControlBox = false;
             Name = "frmKategorije";
-            StartPosition = FormStartPosition.CenterParent;
             Text = "Kategorije";
             WindowState = FormWindowState.Maximized;
             ResumeLayout(false);
