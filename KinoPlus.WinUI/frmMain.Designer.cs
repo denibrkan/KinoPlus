@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             menuStrip = new MenuStrip();
+            projekcijeToolStripMenuItem = new ToolStripMenuItem();
             filmoviToolStripMenuItem = new ToolStripMenuItem();
-            none = new ToolStripMenuItem();
+            kategorijeToolStripMenuItem = new ToolStripMenuItem();
             korisniciToolStripMenuItem = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             SuspendLayout();
@@ -38,42 +39,52 @@
             // menuStrip
             // 
             menuStrip.Font = new Font("Dubai Medium", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            menuStrip.Items.AddRange(new ToolStripItem[] { filmoviToolStripMenuItem, none, korisniciToolStripMenuItem });
+            menuStrip.Items.AddRange(new ToolStripItem[] { projekcijeToolStripMenuItem, filmoviToolStripMenuItem, kategorijeToolStripMenuItem, korisniciToolStripMenuItem });
             menuStrip.Location = new Point(0, 0);
+            menuStrip.Margin = new Padding(0, 20, 0, 20);
             menuStrip.Name = "menuStrip";
-            menuStrip.Padding = new Padding(20, 2, 0, 2);
-            menuStrip.Size = new Size(1584, 35);
+            menuStrip.Padding = new Padding(40, 0, 0, 0);
+            menuStrip.Size = new Size(1584, 51);
             menuStrip.TabIndex = 0;
             menuStrip.Text = "menuStrip1";
             menuStrip.ItemClicked += menuStrip_ItemClicked;
             // 
+            // projekcijeToolStripMenuItem
+            // 
+            projekcijeToolStripMenuItem.Name = "projekcijeToolStripMenuItem";
+            projekcijeToolStripMenuItem.Padding = new Padding(20, 10, 20, 10);
+            projekcijeToolStripMenuItem.Size = new Size(122, 51);
+            projekcijeToolStripMenuItem.Text = "Projekcije";
+            projekcijeToolStripMenuItem.Click += projekcijeToolStripMenuItem_Click;
+            // 
             // filmoviToolStripMenuItem
             // 
             filmoviToolStripMenuItem.Name = "filmoviToolStripMenuItem";
-            filmoviToolStripMenuItem.Padding = new Padding(20, 0, 20, 0);
-            filmoviToolStripMenuItem.Size = new Size(104, 31);
+            filmoviToolStripMenuItem.Padding = new Padding(20, 10, 20, 10);
+            filmoviToolStripMenuItem.Size = new Size(104, 51);
             filmoviToolStripMenuItem.Text = "Filmovi";
             filmoviToolStripMenuItem.Click += filmoviToolStripMenuItem_Click;
             // 
-            // none
+            // kategorijeToolStripMenuItem
             // 
-            none.Name = "none";
-            none.Padding = new Padding(20, 0, 20, 0);
-            none.Size = new Size(126, 31);
-            none.Text = "Kategorije";
-            none.Click += kategorijeToolStripMenuItem_Click;
+            kategorijeToolStripMenuItem.Name = "kategorijeToolStripMenuItem";
+            kategorijeToolStripMenuItem.Padding = new Padding(20, 10, 20, 10);
+            kategorijeToolStripMenuItem.Size = new Size(126, 51);
+            kategorijeToolStripMenuItem.Text = "Kategorije";
+            kategorijeToolStripMenuItem.Click += kategorijeToolStripMenuItem_Click;
             // 
             // korisniciToolStripMenuItem
             // 
             korisniciToolStripMenuItem.Name = "korisniciToolStripMenuItem";
-            korisniciToolStripMenuItem.Padding = new Padding(20, 0, 20, 0);
-            korisniciToolStripMenuItem.Size = new Size(114, 31);
+            korisniciToolStripMenuItem.Padding = new Padding(20, 10, 20, 10);
+            korisniciToolStripMenuItem.Size = new Size(114, 51);
             korisniciToolStripMenuItem.Text = "Korisnici";
             // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             ClientSize = new Size(1584, 705);
             Controls.Add(menuStrip);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -94,7 +105,8 @@
 
         private MenuStrip menuStrip;
         private ToolStripMenuItem filmoviToolStripMenuItem;
-        private ToolStripMenuItem none;
+        private ToolStripMenuItem kategorijeToolStripMenuItem;
         private ToolStripMenuItem korisniciToolStripMenuItem;
+        private ToolStripMenuItem projekcijeToolStripMenuItem;
     }
 }

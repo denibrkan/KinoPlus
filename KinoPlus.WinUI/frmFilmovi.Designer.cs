@@ -33,16 +33,23 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             dgvMovies = new DataGridView();
             btnDodaj = new Button();
-            dtpDatum = new DateTimePicker();
-            lblDatum = new Label();
-            lblLokacija = new Label();
-            cmbLokacija = new ComboBox();
+            lblStatus = new Label();
+            cmbStatus = new ComboBox();
+            btnNazad = new Button();
+            btnNaprijed = new Button();
+            lblPaging = new Label();
+            txtTrazi = new TextBox();
+            lblKategorija = new Label();
+            cmbKategorija = new ComboBox();
+            btnTrazi = new Button();
+            btnReset = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvMovies).BeginInit();
             SuspendLayout();
             // 
             // dgvMovies
             // 
             dgvMovies.AllowUserToOrderColumns = true;
+            dgvMovies.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvMovies.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
@@ -62,9 +69,8 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvMovies.DefaultCellStyle = dataGridViewCellStyle2;
             dgvMovies.GridColor = Color.MidnightBlue;
-            dgvMovies.Location = new Point(98, 166);
+            dgvMovies.Location = new Point(71, 157);
             dgvMovies.Margin = new Padding(0);
-            dgvMovies.MinimumSize = new Size(1050, 600);
             dgvMovies.Name = "dgvMovies";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -77,77 +83,151 @@
             dgvMovies.RowHeadersWidth = 62;
             dgvMovies.RowTemplate.Height = 60;
             dgvMovies.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMovies.Size = new Size(1050, 600);
+            dgvMovies.Size = new Size(1050, 575);
             dgvMovies.TabIndex = 2;
             // 
             // btnDodaj
             // 
+            btnDodaj.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnDodaj.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDodaj.Location = new Point(1026, 116);
+            btnDodaj.Location = new Point(999, 107);
             btnDodaj.Margin = new Padding(4, 3, 4, 3);
             btnDodaj.Name = "btnDodaj";
-            btnDodaj.Size = new Size(122, 32);
+            btnDodaj.Size = new Size(122, 33);
             btnDodaj.TabIndex = 3;
             btnDodaj.Text = "Dodaj";
             btnDodaj.UseVisualStyleBackColor = true;
             // 
-            // dtpDatum
+            // lblStatus
             // 
-            dtpDatum.CalendarFont = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpDatum.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpDatum.Location = new Point(98, 118);
-            dtpDatum.Name = "dtpDatum";
-            dtpDatum.Size = new Size(229, 30);
-            dtpDatum.TabIndex = 4;
+            lblStatus.AutoSize = true;
+            lblStatus.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStatus.ForeColor = SystemColors.ControlDarkDark;
+            lblStatus.Location = new Point(461, 84);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(45, 22);
+            lblStatus.TabIndex = 5;
+            lblStatus.Text = "Status";
             // 
-            // lblDatum
+            // cmbStatus
             // 
-            lblDatum.AutoSize = true;
-            lblDatum.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDatum.ForeColor = SystemColors.ControlDarkDark;
-            lblDatum.Location = new Point(98, 93);
-            lblDatum.Name = "lblDatum";
-            lblDatum.Size = new Size(47, 22);
-            lblDatum.TabIndex = 5;
-            lblDatum.Text = "Datum";
+            cmbStatus.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Location = new Point(461, 107);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(187, 35);
+            cmbStatus.TabIndex = 6;
+            cmbStatus.SelectedValueChanged += cmbStatus_SelectedValueChanged;
             // 
-            // lblLokacija
+            // btnNazad
             // 
-            lblLokacija.AutoSize = true;
-            lblLokacija.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
-            lblLokacija.ForeColor = SystemColors.ControlDarkDark;
-            lblLokacija.Location = new Point(418, 93);
-            lblLokacija.Name = "lblLokacija";
-            lblLokacija.Size = new Size(53, 22);
-            lblLokacija.TabIndex = 5;
-            lblLokacija.Text = "Lokacija";
+            btnNazad.Anchor = AnchorStyles.Bottom;
+            btnNazad.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNazad.Location = new Point(458, 752);
+            btnNazad.Name = "btnNazad";
+            btnNazad.Size = new Size(75, 31);
+            btnNazad.TabIndex = 7;
+            btnNazad.Text = "<";
+            btnNazad.UseVisualStyleBackColor = true;
+            btnNazad.Click += btnNazad_Click;
             // 
-            // cmbLokacija
+            // btnNaprijed
             // 
-            cmbLokacija.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            cmbLokacija.FormattingEnabled = true;
-            cmbLokacija.Location = new Point(418, 118);
-            cmbLokacija.Name = "cmbLokacija";
-            cmbLokacija.Size = new Size(187, 30);
-            cmbLokacija.TabIndex = 6;
+            btnNaprijed.Anchor = AnchorStyles.Bottom;
+            btnNaprijed.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNaprijed.Location = new Point(650, 752);
+            btnNaprijed.Name = "btnNaprijed";
+            btnNaprijed.Size = new Size(75, 31);
+            btnNaprijed.TabIndex = 7;
+            btnNaprijed.Text = ">";
+            btnNaprijed.UseVisualStyleBackColor = true;
+            btnNaprijed.Click += btnNaprijed_Click;
+            // 
+            // lblPaging
+            // 
+            lblPaging.Anchor = AnchorStyles.Bottom;
+            lblPaging.AutoSize = true;
+            lblPaging.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPaging.Location = new Point(572, 754);
+            lblPaging.Name = "lblPaging";
+            lblPaging.Size = new Size(28, 22);
+            lblPaging.TabIndex = 8;
+            lblPaging.Text = "???";
+            // 
+            // txtTrazi
+            // 
+            txtTrazi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTrazi.Location = new Point(71, 107);
+            txtTrazi.Name = "txtTrazi";
+            txtTrazi.PlaceholderText = "Trazi";
+            txtTrazi.Size = new Size(240, 35);
+            txtTrazi.TabIndex = 9;
+            txtTrazi.TextChanged += txtTrazi_TextChanged;
+            // 
+            // lblKategorija
+            // 
+            lblKategorija.AutoSize = true;
+            lblKategorija.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            lblKategorija.ForeColor = SystemColors.ControlDarkDark;
+            lblKategorija.Location = new Point(670, 84);
+            lblKategorija.Name = "lblKategorija";
+            lblKategorija.Size = new Size(65, 22);
+            lblKategorija.TabIndex = 5;
+            lblKategorija.Text = "Kategorija";
+            // 
+            // cmbKategorija
+            // 
+            cmbKategorija.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbKategorija.FormattingEnabled = true;
+            cmbKategorija.Location = new Point(670, 107);
+            cmbKategorija.Name = "cmbKategorija";
+            cmbKategorija.Size = new Size(187, 35);
+            cmbKategorija.TabIndex = 6;
+            cmbKategorija.SelectedValueChanged += cmbKategorija_SelectedValueChanged;
+            // 
+            // btnTrazi
+            // 
+            btnTrazi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTrazi.Location = new Point(323, 107);
+            btnTrazi.Name = "btnTrazi";
+            btnTrazi.Size = new Size(93, 33);
+            btnTrazi.TabIndex = 12;
+            btnTrazi.Text = "Pretraga";
+            btnTrazi.UseVisualStyleBackColor = true;
+            btnTrazi.Click += btnTrazi_Click;
+            // 
+            // btnReset
+            // 
+            btnReset.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnReset.Location = new Point(880, 107);
+            btnReset.Margin = new Padding(4, 3, 4, 3);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(74, 33);
+            btnReset.TabIndex = 3;
+            btnReset.Text = "Ponisti";
+            btnReset.UseVisualStyleBackColor = true;
+            btnReset.Click += btnReset_Click;
             // 
             // frmFilmovi
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
-            ClientSize = new Size(1166, 765);
+            ClientSize = new Size(1327, 848);
             ControlBox = false;
-            Controls.Add(cmbLokacija);
-            Controls.Add(lblLokacija);
-            Controls.Add(lblDatum);
-            Controls.Add(dtpDatum);
+            Controls.Add(txtTrazi);
+            Controls.Add(btnTrazi);
+            Controls.Add(lblPaging);
+            Controls.Add(btnNaprijed);
+            Controls.Add(btnNazad);
+            Controls.Add(cmbKategorija);
+            Controls.Add(lblKategorija);
+            Controls.Add(cmbStatus);
+            Controls.Add(lblStatus);
+            Controls.Add(btnReset);
             Controls.Add(btnDodaj);
             Controls.Add(dgvMovies);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmFilmovi";
-            Text = "Filmovi";
-            WindowState = FormWindowState.Maximized;
             Load += frmFilmovi_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMovies).EndInit();
             ResumeLayout(false);
@@ -158,9 +238,15 @@
 
         private DataGridView dgvMovies;
         private Button btnDodaj;
-        private DateTimePicker dtpDatum;
-        private Label lblDatum;
-        private Label lblLokacija;
-        private ComboBox cmbLokacija;
+        private Label lblStatus;
+        private ComboBox cmbStatus;
+        private Button btnNazad;
+        private Button btnNaprijed;
+        private Label lblPaging;
+        private TextBox txtTrazi;
+        private Label lblKategorija;
+        private ComboBox cmbKategorija;
+        private Button btnTrazi;
+        private Button btnReset;
     }
 }

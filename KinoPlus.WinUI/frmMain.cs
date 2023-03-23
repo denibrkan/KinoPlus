@@ -39,6 +39,7 @@
 
             var frmFilmovi = new frmFilmovi();
             frmFilmovi.MdiParent = this;
+            frmFilmovi.WindowState = FormWindowState.Maximized;
 
             frmFilmovi.Show();
         }
@@ -49,9 +50,20 @@
 
             var frmKategorije = new frmKategorije();
             frmKategorije.MdiParent = this;
+            frmKategorije.WindowState = FormWindowState.Maximized;
 
             frmKategorije.Show();
         }
 
+        private void projekcijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.ActiveMdiChild?.Close();
+
+            var frmProjekcije = new frmProjekcije();
+            frmProjekcije.MdiParent = this;
+            frmProjekcije.WindowState = FormWindowState.Maximized;
+
+            frmProjekcije.Show();
+        }
     }
 }

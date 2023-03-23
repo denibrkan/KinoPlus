@@ -1,4 +1,5 @@
-﻿using Flurl.Http;
+﻿using Flurl;
+using Flurl.Http;
 using KinoPlus.Models;
 using KinoPlus.WinUI.Properties;
 
@@ -16,12 +17,12 @@ namespace eProdaja.WinUI
             _resource = resource;
         }
 
-        public async Task<T?> Get<T>()
+        public async Task<T?> Get<T>(object? queryParams = null)
         {
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                var resource = await $"{_apiUrl}{_resource}".WithOAuthBearerToken(_token).GetJsonAsync<T>();
+                var resource = await $"{_apiUrl}{_resource}".SetQueryParams(queryParams).WithOAuthBearerToken(_token).GetJsonAsync<T>();
                 Cursor.Current = Cursors.Arrow;
 
                 return resource;

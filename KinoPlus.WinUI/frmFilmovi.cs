@@ -8,28 +8,42 @@ namespace KinoPlus.WinUI
     public partial class frmFilmovi : Form
     {
         public APIService APIService { get; set; } = new APIService("movies");
+        public APIService StatusService { get; set; } = new APIService("moviestatus");
+        public APIService CategoriesService { get; set; } = new APIService("categories");
+        private bool Loading = false;
+        public int PageNumber = 1;
+        public int PageSize = 10;
 
         public frmFilmovi()
         {
             InitializeComponent();
         }
 
-        private void frmFilmovi_Load(object sender, EventArgs e)
+        private async void frmFilmovi_Load(object sender, EventArgs e)
         {
-            checkScreenSize();
-            loadMovies();
+            btnNazad.Enabled = false;
+            Loading = true;
+            await loadStatuses();
+            await loadCategories();
+            await loadMovies();
+            Loading = false;
         }
 
-        public async void loadMovies()
+        public async Task loadMovies()
         {
-            var movies = Cache.Movies;
-
-            if (movies?.Any() == false)
+            var search = txtTrazi.Text;
+            var statusId = (int?)(cmbStatus.SelectedValue);
+            var categoryId = (int?)(cmbKategorija.SelectedValue);
+            object queryParams = new
             {
-                movies = await APIService.Get<List<MovieDto>>();
-                Cache.Movies = movies!;
-            }
+                page = PageNumber,
+                pageSize = PageSize,
+                titleFTS = search,
+                statusId,
+                categoryId
+            };
 
+            var movies = await APIService.Get<List<MovieDto>>(queryParams);
             var bindMovies = movies!.Select(m => new
             {
                 Slika = ImageUtility.Base64ToImage(m.Image, 55, 80),
@@ -43,21 +57,97 @@ namespace KinoPlus.WinUI
                 Ocjena = m.AverageRating != 0 ? m.AverageRating.ToString() + "/5" : "-",
             }).ToList();
 
-
             dgvMovies.DataSource = bindMovies;
 
             dgvMovies.Columns["Slika"].HeaderText = "";
             dgvMovies.Columns["Naziv"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvMovies.Columns["Zanr"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvMovies.Columns["Kategorija"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            dgvMovies.Columns["Slika"].Width = 100;
+            dgvMovies.Columns["Trajanje"].Width = 100;
+            dgvMovies.Columns["Godina"].Width = 100;
+
+            lblPaging.Text = "Page " + PageNumber;
         }
 
-        public void checkScreenSize()
+        public async Task loadStatuses()
         {
-            var screenSize = Screen.PrimaryScreen!.WorkingArea.Size;
-            dgvMovies.Size = new Size(screenSize.Width - 300, (int)(screenSize.Height * 0.6));
-            btnDodaj.Location = new Point(dgvMovies.Size.Width + 100 - btnDodaj.Width, btnDodaj.Location.Y);
+            var statuses = await StatusService.Get<List<MovieStatusDto>>();
+
+            cmbStatus.ValueMember = "Id";
+            cmbStatus.DisplayMember = "Name";
+            cmbStatus.DataSource = statuses;
+            cmbStatus.SelectedItem = null;
         }
 
+        public async Task loadCategories()
+        {
+            var categories = await CategoriesService.Get<List<CategoryDto>>();
+
+            cmbKategorija.ValueMember = "Id";
+            cmbKategorija.DisplayMember = "Name";
+            cmbKategorija.DataSource = categories;
+            cmbKategorija.SelectedItem = null;
+        }
+
+        private async void btnTrazi_Click(object sender, EventArgs e)
+        {
+            if (!Loading)
+                await loadMovies();
+        }
+
+        private async void cmbStatus_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (!Loading)
+                await loadMovies();
+        }
+
+        private async void cmbKategorija_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (!Loading)
+                await loadMovies();
+        }
+
+        private void txtTrazi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void btnReset_Click(object sender, EventArgs e)
+        {
+            txtTrazi.Text = string.Empty;
+            PageNumber = 1;
+            Loading = true;
+            cmbKategorija.SelectedItem = null;
+            cmbStatus.SelectedItem = null;
+
+            await loadMovies();
+            Loading = false;
+        }
+
+        private async void btnNaprijed_Click(object sender, EventArgs e)
+        {
+            PageNumber += 1;
+            if (PageNumber == 1)
+            {
+                btnNazad.Enabled = false;
+            }
+            else
+            {
+                btnNazad.Enabled = true;
+            }
+            await loadMovies();
+        }
+
+        private async void btnNazad_Click(object sender, EventArgs e)
+        {
+            PageNumber -= 1;
+            if (PageNumber == 1)
+            {
+                btnNazad.Enabled = false;
+            }
+            await loadMovies();
+        }
     }
 }

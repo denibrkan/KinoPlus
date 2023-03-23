@@ -59,6 +59,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<ITokenService, TokenService>();
 
 builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<IMovieStatusService, MovieStatusService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IActorService, ActorService>();
 builder.Services.AddScoped<IGenreService, GenreService>();

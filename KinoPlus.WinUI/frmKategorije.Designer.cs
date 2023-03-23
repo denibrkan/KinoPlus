@@ -36,9 +36,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1144, 699);
             ControlBox = false;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmKategorije";
             Text = "Kategorije";
-            WindowState = FormWindowState.Maximized;
             ResumeLayout(false);
         }
 
