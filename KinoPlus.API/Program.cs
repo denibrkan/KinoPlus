@@ -64,6 +64,7 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IActorService, ActorService>();
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IYearService, YearService>();
 
 var app = builder.Build();
 

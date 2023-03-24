@@ -1,6 +1,5 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
-using KinoPlus.WinUI.Utils;
 using System.Data;
 
 namespace KinoPlus.WinUI
@@ -45,10 +44,9 @@ namespace KinoPlus.WinUI
 
             var movies = await APIService.Get<List<MovieDto>>(queryParams);
             var bindMovies = movies?
-                .OrderByDescending(s => s.DateCreated)
                 .Select(m => new
                 {
-                    Slika = ImageUtility.Base64ToImage(m.Image, 55, 80),
+                    //  Slika = ImageUtility.Base64ToImage(m.Image, 55, 80),
                     Naziv = m.Title,
                     Zanr = string.Join(", ", m.Genres.Select(g => g.Name)),
                     Trajanje = m.Duration,
@@ -62,34 +60,50 @@ namespace KinoPlus.WinUI
 
             dgvMovies.DataSource = bindMovies;
 
-            dgvMovies.Columns["Slika"].HeaderText = "";
+            //dgvMovies.Columns["Slika"].HeaderText = "";
             dgvMovies.Columns["Naziv"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvMovies.Columns["Zanr"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvMovies.Columns["Kategorija"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-            dgvMovies.Columns["Slika"].Width = 100;
 
             lblPaging.Text = "Page " + PageNumber;
         }
 
         public async Task loadStatuses()
         {
-            var statuses = await StatusService.Get<List<MovieStatusDto>>();
-
+            List<MovieStatusDto>? statuses;
+            if (!Cache.MovieStatuses.Any())
+            {
+                statuses = await StatusService.Get<List<MovieStatusDto>>();
+                if (statuses != null)
+                    Cache.MovieStatuses = statuses;
+            }
+            else
+            {
+                statuses = Cache.MovieStatuses;
+            }
             cmbStatus.ValueMember = "Id";
             cmbStatus.DisplayMember = "Name";
             cmbStatus.DataSource = statuses;
-            cmbStatus.SelectedItem = null;
+            cmbStatus.SelectedIndex = -1;
         }
 
         public async Task loadCategories()
         {
-            var categories = await CategoriesService.Get<List<CategoryDto>>();
-
+            List<CategoryDto>? categories;
+            if (!Cache.Categories.Any())
+            {
+                categories = await CategoriesService.Get<List<CategoryDto>>();
+                if (categories != null)
+                    Cache.Categories = categories;
+            }
+            else
+            {
+                categories = Cache.Categories;
+            }
             cmbKategorija.ValueMember = "Id";
             cmbKategorija.DisplayMember = "Name";
             cmbKategorija.DataSource = categories;
-            cmbKategorija.SelectedItem = null;
+            cmbKategorija.SelectedIndex = -1;
         }
 
         private async void btnTrazi_Click(object sender, EventArgs e)
@@ -149,6 +163,16 @@ namespace KinoPlus.WinUI
                 btnNazad.Enabled = false;
             }
             await loadMovies();
+        }
+
+        private async void btnDodaj_Click(object sender, EventArgs e)
+        {
+            var frmDodaj = new frmFilmUpsert();
+
+            if (frmDodaj.ShowDialog() == DialogResult.OK)
+            {
+                await loadMovies();
+            }
         }
     }
 }

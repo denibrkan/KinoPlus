@@ -35,6 +35,25 @@ namespace eProdaja.WinUI
             }
         }
 
+        public async Task<T?> Post<T>(object data)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                var resource = await $"{_apiUrl}{_resource}".WithOAuthBearerToken(_token).PostJsonAsync(data).ReceiveJson<T>();
+                Cursor.Current = Cursors.Arrow;
+
+                return resource;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+                return default;
+            }
+        }
+
+
         public async Task<UserDto?> Login(string korisnickoIme, string password)
         {
             var login = new LoginDto

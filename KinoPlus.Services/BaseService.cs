@@ -20,6 +20,7 @@ namespace KinoPlus.Services
 
             entities = AddInclude(entities, search);
             entities = AddFilter(entities, search);
+            entities = AddSorting(entities, search);
 
             if (search.Page.HasValue == true && search.PageSize.HasValue == true)
             {
@@ -45,6 +46,11 @@ namespace KinoPlus.Services
         }
 
         public virtual IQueryable<T> AddFilter(IQueryable<T> query, TSearch search)
+        {
+            return query;
+        }
+
+        public virtual IQueryable<T> AddSorting(IQueryable<T> query, TSearch search)
         {
             return query;
         }

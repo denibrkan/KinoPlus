@@ -41,6 +41,7 @@ namespace KinoPlus.API.Helper
             CreateMap<GenreUpsertObject, Genre>();
 
             CreateMap<Projection, ProjectionDto>();
+            CreateMap<Year, YearDto>();
         }
 
         public double CalculateAverageRating(IEnumerable<MovieReaction> reactions)

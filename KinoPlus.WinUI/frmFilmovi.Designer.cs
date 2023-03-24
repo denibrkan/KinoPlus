@@ -97,6 +97,7 @@
             btnDodaj.TabIndex = 3;
             btnDodaj.Text = "Dodaj";
             btnDodaj.UseVisualStyleBackColor = true;
+            btnDodaj.Click += btnDodaj_Click;
             // 
             // lblStatus
             // 
@@ -111,6 +112,8 @@
             // 
             // cmbStatus
             // 
+            cmbStatus.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbStatus.AutoCompleteSource = AutoCompleteSource.ListItems;
             cmbStatus.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbStatus.FormattingEnabled = true;
             cmbStatus.Location = new Point(461, 107);
@@ -177,6 +180,9 @@
             // 
             // cmbKategorija
             // 
+            cmbKategorija.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbKategorija.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cmbKategorija.BackColor = SystemColors.Window;
             cmbKategorija.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbKategorija.FormattingEnabled = true;
             cmbKategorija.Location = new Point(670, 107);

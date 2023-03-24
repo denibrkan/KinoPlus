@@ -35,6 +35,13 @@ namespace KinoPlus.Services
             return (await GetByIdAsync(movie.Id))!;
         }
 
+        public override void BeforeInsert(MovieUpsertObject insert, Movie entity)
+        {
+            base.BeforeInsert(insert, entity);
+
+            entity.DateCreated = DateTime.UtcNow;
+        }
+
         public async override Task<Movie> UpdateAsync(int id, MovieUpsertObject update)
         {
             await base.UpdateAsync(id, update);
@@ -94,6 +101,13 @@ namespace KinoPlus.Services
             {
                 query = query.Where(x => x.MovieCategories.Any(y => y.CategoryId == search.CategoryId.Value));
             }
+
+            return query;
+        }
+
+        public override IQueryable<Movie> AddSorting(IQueryable<Movie> query, MovieSearchObject search)
+        {
+            query = query.OrderByDescending(x => x.DateCreated);
 
             return query;
         }
