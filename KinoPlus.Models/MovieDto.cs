@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace KinoPlus.Models
 {
@@ -12,6 +13,7 @@ namespace KinoPlus.Models
         public string TrailerUrl { get; set; }
         public string Year { get; set; }
         public double AverageRating { get; set; }
+        public DateTime DateCreated { get; set; }
         public MovieStatusDto Status { get; set; }
         public List<CategoryDto> Categories { get; set; }
         public List<ActorDto> Actors { get; set; }

@@ -18,6 +18,8 @@ public partial class Movie
 
     public int MovieStatusId { get; set; }
 
+    public DateTime DateCreated { get; set; }
+
     public virtual ICollection<MovieActor> MovieActors { get; } = new List<MovieActor>();
 
     public virtual ICollection<MovieCategory> MovieCategories { get; } = new List<MovieCategory>();

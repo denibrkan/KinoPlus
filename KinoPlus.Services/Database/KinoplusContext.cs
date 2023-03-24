@@ -175,6 +175,7 @@ public partial class KinoplusContext : DbContext
         {
             entity.ToTable("Movie");
 
+            entity.Property(e => e.DateCreated).HasColumnType("datetime");
             entity.Property(e => e.Title).HasMaxLength(200);
             entity.Property(e => e.TrailerUrl).HasMaxLength(200);
 

@@ -44,18 +44,21 @@ namespace KinoPlus.WinUI
             };
 
             var movies = await APIService.Get<List<MovieDto>>(queryParams);
-            var bindMovies = movies!.Select(m => new
-            {
-                Slika = ImageUtility.Base64ToImage(m.Image, 55, 80),
-                Naziv = m.Title,
-                Zanr = string.Join(", ", m.Genres.Select(g => g.Name)),
-                Trajanje = m.Duration,
-                Godina = m.Year,
-                Kategorija = string.Join(", ", m.Categories.Select(g => g.Name)),
-                Status = m.Status.Name,
-                DatumDodavanja = DateTime.Now,
-                Ocjena = m.AverageRating != 0 ? m.AverageRating.ToString() + "/5" : "-",
-            }).ToList();
+            var bindMovies = movies?
+                .OrderByDescending(s => s.DateCreated)
+                .Select(m => new
+                {
+                    Slika = ImageUtility.Base64ToImage(m.Image, 55, 80),
+                    Naziv = m.Title,
+                    Zanr = string.Join(", ", m.Genres.Select(g => g.Name)),
+                    Trajanje = m.Duration,
+                    Godina = m.Year,
+                    Kategorija = string.Join(", ", m.Categories.Select(g => g.Name)),
+                    Status = m.Status.Name,
+                    DatumDodavanja = m.DateCreated.ToShortDateString(),
+                    Ocjena = m.AverageRating != 0 ? m.AverageRating.ToString() + "/5" : "-",
+                })
+                .ToList();
 
             dgvMovies.DataSource = bindMovies;
 
@@ -65,8 +68,6 @@ namespace KinoPlus.WinUI
             dgvMovies.Columns["Kategorija"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             dgvMovies.Columns["Slika"].Width = 100;
-            dgvMovies.Columns["Trajanje"].Width = 100;
-            dgvMovies.Columns["Godina"].Width = 100;
 
             lblPaging.Text = "Page " + PageNumber;
         }

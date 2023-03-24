@@ -228,6 +228,7 @@
             Controls.Add(dgvMovies);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmFilmovi";
+            Text = "Filmovi";
             Load += frmFilmovi_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMovies).EndInit();
             ResumeLayout(false);
