@@ -48,11 +48,12 @@ namespace KinoPlus.WinUI
             var bindMovies = movies?
                 .Select(m => new
                 {
-                    Slika = ImageUtility.GetImageFromUrl(Settings.Default.ApiUrl + "images/" + m.ImageId),
+                    Id = m.Id,
+                    Slika = ImageUtility.resizeImage(ImageUtility.GetImageFromUrl(Settings.Default.ApiUrl + "images/" + m.ImageId), new Size(50, 70)),
                     Naziv = m.Title,
                     Zanr = string.Join(", ", m.Genres.Select(g => g.Name)),
                     Trajanje = m.Duration,
-                    Godina = m.Year,
+                    Godina = m.Year.Name,
                     Kategorija = string.Join(", ", m.Categories.Select(g => g.Name)),
                     Status = m.Status.Name,
                     DatumDodavanja = m.DateCreated.ToShortDateString(),
@@ -62,6 +63,7 @@ namespace KinoPlus.WinUI
 
             dgvMovies.DataSource = bindMovies;
 
+            dgvMovies.Columns["Id"].Visible = false;
             dgvMovies.Columns["Slika"].HeaderText = "";
             dgvMovies.Columns["Naziv"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvMovies.Columns["Zanr"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -172,6 +174,18 @@ namespace KinoPlus.WinUI
             var frmDodaj = new frmFilmUpsert();
 
             if (frmDodaj.ShowDialog() == DialogResult.OK)
+            {
+                await loadMovies();
+            }
+        }
+
+        private async void dgvMovies_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var movieId = dgvMovies.Rows[e.RowIndex].Cells["Id"].Value as int?;
+
+            var frmEdit = new frmFilmUpsert(movieId);
+
+            if (frmEdit.ShowDialog() == DialogResult.OK)
             {
                 await loadMovies();
             }

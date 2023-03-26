@@ -85,6 +85,7 @@
             dgvMovies.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMovies.Size = new Size(1050, 575);
             dgvMovies.TabIndex = 2;
+            dgvMovies.CellDoubleClick += dgvMovies_CellDoubleClick;
             // 
             // btnDodaj
             // 

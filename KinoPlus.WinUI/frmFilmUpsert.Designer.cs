@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lblNaziv = new Label();
             txtNaziv = new TextBox();
             cmbGodina = new ComboBox();
@@ -50,8 +51,10 @@
             lblTrailer = new Label();
             txtTrailer = new TextBox();
             numTrajanje = new NumericUpDown();
+            errorProvider = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)pcbSlika).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numTrajanje).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // lblNaziv
@@ -71,7 +74,8 @@
             txtNaziv.Location = new Point(296, 108);
             txtNaziv.Name = "txtNaziv";
             txtNaziv.Size = new Size(321, 35);
-            txtNaziv.TabIndex = 10;
+            txtNaziv.TabIndex = 0;
+            txtNaziv.Validating += txtNaziv_Validating;
             // 
             // cmbGodina
             // 
@@ -82,7 +86,8 @@
             cmbGodina.Location = new Point(712, 108);
             cmbGodina.Name = "cmbGodina";
             cmbGodina.Size = new Size(127, 35);
-            cmbGodina.TabIndex = 12;
+            cmbGodina.TabIndex = 2;
+            cmbGodina.Validating += cmbGodina_Validating;
             // 
             // lblGodina
             // 
@@ -115,6 +120,7 @@
             pcbSlika.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbSlika.TabIndex = 13;
             pcbSlika.TabStop = false;
+            pcbSlika.Validating += pcbSlika_Validating;
             // 
             // btnOdaberi
             // 
@@ -122,7 +128,7 @@
             btnOdaberi.Location = new Point(116, 290);
             btnOdaberi.Name = "btnOdaberi";
             btnOdaberi.Size = new Size(86, 30);
-            btnOdaberi.TabIndex = 14;
+            btnOdaberi.TabIndex = 11;
             btnOdaberi.Text = "Odaberi";
             btnOdaberi.UseVisualStyleBackColor = true;
             btnOdaberi.Click += btnOdaberi_Click;
@@ -147,7 +153,8 @@
             cmbStatus.Location = new Point(296, 222);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(189, 35);
-            cmbStatus.TabIndex = 12;
+            cmbStatus.TabIndex = 4;
+            cmbStatus.Validating += cmbStatus_Validating;
             // 
             // btnSpasi
             // 
@@ -155,7 +162,7 @@
             btnSpasi.Location = new Point(595, 609);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(108, 35);
-            btnSpasi.TabIndex = 14;
+            btnSpasi.TabIndex = 10;
             btnSpasi.Text = "Spasi";
             btnSpasi.UseVisualStyleBackColor = true;
             btnSpasi.Click += btnSpasi_Click;
@@ -173,7 +180,7 @@
             lbKategorija.Name = "lbKategorija";
             lbKategorija.SelectionMode = SelectionMode.MultiSimple;
             lbKategorija.Size = new Size(210, 85);
-            lbKategorija.TabIndex = 15;
+            lbKategorija.TabIndex = 5;
             // 
             // lbZanr
             // 
@@ -184,7 +191,7 @@
             lbZanr.Name = "lbZanr";
             lbZanr.SelectionMode = SelectionMode.MultiSimple;
             lbZanr.Size = new Size(210, 85);
-            lbZanr.TabIndex = 15;
+            lbZanr.TabIndex = 6;
             // 
             // lbUloge
             // 
@@ -195,7 +202,7 @@
             lbUloge.Name = "lbUloge";
             lbUloge.SelectionMode = SelectionMode.MultiSimple;
             lbUloge.Size = new Size(321, 85);
-            lbUloge.TabIndex = 15;
+            lbUloge.TabIndex = 7;
             // 
             // rtbOpis
             // 
@@ -203,8 +210,9 @@
             rtbOpis.Location = new Point(701, 354);
             rtbOpis.Name = "rtbOpis";
             rtbOpis.Size = new Size(356, 167);
-            rtbOpis.TabIndex = 16;
+            rtbOpis.TabIndex = 8;
             rtbOpis.Text = "";
+            rtbOpis.Validating += rtbOpis_Validating;
             // 
             // lblKategorija
             // 
@@ -267,16 +275,22 @@
             txtTrailer.Location = new Point(296, 492);
             txtTrailer.Name = "txtTrailer";
             txtTrailer.Size = new Size(321, 29);
-            txtTrailer.TabIndex = 10;
+            txtTrailer.TabIndex = 9;
             // 
             // numTrajanje
             // 
             numTrajanje.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
             numTrajanje.Location = new Point(927, 108);
+            numTrajanje.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             numTrajanje.Name = "numTrajanje";
             numTrajanje.RightToLeft = RightToLeft.No;
             numTrajanje.Size = new Size(130, 35);
-            numTrajanje.TabIndex = 17;
+            numTrajanje.TabIndex = 3;
+            numTrajanje.Validating += numTrajanje_Validating;
+            // 
+            // errorProvider
+            // 
+            errorProvider.ContainerControl = this;
             // 
             // frmFilmUpsert
             // 
@@ -310,6 +324,7 @@
             Load += frmFilmUpsert_Load;
             ((System.ComponentModel.ISupportInitialize)pcbSlika).EndInit();
             ((System.ComponentModel.ISupportInitialize)numTrajanje).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -338,5 +353,6 @@
         private Label lblTrailer;
         private TextBox txtTrailer;
         private NumericUpDown numTrajanje;
+        private ErrorProvider errorProvider;
     }
 }

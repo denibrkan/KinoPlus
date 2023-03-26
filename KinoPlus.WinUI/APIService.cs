@@ -35,6 +35,24 @@ namespace eProdaja.WinUI
             }
         }
 
+        public async Task<T?> GetById<T>(object id)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                var resource = await $"{_apiUrl}{_resource}/{id}".WithOAuthBearerToken(_token).GetJsonAsync<T>();
+                Cursor.Current = Cursors.Arrow;
+
+                return resource;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+                return default;
+            }
+        }
+
         public async Task<T?> Post<T>(object data)
         {
             try
@@ -53,7 +71,23 @@ namespace eProdaja.WinUI
             }
         }
 
+        public async Task<T?> Update<T>(int id, object data)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                var resource = await $"{_apiUrl}{_resource}/{id}".WithOAuthBearerToken(_token).PutJsonAsync(data).ReceiveJson<T>();
+                Cursor.Current = Cursors.Arrow;
 
+                return resource;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+                return default;
+            }
+        }
         public async Task<UserDto?> Login(string korisnickoIme, string password)
         {
             var login = new LoginDto

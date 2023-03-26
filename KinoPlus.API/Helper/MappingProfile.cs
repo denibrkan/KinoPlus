@@ -12,7 +12,6 @@ namespace KinoPlus.API.Helper
                 .ForMember(x => x.Categories, options => options.MapFrom(y => y.MovieCategories.Select(z => z.Category)))
                 .ForMember(x => x.Genres, options => options.MapFrom(y => y.MovieGenres.Select(z => z.Genre)))
                 .ForMember(x => x.Actors, options => options.MapFrom(y => y.MovieActors.Select(z => z.Actor)))
-                .ForMember(x => x.Year, options => options.MapFrom(y => y.Year.Name))
                 .ForMember(x => x.Reactions, options => options.MapFrom(y => y.MovieReactions))
                 .ForMember(x => x.Status, options => options.MapFrom(y => y.MovieStatus))
                 .ForMember(x => x.AverageRating, options => options.MapFrom(y => CalculateAverageRating(y.MovieReactions)));

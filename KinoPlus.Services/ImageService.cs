@@ -7,7 +7,7 @@ namespace KinoPlus.Services
 {
     public class ImageService : IImageService
     {
-        private const int ThumbnailWidth = 50;
+        private const int ThumbnailWidth = 155;
         private readonly Database.KinoplusContext _context;
 
         public ImageService(Database.KinoplusContext context)

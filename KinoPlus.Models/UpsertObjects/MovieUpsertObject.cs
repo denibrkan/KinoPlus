@@ -13,9 +13,10 @@ namespace KinoPlus.Models
         public string Description { get; set; }
         public string TrailerUrl { get; set; }
         [Required]
-        public Guid ImageId { get; set; }
+        public Guid? ImageId { get; set; }
         [Required]
         public int? YearId { get; set; }
+        [Required]
         public int? StatusId { get; set; }
         public int[] CategoryIds { get; set; } = new int[0];
         public int[] ActorIds { get; set; } = new int[0];

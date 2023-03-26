@@ -14,10 +14,17 @@ namespace KinoPlus.WinUI
         public APIService CategoriesService { get; set; } = new APIService("categories");
         public APIService ActorsService { get; set; } = new APIService("actors");
         public Guid MovieImageId { get; set; }
+        public bool isEdit { get; set; }
+        public int? EditMovieId { get; set; }
 
-        public frmFilmUpsert()
+        public frmFilmUpsert(int? movieId = null)
         {
             InitializeComponent();
+            if (movieId != null)
+            {
+                isEdit = true;
+                EditMovieId = movieId;
+            }
         }
 
         private async void btnOdaberi_Click(object sender, EventArgs e)
@@ -62,6 +69,25 @@ namespace KinoPlus.WinUI
             await loadGenres();
             await loadCategories();
             await loadActors();
+            if (isEdit)
+                await loadMovie(EditMovieId!.Value);
+
+        }
+
+        public async Task loadMovie(int movieId)
+        {
+            var movie = await MovieService.GetById<MovieDto>(movieId);
+            txtNaziv.Text = movie!.Title;
+            numTrajanje.Value = movie.Duration;
+            txtTrailer.Text = movie.TrailerUrl;
+            cmbGodina.SelectedValue = movie.Year.Id;
+            cmbStatus.SelectedValue = movie.Status.Id;
+            lbKategorija.SelectedValue = movie.Categories.Select(c => c.Id);
+            lbZanr.SelectedValue = movie.Genres.Select(g => g.Id);
+            lbUloge.SelectedValue = movie.Actors.Select(a => a.Id);
+            rtbOpis.Text = movie.Description;
+            pcbSlika.ImageLocation = $"{Settings.Default.ApiUrl}images/{movie.ImageId}";
+            MovieImageId = movie.ImageId;
         }
 
         public async Task loadStatuses()
@@ -161,6 +187,8 @@ namespace KinoPlus.WinUI
 
         private async void btnSpasi_Click(object sender, EventArgs e)
         {
+            if (checkValidation() == false) return;
+
             var movie = new MovieUpsertObject();
 
             movie.Title = txtNaziv.Text;
@@ -174,12 +202,114 @@ namespace KinoPlus.WinUI
             movie.ActorIds = lbUloge.SelectedItems.Cast<ActorDto>().Select(a => a.Id).ToArray();
             movie.ImageId = MovieImageId;
 
-            var insertedMovie = await MovieService.Post<MovieDto>(movie);
-
-            if (insertedMovie != null)
+            MovieDto? movieDto;
+            if (isEdit)
+            {
+                movieDto = await MovieService.Update<MovieDto>(EditMovieId!.Value, movie);
+            }
+            else
+            {
+                movieDto = await MovieService.Post<MovieDto>(movie);
+            }
+            if (movieDto != null)
             {
                 this.DialogResult = DialogResult.OK;
                 Close();
+            }
+        }
+
+        private void rtbOpis_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(rtbOpis.Text))
+            {
+                e.Cancel = true;
+                rtbOpis.Focus();
+                errorProvider.SetError(rtbOpis, "Opis nije unesen");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(rtbOpis, "");
+            }
+        }
+
+        private bool checkValidation()
+        {
+            return ValidateChildren(ValidationConstraints.Enabled);
+        }
+
+        private void cmbGodina_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (cmbGodina.SelectedValue == null)
+            {
+                e.Cancel = true;
+                cmbGodina.Focus();
+                errorProvider.SetError(cmbGodina, "Godina nije odabrana");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(cmbGodina, "");
+            }
+        }
+
+        private void txtNaziv_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNaziv.Text))
+            {
+                e.Cancel = true;
+                txtNaziv.Focus();
+                errorProvider.SetError(txtNaziv, "Naziv nije unesen");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(txtNaziv, "");
+            }
+        }
+
+        private void cmbStatus_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (cmbStatus.SelectedValue == null)
+            {
+                e.Cancel = true;
+                cmbStatus.Focus();
+                errorProvider.SetError(cmbStatus, "Status nije odabran");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(cmbStatus, "");
+            }
+        }
+
+        private void numTrajanje_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (numTrajanje.Value == 0)
+            {
+                e.Cancel = true;
+                numTrajanje.Focus();
+                errorProvider.SetError(numTrajanje, "Trajanje ne moze biti 0");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(numTrajanje, "");
+            }
+        }
+
+        private void pcbSlika_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (pcbSlika.Image == null)
+            {
+                e.Cancel = true;
+                pcbSlika.Focus();
+                errorProvider.SetError(pcbSlika, "Slika nije odabrana");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(pcbSlika, "");
             }
         }
     }
