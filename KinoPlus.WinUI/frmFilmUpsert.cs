@@ -1,5 +1,7 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
+using KinoPlus.WinUI.Properties;
+using System.Net.Http.Json;
 
 namespace KinoPlus.WinUI
 {
@@ -11,19 +13,40 @@ namespace KinoPlus.WinUI
         public APIService GenreService { get; set; } = new APIService("genres");
         public APIService CategoriesService { get; set; } = new APIService("categories");
         public APIService ActorsService { get; set; } = new APIService("actors");
+        public Guid MovieImageId { get; set; }
 
         public frmFilmUpsert()
         {
             InitializeComponent();
         }
 
-        private void btnOdaberi_Click(object sender, EventArgs e)
+        private async void btnOdaberi_Click(object sender, EventArgs e)
         {
             try
             {
                 if (ofdSlika.ShowDialog() == DialogResult.OK)
                 {
-                    pcbSlika.ImageLocation = ofdSlika.FileName;
+                    HttpClient client = new HttpClient();
+                    var multiForm = new MultipartFormDataContent();
+
+                    var files = ofdSlika.FileNames;
+                    foreach (var file in files)
+                    {
+                        FileStream fs = File.OpenRead(file);
+                        multiForm.Add(new StreamContent(fs), "images", Path.GetFileName(file));
+                    }
+                    var url = Settings.Default.ApiUrl + "images";
+                    var response = await client.PostAsync(url, multiForm);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        pcbSlika.ImageLocation = ofdSlika.FileName;
+                        var imageIds = await response.Content.ReadFromJsonAsync<List<Guid>>();
+                        MovieImageId = imageIds!.First();
+                    }
+                    else
+                    {
+                        MessageBox.Show(response.ToString());
+                    }
                 }
             }
             catch (Exception ex)
@@ -149,8 +172,7 @@ namespace KinoPlus.WinUI
             movie.CategoryIds = lbKategorija.SelectedItems.Cast<CategoryDto>().Select(c => c.Id).ToArray();
             movie.GenreIds = lbZanr.SelectedItems.Cast<GenreDto>().Select(g => g.Id).ToArray();
             movie.ActorIds = lbUloge.SelectedItems.Cast<ActorDto>().Select(a => a.Id).ToArray();
-
-            //  movie.Image = Convert.ToBase64String(File.ReadAllBytes(pcbSlika.ImageLocation));
+            movie.ImageId = MovieImageId;
 
             var insertedMovie = await MovieService.Post<MovieDto>(movie);
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace KinoPlus.Models
 {
@@ -10,7 +11,7 @@ namespace KinoPlus.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }
-        public string Image { get; set; }
+        public Guid? Image { get; set; }
         public string Token { get; set; }
         public List<RoleDto> Roles { get; set; }
     }

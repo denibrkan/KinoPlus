@@ -1,5 +1,7 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
+using KinoPlus.WinUI.Properties;
+using KinoPlus.WinUI.Utils;
 using System.Data;
 
 namespace KinoPlus.WinUI
@@ -46,7 +48,7 @@ namespace KinoPlus.WinUI
             var bindMovies = movies?
                 .Select(m => new
                 {
-                    //  Slika = ImageUtility.Base64ToImage(m.Image, 55, 80),
+                    Slika = ImageUtility.GetImageFromUrl(Settings.Default.ApiUrl + "images/" + m.ImageId),
                     Naziv = m.Title,
                     Zanr = string.Join(", ", m.Genres.Select(g => g.Name)),
                     Trajanje = m.Duration,
@@ -60,7 +62,7 @@ namespace KinoPlus.WinUI
 
             dgvMovies.DataSource = bindMovies;
 
-            //dgvMovies.Columns["Slika"].HeaderText = "";
+            dgvMovies.Columns["Slika"].HeaderText = "";
             dgvMovies.Columns["Naziv"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvMovies.Columns["Zanr"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvMovies.Columns["Kategorija"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;

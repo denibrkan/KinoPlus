@@ -10,15 +10,17 @@ public partial class Movie
 
     public string? Description { get; set; }
 
-    public string? Image { get; set; }
-
     public string? TrailerUrl { get; set; }
+
+    public Guid ImageId { get; set; }
 
     public int YearId { get; set; }
 
     public int MovieStatusId { get; set; }
 
     public DateTime DateCreated { get; set; }
+
+    public virtual Image Image { get; set; } = null!;
 
     public virtual ICollection<MovieActor> MovieActors { get; } = new List<MovieActor>();
 

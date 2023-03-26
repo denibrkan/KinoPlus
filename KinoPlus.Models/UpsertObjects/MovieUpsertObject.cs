@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace KinoPlus.Models
 {
@@ -10,8 +11,9 @@ namespace KinoPlus.Models
         public int? Duration { get; set; }
         [Required]
         public string Description { get; set; }
-        public string Image { get; set; }
         public string TrailerUrl { get; set; }
+        [Required]
+        public Guid ImageId { get; set; }
         [Required]
         public int? YearId { get; set; }
         public int? StatusId { get; set; }

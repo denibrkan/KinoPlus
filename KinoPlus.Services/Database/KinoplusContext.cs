@@ -29,6 +29,8 @@ public partial class KinoplusContext : DbContext
 
     public virtual DbSet<HallSeat> HallSeats { get; set; }
 
+    public virtual DbSet<Image> Images { get; set; }
+
     public virtual DbSet<Location> Locations { get; set; }
 
     public virtual DbSet<LocationProjectionType> LocationProjectionTypes { get; set; }
@@ -141,6 +143,15 @@ public partial class KinoplusContext : DbContext
                 .HasConstraintName("FK_HallSeat_Seat");
         });
 
+        modelBuilder.Entity<Image>(entity =>
+        {
+            entity.ToTable("Image");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.Type).HasMaxLength(50);
+        });
+
         modelBuilder.Entity<Location>(entity =>
         {
             entity.ToTable("Location");
@@ -178,6 +189,11 @@ public partial class KinoplusContext : DbContext
             entity.Property(e => e.DateCreated).HasColumnType("datetime");
             entity.Property(e => e.Title).HasMaxLength(200);
             entity.Property(e => e.TrailerUrl).HasMaxLength(200);
+
+            entity.HasOne(d => d.Image).WithMany(p => p.Movies)
+                .HasForeignKey(d => d.ImageId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Movie_Image");
 
             entity.HasOne(d => d.MovieStatus).WithMany(p => p.Movies)
                 .HasForeignKey(d => d.MovieStatusId)
@@ -367,6 +383,10 @@ public partial class KinoplusContext : DbContext
             entity.Property(e => e.PasswordSalt).HasMaxLength(200);
             entity.Property(e => e.Phone).HasMaxLength(20);
             entity.Property(e => e.Username).HasMaxLength(50);
+
+            entity.HasOne(d => d.Image).WithMany(p => p.Users)
+                .HasForeignKey(d => d.ImageId)
+                .HasConstraintName("FK_User_Image");
         });
 
         modelBuilder.Entity<UserRole>(entity =>

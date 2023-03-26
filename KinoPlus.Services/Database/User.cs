@@ -18,7 +18,9 @@ public partial class User
 
     public string PasswordSalt { get; set; } = null!;
 
-    public string? Image { get; set; }
+    public Guid? ImageId { get; set; }
+
+    public virtual Image? Image { get; set; }
 
     public virtual ICollection<Ticket> Tickets { get; } = new List<Ticket>();
 

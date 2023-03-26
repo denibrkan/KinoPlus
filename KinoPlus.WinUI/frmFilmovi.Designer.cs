@@ -81,7 +81,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvMovies.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvMovies.RowHeadersWidth = 62;
-            dgvMovies.RowTemplate.Height = 60;
+            dgvMovies.RowTemplate.Height = 65;
             dgvMovies.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMovies.Size = new Size(1050, 575);
             dgvMovies.TabIndex = 2;

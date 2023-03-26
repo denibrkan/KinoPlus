@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace KinoPlus.Models
 {
@@ -15,7 +16,7 @@ namespace KinoPlus.Models
         [Required]
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string Image { get; set; }
+        public Guid? ImageId { get; set; }
         public int[] RoleIds { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace KinoPlus.WinUI.Utils
+﻿using System.Net;
+
+namespace KinoPlus.WinUI.Utils
 {
     public static class ImageUtility
     {
@@ -20,6 +22,19 @@
         public static Image resizeImage(Image imgToResize, Size size)
         {
             return (Image)(new Bitmap(imgToResize, size));
+        }
+
+        public static Image GetImageFromUrl(string url)
+        {
+            HttpWebRequest? httpWebRequest = WebRequest.Create(url) as HttpWebRequest;
+
+            using (HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse())
+            {
+                using (Stream stream = httpWebReponse.GetResponseStream())
+                {
+                    return Image.FromStream(stream);
+                }
+            }
         }
     }
 }
