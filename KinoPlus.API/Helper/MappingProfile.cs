@@ -40,6 +40,12 @@ namespace KinoPlus.API.Helper
             CreateMap<GenreUpsertObject, Genre>();
 
             CreateMap<Projection, ProjectionDto>();
+            CreateMap<ProjectionInsertObject, Projection>();
+            CreateMap<ProjectionType, ProjectionTypeDto>();
+
+            CreateMap<LocationInsertObject, Location>();
+            CreateMap<Location, LocationDto>();
+
             CreateMap<Year, YearDto>();
         }
 

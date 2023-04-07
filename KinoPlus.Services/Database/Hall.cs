@@ -9,11 +9,7 @@ public partial class Hall
 
     public string Name { get; set; } = null!;
 
-    public int LocationId { get; set; }
-
-    public virtual ICollection<HallSeat> HallSeats { get; } = new List<HallSeat>();
-
-    public virtual Location Location { get; set; } = null!;
+    public virtual ICollection<LocationHall> LocationHalls { get; } = new List<LocationHall>();
 
     public virtual ICollection<ProjectionLocation> ProjectionLocations { get; } = new List<ProjectionLocation>();
 }

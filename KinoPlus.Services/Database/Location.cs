@@ -15,7 +15,7 @@ public partial class Location
 
     public virtual City City { get; set; } = null!;
 
-    public virtual ICollection<Hall> Halls { get; } = new List<Hall>();
+    public virtual ICollection<LocationHall> LocationHalls { get; } = new List<LocationHall>();
 
     public virtual ICollection<LocationProjectionType> LocationProjectionTypes { get; } = new List<LocationProjectionType>();
 

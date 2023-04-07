@@ -8,7 +8,5 @@ public partial class Seat
 
     public string Row { get; set; } = null!;
 
-    public virtual ICollection<HallSeat> HallSeats { get; } = new List<HallSeat>();
-
     public virtual ICollection<Ticket> Tickets { get; } = new List<Ticket>();
 }
