@@ -1,0 +1,18 @@
+[
+	{
+		"FirstName": "User",
+		"LastName": "1",
+		"Email": "user1@mail.com",
+		"Username": "desktop",
+		"PasswordHash": "T8TF6a8XFXW2xPOt0i+G7WvAqqiMgMIYVfYLcxxNrI+SkJjas2EAcHMXMKX5vK4OxKkhocUoGW1mh3zwz2AT2A==",
+		"PasswordSalt": "YFPU+7C5pxfoUe1+yC/2/TLam8t8EuO7G5hp6H4PfzQfFn7whuEQEK0tCywzfhFQlkcdOvxBbCS//QIa7ZR88t20+5Hx0Bom/mHq7aLIBb8QahNsk5xdsZdPduU4HEO/y3tJWjGAx7TOB/0MNcEQxThWoXIcSu+FJ/lWzu6M1mM="
+	},
+	{
+		"FirstName": "User",
+		"LastName": "2",
+		"Email": "user2@mail.com",
+		"Username": "mobile",
+		"PasswordHash": "UmV5dQSmqLvToHViwmaQ7TSvDwMiTXU4kgDOi1S+FMtNZ3yvV14f5mcLaH7cetjq1uClsz+v/WBt5PxmleF5FA==",
+		"PasswordSalt": "olDseHqzOsx7Co9VdPksgE6gkBPTQXSLU7Rk5pJXm8JJ05D4J0753l9qmCd+o7eAkxwezXEwViMzeW11JY6i+Ox7AJRBG0AMzpEQWUI6JWjbYpTbdwRBXZxISe8M8t2lyeCzKPiILHwA9G/dXirWNs9GbZsD1zAA5iK7hfzoJes="
+	}
+]

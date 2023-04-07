@@ -1,0 +1,18 @@
+[
+  {
+    "Name": "Mostar",
+    "CountryId": 1
+  },
+  {
+    "Name": "Sarajevo",
+    "CountryId": 1
+  },
+  {
+    "Name": "Banja Luka",
+    "CountryId": 1
+  },
+  {
+    "Name": "Zagreb",
+    "CountryId": 2
+  }
+]

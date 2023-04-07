@@ -1,4 +1,5 @@
 using KinoPlus.Services;
+using KinoPlus.Services.Data;
 using KinoPlus.Services.Database;
 using KinoPlus.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -87,4 +88,19 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+
+try
+{
+    var context = services.GetRequiredService<KinoplusContext>();
+    await Seed.SeedEntities(context);
+}
+catch (Exception ex)
+{
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    logger.LogError(ex, "An error occurred during seed");
+}
+
+await app.RunAsync();
