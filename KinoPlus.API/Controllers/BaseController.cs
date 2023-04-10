@@ -21,7 +21,7 @@ namespace KinoPlus.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<TDto>>> Get([FromQuery] TSearch search)
+        public virtual async Task<ActionResult<List<TDto>>> Get([FromQuery] TSearch search)
         {
             var list = await _service.GetAsync(search);
 

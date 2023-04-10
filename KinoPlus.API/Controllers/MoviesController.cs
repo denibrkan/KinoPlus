@@ -2,6 +2,8 @@
 using KinoPlus.Models;
 using KinoPlus.Services.Database;
 using KinoPlus.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace KinoPlus.API.Controllers
 {
@@ -10,6 +12,12 @@ namespace KinoPlus.API.Controllers
 
         public MoviesController(IMovieService service, IMapper mapper) : base(service, mapper)
         {
+        }
+
+        [AllowAnonymous]
+        public override Task<ActionResult<List<MovieDto>>> Get([FromQuery] MovieSearchObject search)
+        {
+            return base.Get(search);
         }
 
     }
