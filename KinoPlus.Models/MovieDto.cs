@@ -15,7 +15,7 @@ namespace KinoPlus.Models
         public DateTime DateCreated { get; set; }
         public YearDto Year { get; set; }
         public MovieStatusDto Status { get; set; }
-        public List<CategoryDto> Categories { get; set; }
+        public List<MovieCategoryDto> Categories { get; set; }
         public List<ActorDto> Actors { get; set; }
         public List<GenreDto> Genres { get; set; }
         public List<ReactionDto> Reactions { get; set; }

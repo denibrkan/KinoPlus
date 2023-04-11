@@ -6,6 +6,7 @@ namespace KinoPlus.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<MovieDto> Movies { get; set; }
+        public List<CategoryMovieDto> Movies { get; set; }
     }
+
 }

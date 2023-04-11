@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late Future<List<Category>> futureCategories;
 
   Future<List<Movie>> fetchMovies() async {
-    final response = await http.get(Uri.parse('$apiUrl/movies'));
+    final response = await http.get(Uri.parse('$apiUrl/movies?pageSize=2'));
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
