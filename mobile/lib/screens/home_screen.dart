@@ -5,6 +5,7 @@ import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/category.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:http/http.dart' as http;
+import 'package:mobile/screens/movie_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.title});
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late Future<List<Category>> futureCategories;
 
   Future<List<Movie>> fetchMovies() async {
-    final response = await http.get(Uri.parse('$apiUrl/movies?pageSize=2'));
+    final response = await http.get(Uri.parse('$apiUrl/movies'));
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
@@ -122,9 +123,16 @@ class _HomeScreenState extends State<HomeScreen> {
     return movies
         .map((movie) => Column(
               children: [
-                Image.network(
-                  '$apiUrl/images/${movie.imageId}',
-                  height: 180,
+                InkWell(
+                  onTap: () => Navigator.pushNamed(
+                    context,
+                    MovieDetailScreen.routeName,
+                    arguments: movie,
+                  ),
+                  child: Image.network(
+                    '$apiUrl/images/${movie.imageId}',
+                    height: 180,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
@@ -182,12 +190,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: c.movies.take(4).map((m) {
-                        return SizedBox(
-                          width: 70,
-                          height: 90,
-                          child: Image.network(
-                            '$apiUrl/images/${m.imageId}',
-                            fit: BoxFit.fill,
+                        return InkWell(
+                          onTap: () => Navigator.pushNamed(
+                            context,
+                            MovieDetailScreen.routeName,
+                            arguments: m,
+                          ),
+                          child: SizedBox(
+                            width: 70,
+                            height: 90,
+                            child: Image.network(
+                              '$apiUrl/images/${m.imageId}',
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         );
                       }).toList(),

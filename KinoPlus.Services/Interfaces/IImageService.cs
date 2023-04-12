@@ -5,6 +5,6 @@ namespace KinoPlus.Services.Interfaces
     public interface IImageService
     {
         Task<List<Guid>> ProcessAsync(IEnumerable<ImageInputModel> image);
-        Task<byte[]?> GetImageAsync(Guid id);
+        Task<byte[]?> GetImageAsync(Guid id, bool original);
     }
 }

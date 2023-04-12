@@ -35,12 +35,13 @@ namespace KinoPlus.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetImage(Guid id)
+        public async Task<ActionResult> GetImage(Guid id, bool original = false)
         {
-            var imageBytes = await _imageService.GetImageAsync(id);
+            var imageBytes = await _imageService.GetImageAsync(id, original);
             if (imageBytes == null) return BadRequest();
 
             return File(imageBytes, "image/jpeg");
         }
+
     }
 }

@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:mobile/helpers/constants.dart';
+import 'package:mobile/models/movie.dart';
 import 'package:mobile/screens/home_screen.dart';
+import 'package:mobile/screens/movie_detail_screen.dart';
 import 'package:mobile/screens/movies_screen.dart';
 import 'package:mobile/screens/profile_screen.dart';
 import 'package:mobile/screens/tickets_screen.dart';
@@ -27,6 +29,14 @@ class MyApp extends StatelessWidget {
           bodyMedium: TextStyle(color: Colors.white),
         ),
       ),
+      onGenerateRoute: (settings) {
+        if (settings.name == MovieDetailScreen.routeName) {
+          return MaterialPageRoute(
+              builder: (context) =>
+                  MovieDetailScreen(movie: settings.arguments as Movie));
+        }
+        return null;
+      },
       home: const Main(),
     );
   }
@@ -57,43 +67,45 @@ class _MainState extends State<Main> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
+    return SafeArea(
+      child: Scaffold(
+        body: screens.elementAt(_selectedIndex),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              label: 'Home',
             ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.theaters,
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.theaters,
+              ),
+              label: 'Movie',
             ),
-            label: 'Movie',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.local_activity,
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.local_activity,
+              ),
+              label: 'Ticket',
             ),
-            label: 'Ticket',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_circle,
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.account_circle,
+              ),
+              label: 'Profile',
             ),
-            label: 'Profile',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.lightBlue[300],
-        unselectedItemColor: Colors.grey,
-        onTap: _onItemTapped,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        backgroundColor: Colors.black,
-        type: BottomNavigationBarType.fixed,
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.lightBlue[300],
+          unselectedItemColor: Colors.grey,
+          onTap: _onItemTapped,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          backgroundColor: primary.shade800,
+          type: BottomNavigationBarType.fixed,
+        ),
       ),
     );
   }

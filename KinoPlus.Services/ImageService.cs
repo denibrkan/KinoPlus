@@ -25,8 +25,8 @@ namespace KinoPlus.Services
             {
                 using var imageResult = await Image.LoadAsync(image.Content);
 
-                var original = await SaveImageAsync(imageResult, ThumbnailWidth);
-                var thumbnail = await SaveImageAsync(imageResult, imageResult.Width);
+                var original = await SaveImageAsync(imageResult, imageResult.Width);
+                var thumbnail = await SaveImageAsync(imageResult, ThumbnailWidth);
 
                 //save to db
                 var dbImage = new Database.Image
@@ -69,9 +69,15 @@ namespace KinoPlus.Services
             return memoryStream.ToArray();
         }
 
-        public async Task<byte[]?> GetImageAsync(Guid id)
+        public async Task<byte[]?> GetImageAsync(Guid id, bool original)
         {
+            if (original)
+            {
+                return await _context.Images.Where(i => i.Id == id).Select(i => i.OriginalContent).SingleOrDefaultAsync();
+            }
+
             return await _context.Images.Where(i => i.Id == id).Select(i => i.ThumbnailContent).SingleOrDefaultAsync();
         }
+
     }
 }
