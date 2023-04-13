@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Container(
-              height: 300,
+              height: 350,
               padding: const EdgeInsets.fromLTRB(0, 30, 0, 30),
               color: primary.shade700,
               child: FutureBuilder(
@@ -131,14 +131,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: Image.network(
                     '$apiUrl/images/${movie.imageId}',
-                    height: 180,
+                    height: 210,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
                   child: Text(
                     movie.title,
-                    style: const TextStyle(fontSize: 15),
+                    style: Theme.of(context).textTheme.titleMedium,
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ],
@@ -155,14 +156,13 @@ class _HomeScreenState extends State<HomeScreen> {
             (c) => Container(
               height: 190,
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 20),
-              decoration: BoxDecoration(
-                border: const Border(
+              decoration: const BoxDecoration(
+                border: Border(
                   top: BorderSide(
                     color: Colors.blueAccent,
                     width: 0.2,
                   ),
                 ),
-                color: primary.shade500,
               ),
               child: Column(
                 children: [

@@ -26,8 +26,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: primary,
         textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Colors.white),
+          bodyMedium: TextStyle(
+            color: Colors.white,
+          ),
+          titleMedium: TextStyle(
+            color: Color.fromARGB(255, 228, 228, 228),
+          ),
         ),
+        scaffoldBackgroundColor: primary.shade500,
+        fontFamily: 'Albert Sans',
       ),
       onGenerateRoute: (settings) {
         if (settings.name == MovieDetailScreen.routeName) {

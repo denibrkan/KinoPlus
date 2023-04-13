@@ -14,7 +14,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: Center(
         child: Text(
           'Hello from profile screen',
-          style: TextStyle(color: Colors.black),
         ),
       ),
     );

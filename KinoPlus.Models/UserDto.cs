@@ -11,7 +11,7 @@ namespace KinoPlus.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }
-        public Guid? Image { get; set; }
+        public Guid? ImageId { get; set; }
         public string Token { get; set; }
         public List<RoleDto> Roles { get; set; }
     }

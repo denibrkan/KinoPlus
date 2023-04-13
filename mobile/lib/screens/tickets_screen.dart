@@ -14,7 +14,6 @@ class _TicketsScreenState extends State<TicketsScreen> {
       body: Center(
         child: Text(
           'Hello from tickets screen',
-          style: TextStyle(color: Colors.black),
         ),
       ),
     );

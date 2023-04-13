@@ -22,6 +22,8 @@ public partial class User
 
     public virtual Image? Image { get; set; }
 
+    public virtual ICollection<MovieReaction> MovieReactions { get; } = new List<MovieReaction>();
+
     public virtual ICollection<Ticket> Tickets { get; } = new List<Ticket>();
 
     public virtual ICollection<UserRole> UserRoles { get; } = new List<UserRole>();

@@ -258,6 +258,11 @@ public partial class KinoplusContext : DbContext
                 .HasForeignKey(d => d.MovieId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_MovieReaction_Movie");
+
+            entity.HasOne(d => d.User).WithMany(p => p.MovieReactions)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_MovieReaction_User");
         });
 
         modelBuilder.Entity<MovieStatus>(entity =>

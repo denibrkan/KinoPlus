@@ -10,7 +10,11 @@ public partial class MovieReaction
 
     public int MovieId { get; set; }
 
+    public int UserId { get; set; }
+
     public DateTime DateCreated { get; set; }
 
     public virtual Movie Movie { get; set; } = null!;
+
+    public virtual User User { get; set; } = null!;
 }

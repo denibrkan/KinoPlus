@@ -78,7 +78,7 @@ namespace KinoPlus.Services
                 .Include(x => x.MovieGenres).ThenInclude(x => x.Genre)
                 .Include(x => x.MovieActors).ThenInclude(x => x.Actor)
                 .Include(x => x.Projections)
-                .Include(x => x.MovieReactions)
+                .Include(x => x.MovieReactions).ThenInclude(mr => mr.User)
                 .Include(x => x.Year)
                 .Include(x => x.MovieStatus);
 
