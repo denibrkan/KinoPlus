@@ -82,9 +82,18 @@ namespace KinoPlus.WinUI
             txtTrailer.Text = movie.TrailerUrl;
             cmbGodina.SelectedValue = movie.Year.Id;
             cmbStatus.SelectedValue = movie.Status.Id;
-            lbKategorija.SelectedValue = movie.Categories.Select(c => c.Id);
-            lbZanr.SelectedValue = movie.Genres.Select(g => g.Id);
-            lbUloge.SelectedValue = movie.Actors.Select(a => a.Id);
+            foreach (var item in movie.Categories)
+            {
+                lbKategorija.SelectedValue = item.Id;
+            }
+            foreach (var item in movie.Actors)
+            {
+                lbUloge.SelectedValue = item.Id;
+            }
+            foreach (var item in movie.Genres)
+            {
+                lbZanr.SelectedValue = item.Id;
+            }
             rtbOpis.Text = movie.Description;
             pcbSlika.ImageLocation = $"{Settings.Default.ApiUrl}images/{movie.ImageId}";
             MovieImageId = movie.ImageId;
