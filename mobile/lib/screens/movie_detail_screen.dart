@@ -6,6 +6,7 @@ import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/models/reaction.dart';
 import 'package:mobile/utils/get_duration.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class MovieDetailScreen extends StatefulWidget {
   const MovieDetailScreen({super.key, required this.movie});
@@ -65,6 +66,11 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
+        const Center(
+          child: CircularProgressIndicator(
+            color: Colors.lightBlue,
+          ),
+        ),
         ShaderMask(
           shaderCallback: (rect) {
             return const LinearGradient(
@@ -75,10 +81,13 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
           },
           blendMode: BlendMode.dstIn,
           child: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.7,
             width: MediaQuery.of(context).size.width,
-            child: Image.network(
-              '$apiUrl/images/${widget.movie.imageId}?original=true',
-              fit: BoxFit.cover,
+            child: FadeInImage.memoryNetwork(
+              placeholder: kTransparentImage,
+              image: '$apiUrl/images/${widget.movie.imageId}?original=true',
+              fadeInCurve: Curves.linear,
+              fadeInDuration: const Duration(milliseconds: 500),
             ),
           ),
         ),

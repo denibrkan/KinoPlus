@@ -6,6 +6,7 @@ import 'package:mobile/models/category.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile/screens/movie_detail_screen.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.title});
@@ -106,9 +107,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 } else if (snapshot.hasError) {
                   return Text('${snapshot.error}');
                 }
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.lightBlue[300],
+                return SizedBox(
+                  height: 350,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.lightBlue[300],
+                    ),
                   ),
                 );
               },
@@ -129,18 +133,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     MovieDetailScreen.routeName,
                     arguments: movie,
                   ),
-                  child: Image.network(
-                    '$apiUrl/images/${movie.imageId}',
+                  child: FadeInImage.memoryNetwork(
+                    placeholder: kTransparentImage,
+                    image: '$apiUrl/images/${movie.imageId}',
                     height: 210,
+                    fadeInDuration: const Duration(milliseconds: 300),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
-                  child: Text(
-                    movie.title,
-                    style: Theme.of(context).textTheme.titleMedium,
-                    textAlign: TextAlign.center,
-                  ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Text(
+                  movie.title,
+                  style: Theme.of(context).textTheme.titleMedium,
+                  textAlign: TextAlign.center,
                 ),
               ],
             ))
@@ -169,13 +175,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        c.name,
-                        style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w300,
-                            color: Color.fromRGBO(233, 233, 233, 1)),
-                      ),
+                      Text(c.name,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(fontSize: 18)),
                       TextButton(
                           style: ButtonStyle(
                               foregroundColor: MaterialStateProperty.all<Color>(
@@ -197,13 +201,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             arguments: m,
                           ),
                           child: SizedBox(
-                            width: 70,
-                            height: 90,
-                            child: Image.network(
-                              '$apiUrl/images/${m.imageId}',
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                              width: 70,
+                              height: 90,
+                              child: FadeInImage.memoryNetwork(
+                                placeholder: kTransparentImage,
+                                image: '$apiUrl/images/${m.imageId}',
+                                fit: BoxFit.fill,
+                                fadeInDuration:
+                                    const Duration(milliseconds: 300),
+                              )),
                         );
                       }).toList(),
                     ),

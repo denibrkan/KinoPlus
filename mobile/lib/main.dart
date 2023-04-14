@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
             color: Colors.white,
           ),
           titleMedium: TextStyle(
-            color: Color.fromARGB(255, 228, 228, 228),
+            color: Color.fromRGBO(233, 233, 233, 1),
           ),
         ),
         scaffoldBackgroundColor: primary.shade500,
