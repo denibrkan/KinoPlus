@@ -74,13 +74,15 @@ namespace KinoPlus.Services
         public override IQueryable<Movie> AddInclude(IQueryable<Movie> query, MovieSearchObject? search)
         {
             query = query
+                .AsSplitQuery()
                 .Include(x => x.MovieCategories).ThenInclude(x => x.Category)
                 .Include(x => x.MovieGenres).ThenInclude(x => x.Genre)
                 .Include(x => x.MovieActors).ThenInclude(x => x.Actor)
                 .Include(x => x.Projections)
                 .Include(x => x.MovieReactions).ThenInclude(mr => mr.User)
                 .Include(x => x.Year)
-                .Include(x => x.MovieStatus);
+                .Include(x => x.MovieStatus)
+            .AsNoTracking();
 
             return query;
         }

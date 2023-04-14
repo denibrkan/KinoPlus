@@ -19,8 +19,29 @@ namespace KinoPlus.Services
             if (search?.IncludeMovies == true)
             {
                 query = query
+                    .AsSplitQuery()
                     .Include(c => c.MovieCategories)
-                    .ThenInclude(c => c.Movie);
+                    .ThenInclude(c => c.Movie)
+                        .ThenInclude(m => m.MovieGenres).ThenInclude(mg => mg.Genre)
+                    .Include(c => c.MovieCategories)
+                    .ThenInclude(m => m.Movie)
+                        .ThenInclude(m => m.MovieReactions).ThenInclude(mr => mr.User)
+                    .Include(c => c.MovieCategories)
+                    .ThenInclude(m => m.Movie)
+                        .ThenInclude(m => m.MovieActors).ThenInclude(ma => ma.Actor)
+                    .Include(c => c.MovieCategories)
+                    .ThenInclude(m => m.Movie)
+                        .ThenInclude(m => m.Projections)
+                    .Include(c => c.MovieCategories)
+                    .ThenInclude(m => m.Movie)
+                        .ThenInclude(m => m.Year)
+                    .Include(c => c.MovieCategories)
+                    .ThenInclude(m => m.Movie)
+                        .ThenInclude(m => m.MovieStatus)
+                    .Include(c => c.MovieCategories)
+                    .ThenInclude(m => m.Movie)
+                        .ThenInclude(m => m.MovieStatus)
+                    .AsNoTracking();
             }
 
             return query;
