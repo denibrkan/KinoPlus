@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/screens/home_screen.dart';
@@ -12,8 +13,7 @@ import 'helpers/colors.dart';
 
 void main() async {
   HttpOverrides.global = MyHttpOverrides();
-
-  runApp(const MyApp());
+  initializeDateFormatting('fr_FR', null).then((_) => runApp(const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,16 +25,13 @@ class MyApp extends StatelessWidget {
       title: appTitle,
       theme: ThemeData(
         primarySwatch: primary,
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(
-            color: Colors.white,
-          ),
-          titleMedium: TextStyle(
-            color: Color.fromRGBO(233, 233, 233, 1),
-          ),
-        ),
+        textTheme: Theme.of(context).textTheme.apply(
+              displayColor: Color.fromRGBO(233, 233, 233, 1),
+              bodyColor: Color.fromRGBO(233, 233, 233, 1),
+              fontFamily: 'Albert Sans',
+            ),
         scaffoldBackgroundColor: primary.shade500,
-        fontFamily: 'Albert Sans',
+        //  fontFamily: 'Albert Sans',
       ),
       onGenerateRoute: (settings) {
         if (settings.name == MovieDetailScreen.routeName) {

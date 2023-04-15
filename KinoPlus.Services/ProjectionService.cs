@@ -34,6 +34,11 @@ namespace KinoPlus.Services
                 query = query.Where(p => p.ProjectionLocations.Any(pl => pl.LocationId == search.LocationId));
             }
 
+            if (search.MovieId != null)
+            {
+                query = query.Where(p => p.MovieId == search.MovieId);
+            }
+
             return query;
         }
 

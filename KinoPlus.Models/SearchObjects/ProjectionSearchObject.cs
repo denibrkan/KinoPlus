@@ -8,5 +8,6 @@ namespace KinoPlus.Models
         [Required]
         public DateTime? Date { get; set; }
         public int? LocationId { get; set; }
+        public int? MovieId { get; set; }
     }
 }
