@@ -21,9 +21,9 @@ namespace KinoPlus.Services
         {
             var entity = _mapper.Map<T>(insert);
 
+            await BeforeInsert(insert, entity);
             _context.Set<T>().Add(entity);
 
-            BeforeInsert(insert, entity);
             await _context.SaveChangesAsync();
 
             return entity;
@@ -40,9 +40,9 @@ namespace KinoPlus.Services
             return entity;
         }
 
-        public virtual void BeforeInsert(TInsert insert, T entity)
+        public virtual Task BeforeInsert(TInsert insert, T entity)
         {
-            return;
+            return Task.CompletedTask;
         }
     }
 }

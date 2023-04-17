@@ -53,8 +53,11 @@ namespace KinoPlus.API.Helper
             CreateMap<ProjectionType, ProjectionTypeDto>();
 
             CreateMap<LocationInsertObject, Location>();
-            CreateMap<Location, LocationDto>();
+            CreateMap<Location, LocationDto>()
+                .ForMember(x => x.Halls, opt => opt.MapFrom(y => y.LocationHalls.Select(z => z.Hall)));
+            CreateMap<Hall, HallDto>();
 
+            CreateMap<City, CityDto>();
             CreateMap<Year, YearDto>();
         }
 

@@ -96,6 +96,7 @@
             btnDodaj.TabIndex = 7;
             btnDodaj.Text = "Dodaj";
             btnDodaj.UseVisualStyleBackColor = true;
+            btnDodaj.Click += btnDodaj_Click;
             // 
             // lblPaging
             // 

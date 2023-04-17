@@ -112,5 +112,16 @@ namespace KinoPlus.WinUI
         {
             await loadProjections();
         }
+
+        private async void btnDodaj_Click(object sender, EventArgs e)
+        {
+            var frmProjekcija = new frmProjekcijaInsert();
+
+            if (frmProjekcija.ShowDialog() == DialogResult.OK)
+            {
+                await loadProjections();
+            }
+
+        }
     }
 }

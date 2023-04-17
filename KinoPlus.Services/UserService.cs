@@ -68,9 +68,9 @@ namespace KinoPlus.Services
             return query;
         }
 
-        public override void BeforeInsert(UserInsertObject insert, User entity)
+        public override async Task BeforeInsert(UserInsertObject insert, User entity)
         {
-            base.BeforeInsert(insert, entity);
+            await base.BeforeInsert(insert, entity);
 
             //create hashed password
             using var hmac = new HMACSHA512();

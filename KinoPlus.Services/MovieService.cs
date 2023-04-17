@@ -35,9 +35,9 @@ namespace KinoPlus.Services
             return (await GetByIdAsync(movie.Id))!;
         }
 
-        public override void BeforeInsert(MovieUpsertObject insert, Movie entity)
+        public override async Task BeforeInsert(MovieUpsertObject insert, Movie entity)
         {
-            base.BeforeInsert(insert, entity);
+            await base.BeforeInsert(insert, entity);
 
             entity.DateCreated = DateTime.UtcNow;
         }

@@ -9,10 +9,10 @@
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            filmoviToolStripMenuItem.BackColor = Color.MidnightBlue;
-            filmoviToolStripMenuItem.ForeColor = Color.White;
+            projekcijeToolStripMenuItem.BackColor = Color.MidnightBlue;
+            projekcijeToolStripMenuItem.ForeColor = Color.White;
 
-            filmoviToolStripMenuItem_Click(sender, e);
+            projekcijeToolStripMenuItem_Click(sender, e);
 
         }
 
