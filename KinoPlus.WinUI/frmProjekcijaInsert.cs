@@ -104,7 +104,7 @@ namespace KinoPlus.WinUI
                 cmbHalls.DataSource = location.Halls;
                 cmbHalls.Height = 25;
 
-                cmbHalls.Location = new Point(hallsLbl.X, hallsLbl.Y + lblDvorane.Height + 10 + (index * cmbHalls.Height) + index * 5);
+                cmbHalls.Location = new Point(hallsLbl.X, hallsLbl.Y + lblDvorane.Height + (index * cmbHalls.Height) + index * 5);
 
                 index += 1;
 
@@ -118,6 +118,9 @@ namespace KinoPlus.WinUI
 
         private async void btnSpasi_Click(object sender, EventArgs e)
         {
+            if (!ValidateChildren(ValidationConstraints.Enabled))
+                return;
+
             var projectionInsert = new ProjectionInsertObject();
 
             projectionInsert.Price = numCijena.Value;
@@ -148,6 +151,51 @@ namespace KinoPlus.WinUI
             {
                 this.DialogResult = DialogResult.OK;
                 Close();
+            }
+        }
+
+        private void cmbFilm_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (cmbFilm.SelectedValue == null)
+            {
+                e.Cancel = true;
+                cmbFilm.Focus();
+                errorProvider.SetError(cmbFilm, "Film nije odabran");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(cmbFilm, "");
+            }
+        }
+
+        private void cmbVrstaProjekcije_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (cmbVrstaProjekcije.SelectedValue == null)
+            {
+                e.Cancel = true;
+                cmbVrstaProjekcije.Focus();
+                errorProvider.SetError(cmbVrstaProjekcije, "Vrsta projekcije nije odabrana");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(cmbVrstaProjekcije, "");
+            }
+        }
+
+        private void numCijena_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (numCijena.Value == 0)
+            {
+                e.Cancel = true;
+                numCijena.Focus();
+                errorProvider.SetError(numCijena, "Cijena ne smije biti 0");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(numCijena, "");
             }
         }
     }

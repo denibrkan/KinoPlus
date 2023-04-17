@@ -20,7 +20,8 @@ namespace KinoPlus.Services
             query = query
                 .Include(p => p.Movie)
                 .Include(p => p.ProjectionType)
-                .Include(p => p.ProjectionLocations).ThenInclude(pl => pl.Location);
+                .Include(p => p.ProjectionLocations).ThenInclude(pl => pl.Location)
+                .Include(p => p.ProjectionLocations).ThenInclude(pl => pl.Hall);
 
             return query;
         }
@@ -41,6 +42,13 @@ namespace KinoPlus.Services
             {
                 query = query.Where(p => p.MovieId == search.MovieId);
             }
+
+            return query;
+        }
+
+        public override IQueryable<Projection> AddSorting(IQueryable<Projection> query, ProjectionSearchObject search)
+        {
+            query = query.OrderBy(x => x.StartsAt);
 
             return query;
         }

@@ -12,6 +12,7 @@ namespace KinoPlus.WinUI
         public APIService LocationService { get; set; } = new APIService("locations");
         public int PageNumber = 1;
         public int PageSize = 10;
+        private bool Loading = false;
 
         public frmProjekcije()
         {
@@ -21,8 +22,10 @@ namespace KinoPlus.WinUI
         private async void frmProjekcije_Load(object sender, EventArgs e)
         {
             btnNazad.Enabled = false;
+            Loading = true;
             await loadLocations();
             await loadProjections();
+            Loading = false;
         }
 
         public async Task loadProjections()
@@ -47,6 +50,7 @@ namespace KinoPlus.WinUI
                     Naziv = p.Movie.Title,
                     Vrijeme = $"{p.StartsAt.ToShortTimeString()} - {p.EndsAt.ToShortTimeString()}",
                     Trajanje = p.Movie.Duration,
+                    Dvorana = p.LocationHalls.Single(lh => lh.LocationId == locationId).Hall.Name,
                     VrstaProjekcije = p.ProjectionType.Name,
                     Popunjenost = "0/20",
                     Redovna = p.RecurringProjectionId != null ? "DA" : "NE",
@@ -57,6 +61,7 @@ namespace KinoPlus.WinUI
             dgvProjections.DataSource = bindProjections;
 
             dgvProjections.Columns["Id"].Visible = false;
+            dgvProjections.Columns["VrstaProjekcije"].HeaderText = "Vrsta projekcije";
             lblPaging.Text = "Page " + PageNumber;
         }
 
@@ -76,7 +81,6 @@ namespace KinoPlus.WinUI
             cmbLokacija.ValueMember = "Id";
             cmbLokacija.DisplayMember = "Name";
             cmbLokacija.DataSource = locations;
-            cmbLokacija.SelectedIndex = -1;
         }
 
         private async void btnNaprijed_Click(object sender, EventArgs e)
@@ -105,12 +109,14 @@ namespace KinoPlus.WinUI
 
         private async void dtpDatum_ValueChanged(object sender, EventArgs e)
         {
-            await loadProjections();
+            if (!Loading)
+                await loadProjections();
         }
 
         private async void cmbLokacija_SelectedValueChanged(object sender, EventArgs e)
         {
-            await loadProjections();
+            if (!Loading)
+                await loadProjections();
         }
 
         private async void btnDodaj_Click(object sender, EventArgs e)

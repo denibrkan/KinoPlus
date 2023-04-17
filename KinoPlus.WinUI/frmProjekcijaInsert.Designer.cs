@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             cmbFilm = new ComboBox();
             lblFilm = new Label();
             lblVrstaProjekcije = new Label();
@@ -41,7 +42,9 @@
             lblLokacije = new Label();
             lblDvorane = new Label();
             btnSpasi = new Button();
+            errorProvider = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)numCijena).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // cmbFilm
@@ -53,7 +56,8 @@
             cmbFilm.Location = new Point(88, 114);
             cmbFilm.Name = "cmbFilm";
             cmbFilm.Size = new Size(307, 35);
-            cmbFilm.TabIndex = 12;
+            cmbFilm.TabIndex = 1;
+            cmbFilm.Validating += cmbFilm_Validating;
             // 
             // lblFilm
             // 
@@ -86,7 +90,8 @@
             cmbVrstaProjekcije.Location = new Point(466, 114);
             cmbVrstaProjekcije.Name = "cmbVrstaProjekcije";
             cmbVrstaProjekcije.Size = new Size(226, 35);
-            cmbVrstaProjekcije.TabIndex = 12;
+            cmbVrstaProjekcije.TabIndex = 2;
+            cmbVrstaProjekcije.Validating += cmbVrstaProjekcije_Validating;
             // 
             // lblVrijeme
             // 
@@ -119,7 +124,7 @@
             dtpVrijeme.Name = "dtpVrijeme";
             dtpVrijeme.ShowUpDown = true;
             dtpVrijeme.Size = new Size(124, 35);
-            dtpVrijeme.TabIndex = 14;
+            dtpVrijeme.TabIndex = 3;
             // 
             // numCijena
             // 
@@ -129,7 +134,8 @@
             numCijena.Margin = new Padding(1);
             numCijena.Name = "numCijena";
             numCijena.Size = new Size(95, 35);
-            numCijena.TabIndex = 15;
+            numCijena.TabIndex = 4;
+            numCijena.Validating += numCijena_Validating;
             // 
             // dtpDatumProjekcije
             // 
@@ -137,7 +143,7 @@
             dtpDatumProjekcije.Location = new Point(769, 256);
             dtpDatumProjekcije.Name = "dtpDatumProjekcije";
             dtpDatumProjekcije.Size = new Size(197, 35);
-            dtpDatumProjekcije.TabIndex = 16;
+            dtpDatumProjekcije.TabIndex = 5;
             // 
             // lblDatumProjekcije
             // 
@@ -179,10 +185,14 @@
             btnSpasi.Location = new Point(588, 678);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(108, 35);
-            btnSpasi.TabIndex = 17;
+            btnSpasi.TabIndex = 6;
             btnSpasi.Text = "Spasi";
             btnSpasi.UseVisualStyleBackColor = true;
             btnSpasi.Click += btnSpasi_Click;
+            // 
+            // errorProvider
+            // 
+            errorProvider.ContainerControl = this;
             // 
             // frmProjekcijaInsert
             // 
@@ -208,6 +218,7 @@
             Text = "Nova Projekcija";
             Load += frmProjekcijaInsert_Load;
             ((System.ComponentModel.ISupportInitialize)numCijena).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -227,5 +238,6 @@
         private Label lblLokacije;
         private Label lblDvorane;
         private Button btnSpasi;
+        private ErrorProvider errorProvider;
     }
 }

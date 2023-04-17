@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace KinoPlus.Models
 {
@@ -12,6 +13,7 @@ namespace KinoPlus.Models
         public MovieDto Movie { get; set; }
         public int ProjectionTypeId { get; set; }
         public ProjectionTypeDto ProjectionType { get; set; }
+        public List<LocationHallDto> LocationHalls { get; set; }
         public int? RecurringProjectionId { get; set; }
     }
 }
