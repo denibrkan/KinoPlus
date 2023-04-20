@@ -4,7 +4,7 @@ namespace KinoPlus.WinUI.Utils
 {
     public static class ListControlHelper
     {
-        public static async Task loadControlEntity<T>(ListControl control, string endpoint, string displayMember)
+        public static async Task loadControlEntity<T>(ListControl control, string endpoint, string displayMember, bool selectDefault = false)
         {
             List<T>? entities;
             var cacheEntities = Cache.GetList<T>();
@@ -24,7 +24,8 @@ namespace KinoPlus.WinUI.Utils
             control.ValueMember = "Id";
             control.DisplayMember = displayMember;
             control.DataSource = entities;
-            control.SelectedIndex = -1;
+            if (!selectDefault)
+                control.SelectedIndex = -1;
         }
     }
 }

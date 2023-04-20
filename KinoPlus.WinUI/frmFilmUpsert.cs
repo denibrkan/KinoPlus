@@ -1,6 +1,7 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
 using KinoPlus.WinUI.Properties;
+using KinoPlus.WinUI.Utils;
 using System.Net.Http.Json;
 
 namespace KinoPlus.WinUI
@@ -8,11 +9,6 @@ namespace KinoPlus.WinUI
     public partial class frmFilmUpsert : Form
     {
         public APIService MovieService { get; set; } = new APIService("movies");
-        public APIService YearService { get; set; } = new APIService("years");
-        public APIService StatusService { get; set; } = new APIService("moviestatus");
-        public APIService GenreService { get; set; } = new APIService("genres");
-        public APIService CategoriesService { get; set; } = new APIService("categories");
-        public APIService ActorsService { get; set; } = new APIService("actors");
         public Guid MovieImageId { get; set; }
         public bool isEdit { get; set; }
         public int? EditMovieId { get; set; }
@@ -102,97 +98,27 @@ namespace KinoPlus.WinUI
 
         public async Task loadStatuses()
         {
-            List<MovieStatusDto>? statuses;
-            if (!Cache.MovieStatuses.Any())
-            {
-                statuses = await StatusService.Get<List<MovieStatusDto>>();
-                if (statuses != null)
-                    Cache.MovieStatuses = statuses;
-            }
-            else
-            {
-                statuses = Cache.MovieStatuses;
-            }
-            cmbStatus.ValueMember = "Id";
-            cmbStatus.DisplayMember = "Name";
-            cmbStatus.DataSource = statuses;
-            cmbStatus.SelectedIndex = -1;
+            await ListControlHelper.loadControlEntity<MovieStatusDto>(cmbStatus, "MovieStatus", "Name");
         }
 
         public async Task loadYears()
         {
-            List<YearDto>? years;
-            if (!Cache.Years.Any())
-            {
-                years = await YearService.Get<List<YearDto>>();
-                if (years != null)
-                    Cache.Years = years;
-            }
-            else
-            {
-                years = Cache.Years;
-            }
-            cmbGodina.ValueMember = "Id";
-            cmbGodina.DisplayMember = "Name";
-            cmbGodina.DataSource = years;
-            cmbGodina.SelectedIndex = -1;
+            await ListControlHelper.loadControlEntity<YearDto>(cmbGodina, "Years", "Name");
         }
 
         public async Task loadGenres()
         {
-            List<GenreDto>? genres;
-            if (!Cache.Genres.Any())
-            {
-                genres = await GenreService.Get<List<GenreDto>>();
-                if (genres != null)
-                    Cache.Genres = genres;
-            }
-            else
-            {
-                genres = Cache.Genres;
-            }
-            lbZanr.ValueMember = "Id";
-            lbZanr.DisplayMember = "Name";
-            lbZanr.DataSource = genres;
-            lbZanr.SelectedIndex = -1;
+            await ListControlHelper.loadControlEntity<GenreDto>(lbZanr, "Genres", "Name");
         }
 
         public async Task loadCategories()
         {
-            List<CategoryDto>? categories;
-            if (!Cache.Categories.Any())
-            {
-                categories = await CategoriesService.Get<List<CategoryDto>>();
-                if (categories != null)
-                    Cache.Categories = categories;
-            }
-            else
-            {
-                categories = Cache.Categories;
-            }
-            lbKategorija.ValueMember = "Id";
-            lbKategorija.DisplayMember = "Name";
-            lbKategorija.DataSource = categories;
-            lbKategorija.SelectedIndex = -1;
+            await ListControlHelper.loadControlEntity<CategoryDto>(lbKategorija, "Categories", "Name");
         }
 
         public async Task loadActors()
         {
-            List<ActorDto>? actors;
-            if (!Cache.Actors.Any())
-            {
-                actors = await ActorsService.Get<List<ActorDto>>();
-                if (actors != null)
-                    Cache.Actors = actors;
-            }
-            else
-            {
-                actors = Cache.Actors;
-            }
-            lbUloge.ValueMember = "Id";
-            lbUloge.DisplayMember = "Name";
-            lbUloge.DataSource = actors;
-            lbUloge.SelectedIndex = -1;
+            await ListControlHelper.loadControlEntity<ActorDto>(lbUloge, "Actors", "Name");
         }
 
         private async void btnSpasi_Click(object sender, EventArgs e)

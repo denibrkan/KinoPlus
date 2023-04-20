@@ -1,13 +1,12 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
+using KinoPlus.WinUI.Utils;
 
 namespace KinoPlus.WinUI
 {
     public partial class frmProjekcijaInsert : Form
     {
         public APIService ProjectionService { get; set; } = new APIService("projections");
-        public APIService MovieService { get; set; } = new APIService("movies");
-        public APIService ProjectionTypeService { get; set; } = new APIService("projectiontypes");
         public APIService LocationService { get; set; } = new APIService("locations");
         public List<Tuple<CheckBox, ComboBox>> LocationHalls { get; set; } = new List<Tuple<CheckBox, ComboBox>>();
 
@@ -25,41 +24,12 @@ namespace KinoPlus.WinUI
 
         public async Task loadMovies()
         {
-            List<MovieDto>? movies;
-            if (!Cache.Movies.Any())
-            {
-                movies = await MovieService.Get<List<MovieDto>>();
-                if (movies != null)
-                    Cache.Movies = movies;
-            }
-            else
-            {
-                movies = Cache.Movies;
-            }
-            cmbFilm.ValueMember = "Id";
-            cmbFilm.DisplayMember = "Title";
-            cmbFilm.DataSource = movies;
-            cmbFilm.SelectedIndex = -1;
+            await ListControlHelper.loadControlEntity<MovieDto>(cmbFilm, "Movies", "Title");
         }
 
         public async Task loadProjectionTypes()
         {
-            List<ProjectionTypeDto>? types;
-            if (!Cache.ProjectionTypes.Any())
-            {
-                types = await ProjectionTypeService.Get<List<ProjectionTypeDto>>();
-                if (types != null)
-                    Cache.ProjectionTypes = types;
-            }
-            else
-            {
-                types = Cache.ProjectionTypes;
-            }
-            cmbVrstaProjekcije.ValueMember = "Id";
-            cmbVrstaProjekcije.DisplayMember = "Name";
-            cmbVrstaProjekcije.DataSource = types;
-            cmbVrstaProjekcije.SelectedIndex = -1;
-
+            await ListControlHelper.loadControlEntity<ProjectionTypeDto>(cmbVrstaProjekcije, "ProjectionTypes", "Name");
         }
 
         public async Task loadLocations()

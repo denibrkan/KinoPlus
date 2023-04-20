@@ -9,8 +9,6 @@ namespace KinoPlus.WinUI
     public partial class frmFilmovi : Form
     {
         public APIService APIService { get; set; } = new APIService("movies");
-        public APIService StatusService { get; set; } = new APIService("moviestatus");
-        public APIService CategoriesService { get; set; } = new APIService("categories");
         private bool Loading = false;
         public int PageNumber = 1;
         public int PageSize = 10;
@@ -74,40 +72,12 @@ namespace KinoPlus.WinUI
 
         public async Task loadStatuses()
         {
-            List<MovieStatusDto>? statuses;
-            if (!Cache.MovieStatuses.Any())
-            {
-                statuses = await StatusService.Get<List<MovieStatusDto>>();
-                if (statuses != null)
-                    Cache.MovieStatuses = statuses;
-            }
-            else
-            {
-                statuses = Cache.MovieStatuses;
-            }
-            cmbStatus.ValueMember = "Id";
-            cmbStatus.DisplayMember = "Name";
-            cmbStatus.DataSource = statuses;
-            cmbStatus.SelectedIndex = -1;
+            await ListControlHelper.loadControlEntity<MovieStatusDto>(cmbStatus, "MovieStatus", "Name");
         }
 
         public async Task loadCategories()
         {
-            List<CategoryDto>? categories;
-            if (!Cache.Categories.Any())
-            {
-                categories = await CategoriesService.Get<List<CategoryDto>>();
-                if (categories != null)
-                    Cache.Categories = categories;
-            }
-            else
-            {
-                categories = Cache.Categories;
-            }
-            cmbKategorija.ValueMember = "Id";
-            cmbKategorija.DisplayMember = "Name";
-            cmbKategorija.DataSource = categories;
-            cmbKategorija.SelectedIndex = -1;
+            await ListControlHelper.loadControlEntity<CategoryDto>(cmbKategorija, "Categories", "Name");
         }
 
         private async void btnTrazi_Click(object sender, EventArgs e)

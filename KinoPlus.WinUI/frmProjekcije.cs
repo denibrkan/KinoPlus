@@ -9,7 +9,6 @@ namespace KinoPlus.WinUI
     public partial class frmProjekcije : Form
     {
         public APIService APIService { get; set; } = new APIService("projections");
-        public APIService LocationService { get; set; } = new APIService("locations");
         public int PageNumber = 1;
         public int PageSize = 10;
         private bool Loading = false;
@@ -67,20 +66,7 @@ namespace KinoPlus.WinUI
 
         public async Task loadLocations()
         {
-            List<LocationDto>? locations;
-            if (!Cache.Locations.Any())
-            {
-                locations = await LocationService.Get<List<LocationDto>>();
-                if (locations != null)
-                    Cache.Locations = locations;
-            }
-            else
-            {
-                locations = Cache.Locations;
-            }
-            cmbLokacija.ValueMember = "Id";
-            cmbLokacija.DisplayMember = "Name";
-            cmbLokacija.DataSource = locations;
+            await ListControlHelper.loadControlEntity<LocationDto>(cmbLokacija, "Locations", "Name", true);
         }
 
         private async void btnNaprijed_Click(object sender, EventArgs e)
