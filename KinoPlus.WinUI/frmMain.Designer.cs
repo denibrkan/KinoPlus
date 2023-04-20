@@ -33,13 +33,14 @@
             filmoviToolStripMenuItem = new ToolStripMenuItem();
             kategorijeToolStripMenuItem = new ToolStripMenuItem();
             korisniciToolStripMenuItem = new ToolStripMenuItem();
+            lokacijeToolStripMenuItem = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip
             // 
             menuStrip.Font = new Font("Dubai Medium", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            menuStrip.Items.AddRange(new ToolStripItem[] { projekcijeToolStripMenuItem, filmoviToolStripMenuItem, kategorijeToolStripMenuItem, korisniciToolStripMenuItem });
+            menuStrip.Items.AddRange(new ToolStripItem[] { projekcijeToolStripMenuItem, filmoviToolStripMenuItem, kategorijeToolStripMenuItem, korisniciToolStripMenuItem, lokacijeToolStripMenuItem });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Margin = new Padding(0, 20, 0, 20);
             menuStrip.Name = "menuStrip";
@@ -80,6 +81,14 @@
             korisniciToolStripMenuItem.Size = new Size(114, 51);
             korisniciToolStripMenuItem.Text = "Korisnici";
             // 
+            // lokacijeToolStripMenuItem
+            // 
+            lokacijeToolStripMenuItem.Name = "lokacijeToolStripMenuItem";
+            lokacijeToolStripMenuItem.Padding = new Padding(20, 10, 20, 10);
+            lokacijeToolStripMenuItem.Size = new Size(111, 51);
+            lokacijeToolStripMenuItem.Text = "Lokacije";
+            lokacijeToolStripMenuItem.Click += lokacijeToolStripMenuItem_Click;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -108,5 +117,6 @@
         private ToolStripMenuItem kategorijeToolStripMenuItem;
         private ToolStripMenuItem korisniciToolStripMenuItem;
         private ToolStripMenuItem projekcijeToolStripMenuItem;
+        private ToolStripMenuItem lokacijeToolStripMenuItem;
     }
 }

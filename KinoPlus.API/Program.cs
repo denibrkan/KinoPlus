@@ -73,6 +73,8 @@ builder.Services.AddScoped<IYearService, YearService>();
 builder.Services.AddScoped<IProjectionService, ProjectionService>();
 builder.Services.AddScoped<IProjectionTypeService, ProjectionTypeService>();
 builder.Services.AddScoped<ILocationService, LocationService>();
+builder.Services.AddScoped<ICityService, CityService>();
+builder.Services.AddScoped<IHallService, HallService>();
 
 var app = builder.Build();
 

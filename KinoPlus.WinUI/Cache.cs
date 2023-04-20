@@ -12,5 +12,54 @@ namespace KinoPlus.WinUI
         public static List<GenreDto> Genres { get; set; } = new List<GenreDto>();
         public static List<ActorDto> Actors { get; set; } = new List<ActorDto>();
         public static List<LocationDto> Locations { get; set; } = new List<LocationDto>();
+        public static List<CityDto> Cities { get; set; } = new List<CityDto>();
+        public static List<HallDto> Halls { get; set; } = new List<HallDto>();
+
+
+        public static List<T> GetList<T>()
+        {
+            if (typeof(List<T>) == Movies.GetType())
+            {
+                return (List<T>)(object)Movies;
+            }
+            if (typeof(List<T>) == MovieStatuses.GetType())
+            {
+                return (List<T>)(object)MovieStatuses;
+            }
+            if (typeof(List<T>) == Categories.GetType())
+            {
+                return (List<T>)(object)Categories;
+            }
+            if (typeof(List<T>) == ProjectionTypes.GetType())
+            {
+                return (List<T>)(object)ProjectionTypes;
+            }
+            if (typeof(List<T>) == Years.GetType())
+            {
+                return (List<T>)(object)Years;
+            }
+            if (typeof(List<T>) == Genres.GetType())
+            {
+                return (List<T>)(object)Genres;
+            }
+            if (typeof(List<T>) == Actors.GetType())
+            {
+                return (List<T>)(object)Actors;
+            }
+            if (typeof(List<T>) == Locations.GetType())
+            {
+                return (List<T>)(object)Locations;
+            }
+            if (typeof(List<T>) == Cities.GetType())
+            {
+                return (List<T>)(object)Cities;
+            }
+            if (typeof(List<T>) == Halls.GetType())
+            {
+                return (List<T>)(object)Halls;
+            }
+
+            throw new Exception("non existant cache entity");
+        }
     }
 }

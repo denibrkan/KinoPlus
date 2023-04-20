@@ -65,5 +65,16 @@
 
             frmProjekcije.Show();
         }
+
+        private void lokacijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.ActiveMdiChild?.Close();
+
+            var frmLokacije = new frmLokacije();
+            frmLokacije.MdiParent = this;
+            frmLokacije.WindowState = FormWindowState.Maximized;
+
+            frmLokacije.Show();
+        }
     }
 }
