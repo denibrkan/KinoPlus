@@ -85,6 +85,7 @@ namespace KinoPlus.WinUI
             }
             if (locationDto != null)
             {
+                Cache.Remove<LocationDto>();
                 this.DialogResult = DialogResult.OK;
                 Close();
             }

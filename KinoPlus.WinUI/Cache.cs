@@ -61,5 +61,19 @@ namespace KinoPlus.WinUI
 
             throw new Exception("non existant cache entity");
         }
+
+        public static void Remove<T>()
+        {
+            if (typeof(List<T>) == Movies.GetType())
+            {
+                Movies.Clear();
+            }
+            if (typeof(List<T>) == Locations.GetType())
+            {
+                Locations.Clear();
+            }
+
+            throw new Exception("non existant cache entity");
+        }
     }
 }

@@ -149,6 +149,7 @@ namespace KinoPlus.WinUI
             }
             if (movieDto != null)
             {
+                Cache.Remove<MovieDto>();
                 this.DialogResult = DialogResult.OK;
                 Close();
             }
