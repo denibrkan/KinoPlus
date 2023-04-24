@@ -6,6 +6,8 @@ import 'package:mobile/components/movie_details/tab_pills.dart';
 import 'package:mobile/helpers/enums.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/models/reaction.dart';
+import 'package:mobile/providers/date_provider.dart';
+import 'package:provider/provider.dart';
 
 class MovieTabs extends StatefulWidget {
   final Movie movie;
@@ -27,14 +29,17 @@ class _MovieTabsState extends State<MovieTabs> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TabPills(
-          movie: widget.movie,
-          onSelectedChange: (value) => onTabSelected(value),
-        ),
-        _buildTabContent(widget.movie)
-      ],
+    return ChangeNotifierProvider(
+      create: (context) => DateProvider(),
+      child: Column(
+        children: [
+          TabPills(
+            movie: widget.movie,
+            onSelectedChange: (value) => onTabSelected(value),
+          ),
+          _buildTabContent(widget.movie)
+        ],
+      ),
     );
   }
 

@@ -2,57 +2,50 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile/extensions/date_only_compare.dart';
 import 'package:mobile/helpers/colors.dart';
+import 'package:mobile/providers/date_provider.dart';
+import 'package:provider/provider.dart';
 
 class DateSelector extends StatefulWidget {
-  final ValueChanged<DateTime> onDateSelected;
-
-  const DateSelector({super.key, required this.onDateSelected});
+  const DateSelector({super.key});
 
   @override
   State<DateSelector> createState() => _DateSelectorState();
 }
 
 class _DateSelectorState extends State<DateSelector> {
-  var _selectedDate = DateTime.now();
-  static const numberOfDays = 10;
-
-  late final List<DateTime> _dates = <DateTime>[];
+  static const num numberOfDays = 10;
+  late DateProvider dateProvider;
 
   void _handleDateSelected(DateTime date) {
-    setState(() {
-      _selectedDate = date;
-    });
-
-    widget.onDateSelected(date);
+    dateProvider.setSelectedDate(date);
   }
 
   @override
   void initState() {
     super.initState();
-
-    widget.onDateSelected(_selectedDate);
-
-    for (var i = 0; i < numberOfDays; i++) {
-      _dates.add(_selectedDate.add(Duration(days: i)));
-    }
+    dateProvider = context.read<DateProvider>();
+    dateProvider.initializeDates(numberOfDays);
   }
 
   @override
   Widget build(BuildContext context) {
+    var state = context.watch<DateProvider>();
+
     return SizedBox(
       height: 80,
       child: GridView(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1,
           childAspectRatio: 8 / 10,
           mainAxisSpacing: 20,
         ),
         scrollDirection: Axis.horizontal,
-        children: _dates
+        children: state.dates
             .map(
               (d) => DateContainer(
                 date: d,
-                isSelected: _selectedDate == d,
+                isSelected: state.selectedDate == d,
                 onDateSelected: (value) => _handleDateSelected(value),
               ),
             )
