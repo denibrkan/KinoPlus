@@ -24,7 +24,9 @@ class _DateSelectorState extends State<DateSelector> {
   void initState() {
     super.initState();
     dateProvider = context.read<DateProvider>();
-    dateProvider.initializeDates(numberOfDays);
+    if (dateProvider.dates.isEmpty) {
+      dateProvider.initializeDates(numberOfDays);
+    }
   }
 
   @override
@@ -45,7 +47,7 @@ class _DateSelectorState extends State<DateSelector> {
             .map(
               (d) => DateContainer(
                 date: d,
-                isSelected: state.selectedDate == d,
+                isSelected: state.selectedDate.isSameDate(d),
                 onDateSelected: (value) => _handleDateSelected(value),
               ),
             )

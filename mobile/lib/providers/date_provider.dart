@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/extensions/date_only_compare.dart';
 
 class DateProvider extends ChangeNotifier {
   List<DateTime> dates = <DateTime>[];
@@ -12,7 +13,7 @@ class DateProvider extends ChangeNotifier {
   }
 
   addDate(DateTime date) {
-    if (!dates.contains(date)) {
+    if (!dates.any((d) => d.isSameDate(date))) {
       dates.add(date);
     }
     selectedDate = date;

@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile/components/movie_details/date_selector.dart';
+import 'package:mobile/extensions/date_only_compare.dart';
 import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/models/location.dart';
 import 'package:mobile/models/projection.dart';
@@ -28,7 +29,7 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
   final APIService projectionService = APIService('projections');
 
   Location? selectedLocation;
-  DateTime? selectedDate;
+  late DateTime selectedDate;
   Projection? selectedProjection;
 
   bool loading = false;
@@ -48,7 +49,7 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
   }
 
   void loadProjections() async {
-    if (selectedLocation == null || selectedDate == null) return;
+    if (selectedLocation == null) return;
     setState(() {
       loading = true;
     });
@@ -265,10 +266,10 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2015, 8),
+        initialDate: selectedDate,
+        firstDate: DateTime.now(),
         lastDate: DateTime(2101));
-    if (picked != null && picked != dateProvider.selectedDate) {
+    if (picked != null && !picked.isSameDate(selectedDate)) {
       dateProvider.addDate(picked);
     }
   }
