@@ -29,6 +29,8 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
 
   Location? selectedLocation;
   DateTime? selectedDate;
+  Projection? selectedProjection;
+
   bool loading = false;
 
   @override
@@ -78,38 +80,56 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
     var date = context.watch<DateProvider>().selectedDate;
     if (selectedDate != date) {
       selectedDate = date;
+      selectedProjection = null;
       loadProjections();
     }
-    return Container(
-      constraints:
-          BoxConstraints(minHeight: MediaQuery.of(context).size.height),
-      child: Column(
-        children: [
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Datum',
-                  style: Theme.of(context).textTheme.titleMedium,
+    return Column(
+      children: [
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 25),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Datum',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              InkWell(
+                onTap: () => _selectDate(context),
+                child: const Icon(
+                  Icons.calendar_today,
+                  size: 26,
+                  color: Colors.lightBlue,
                 ),
-                InkWell(
-                  onTap: () => _selectDate(context),
-                  child: const Icon(
-                    Icons.calendar_today,
-                    size: 26,
-                    color: Colors.lightBlue,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-          const DateSelector(),
-          _buildLocationDropdown(),
-          _buildProjectionTickets(),
-        ],
-      ),
+        ),
+        const DateSelector(),
+        _buildLocationDropdown(),
+        Container(
+            constraints: const BoxConstraints(minHeight: 250),
+            child: _buildProjectionTickets()),
+        if (selectedProjection != null)
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+            width: double.infinity,
+            height: 50,
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.red),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                          side: const BorderSide(color: Colors.red)))),
+              child: Text('Potvrdi',
+                  style: Theme.of(context).textTheme.titleLarge),
+            ),
+          )
+        else
+          const SizedBox(height: 30),
+      ],
     );
   }
 
@@ -135,7 +155,10 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
                     ),
                     dropdownColor: const Color(0xFF2B3543),
                     onChanged: (Location? value) {
-                      setState(() => selectedLocation = value);
+                      setState(() {
+                        selectedLocation = value;
+                        selectedProjection = null;
+                      });
                       loadProjections();
                     },
                     items: locations
@@ -153,8 +176,10 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
 
   Widget _buildProjectionTickets() {
     if (loading) {
-      return const CircularProgressIndicator(
-        color: Colors.lightBlue,
+      return const Center(
+        child: CircularProgressIndicator(
+          color: Colors.lightBlue,
+        ),
       );
     }
     if (projections.isEmpty) {
@@ -188,37 +213,42 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
               crossAxisCount: 3,
               crossAxisSpacing: 0,
               children: value
-                  .map((p) => Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/ticket120.png',
-                            color: const Color(0xFF2B3543),
-                          ),
-                          Positioned(
-                            top: 35,
-                            child: Text(
-                              DateFormat.Hm('bs').format(p.startsAt),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                  .map((p) => GestureDetector(
+                        onTap: () => selectProjection(p),
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/images/ticket120.png',
+                              color: selectedProjection == p
+                                  ? const Color.fromARGB(255, 68, 85, 107)
+                                  : const Color(0xFF2B3543),
                             ),
-                          ),
-                          Icon(Icons.star, color: primary.shade500, size: 20),
-                          Positioned(
-                              bottom: 35,
+                            Positioned(
+                              top: 35,
                               child: Text(
-                                NumberFormat.currency(locale: 'bs')
-                                    .format(p.price),
-                                style: const TextStyle(
-                                  color: Colors.yellow,
-                                  fontWeight: FontWeight.w300,
-                                ),
-                              ))
-                        ],
+                                DateFormat.Hm('bs').format(p.startsAt),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
+                            ),
+                            Icon(Icons.star, color: primary.shade500, size: 20),
+                            Positioned(
+                                bottom: 35,
+                                child: Text(
+                                  NumberFormat.currency(locale: 'bs')
+                                      .format(p.price),
+                                  style: const TextStyle(
+                                    color: Colors.yellow,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ))
+                          ],
+                        ),
                       ))
                   .toList(),
             ),
@@ -241,5 +271,15 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
     if (picked != null && picked != dateProvider.selectedDate) {
       dateProvider.addDate(picked);
     }
+  }
+
+  void selectProjection(Projection p) {
+    setState(() {
+      if (selectedProjection == p) {
+        selectedProjection = null;
+      } else {
+        selectedProjection = p;
+      }
+    });
   }
 }

@@ -119,7 +119,9 @@ class _MovieTabsState extends State<MovieTabs> {
         widget = Container();
     }
     return Container(
-        constraints: const BoxConstraints(minHeight: 500), child: widget);
+      constraints: const BoxConstraints(minHeight: 500),
+      child: widget,
+    );
   }
 
   Widget _buildReactionList(List<Reaction> reactions) {
