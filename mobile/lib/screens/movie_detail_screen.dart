@@ -24,6 +24,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     return Scaffold(
       backgroundColor: primary.shade500,
       body: SingleChildScrollView(
+        reverse: true,
         child: Column(
           children: [
             _buildImageStack(),
