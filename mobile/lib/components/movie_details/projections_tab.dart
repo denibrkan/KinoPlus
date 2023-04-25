@@ -129,7 +129,7 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
             ),
           )
         else
-          const SizedBox(height: 30),
+          const SizedBox(height: 80),
       ],
     );
   }

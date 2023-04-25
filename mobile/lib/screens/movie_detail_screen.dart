@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:mobile/common/rating_bar.dart';
 import 'package:mobile/components/movie_details/movie_tabs.dart';
@@ -19,22 +21,31 @@ class MovieDetailScreen extends StatefulWidget {
 }
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
+  var scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primary.shade500,
       body: SingleChildScrollView(
-        reverse: true,
+        controller: scrollController,
         child: Column(
           children: [
             _buildImageStack(),
             _buildMovieInfo(),
             const SizedBox(height: 30),
-            MovieTabs(movie: widget.movie),
+            MovieTabs(movie: widget.movie, onTabClick: () => handleScroll()),
           ],
         ),
       ),
     );
+  }
+
+  void handleScroll() async {
+    Timer(const Duration(milliseconds: 200), () {
+      scrollController.animateTo(scrollController.position.maxScrollExtent,
+          duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
+    });
   }
 
   Widget _buildImageStack() {

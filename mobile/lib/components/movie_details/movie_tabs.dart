@@ -11,8 +11,9 @@ import 'package:provider/provider.dart';
 
 class MovieTabs extends StatefulWidget {
   final Movie movie;
+  final Function onTabClick;
 
-  const MovieTabs({super.key, required this.movie});
+  const MovieTabs({super.key, required this.movie, required this.onTabClick});
 
   @override
   State<MovieTabs> createState() => _MovieTabsState();
@@ -25,6 +26,8 @@ class _MovieTabsState extends State<MovieTabs> {
     setState(() {
       selectedTab = value;
     });
+
+    widget.onTabClick();
   }
 
   @override
