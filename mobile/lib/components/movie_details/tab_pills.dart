@@ -8,14 +8,14 @@ class TabPills extends StatefulWidget {
       {super.key, required this.movie, required this.onSelectedChange});
 
   final Movie movie;
-  final ValueChanged<TabOptions> onSelectedChange;
+  final ValueChanged<TabOptions?> onSelectedChange;
 
   @override
   State<TabPills> createState() => _TabPillsState();
 }
 
 class _TabPillsState extends State<TabPills> {
-  TabOptions selectedTab = TabOptions.details;
+  TabOptions? selectedTab;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +28,7 @@ class _TabPillsState extends State<TabPills> {
             height: 40,
             width: double.infinity,
             child: SegmentedButton<TabOptions>(
+              emptySelectionAllowed: true,
               segments: <ButtonSegment<TabOptions>>[
                 const ButtonSegment<TabOptions>(
                   value: TabOptions.details,
@@ -46,12 +47,18 @@ class _TabPillsState extends State<TabPills> {
                   icon: Icon(Icons.theaters),
                 ),
               ],
-              selected: <TabOptions>{selectedTab},
+              selected: selectedTab != null
+                  ? <TabOptions>{selectedTab as TabOptions}
+                  : <TabOptions>{},
               onSelectionChanged: (Set<TabOptions> newSelection) {
                 setState(() {
-                  selectedTab = newSelection.first;
+                  if (newSelection.isEmpty) {
+                    selectedTab = null;
+                  } else {
+                    selectedTab = newSelection.first;
+                  }
                 });
-                widget.onSelectedChange(newSelection.first);
+                widget.onSelectedChange(selectedTab);
               },
               showSelectedIcon: false,
               style: ButtonStyle(

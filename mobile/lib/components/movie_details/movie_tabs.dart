@@ -19,9 +19,9 @@ class MovieTabs extends StatefulWidget {
 }
 
 class _MovieTabsState extends State<MovieTabs> {
-  TabOptions selectedTab = TabOptions.details;
+  TabOptions? selectedTab;
 
-  onTabSelected(TabOptions value) {
+  onTabSelected(TabOptions? value) {
     setState(() {
       selectedTab = value;
     });
@@ -116,7 +116,7 @@ class _MovieTabsState extends State<MovieTabs> {
         widget = ProjectionsTab(movieId: movie.id);
         break;
       default:
-        widget = Container();
+        return Container();
     }
     return Container(
       constraints: const BoxConstraints(minHeight: 500),
