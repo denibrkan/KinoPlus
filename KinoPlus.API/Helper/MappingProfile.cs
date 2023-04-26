@@ -61,6 +61,8 @@ namespace KinoPlus.API.Helper
                 .ForMember(x => x.ProjectionTypes, opt => opt.MapFrom(y => y.LocationProjectionTypes.Select(z => z.ProjectionType)));
 
             CreateMap<Hall, HallDto>();
+            CreateMap<Seat, SeatDto>();
+            CreateMap<Ticket, TicketDto>();
 
             CreateMap<City, CityDto>();
             CreateMap<Country, CountryDto>();

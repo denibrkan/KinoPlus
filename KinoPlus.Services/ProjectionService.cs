@@ -21,7 +21,8 @@ namespace KinoPlus.Services
                 .Include(p => p.Movie)
                 .Include(p => p.ProjectionType)
                 .Include(p => p.ProjectionLocations).ThenInclude(pl => pl.Location)
-                .Include(p => p.ProjectionLocations).ThenInclude(pl => pl.Hall);
+                .Include(p => p.ProjectionLocations).ThenInclude(pl => pl.Hall)
+                .Include(p => p.Tickets);
 
             return query;
         }

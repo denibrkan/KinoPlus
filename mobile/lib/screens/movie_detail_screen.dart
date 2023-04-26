@@ -42,9 +42,9 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
   }
 
   void handleScroll() async {
-    Timer(const Duration(milliseconds: 200), () {
+    Timer(const Duration(milliseconds: 500), () {
       scrollController.animateTo(scrollController.position.maxScrollExtent,
-          duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
+          duration: const Duration(milliseconds: 500), curve: Curves.easeOut);
     });
   }
 

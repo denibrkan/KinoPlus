@@ -14,6 +14,7 @@ namespace KinoPlus.Models
         public int ProjectionTypeId { get; set; }
         public ProjectionTypeDto ProjectionType { get; set; }
         public List<LocationHallDto> LocationHalls { get; set; }
+        public List<TicketDto> Tickets { get; set; }
         public int? RecurringProjectionId { get; set; }
     }
 }

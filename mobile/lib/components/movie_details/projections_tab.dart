@@ -7,6 +7,7 @@ import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/models/location.dart';
 import 'package:mobile/models/projection.dart';
 import 'package:mobile/providers/date_provider.dart';
+import 'package:mobile/screens/seats_screen.dart';
 import 'package:mobile/services/api_service.dart';
 import 'package:provider/provider.dart';
 
@@ -117,15 +118,28 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
             width: double.infinity,
             height: 50,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  SeatsScreen.routeName,
+                  arguments: selectedProjection,
+                );
+              },
               style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
-                          side: const BorderSide(color: Colors.red)))),
-              child: Text('Potvrdi',
-                  style: Theme.of(context).textTheme.titleLarge),
+                backgroundColor:
+                    MaterialStateProperty.all(const Color(0xFFE51937)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+              ),
+              child: const Text(
+                'Potvrdi',
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
             ),
           )
         else

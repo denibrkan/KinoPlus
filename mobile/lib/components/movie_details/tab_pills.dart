@@ -70,7 +70,7 @@ class _TabPillsState extends State<TabPills> {
                 backgroundColor: MaterialStateProperty.resolveWith<Color?>(
                   (Set<MaterialState> states) {
                     if (states.contains(MaterialState.selected)) {
-                      return Colors.red;
+                      return const Color(0xFFE51937);
                     }
                     return primary.shade500; // Use the component's default.
                   },

@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/movie.dart';
+import 'package:mobile/models/projection.dart';
+import 'package:mobile/providers/seat_provider.dart';
 import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/screens/movie_detail_screen.dart';
 import 'package:mobile/screens/movies_screen.dart';
 import 'package:mobile/screens/profile_screen.dart';
+import 'package:mobile/screens/seats_screen.dart';
 import 'package:mobile/screens/tickets_screen.dart';
+import 'package:provider/provider.dart';
 import 'helpers/my_http_overrides.dart';
 import 'helpers/colors.dart';
 
@@ -21,27 +25,36 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: appTitle,
-      theme: ThemeData(
-        primarySwatch: primary,
-        textTheme: Theme.of(context).textTheme.apply(
-              displayColor: Color.fromRGBO(233, 233, 233, 1),
-              bodyColor: Color.fromRGBO(233, 233, 233, 1),
-              fontFamily: 'Albert Sans',
-            ),
-        scaffoldBackgroundColor: primary.shade500,
-        //  fontFamily: 'Albert Sans',
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => SeatProvider()),
+      ],
+      child: MaterialApp(
+        title: appTitle,
+        theme: ThemeData(
+          primarySwatch: primary,
+          textTheme: Theme.of(context).textTheme.apply(
+                displayColor: const Color.fromRGBO(233, 233, 233, 1),
+                bodyColor: const Color.fromRGBO(233, 233, 233, 1),
+                fontFamily: 'Albert Sans',
+              ),
+          scaffoldBackgroundColor: primary.shade500,
+        ),
+        onGenerateRoute: (settings) {
+          if (settings.name == MovieDetailScreen.routeName) {
+            return MaterialPageRoute(
+                builder: (context) =>
+                    MovieDetailScreen(movie: settings.arguments as Movie));
+          }
+          if (settings.name == SeatsScreen.routeName) {
+            return MaterialPageRoute(
+                builder: (context) =>
+                    SeatsScreen(projection: settings.arguments as Projection));
+          }
+          return null;
+        },
+        home: const Main(),
       ),
-      onGenerateRoute: (settings) {
-        if (settings.name == MovieDetailScreen.routeName) {
-          return MaterialPageRoute(
-              builder: (context) =>
-                  MovieDetailScreen(movie: settings.arguments as Movie));
-        }
-        return null;
-      },
-      home: const Main(),
     );
   }
 }
