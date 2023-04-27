@@ -20,6 +20,7 @@ namespace KinoPlus.WinUI
             {
                 isEdit = true;
                 EditMovieId = movieId;
+                this.Text = "Edit Film";
             }
         }
 

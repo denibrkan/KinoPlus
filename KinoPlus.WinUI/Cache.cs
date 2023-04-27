@@ -67,10 +67,12 @@ namespace KinoPlus.WinUI
             if (typeof(List<T>) == Movies.GetType())
             {
                 Movies.Clear();
+                return;
             }
             if (typeof(List<T>) == Locations.GetType())
             {
                 Locations.Clear();
+                return;
             }
 
             throw new Exception("non existant cache entity");
