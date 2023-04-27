@@ -11,5 +11,5 @@ public partial class Hall
 
     public virtual ICollection<LocationHall> LocationHalls { get; } = new List<LocationHall>();
 
-    public virtual ICollection<ProjectionLocation> ProjectionLocations { get; } = new List<ProjectionLocation>();
+    public virtual ICollection<Projection> Projections { get; } = new List<Projection>();
 }

@@ -49,7 +49,7 @@ namespace KinoPlus.WinUI
                     Naziv = p.Movie.Title,
                     Vrijeme = $"{p.StartsAt.ToShortTimeString()} - {p.EndsAt.ToShortTimeString()}",
                     Trajanje = p.Movie.Duration,
-                    Dvorana = p.LocationHalls.Single(lh => lh.LocationId == locationId).Hall.Name,
+                    Dvorana = p.Hall?.Name,
                     VrstaProjekcije = p.ProjectionType.Name,
                     Popunjenost = "0/20",
                     Redovna = p.RecurringProjectionId != null ? "DA" : "NE",

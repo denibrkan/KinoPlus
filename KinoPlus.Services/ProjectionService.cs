@@ -9,10 +9,12 @@ namespace KinoPlus.Services
     public class ProjectionService : BaseCRUDService<Projection, ProjectionInsertObject, ProjectionInsertObject, ProjectionSearchObject>, IProjectionService
     {
         private readonly KinoplusContext _context;
+        private readonly IMapper _mapper;
 
         public ProjectionService(KinoplusContext context, IMapper mapper) : base(context, mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public override IQueryable<Projection> AddInclude(IQueryable<Projection> query, ProjectionSearchObject? search)
@@ -20,8 +22,8 @@ namespace KinoPlus.Services
             query = query
                 .Include(p => p.Movie)
                 .Include(p => p.ProjectionType)
-                .Include(p => p.ProjectionLocations).ThenInclude(pl => pl.Location)
-                .Include(p => p.ProjectionLocations).ThenInclude(pl => pl.Hall)
+                .Include(p => p.Location)
+                .Include(p => p.Hall)
                 .Include(p => p.Tickets);
 
             return query;
@@ -36,7 +38,7 @@ namespace KinoPlus.Services
 
             if (search.LocationId != null)
             {
-                query = query.Where(p => p.ProjectionLocations.Any(pl => pl.LocationId == search.LocationId));
+                query = query.Where(p => p.LocationId == search.LocationId);
             }
 
             if (search.MovieId != null)
@@ -65,21 +67,29 @@ namespace KinoPlus.Services
 
         public override async Task<Projection> InsertAsync(ProjectionInsertObject insert)
         {
-            var insertedProjection = await base.InsertAsync(insert);
+            var projection = _mapper.Map<Projection>(insert);
+
+            await BeforeInsert(insert, projection);
 
             foreach (var locationHall in insert.Locations)
             {
-                _context.ProjectionLocations.Add(new ProjectionLocation
-                {
-                    ProjectionId = insertedProjection.Id,
-                    LocationId = locationHall.LocationId!.Value,
-                    HallId = locationHall.HallId!.Value,
-                });
+                _context.Projections.Add(
+                    new Projection
+                    {
+                        MovieId = projection.MovieId,
+                        ProjectionTypeId = projection.ProjectionTypeId,
+                        Price = projection.Price,
+                        StartsAt = projection.StartsAt,
+                        EndsAt = projection.EndsAt,
+                        RecurringProjectionId = projection.RecurringProjectionId,
+                        LocationId = locationHall.LocationId!.Value,
+                        HallId = locationHall.HallId!.Value,
+                    });
             }
 
             await _context.SaveChangesAsync();
 
-            return insertedProjection;
+            return projection;
         }
     }
 }

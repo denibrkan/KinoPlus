@@ -51,8 +51,6 @@ public partial class KinoplusContext : DbContext
 
     public virtual DbSet<Projection> Projections { get; set; }
 
-    public virtual DbSet<ProjectionLocation> ProjectionLocations { get; set; }
-
     public virtual DbSet<ProjectionType> ProjectionTypes { get; set; }
 
     public virtual DbSet<RecurringProjection> RecurringProjections { get; set; }
@@ -280,6 +278,16 @@ public partial class KinoplusContext : DbContext
             entity.Property(e => e.Price).HasColumnType("decimal(7, 2)");
             entity.Property(e => e.StartsAt).HasColumnType("smalldatetime");
 
+            entity.HasOne(d => d.Hall).WithMany(p => p.Projections)
+                .HasForeignKey(d => d.HallId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Projection_Hall");
+
+            entity.HasOne(d => d.Location).WithMany(p => p.Projections)
+                .HasForeignKey(d => d.LocationId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Projection_Location");
+
             entity.HasOne(d => d.Movie).WithMany(p => p.Projections)
                 .HasForeignKey(d => d.MovieId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -293,26 +301,6 @@ public partial class KinoplusContext : DbContext
             entity.HasOne(d => d.RecurringProjection).WithMany(p => p.Projections)
                 .HasForeignKey(d => d.RecurringProjectionId)
                 .HasConstraintName("FK_Projection_RecurringProjection");
-        });
-
-        modelBuilder.Entity<ProjectionLocation>(entity =>
-        {
-            entity.ToTable("ProjectionLocation");
-
-            entity.HasOne(d => d.Hall).WithMany(p => p.ProjectionLocations)
-                .HasForeignKey(d => d.HallId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_ProjectionLocation_Hall");
-
-            entity.HasOne(d => d.Location).WithMany(p => p.ProjectionLocations)
-                .HasForeignKey(d => d.LocationId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_ProjectionLocation_Location");
-
-            entity.HasOne(d => d.Projection).WithMany(p => p.ProjectionLocations)
-                .HasForeignKey(d => d.ProjectionId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_ProjectionLocation_Projection");
         });
 
         modelBuilder.Entity<ProjectionType>(entity =>
