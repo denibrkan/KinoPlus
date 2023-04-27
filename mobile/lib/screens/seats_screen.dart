@@ -5,6 +5,8 @@ import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/projection.dart';
 import 'package:mobile/models/seat.dart';
 import 'package:mobile/providers/seat_provider.dart';
+import 'package:mobile/providers/user_provider.dart';
+import 'package:mobile/screens/profile_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -25,11 +27,13 @@ class _SeatsScreenState extends State<SeatsScreen> {
   var selectedSeats = <Seat>[];
 
   late SeatProvider seatProvider;
+  late UserProvider userProvider;
 
   @override
   void initState() {
     super.initState();
     seatProvider = context.read<SeatProvider>();
+    userProvider = context.read<UserProvider>();
 
     takenSeatIds = widget.projection.tickets.map((t) => t.seatId).toList();
 
@@ -297,7 +301,7 @@ class _SeatsScreenState extends State<SeatsScreen> {
             width: 150,
             height: 50,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () => checkUser(),
               style: ButtonStyle(
                 backgroundColor:
                     MaterialStateProperty.all(const Color(0xFFE51937)),
@@ -318,5 +322,11 @@ class _SeatsScreenState extends State<SeatsScreen> {
         ],
       ),
     );
+  }
+
+  void checkUser() {
+    if (userProvider.user == null) {
+      Navigator.pushNamed(context, ProfileScreen.routeName);
+    }
   }
 }

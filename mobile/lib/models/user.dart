@@ -10,15 +10,15 @@ class User {
     this.token,
     required this.roles,
   });
-  late final int id;
-  late final String firstName;
-  late final String lastName;
-  late final String? phone;
-  late final String email;
-  late final String username;
-  late final String? imageId;
-  late final String? token;
-  late final List<dynamic> roles;
+  late int id;
+  late String firstName;
+  late String lastName;
+  late String? phone;
+  late String email;
+  late String username;
+  late String? imageId;
+  late String? token;
+  late List<dynamic> roles;
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];

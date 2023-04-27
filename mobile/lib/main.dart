@@ -5,6 +5,7 @@ import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/models/projection.dart';
 import 'package:mobile/providers/seat_provider.dart';
+import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/screens/movie_detail_screen.dart';
 import 'package:mobile/screens/movies_screen.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => SeatProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
       ],
       child: MaterialApp(
         title: appTitle,
@@ -50,6 +52,10 @@ class MyApp extends StatelessWidget {
             return MaterialPageRoute(
                 builder: (context) =>
                     SeatsScreen(projection: settings.arguments as Projection));
+          }
+          if (settings.name == ProfileScreen.routeName) {
+            return MaterialPageRoute(
+                builder: (context) => const ProfileScreen());
           }
           return null;
         },
