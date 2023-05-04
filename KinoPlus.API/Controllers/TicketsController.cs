@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KinoPlus.API.Controllers
 {
-    public class TicketsController : BaseController<Ticket, TicketDto, BaseSearchObject>
+    public class TicketsController : BaseController<Ticket, TicketDto, TicketSearchObject>
     {
         private readonly ITicketService _service;
         private readonly IMapper _mapper;

@@ -61,7 +61,13 @@ namespace KinoPlus.API.Helper
 
             CreateMap<Hall, HallDto>();
             CreateMap<Seat, SeatDto>();
-            CreateMap<Ticket, TicketDto>();
+            CreateMap<Ticket, TicketDto>()
+                .ForMember(x => x.Hall, opt => opt.MapFrom(y => y.Projection.Hall))
+                .ForMember(x => x.Location, opt => opt.MapFrom(y => y.Projection.Location))
+                .ForMember(x => x.MovieTitle, opt => opt.MapFrom(y => y.Projection.Movie.Title))
+                .ForMember(x => x.MovieImageId, opt => opt.MapFrom(y => y.Projection.Movie.ImageId))
+                .ForMember(x => x.ProjectionStart, opt => opt.MapFrom(y => y.Projection.StartsAt))
+                .ForMember(x => x.ProjectionEnd, opt => opt.MapFrom(y => y.Projection.EndsAt));
 
             CreateMap<City, CityDto>();
             CreateMap<Country, CountryDto>();

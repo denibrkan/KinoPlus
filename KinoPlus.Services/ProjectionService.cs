@@ -22,7 +22,7 @@ namespace KinoPlus.Services
             query = query
                 .Include(p => p.Movie)
                 .Include(p => p.ProjectionType)
-                .Include(p => p.Location)
+                .Include(p => p.Location.City)
                 .Include(p => p.Hall)
                 .Include(p => p.Tickets);
 
