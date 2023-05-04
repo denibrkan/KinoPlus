@@ -1,5 +1,7 @@
+import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/ticket.dart';
 import 'package:mobile/providers/ticket_provider.dart';
@@ -118,7 +120,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
                     Container(
                       color: const Color(0xFF2B3543),
                       padding: const EdgeInsets.only(
-                          top: 12, left: 25, right: 25, bottom: 20),
+                          top: 12, left: 22, right: 22, bottom: 20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -172,7 +174,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
                                 ],
                               ),
                               SizedBox(
-                                width: 80,
+                                width: 100,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -219,7 +221,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
                                 ],
                               ),
                               SizedBox(
-                                width: 80,
+                                width: 100,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -242,6 +244,22 @@ class _TicketsScreenState extends State<TicketsScreen> {
                             ],
                           ),
                         ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 20),
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(12),
+                              bottomRight: Radius.circular(12))),
+                      child: BarcodeWidget(
+                        barcode: Barcode.code128(escapes: true),
+                        data: 'Ticket ${t.id}',
+                        height: 80,
+                        textPadding: 12,
+                        style: TextStyle(color: primary.shade800),
                       ),
                     ),
                   ],
