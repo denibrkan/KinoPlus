@@ -1,4 +1,5 @@
 import 'package:barcode_widget/barcode_widget.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile/helpers/colors.dart';
@@ -94,14 +95,22 @@ class _TicketsScreenState extends State<TicketsScreen> {
     } else if (tickets.isEmpty) {
       return const Center(child: Text('Prazno :('));
     }
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-      child: Column(
-        children: tickets
-            .map(
-              (t) => Container(
-                margin: const EdgeInsets.only(bottom: 20),
-                child: Column(
+    return Center(
+      child: Container(
+        margin: const EdgeInsets.symmetric(
+          horizontal: 20,
+        ),
+        child: CarouselSlider(
+          options: CarouselOptions(
+              scrollDirection: Axis.vertical,
+              height: 725,
+              enableInfiniteScroll: false,
+              viewportFraction: 0.8,
+              enlargeCenterPage: true,
+              enlargeFactor: 0.3),
+          items: tickets
+              .map(
+                (t) => Column(
                   children: [
                     ClipRRect(
                       borderRadius: const BorderRadius.only(
@@ -111,7 +120,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
                       child: FadeInImage.memoryNetwork(
                         placeholder: kTransparentImage,
                         image: '$apiUrl/images/${t.movieImageId}?original=true',
-                        height: 210,
+                        height: 270,
                         width: MediaQuery.of(context).size.width,
                         fadeInDuration: const Duration(milliseconds: 300),
                         fit: BoxFit.cover,
@@ -257,16 +266,16 @@ class _TicketsScreenState extends State<TicketsScreen> {
                       child: BarcodeWidget(
                         barcode: Barcode.code128(escapes: true),
                         data: 'Ticket ${t.id}',
-                        height: 80,
+                        height: 100,
                         textPadding: 12,
                         style: TextStyle(color: primary.shade800),
                       ),
                     ),
                   ],
                 ),
-              ),
-            )
-            .toList(),
+              )
+              .toList(),
+        ),
       ),
     );
   }
