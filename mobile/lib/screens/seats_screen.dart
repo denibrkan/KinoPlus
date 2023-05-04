@@ -5,8 +5,10 @@ import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/projection.dart';
 import 'package:mobile/models/seat.dart';
 import 'package:mobile/providers/seat_provider.dart';
+import 'package:mobile/providers/ticket_provider.dart';
 import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/profile_screen.dart';
+import 'package:mobile/screens/reservation_success.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -28,12 +30,14 @@ class _SeatsScreenState extends State<SeatsScreen> {
 
   late SeatProvider seatProvider;
   late UserProvider userProvider;
+  late TicketProvider ticketProvider;
 
   @override
   void initState() {
     super.initState();
     seatProvider = context.read<SeatProvider>();
     userProvider = context.read<UserProvider>();
+    ticketProvider = context.read<TicketProvider>();
 
     takenSeatIds = widget.projection.tickets.map((t) => t.seatId).toList();
 
@@ -56,49 +60,80 @@ class _SeatsScreenState extends State<SeatsScreen> {
     });
   }
 
+  void reservate() async {
+    if (userProvider.user == null) {
+      Navigator.pushNamed(context, ProfileScreen.routeName);
+      return;
+    }
+    try {
+      final tickets = <Map>[];
+      for (var seat in selectedSeats) {
+        tickets.add({
+          'userId': userProvider.user!.id,
+          'projectionId': widget.projection.id,
+          'seatId': seat.id
+        });
+      }
+      await ticketProvider.insert(tickets);
+      if (mounted) {
+        Navigator.pushNamed(context, ReservationSuccessScreen.routeName);
+      }
+    } on Exception catch (e) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+                title: const Text("Ticket reservation failed"),
+                content: Text(e.toString().substring(11)),
+                actions: [
+                  TextButton(
+                    child: const Text("Ok"),
+                    onPressed: () => Navigator.pop(context),
+                  )
+                ],
+              ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: primary.shade500,
-        body: Center(
-          child: Column(
-            children: [
-              _buildProjectionHeader(),
-              const Divider(
-                height: 2,
-                color: Colors.grey,
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              _buildCinemaScreen(),
-              Container(
-                constraints: const BoxConstraints(minHeight: 300),
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 40, vertical: 50),
-                child: seats.isNotEmpty
-                    ? GridView.count(
-                        shrinkWrap: true,
-                        crossAxisCount: 10,
-                        crossAxisSpacing: 15,
-                        mainAxisSpacing: 25,
-                        children: _buildSeats(),
-                      )
-                    : const Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.lightBlueAccent,
-                        ),
+        body: Column(
+          children: [
+            _buildProjectionHeader(),
+            const Divider(
+              height: 2,
+              color: Colors.grey,
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            _buildCinemaScreen(),
+            Container(
+              constraints: const BoxConstraints(minHeight: 300),
+              margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 50),
+              child: seats.isNotEmpty
+                  ? GridView.count(
+                      shrinkWrap: true,
+                      crossAxisCount: 10,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 25,
+                      children: _buildSeats(),
+                    )
+                  : const Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.lightBlueAccent,
                       ),
-              ),
-              const Divider(
-                height: 2,
-                color: Colors.grey,
-              ),
-              _buildInfoBoxes(),
-              _buildBottomBar(),
-            ],
-          ),
+                    ),
+            ),
+            const Divider(
+              height: 2,
+              color: Colors.grey,
+            ),
+            _buildInfoBoxes(),
+            _buildBottomBar(),
+          ],
         ),
       ),
     );
@@ -301,7 +336,7 @@ class _SeatsScreenState extends State<SeatsScreen> {
             width: 150,
             height: 50,
             child: ElevatedButton(
-              onPressed: () => checkUser(),
+              onPressed: () => reservate(),
               style: ButtonStyle(
                 backgroundColor:
                     MaterialStateProperty.all(const Color(0xFFE51937)),
@@ -322,11 +357,5 @@ class _SeatsScreenState extends State<SeatsScreen> {
         ],
       ),
     );
-  }
-
-  void checkUser() {
-    if (userProvider.user == null) {
-      Navigator.pushNamed(context, ProfileScreen.routeName);
-    }
   }
 }

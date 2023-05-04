@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class TicketsScreen extends StatefulWidget {
   const TicketsScreen({super.key});
 
+  static const String routeName = '/tickets';
+
   @override
   State<TicketsScreen> createState() => _TicketsScreenState();
 }

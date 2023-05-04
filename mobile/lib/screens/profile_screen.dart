@@ -38,6 +38,29 @@ class _LoginScreenState extends State<LoginScreen> {
     userProvider = context.read<UserProvider>();
   }
 
+  void login() async {
+    try {
+      await userProvider.loginAsync(
+          _usernameController.text, _passwordController.text);
+      if (context.mounted) {
+        Navigator.pop(context);
+      }
+    } on Exception catch (e) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+                title: const Text("Login failed"),
+                content: Text(e.toString().substring(11)),
+                actions: [
+                  TextButton(
+                    child: const Text("Ok"),
+                    onPressed: () => Navigator.pop(context),
+                  )
+                ],
+              ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,6 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
               width: double.infinity,
               child: TextFormField(
                 controller: _passwordController,
+                obscureText: true,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.lock, color: Colors.white70),
                   hintText: 'Password',
@@ -113,28 +137,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  }
-
-  void login() async {
-    try {
-      await userProvider.loginAsync(
-          _usernameController.text, _passwordController.text);
-      if (context.mounted) {
-        Navigator.pop(context);
-      }
-    } on Exception catch (e) {
-      showDialog(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-                title: const Text("Login failed"),
-                content: Text(e.toString().substring(11)),
-                actions: [
-                  TextButton(
-                    child: const Text("Ok"),
-                    onPressed: () => Navigator.pop(context),
-                  )
-                ],
-              ));
-    }
   }
 }

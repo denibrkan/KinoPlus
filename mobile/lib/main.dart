@@ -5,11 +5,13 @@ import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/models/projection.dart';
 import 'package:mobile/providers/seat_provider.dart';
+import 'package:mobile/providers/ticket_provider.dart';
 import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/screens/movie_detail_screen.dart';
 import 'package:mobile/screens/movies_screen.dart';
 import 'package:mobile/screens/profile_screen.dart';
+import 'package:mobile/screens/reservation_success.dart';
 import 'package:mobile/screens/seats_screen.dart';
 import 'package:mobile/screens/tickets_screen.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => SeatProvider()),
         ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => TicketProvider()),
       ],
       child: MaterialApp(
         title: appTitle,
@@ -42,6 +45,11 @@ class MyApp extends StatelessWidget {
               ),
           scaffoldBackgroundColor: primary.shade500,
         ),
+        routes: {
+          ReservationSuccessScreen.routeName: (context) =>
+              const ReservationSuccessScreen(),
+          TicketsScreen.routeName: (context) => const TicketsScreen(),
+        },
         onGenerateRoute: (settings) {
           if (settings.name == MovieDetailScreen.routeName) {
             return MaterialPageRoute(

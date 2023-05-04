@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/user.dart';
 import 'package:mobile/providers/base_provider.dart';
+import 'package:mobile/utils/authorization.dart';
 
 class UserProvider extends BaseProvider {
   User? user;
@@ -26,10 +27,11 @@ class UserProvider extends BaseProvider {
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
       user = User.fromJson(data);
+      Authorization.token = user!.token;
 
       return user!;
     } else {
-      throw Exception('Failed to login');
+      throw Exception('Wrong username or password');
     }
   }
 }
