@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/screens/tickets_screen.dart';
 
 class ReservationSuccessScreen extends StatelessWidget {
   static const routeName = '/reservation-success';
@@ -42,8 +41,9 @@ class ReservationSuccessScreen extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () =>
-                    Navigator.pushNamed(context, TicketsScreen.routeName),
+                onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                    context, '/', (route) => false,
+                    arguments: 2),
                 child: const Icon(Icons.close_rounded),
               )
             ],

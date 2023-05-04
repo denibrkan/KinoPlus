@@ -76,7 +76,8 @@ class _SeatsScreenState extends State<SeatsScreen> {
       }
       await ticketProvider.insert(tickets);
       if (mounted) {
-        Navigator.pushNamed(context, ReservationSuccessScreen.routeName);
+        Navigator.pushNamedAndRemoveUntil(
+            context, ReservationSuccessScreen.routeName, (route) => false);
       }
     } on Exception catch (e) {
       showDialog(

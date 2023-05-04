@@ -65,16 +65,24 @@ class MyApp extends StatelessWidget {
             return MaterialPageRoute(
                 builder: (context) => const ProfileScreen());
           }
+          if (settings.name == '/') {
+            return MaterialPageRoute(
+                builder: (context) => Main(
+                    index: settings.arguments != null
+                        ? settings.arguments as int
+                        : 0));
+          }
           return null;
         },
-        home: const Main(),
       ),
     );
   }
 }
 
 class Main extends StatefulWidget {
-  const Main({super.key});
+  const Main({super.key, this.index = 0});
+
+  final int index;
 
   @override
   State<Main> createState() => _MainState();
@@ -88,7 +96,13 @@ class _MainState extends State<Main> {
     const ProfileScreen(),
   ];
 
-  int _selectedIndex = 0;
+  late int _selectedIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.index;
+  }
 
   void _onItemTapped(int index) {
     setState(() {
