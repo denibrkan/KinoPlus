@@ -36,6 +36,10 @@ namespace KinoPlus.Services
         {
             query = base.AddFilter(query, search);
 
+            if (search.Ids != null)
+            {
+                query = query.Where(t => search.Ids.Any(id => id == t.Id));
+            }
             if (search.UserId != null)
             {
                 query = query.Where(t => t.UserId == search.UserId);
@@ -60,7 +64,9 @@ namespace KinoPlus.Services
             _context.AddRange(entities);
             await _context.SaveChangesAsync();
 
-            return entities;
+            var ticketIds = entities.Select(t => t.Id).ToArray();
+
+            return (await GetAsync(new TicketSearchObject { Ids = ticketIds })).ToList();
         }
     }
 }
