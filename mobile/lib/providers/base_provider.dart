@@ -16,8 +16,9 @@ abstract class BaseProvider<T> with ChangeNotifier {
     if (params != null) {
       uri = uri.replace(queryParameters: params);
     }
+    var headers = createHeaders();
 
-    final response = await http.get(uri);
+    final response = await http.get(uri, headers: headers);
 
     if (response.statusCode == 200) {
       var data = json.decode(response.body);

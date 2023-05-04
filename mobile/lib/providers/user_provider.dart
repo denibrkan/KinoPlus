@@ -29,6 +29,8 @@ class UserProvider extends BaseProvider {
       user = User.fromJson(data);
       Authorization.token = user!.token;
 
+      notifyListeners();
+
       return user!;
     } else {
       throw Exception('Wrong username or password');

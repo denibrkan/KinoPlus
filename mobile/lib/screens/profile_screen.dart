@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/models/user.dart';
 import 'package:mobile/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -12,9 +13,18 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  User? user;
+
   @override
   Widget build(BuildContext context) {
-    return const LoginScreen();
+    user = context.watch<UserProvider>().user;
+
+    return user != null
+        ? Center(
+            child:
+                Text('Hello ${user!.username}', style: TextStyle(fontSize: 18)),
+          )
+        : const LoginScreen();
   }
 }
 
@@ -43,7 +53,9 @@ class _LoginScreenState extends State<LoginScreen> {
       await userProvider.loginAsync(
           _usernameController.text, _passwordController.text);
       if (context.mounted) {
-        Navigator.pop(context);
+        if (Navigator.canPop(context)) {
+          Navigator.pop(context);
+        }
       }
     } on Exception catch (e) {
       showDialog(
