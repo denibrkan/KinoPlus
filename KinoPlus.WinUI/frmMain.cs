@@ -76,5 +76,16 @@
 
             frmLokacije.Show();
         }
+
+        private void izvještajiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.ActiveMdiChild?.Close();
+
+            var frmIzvjestaji = new frmIzvjestaji();
+            frmIzvjestaji.MdiParent = this;
+            frmIzvjestaji.WindowState = FormWindowState.Maximized;
+
+            frmIzvjestaji.Show();
+        }
     }
 }

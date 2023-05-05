@@ -35,6 +35,11 @@ namespace KinoPlus.Services
             {
                 query = query.Where(p => p.StartsAt.Date == search.Date.Value.Date);
             }
+            else if (search.DateFrom != null && search.DateTo != null)
+            {
+                query = query.Where(p => p.StartsAt.Date >= search.DateFrom.Value.Date &&
+                                         p.StartsAt.Date <= search.DateTo.Value.Date);
+            }
 
             if (search.LocationId != null)
             {

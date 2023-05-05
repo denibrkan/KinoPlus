@@ -34,13 +34,14 @@
             kategorijeToolStripMenuItem = new ToolStripMenuItem();
             korisniciToolStripMenuItem = new ToolStripMenuItem();
             lokacijeToolStripMenuItem = new ToolStripMenuItem();
+            izvještajiToolStripMenuItem = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip
             // 
             menuStrip.Font = new Font("Dubai Medium", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            menuStrip.Items.AddRange(new ToolStripItem[] { projekcijeToolStripMenuItem, filmoviToolStripMenuItem, kategorijeToolStripMenuItem, korisniciToolStripMenuItem, lokacijeToolStripMenuItem });
+            menuStrip.Items.AddRange(new ToolStripItem[] { projekcijeToolStripMenuItem, filmoviToolStripMenuItem, kategorijeToolStripMenuItem, korisniciToolStripMenuItem, lokacijeToolStripMenuItem, izvještajiToolStripMenuItem });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Margin = new Padding(0, 20, 0, 20);
             menuStrip.Name = "menuStrip";
@@ -89,6 +90,14 @@
             lokacijeToolStripMenuItem.Text = "Lokacije";
             lokacijeToolStripMenuItem.Click += lokacijeToolStripMenuItem_Click;
             // 
+            // izvještajiToolStripMenuItem
+            // 
+            izvještajiToolStripMenuItem.Name = "izvještajiToolStripMenuItem";
+            izvještajiToolStripMenuItem.Padding = new Padding(20, 10, 20, 10);
+            izvještajiToolStripMenuItem.Size = new Size(115, 51);
+            izvještajiToolStripMenuItem.Text = "Izvještaji";
+            izvještajiToolStripMenuItem.Click += izvještajiToolStripMenuItem_Click;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -118,5 +127,6 @@
         private ToolStripMenuItem korisniciToolStripMenuItem;
         private ToolStripMenuItem projekcijeToolStripMenuItem;
         private ToolStripMenuItem lokacijeToolStripMenuItem;
+        private ToolStripMenuItem izvještajiToolStripMenuItem;
     }
 }
