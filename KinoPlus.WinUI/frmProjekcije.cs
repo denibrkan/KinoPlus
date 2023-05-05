@@ -51,7 +51,7 @@ namespace KinoPlus.WinUI
                     Trajanje = p.Movie.Duration,
                     Dvorana = p.Hall?.Name,
                     VrstaProjekcije = p.ProjectionType.Name,
-                    Popunjenost = "0/20",
+                    Popunjenost = $"{p.TicketCount}/80",
                     Redovna = p.RecurringProjectionId != null ? "DA" : "NE",
                     Cijena = p.Price,
                 })

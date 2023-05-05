@@ -9,6 +9,7 @@ namespace KinoPlus.Models
         public DateTime StartsAt { get; set; }
         public DateTime EndsAt { get; set; }
         public decimal Price { get; set; }
+        public int TicketCount { get; set; }
         public int MovieId { get; set; }
         public MovieDto Movie { get; set; }
         public int ProjectionTypeId { get; set; }
