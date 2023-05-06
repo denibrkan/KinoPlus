@@ -90,6 +90,14 @@ namespace KinoPlus.Services.Data
 
                 await db.AddRangeAsync(halls);
             }
+            if (!await db.Seats.AnyAsync())
+            {
+                var seatData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Seats.json");
+                var seats = JsonSerializer.Deserialize<List<Seat>>(seatData);
+                if (seats == null) return;
+
+                await db.AddRangeAsync(seats);
+            }
             if (!await db.Countries.AnyAsync())
             {
                 var countryData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Countries.json");
