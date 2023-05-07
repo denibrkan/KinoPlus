@@ -12,14 +12,14 @@ namespace KinoPlus.API.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IUserService _userService;
-        private readonly IMapper _mapper;
         private readonly ITokenService _tokenService;
+        private readonly IMapper _mapper;
 
         public AccountController(IUserService userService, IMapper mapper, ITokenService tokenService)
         {
             _userService = userService;
-            _mapper = mapper;
             _tokenService = tokenService;
+            _mapper = mapper;
         }
 
         [HttpPost("login")]
@@ -41,6 +41,39 @@ namespace KinoPlus.API.Controllers
             korisnik.Token = _tokenService.CreateToken(user);
 
             return korisnik;
+        }
+
+        [HttpPost("register")]
+        public async Task<ActionResult> RegisterAsync(RegisterDto register)
+        {
+            var user = await _userService.GetByUsernameAsync(register.Username);
+            if (user != null) return BadRequest("Korisničko ime već postoji");
+
+            var userInsert = new UserInsertObject
+            {
+                Username = register.Username,
+                Password = register.Password,
+                Email = register.Email,
+                FirstName = register.FirstName,
+                LastName = register.LastName,
+                Phone = register.PhoneNumber,
+            };
+
+            userInsert.RoleIds = (await _userService.GetRoles()).Where(r => r.Name == "Klijent").Select(r => r.Id).ToArray();
+
+            await _userService.InsertAsync(userInsert);
+
+            return Ok("Uspješna registracija");
+        }
+
+        [HttpPost("check-username")]
+        public async Task<ActionResult<bool>> CheckUsername(string username)
+        {
+            var user = await _userService.GetByUsernameAsync(username);
+
+            if (user == null) return true;
+
+            return false;
         }
     }
 }

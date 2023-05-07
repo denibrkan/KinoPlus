@@ -78,5 +78,10 @@ namespace KinoPlus.Services
             entity.PasswordSalt = Convert.ToBase64String(hmac.Key);
             entity.PasswordHash = Convert.ToBase64String(hmac.ComputeHash(Encoding.Default.GetBytes(insert.Password)));
         }
+
+        public async Task<List<Role>> GetRoles()
+        {
+            return await _context.Roles.ToListAsync();
+        }
     }
 }
