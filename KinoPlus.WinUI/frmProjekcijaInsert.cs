@@ -17,9 +17,17 @@ namespace KinoPlus.WinUI
 
         private async void frmProjekcijaInsert_Load(object sender, EventArgs e)
         {
+            dtpDatumTrajeDo.Value = dtpDatumTrajeDo.Value.AddMonths(1);
+
             await loadMovies();
             await loadProjectionTypes();
             await loadLocations();
+            await loadWeekDays();
+        }
+
+        public async Task loadWeekDays()
+        {
+            await ListControlHelper.loadControlEntity<DayOfWeekDto>(cmbDan, "DaysOfWeek", "Name");
         }
 
         public async Task loadMovies()
@@ -96,8 +104,12 @@ namespace KinoPlus.WinUI
             projectionInsert.Price = numCijena.Value;
             projectionInsert.MovieId = (int)cmbFilm.SelectedValue!;
             projectionInsert.ProjectionTypeId = (int)cmbVrstaProjekcije.SelectedValue!;
-            projectionInsert.StartsAt = dtpVrijeme.Value;
+            projectionInsert.ProjectionTime = dtpVrijeme.Value;
             projectionInsert.ProjectionDate = dtpDatumProjekcije.Value;
+            projectionInsert.IsRecurring = cbRedovnaProjekcija.Checked;
+            projectionInsert.StartingDate = dtpDatumPocinje.Value;
+            projectionInsert.EndingDate = dtpDatumTrajeDo.Value;
+            projectionInsert.DayOfWeekId = (int?)cmbDan.SelectedValue;
             projectionInsert.Locations = new List<LocationHallInsertObject>();
 
             foreach (var locationHall in LocationHalls)
@@ -167,6 +179,14 @@ namespace KinoPlus.WinUI
                 e.Cancel = false;
                 errorProvider.SetError(numCijena, "");
             }
+        }
+
+        private void cbRedovnaProjekcija_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpDatumProjekcije.Enabled = !dtpDatumProjekcije.Enabled;
+            dtpDatumPocinje.Enabled = !dtpDatumPocinje.Enabled;
+            dtpDatumTrajeDo.Enabled = !dtpDatumTrajeDo.Enabled;
+            cmbDan.Enabled = !cmbDan.Enabled;
         }
     }
 }

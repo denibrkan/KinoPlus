@@ -73,6 +73,7 @@ namespace KinoPlus.API.Helper
             CreateMap<City, CityDto>();
             CreateMap<Country, CountryDto>();
             CreateMap<Year, YearDto>();
+            CreateMap<Services.Database.DayOfWeek, DayOfWeekDto>();
         }
 
         public double CalculateAverageRating(IEnumerable<MovieReaction> reactions)

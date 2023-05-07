@@ -7,8 +7,11 @@ namespace KinoPlus.Models
     public class ProjectionInsertObject
     {
         [Required]
-        public DateTime? StartsAt { get; set; }
+        public DateTime? ProjectionTime { get; set; }
         public DateTime? ProjectionDate { get; set; }
+        public DateTime? StartingDate { get; set; }
+        public DateTime? EndingDate { get; set; }
+        public int? DayOfWeekId { get; set; }
         [Required]
         public decimal? Price { get; set; }
         [Required]
@@ -17,7 +20,6 @@ namespace KinoPlus.Models
         public int? MovieId { get; set; }
         [Required]
         public List<LocationHallInsertObject> Locations { get; set; }
-        //  public int? RecurringProjectionId { get; set; }
-        //  public virtual ICollection<ProjectionLocation> ProjectionLocations { get; } = new List<ProjectionLocation>();
+        public bool IsRecurring { get; set; }
     }
 }

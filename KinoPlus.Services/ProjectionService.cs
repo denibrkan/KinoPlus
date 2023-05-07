@@ -64,10 +64,22 @@ namespace KinoPlus.Services
         public override async Task BeforeInsert(ProjectionInsertObject insert, Projection entity)
         {
             await base.BeforeInsert(insert, entity);
-            var movie = await _context.Movies.SingleAsync(m => m.Id == insert.MovieId);
 
-            entity.StartsAt = new DateTime(insert.ProjectionDate!.Value.Year, insert.ProjectionDate.Value.Month, insert.ProjectionDate.Value.Day, insert.StartsAt!.Value.Hour, insert.StartsAt.Value.Minute, 0);
-            entity.EndsAt = entity.StartsAt.AddMinutes(movie.Duration);
+            if (insert.IsRecurring)
+            {
+                var recurring = new RecurringProjection
+                {
+                    DayOfWeekId = insert.DayOfWeekId!.Value,
+                    StartsAt = insert.StartingDate!.Value,
+                    EndsAt = insert.EndingDate!.Value,
+                    ProjectionTime = insert.ProjectionTime!.Value.TimeOfDay,
+                };
+
+                await _context.AddAsync(recurring);
+                await _context.SaveChangesAsync();
+
+                entity.RecurringProjectionId = recurring.Id;
+            }
         }
 
         public override async Task<Projection> InsertAsync(ProjectionInsertObject insert)
@@ -76,20 +88,51 @@ namespace KinoPlus.Services
 
             await BeforeInsert(insert, projection);
 
-            foreach (var locationHall in insert.Locations)
+            var movie = await _context.Movies.SingleAsync(m => m.Id == insert.MovieId);
+
+            Tuple<int, int> startingTime = Tuple.Create(insert.ProjectionTime!.Value.Hour, insert.ProjectionTime!.Value.Minute);
+
+            var projectionDates = new List<DateTime>();
+
+            if (projection.RecurringProjectionId != null)
             {
-                _context.Projections.Add(
-                    new Projection
+                //find projection dates using starting date and day of week
+                var comparingDate = insert.StartingDate;
+                do
+                {
+                    if (((int)comparingDate!.Value.DayOfWeek) == insert.DayOfWeekId - 1)
                     {
-                        MovieId = projection.MovieId,
-                        ProjectionTypeId = projection.ProjectionTypeId,
-                        Price = projection.Price,
-                        StartsAt = projection.StartsAt,
-                        EndsAt = projection.EndsAt,
-                        RecurringProjectionId = projection.RecurringProjectionId,
-                        LocationId = locationHall.LocationId!.Value,
-                        HallId = locationHall.HallId!.Value,
-                    });
+                        projectionDates.Add(comparingDate.Value);
+                    }
+
+                    comparingDate = comparingDate.Value.AddDays(1);
+                } while (comparingDate <= insert.EndingDate);
+            }
+            else
+            {
+                projectionDates.Add(insert.ProjectionDate!.Value);
+            }
+
+            foreach (var date in projectionDates)
+            {
+                var startsAtDate = new DateTime(date.Year, date.Month, date.Day, startingTime.Item1, startingTime.Item2, 0);
+                var endsAtDate = startsAtDate.AddMinutes(movie.Duration);
+
+                foreach (var locationHall in insert.Locations)
+                {
+                    _context.Projections.Add(
+                        new Projection
+                        {
+                            MovieId = projection.MovieId,
+                            ProjectionTypeId = projection.ProjectionTypeId,
+                            Price = projection.Price,
+                            StartsAt = startsAtDate,
+                            EndsAt = endsAtDate,
+                            RecurringProjectionId = projection.RecurringProjectionId,
+                            LocationId = locationHall.LocationId!.Value,
+                            HallId = locationHall.HallId!.Value,
+                        });
+                }
             }
 
             await _context.SaveChangesAsync();
