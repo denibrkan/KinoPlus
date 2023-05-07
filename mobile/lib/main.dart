@@ -8,9 +8,11 @@ import 'package:mobile/providers/seat_provider.dart';
 import 'package:mobile/providers/ticket_provider.dart';
 import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/home_screen.dart';
+import 'package:mobile/screens/login_screen.dart';
 import 'package:mobile/screens/movie_detail_screen.dart';
 import 'package:mobile/screens/movies_screen.dart';
 import 'package:mobile/screens/profile_screen.dart';
+import 'package:mobile/screens/register_screen.dart';
 import 'package:mobile/screens/reservation_success.dart';
 import 'package:mobile/screens/seats_screen.dart';
 import 'package:mobile/screens/tickets_screen.dart';
@@ -49,6 +51,7 @@ class MyApp extends StatelessWidget {
           ReservationSuccessScreen.routeName: (context) =>
               const ReservationSuccessScreen(),
           TicketsScreen.routeName: (context) => const TicketsScreen(),
+          RegisterScreen.routeName: (context) => RegisterScreen(),
         },
         onGenerateRoute: (settings) {
           if (settings.name == MovieDetailScreen.routeName) {
@@ -97,11 +100,14 @@ class _MainState extends State<Main> {
   ];
 
   late int _selectedIndex;
+  late UserProvider userProvider;
 
   @override
   void initState() {
     super.initState();
     _selectedIndex = widget.index;
+
+    userProvider = context.read<UserProvider>();
   }
 
   void _onItemTapped(int index) {
@@ -112,6 +118,9 @@ class _MainState extends State<Main> {
 
   @override
   Widget build(BuildContext context) {
+    if (userProvider.user == null) {
+      return const LoginScreen();
+    }
     return SafeArea(
       child: Scaffold(
         body: screens.elementAt(_selectedIndex),
