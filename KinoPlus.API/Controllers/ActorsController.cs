@@ -7,10 +7,8 @@ namespace KinoPlus.API.Controllers
 {
     public class ActorsController : BaseCRUDController<Actor, ActorDto, ActorUpsertObject, ActorUpsertObject, BaseSearchObject>
     {
-
         public ActorsController(IActorService service, IMapper mapper) : base(service, mapper)
         {
         }
-
     }
 }
