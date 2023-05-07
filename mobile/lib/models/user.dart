@@ -3,12 +3,11 @@ class User {
     required this.id,
     required this.firstName,
     required this.lastName,
-    this.phone,
     required this.email,
     required this.username,
+    this.phone,
     this.imageId,
     this.token,
-    required this.roles,
   });
   late int id;
   late String firstName;
@@ -18,6 +17,8 @@ class User {
   late String username;
   late String? imageId;
   late String? token;
+  late num movieCount;
+  late num loyaltyPoints;
   late List<dynamic> roles;
 
   User.fromJson(Map<String, dynamic> json) {
@@ -29,7 +30,8 @@ class User {
     username = json['username'];
     imageId = json['imageId'];
     token = json['token'];
-    //roles = List.castFrom<dynamic, dynamic>(json['roles']);
+    movieCount = json['movieCount'];
+    loyaltyPoints = json['loyaltyPoints'];
   }
 
   Map<String, dynamic> toJson() {

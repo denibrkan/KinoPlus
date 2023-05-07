@@ -62,8 +62,10 @@ namespace KinoPlus.Services
             query = base.AddInclude(query, search);
 
             query = query
-                .Include(x => x.UserRoles)
-                .ThenInclude(x => x.Role);
+                .Include(u => u.UserRoles)
+                .ThenInclude(u => u.Role)
+                .Include(u => u.Tickets)
+                .ThenInclude(t => t.Projection);
 
             return query;
         }

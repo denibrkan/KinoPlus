@@ -13,6 +13,8 @@ namespace KinoPlus.Models
         public string Username { get; set; }
         public Guid? ImageId { get; set; }
         public string Token { get; set; }
+        public int MovieCount { get; set; }
+        public int LoyaltyPoints { get; set; }
         public List<RoleDto> Roles { get; set; }
     }
 }
