@@ -1,5 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:mobile/helpers/colors.dart';
+import 'package:mobile/models/register.dart';
+import 'package:mobile/providers/user_provider.dart';
+import 'package:mobile/screens/login_screen.dart';
 import 'package:mobile/utils/get_form_input_decoration.dart';
+import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const routeName = '/register';
@@ -11,6 +18,8 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  late UserProvider _userProvider;
+
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -21,6 +30,59 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _emailController = TextEditingController();
 
   bool _isFirstPartCompleted = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _userProvider = context.read<UserProvider>();
+  }
+
+  void register() async {
+    try {
+      var registerData = Register(
+          _usernameController.text,
+          _passwordController.text,
+          _firstNameController.text,
+          _lastNameController.text,
+          _emailController.text,
+          _phoneController.text);
+
+      await _userProvider.register(registerData);
+
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              backgroundColor: Colors.lightBlueAccent,
+              content: Text(
+                'Registracija uspješna.',
+              )),
+        );
+
+        Timer(
+            const Duration(milliseconds: 1500),
+            () => Navigator.pushNamedAndRemoveUntil(
+                context, LoginScreen.routeName, (route) => false));
+      }
+    } on Exception catch (e) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+                title: Text(
+                  "Registracija greška",
+                  style: TextStyle(color: primary.shade500),
+                ),
+                content: Text(e.toString().substring(11),
+                    style: const TextStyle(color: Colors.grey)),
+                actions: [
+                  TextButton(
+                    child: const Text("Ok"),
+                    onPressed: () => Navigator.pop(context),
+                  )
+                ],
+              ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -149,7 +211,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   _isFirstPartCompleted
                       ? ElevatedButton(
                           onPressed: () {
-                            if (_formKey.currentState!.validate()) {}
+                            if (_formKey.currentState!.validate()) {
+                              register();
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFFE51937),
@@ -161,9 +225,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         )
                       : ElevatedButton.icon(
-                          onPressed: () {
+                          onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              setState(() => _isFirstPartCompleted = true);
+                              if (await _userProvider
+                                  .checkUsername(_usernameController.text)) {
+                                setState(() => _isFirstPartCompleted = true);
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      backgroundColor: Colors.redAccent,
+                                      content: Text(
+                                        'Korisničko ime se koristi.',
+                                      )),
+                                );
+                              }
                             }
                           },
                           icon: const Icon(Icons.arrow_forward),

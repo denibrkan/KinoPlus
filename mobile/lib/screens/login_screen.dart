@@ -8,6 +8,8 @@ import 'package:provider/provider.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  static const routeName = '/login';
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -122,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           context, RegisterScreen.routeName),
                       child: const Text(
                         'Registracija',
-                        style: TextStyle(color: Colors.lightBlue),
+                        style: TextStyle(color: Colors.lightBlueAccent),
                       ),
                     ),
                   ],

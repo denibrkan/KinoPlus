@@ -51,7 +51,8 @@ class MyApp extends StatelessWidget {
           ReservationSuccessScreen.routeName: (context) =>
               const ReservationSuccessScreen(),
           TicketsScreen.routeName: (context) => const TicketsScreen(),
-          RegisterScreen.routeName: (context) => RegisterScreen(),
+          RegisterScreen.routeName: (context) => const RegisterScreen(),
+          LoginScreen.routeName: (context) => const LoginScreen(),
         },
         onGenerateRoute: (settings) {
           if (settings.name == MovieDetailScreen.routeName) {

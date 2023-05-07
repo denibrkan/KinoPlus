@@ -27,7 +27,7 @@ namespace KinoPlus.API.Controllers
         {
             var user = await _userService.GetByUsernameAsync(login.Username);
 
-            if (user == null) return Unauthorized("Pogresno korisnicko ime ili password");
+            if (user == null) return Unauthorized("Pogrešno korisničko ime ili password.");
 
             using var hmac = new HMACSHA512(Convert.FromBase64String(user.PasswordSalt));
 
@@ -67,7 +67,7 @@ namespace KinoPlus.API.Controllers
         }
 
         [HttpPost("check-username")]
-        public async Task<ActionResult<bool>> CheckUsername(string username)
+        public async Task<ActionResult<bool>> CheckUsername([FromBody] string username)
         {
             var user = await _userService.GetByUsernameAsync(username);
 
