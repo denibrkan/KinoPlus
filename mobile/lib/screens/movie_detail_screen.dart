@@ -5,8 +5,11 @@ import 'package:mobile/common/rating_bar.dart';
 import 'package:mobile/components/movie_details/movie_tabs.dart';
 import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/helpers/constants.dart';
+import 'package:mobile/helpers/enums.dart';
 import 'package:mobile/models/movie.dart';
+import 'package:mobile/providers/movie_tab_provider.dart';
 import 'package:mobile/utils/get_duration.dart';
+import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MovieDetailScreen extends StatefulWidget {
@@ -22,9 +25,12 @@ class MovieDetailScreen extends StatefulWidget {
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
   var scrollController = ScrollController();
+  TabOptions? selectedTab;
 
   @override
   Widget build(BuildContext context) {
+    selectedTab = context.watch<MovieTabProvider>().selectedTab;
+
     return Scaffold(
       backgroundColor: primary.shade500,
       body: SingleChildScrollView(
@@ -34,7 +40,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
             _buildImageStack(),
             _buildMovieInfo(),
             const SizedBox(height: 30),
-            MovieTabs(movie: widget.movie, onTabClick: () => handleScroll()),
+            MovieTabs(movie: widget.movie),
           ],
         ),
       ),

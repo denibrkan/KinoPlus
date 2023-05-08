@@ -7,13 +7,13 @@ import 'package:mobile/helpers/enums.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/models/reaction.dart';
 import 'package:mobile/providers/date_provider.dart';
+import 'package:mobile/providers/movie_tab_provider.dart';
 import 'package:provider/provider.dart';
 
 class MovieTabs extends StatefulWidget {
   final Movie movie;
-  final Function onTabClick;
 
-  const MovieTabs({super.key, required this.movie, required this.onTabClick});
+  const MovieTabs({super.key, required this.movie});
 
   @override
   State<MovieTabs> createState() => _MovieTabsState();
@@ -22,23 +22,16 @@ class MovieTabs extends StatefulWidget {
 class _MovieTabsState extends State<MovieTabs> {
   TabOptions? selectedTab;
 
-  onTabSelected(TabOptions? value) {
-    setState(() {
-      selectedTab = value;
-    });
-
-    widget.onTabClick();
-  }
-
   @override
   Widget build(BuildContext context) {
+    selectedTab = context.watch<MovieTabProvider>().selectedTab;
+
     return ChangeNotifierProvider(
       create: (context) => DateProvider(),
       child: Column(
         children: [
           TabPills(
             movie: widget.movie,
-            onSelectedChange: (value) => onTabSelected(value),
           ),
           _buildTabContent(widget.movie)
         ],
@@ -108,7 +101,11 @@ class _MovieTabsState extends State<MovieTabs> {
             bottom: 50,
           ),
           child: movie.averageRating != 0
-              ? _buildReactionList(movie.reactions)
+              ? Column(
+                  children: [
+                    _buildReactionList(movie.reactions),
+                  ],
+                )
               : const Text(
                   'Trenutno nema reakcija.',
                   style: TextStyle(color: Colors.grey),

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/helpers/enums.dart';
 import 'package:mobile/models/movie.dart';
+import 'package:mobile/providers/movie_tab_provider.dart';
+import 'package:provider/provider.dart';
 
 class TabPills extends StatefulWidget {
-  const TabPills(
-      {super.key, required this.movie, required this.onSelectedChange});
+  const TabPills({super.key, required this.movie});
 
   final Movie movie;
-  final ValueChanged<TabOptions?> onSelectedChange;
 
   @override
   State<TabPills> createState() => _TabPillsState();
@@ -17,8 +17,19 @@ class TabPills extends StatefulWidget {
 class _TabPillsState extends State<TabPills> {
   TabOptions? selectedTab;
 
+  late MovieTabProvider _movieTabProvider;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _movieTabProvider = context.read<MovieTabProvider>();
+  }
+
   @override
   Widget build(BuildContext context) {
+    selectedTab = context.watch<MovieTabProvider>().selectedTab;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -53,12 +64,11 @@ class _TabPillsState extends State<TabPills> {
               onSelectionChanged: (Set<TabOptions> newSelection) {
                 setState(() {
                   if (newSelection.isEmpty) {
-                    selectedTab = null;
+                    _movieTabProvider.setSelectedTab(null);
                   } else {
-                    selectedTab = newSelection.first;
+                    _movieTabProvider.setSelectedTab(newSelection.first);
                   }
                 });
-                widget.onSelectedChange(selectedTab);
               },
               showSelectedIcon: false,
               style: ButtonStyle(
