@@ -76,6 +76,8 @@ class _SeatsScreenState extends State<SeatsScreen> {
         });
       }
       await ticketProvider.insert(tickets);
+
+      userProvider.refreshUser();
       if (mounted) {
         Navigator.pushNamedAndRemoveUntil(
             context, ReservationSuccessScreen.routeName, (route) => false);

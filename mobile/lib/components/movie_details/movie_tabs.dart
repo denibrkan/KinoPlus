@@ -26,9 +26,12 @@ class MovieTabs extends StatefulWidget {
 class _MovieTabsState extends State<MovieTabs> {
   TabOptions? selectedTab;
   int rating = 3;
+  List<Reaction> reactions = <Reaction>[];
 
   late UserProvider _userProvider;
   late ReactionProvider _reactionProvider;
+
+  bool loading = false;
 
   final _reactionController = TextEditingController();
 
@@ -38,6 +41,26 @@ class _MovieTabsState extends State<MovieTabs> {
 
     _userProvider = context.read<UserProvider>();
     _reactionProvider = context.read<ReactionProvider>();
+
+    loadReactions();
+  }
+
+  loadReactions() async {
+    try {
+      setState(() {
+        loading = true;
+      });
+
+      final data = await _reactionProvider
+          .get(<String, String>{'movieId': widget.movie.id.toString()});
+
+      setState(() {
+        reactions = data;
+        loading = false;
+      });
+    } on Exception catch (e) {
+      showErrorDialog(context, e.toString().substring(11));
+    }
   }
 
   onRatingUpdate(double value) {
@@ -54,6 +77,8 @@ class _MovieTabsState extends State<MovieTabs> {
 
     try {
       await _reactionProvider.insert(reaction);
+
+      await loadReactions();
     } on Exception catch (e) {
       showErrorDialog(context, e.toString().substring(11));
     }
@@ -68,7 +93,7 @@ class _MovieTabsState extends State<MovieTabs> {
       child: Column(
         children: [
           TabPills(
-            movie: widget.movie,
+            reactions: reactions,
           ),
           _buildTabContent(widget.movie)
         ],
@@ -140,12 +165,7 @@ class _MovieTabsState extends State<MovieTabs> {
             child: Column(
               children: [
                 _buildReactionInsertField(),
-                movie.averageRating != 0
-                    ? _buildReactionList(movie.reactions)
-                    : const Text(
-                        'Trenutno nema reakcija.',
-                        style: TextStyle(color: Colors.grey),
-                      ),
+                _buildReactionList(),
               ],
             ));
         break;
@@ -161,7 +181,20 @@ class _MovieTabsState extends State<MovieTabs> {
     );
   }
 
-  Widget _buildReactionList(List<Reaction> reactions) {
+  Widget _buildReactionList() {
+    if (loading) {
+      return const Center(
+        child: CircularProgressIndicator(
+          color: Colors.lightBlueAccent,
+        ),
+      );
+    }
+    if (reactions.isEmpty) {
+      return const Text(
+        'Trenutno nema reakcija.',
+        style: TextStyle(color: Colors.grey),
+      );
+    }
     var reactionList = reactions
         .map((r) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -177,13 +210,14 @@ class _MovieTabsState extends State<MovieTabs> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        RatingStars(rating: r.rating),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        RatingStars(rating: r.rating, size: 16),
+                        SizedBox(height: 12),
+                        Container(
+                          margin: EdgeInsets.only(left: 4),
                           child: Text(
                             r.comment ?? '',
                             style: const TextStyle(
-                              color: Colors.grey,
+                              color: Color.fromARGB(255, 201, 201, 201),
                             ),
                           ),
                         ),
@@ -243,19 +277,20 @@ class _MovieTabsState extends State<MovieTabs> {
   }
 
   Widget _buildReactionInsertField() {
-    if (_userProvider.user!.moviesWatched
-        .any((movie) => movie.id == widget.movie.id)) {
+    final user = _userProvider.user!;
+    if (user.moviesWatched.any((movie) => movie.id == widget.movie.id) &&
+        !reactions.any((r) => r.userId == user.id)) {
       //create insert field
       return Container(
         margin: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
             RatingStars(
-              rating: 3,
-              canUpdate: true,
-              onUpdate: (value) => onRatingUpdate(value),
-              allowHalfRating: false,
-            ),
+                rating: 3,
+                canUpdate: true,
+                onUpdate: (value) => onRatingUpdate(value),
+                allowHalfRating: false,
+                size: 20),
             const SizedBox(
               height: 15,
             ),

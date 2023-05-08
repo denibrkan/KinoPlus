@@ -3,7 +3,7 @@ using KinoPlus.Services.Database;
 
 namespace KinoPlus.Services.Interfaces
 {
-    public interface IMovieReactionService : ICRUDService<MovieReaction, MovieReactionUpsertObject, MovieReactionUpsertObject, BaseSearchObject>
+    public interface IMovieReactionService : ICRUDService<MovieReaction, MovieReactionUpsertObject, MovieReactionUpsertObject, MovieReactionSearchObject>
     {
 
     }

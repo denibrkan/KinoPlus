@@ -5,7 +5,7 @@ using KinoPlus.Services.Interfaces;
 
 namespace KinoPlus.API.Controllers
 {
-    public class MovieReactionsController : BaseCRUDController<MovieReaction, MovieReactionDto, MovieReactionUpsertObject, MovieReactionUpsertObject, BaseSearchObject>
+    public class MovieReactionsController : BaseCRUDController<MovieReaction, MovieReactionDto, MovieReactionUpsertObject, MovieReactionUpsertObject, MovieReactionSearchObject>
     {
         public MovieReactionsController(IMovieReactionService service, IMapper mapper) : base(service, mapper)
         {

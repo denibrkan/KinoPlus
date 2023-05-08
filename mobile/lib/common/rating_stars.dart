@@ -6,13 +6,15 @@ class RatingStars extends StatefulWidget {
   final bool canUpdate;
   final Function(double)? onUpdate;
   final bool allowHalfRating;
+  final double size;
 
   const RatingStars(
       {super.key,
       required this.rating,
       this.canUpdate = false,
       this.onUpdate,
-      this.allowHalfRating = true});
+      this.allowHalfRating = true,
+      this.size = 22});
 
   @override
   State<RatingStars> createState() => _RatingStarsState();
@@ -27,7 +29,7 @@ class _RatingStarsState extends State<RatingStars> {
       direction: Axis.horizontal,
       allowHalfRating: widget.allowHalfRating,
       itemCount: 5,
-      itemSize: 22,
+      itemSize: widget.size,
       itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
       itemBuilder: (context, _) => const Icon(
         Icons.star,

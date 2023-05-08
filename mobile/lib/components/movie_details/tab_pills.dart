@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/helpers/enums.dart';
-import 'package:mobile/models/movie.dart';
+import 'package:mobile/models/reaction.dart';
 import 'package:mobile/providers/movie_tab_provider.dart';
 import 'package:provider/provider.dart';
 
 class TabPills extends StatefulWidget {
-  const TabPills({super.key, required this.movie});
+  const TabPills({super.key, required this.reactions});
 
-  final Movie movie;
+  final List<Reaction> reactions;
 
   @override
   State<TabPills> createState() => _TabPillsState();
@@ -49,7 +49,7 @@ class _TabPillsState extends State<TabPills> {
                 ButtonSegment<TabOptions>(
                   value: TabOptions.reactions,
                   label: Text(
-                      'Reakcije ${widget.movie.reactions.isNotEmpty ? "(${widget.movie.reactions.length})" : ""}'),
+                      'Reakcije ${widget.reactions.isNotEmpty ? "(${widget.reactions.length})" : ""}'),
                   icon: const Icon(Icons.reviews),
                 ),
                 const ButtonSegment<TabOptions>(

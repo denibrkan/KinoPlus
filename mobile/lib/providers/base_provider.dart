@@ -29,6 +29,25 @@ abstract class BaseProvider<T> with ChangeNotifier {
     }
   }
 
+  Future<T> getById(int id, Map<String, String>? params) async {
+    var uri = Uri.parse('$apiUrl/$endpoint/$id');
+
+    if (params != null) {
+      uri = uri.replace(queryParameters: params);
+    }
+    var headers = createHeaders();
+
+    final response = await http.get(uri, headers: headers);
+
+    if (response.statusCode == 200) {
+      var data = json.decode(response.body);
+
+      return fromJson(data);
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+
   Future<dynamic> insert(dynamic resource) async {
     var uri = Uri.parse('$apiUrl/$endpoint');
     Map<String, String> headers = createHeaders();
