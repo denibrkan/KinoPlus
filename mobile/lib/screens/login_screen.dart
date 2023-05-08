@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/register_screen.dart';
 import 'package:mobile/utils/get_form_input_decoration.dart';
+import 'package:mobile/utils/show_error_dialog.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -36,22 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
       }
     } on Exception catch (e) {
-      showDialog(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-                title: Text(
-                  "Login greška",
-                  style: TextStyle(color: primary.shade500),
-                ),
-                content: Text(e.toString().substring(11),
-                    style: const TextStyle(color: Colors.grey)),
-                actions: [
-                  TextButton(
-                    child: const Text("Ok"),
-                    onPressed: () => Navigator.pop(context),
-                  )
-                ],
-              ));
+      showErrorDialog(context, e.toString().substring(11));
     }
   }
 

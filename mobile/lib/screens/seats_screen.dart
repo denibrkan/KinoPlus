@@ -9,6 +9,7 @@ import 'package:mobile/providers/ticket_provider.dart';
 import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/profile_screen.dart';
 import 'package:mobile/screens/reservation_success.dart';
+import 'package:mobile/utils/show_error_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -80,18 +81,7 @@ class _SeatsScreenState extends State<SeatsScreen> {
             context, ReservationSuccessScreen.routeName, (route) => false);
       }
     } on Exception catch (e) {
-      showDialog(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-                title: const Text("Ticket reservation failed"),
-                content: Text(e.toString().substring(11)),
-                actions: [
-                  TextButton(
-                    child: const Text("Ok"),
-                    onPressed: () => Navigator.pop(context),
-                  )
-                ],
-              ));
+      showErrorDialog(context, e.toString().substring(11));
     }
   }
 

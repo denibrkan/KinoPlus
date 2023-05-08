@@ -10,7 +10,6 @@ import 'package:mobile/providers/date_provider.dart';
 import 'package:mobile/providers/location_provider.dart';
 import 'package:mobile/providers/projection_provider.dart';
 import 'package:mobile/screens/seats_screen.dart';
-import 'package:mobile/services/api_service.dart';
 import 'package:provider/provider.dart';
 
 class ProjectionsTab extends StatefulWidget {

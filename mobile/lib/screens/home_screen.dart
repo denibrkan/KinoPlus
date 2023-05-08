@@ -1,13 +1,12 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/category.dart';
 import 'package:mobile/models/movie.dart';
-import 'package:http/http.dart' as http;
 import 'package:mobile/providers/category_provider.dart';
 import 'package:mobile/providers/movie_provider.dart';
 import 'package:mobile/screens/movie_detail_screen.dart';
+import 'package:mobile/utils/show_error_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -31,22 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
     try {
       return await _movieProvider.get(null);
     } catch (e) {
-      showDialog(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-                title: Text(
-                  "Greška prilikom dohvatanja podataka",
-                  style: TextStyle(color: primary.shade500),
-                ),
-                content: Text(e.toString().substring(11),
-                    style: const TextStyle(color: Colors.grey)),
-                actions: [
-                  TextButton(
-                    child: const Text("Ok"),
-                    onPressed: () => Navigator.pop(context),
-                  )
-                ],
-              ));
+      showErrorDialog(context, e.toString().substring(11));
+
       return <Movie>[];
     }
   }
@@ -56,22 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
       var params = <String, String>{'includeMovies': 'true'};
       return await _categoryProvider.get(params);
     } on Exception catch (e) {
-      showDialog(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-                title: Text(
-                  "Greška prilikom dohvatanja podataka",
-                  style: TextStyle(color: primary.shade500),
-                ),
-                content: Text(e.toString().substring(11),
-                    style: const TextStyle(color: Colors.grey)),
-                actions: [
-                  TextButton(
-                    child: const Text("Ok"),
-                    onPressed: () => Navigator.pop(context),
-                  )
-                ],
-              ));
+      showErrorDialog(context, e.toString().substring(11));
+
       return <Category>[];
     }
   }

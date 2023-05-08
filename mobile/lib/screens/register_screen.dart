@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/models/register.dart';
 import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/login_screen.dart';
 import 'package:mobile/utils/get_form_input_decoration.dart';
+import 'package:mobile/utils/show_error_dialog.dart';
 import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -65,22 +65,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 context, LoginScreen.routeName, (route) => false));
       }
     } on Exception catch (e) {
-      showDialog(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-                title: Text(
-                  "Registracija greška",
-                  style: TextStyle(color: primary.shade500),
-                ),
-                content: Text(e.toString().substring(11),
-                    style: const TextStyle(color: Colors.grey)),
-                actions: [
-                  TextButton(
-                    child: const Text("Ok"),
-                    onPressed: () => Navigator.pop(context),
-                  )
-                ],
-              ));
+      showErrorDialog(context, e.toString().substring(11));
     }
   }
 
