@@ -38,7 +38,8 @@ namespace KinoPlus.API.Helper
             CreateMap<User, UserDto>()
                 .ForMember(x => x.Roles, opt => opt.MapFrom(y => y.UserRoles.Select(z => z.Role)))
                 .ForMember(x => x.MovieCount, opt => opt.MapFrom(y => y.Tickets.Select(t => t.Projection.MovieId).Distinct().Count()))
-                .ForMember(x => x.LoyaltyPoints, opt => opt.MapFrom(y => y.Tickets.Select(t => t.Projection.Price).Sum()));
+                .ForMember(x => x.LoyaltyPoints, opt => opt.MapFrom(y => y.Tickets.Select(t => t.Projection.Price).Sum()))
+                .ForMember(x => x.MoviesWatched, opt => opt.MapFrom(y => y.Tickets.Select(z => z.Projection.Movie).Distinct()));
 
             CreateMap<UserInsertObject, User>();
             CreateMap<UserUpdateObject, User>();

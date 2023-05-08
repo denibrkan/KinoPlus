@@ -1,3 +1,5 @@
+import 'package:mobile/models/movie.dart';
+
 class User {
   User({
     required this.id,
@@ -20,6 +22,7 @@ class User {
   late num movieCount;
   late num loyaltyPoints;
   late List<dynamic> roles;
+  late List<Movie> moviesWatched;
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -32,6 +35,13 @@ class User {
     token = json['token'];
     movieCount = json['movieCount'];
     loyaltyPoints = json['loyaltyPoints'];
+    moviesWatched =
+        json['moviesWatched'] != null && json['moviesWatched'].isNotEmpty
+            ? json['moviesWatched']
+                .map((t) => Movie.fromJson(t))
+                .cast<Movie>()
+                .toList()
+            : <Movie>[];
   }
 
   Map<String, dynamic> toJson() {

@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class RatingStars extends StatelessWidget {
+class RatingStars extends StatefulWidget {
   final num rating;
+  final bool canChange;
+  const RatingStars({super.key, required this.rating, this.canChange = false});
 
-  const RatingStars({super.key, required this.rating});
+  @override
+  State<RatingStars> createState() => _RatingStarsState();
+}
 
+class _RatingStarsState extends State<RatingStars> {
   @override
   Widget build(BuildContext context) {
     return RatingBar.builder(
-      ignoreGestures: true,
-      initialRating: rating.toDouble(),
+      ignoreGestures: !widget.canChange,
+      initialRating: widget.rating.toDouble(),
       direction: Axis.horizontal,
       allowHalfRating: true,
       itemCount: 5,
@@ -20,6 +25,7 @@ class RatingStars extends StatelessWidget {
         Icons.star,
         color: Colors.amber,
       ),
+      unratedColor: const Color.fromARGB(50, 192, 137, 35),
       onRatingUpdate: (rating) {},
     );
   }

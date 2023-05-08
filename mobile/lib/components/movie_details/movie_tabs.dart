@@ -8,6 +8,8 @@ import 'package:mobile/models/movie.dart';
 import 'package:mobile/models/reaction.dart';
 import 'package:mobile/providers/date_provider.dart';
 import 'package:mobile/providers/movie_tab_provider.dart';
+import 'package:mobile/providers/user_provider.dart';
+import 'package:mobile/utils/get_form_input_decoration.dart';
 import 'package:provider/provider.dart';
 
 class MovieTabs extends StatefulWidget {
@@ -21,6 +23,16 @@ class MovieTabs extends StatefulWidget {
 
 class _MovieTabsState extends State<MovieTabs> {
   TabOptions? selectedTab;
+  late UserProvider _userProvider;
+
+  final _reactionController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _userProvider = context.read<UserProvider>();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,21 +108,21 @@ class _MovieTabsState extends State<MovieTabs> {
         break;
       case TabOptions.reactions:
         widget = Container(
-          margin: const EdgeInsets.only(
-            top: 30,
-            bottom: 50,
-          ),
-          child: movie.averageRating != 0
-              ? Column(
-                  children: [
-                    _buildReactionList(movie.reactions),
-                  ],
-                )
-              : const Text(
-                  'Trenutno nema reakcija.',
-                  style: TextStyle(color: Colors.grey),
-                ),
-        );
+            margin: const EdgeInsets.only(
+              top: 30,
+              bottom: 50,
+            ),
+            child: Column(
+              children: [
+                _buildReactionInsertField(),
+                movie.averageRating != 0
+                    ? _buildReactionList(movie.reactions)
+                    : const Text(
+                        'Trenutno nema reakcija.',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+              ],
+            ));
         break;
       case TabOptions.projections:
         widget = ProjectionsTab(movieId: movie.id);
@@ -203,5 +215,50 @@ class _MovieTabsState extends State<MovieTabs> {
     return Column(
       children: reactionList,
     );
+  }
+
+  Widget _buildReactionInsertField() {
+    if (_userProvider.user!.moviesWatched
+        .any((movie) => movie.id == widget.movie.id)) {
+      //create insert field
+      return Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          children: [
+            const RatingStars(
+              rating: 3,
+              canChange: true,
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            TextField(
+              controller: _reactionController,
+              decoration: getFormInputDecoration('Unesite reakciju...', null),
+              minLines: 1,
+              maxLines: 5,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            _reactionController.text.isNotEmpty
+                ? SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 0, 101, 151),
+                          padding: const EdgeInsets.symmetric(vertical: 12)),
+                      child: const Text('Spremi'),
+                    ),
+                  )
+                : Container(),
+            const Divider(thickness: 0.5, color: Colors.grey, height: 30),
+          ],
+        ),
+      );
+    }
+    return Container();
   }
 }

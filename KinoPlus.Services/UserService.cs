@@ -65,7 +65,7 @@ namespace KinoPlus.Services
                 .Include(u => u.UserRoles)
                 .ThenInclude(u => u.Role)
                 .Include(u => u.Tickets)
-                .ThenInclude(t => t.Projection);
+                .ThenInclude(t => t.Projection.Movie);
 
             return query;
         }
