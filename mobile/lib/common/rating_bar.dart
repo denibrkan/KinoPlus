@@ -11,13 +11,13 @@ class RatingBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          '$rating/5',
+          '${rating.toStringAsFixed(2)} / 5',
           textScaleFactor: 1.35,
         ),
         const SizedBox(
           width: 10,
         ),
-        RatingStars(rating: rating),
+        RatingStars(rating: rating, size: 20),
       ],
     );
   }
