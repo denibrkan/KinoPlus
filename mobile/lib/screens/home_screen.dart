@@ -5,7 +5,10 @@ import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/category.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:http/http.dart' as http;
+import 'package:mobile/providers/category_provider.dart';
+import 'package:mobile/providers/movie_provider.dart';
 import 'package:mobile/screens/movie_detail_screen.dart';
+import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,37 +24,65 @@ class _HomeScreenState extends State<HomeScreen> {
   late Future<List<Movie>> futureMovies;
   late Future<List<Category>> futureCategories;
 
+  late CategoryProvider _categoryProvider;
+  late MovieProvider _movieProvider;
+
   Future<List<Movie>> fetchMovies() async {
-    final response = await http.get(Uri.parse('$apiUrl/movies'));
-
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-      var list = data.map((p) => Movie.fromJson(p)).cast<Movie>().toList();
-
-      return list;
-    } else {
-      throw Exception('Could not load movies.');
+    try {
+      return await _movieProvider.get(null);
+    } catch (e) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+                title: Text(
+                  "Greška prilikom dohvatanja podataka",
+                  style: TextStyle(color: primary.shade500),
+                ),
+                content: Text(e.toString().substring(11),
+                    style: const TextStyle(color: Colors.grey)),
+                actions: [
+                  TextButton(
+                    child: const Text("Ok"),
+                    onPressed: () => Navigator.pop(context),
+                  )
+                ],
+              ));
+      return <Movie>[];
     }
   }
 
   Future<List<Category>> fetchByCategories() async {
-    final response =
-        await http.get(Uri.parse('$apiUrl/categories?includeMovies=true'));
-
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body);
-      var list =
-          data.map((p) => Category.fromJson(p)).cast<Category>().toList();
-
-      return list;
-    } else {
-      throw Exception('Could not load categories.');
+    try {
+      var params = <String, String>{'includeMovies': 'true'};
+      return await _categoryProvider.get(params);
+    } on Exception catch (e) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+                title: Text(
+                  "Greška prilikom dohvatanja podataka",
+                  style: TextStyle(color: primary.shade500),
+                ),
+                content: Text(e.toString().substring(11),
+                    style: const TextStyle(color: Colors.grey)),
+                actions: [
+                  TextButton(
+                    child: const Text("Ok"),
+                    onPressed: () => Navigator.pop(context),
+                  )
+                ],
+              ));
+      return <Category>[];
     }
   }
 
   @override
   void initState() {
     super.initState();
+
+    _categoryProvider = context.read<CategoryProvider>();
+    _movieProvider = context.read<MovieProvider>();
+
     futureMovies = fetchMovies();
     futureCategories = fetchByCategories();
   }

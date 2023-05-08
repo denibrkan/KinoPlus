@@ -7,6 +7,8 @@ import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/models/location.dart';
 import 'package:mobile/models/projection.dart';
 import 'package:mobile/providers/date_provider.dart';
+import 'package:mobile/providers/location_provider.dart';
+import 'package:mobile/providers/projection_provider.dart';
 import 'package:mobile/screens/seats_screen.dart';
 import 'package:mobile/services/api_service.dart';
 import 'package:provider/provider.dart';
@@ -24,10 +26,9 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
   List<Projection> projections = <Projection>[];
   List<Location> locations = <Location>[];
 
-  late DateProvider dateProvider;
-
-  final APIService locationService = APIService('locations');
-  final APIService projectionService = APIService('projections');
+  late DateProvider _dateProvider;
+  late LocationProvider _locationProvider;
+  late ProjectionProvider _projectionProvider;
 
   Location? selectedLocation;
   late DateTime selectedDate;
@@ -38,8 +39,12 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
   @override
   void initState() {
     super.initState();
-    dateProvider = context.read<DateProvider>();
-    selectedDate = dateProvider.selectedDate;
+
+    _dateProvider = context.read<DateProvider>();
+    _locationProvider = context.read<LocationProvider>();
+    _projectionProvider = context.read<ProjectionProvider>();
+
+    selectedDate = _dateProvider.selectedDate;
 
     loadData();
   }
@@ -59,8 +64,7 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
     params['date'] = selectedDate.toString();
     params['locationId'] = selectedLocation!.id.toString();
 
-    var data =
-        await projectionService.get<Projection>(params, Projection.fromJson);
+    var data = await _projectionProvider.get(params);
 
     setState(() {
       projections = data;
@@ -69,7 +73,7 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
   }
 
   Future loadLocations() async {
-    var data = await locationService.get<Location>(null, Location.fromJson);
+    var data = await _locationProvider.get(null);
 
     setState(() {
       selectedLocation = data.first;
@@ -284,7 +288,7 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
         firstDate: DateTime.now(),
         lastDate: DateTime(2101));
     if (picked != null && !picked.isSameDate(selectedDate)) {
-      dateProvider.addDate(picked);
+      _dateProvider.addDate(picked);
     }
   }
 

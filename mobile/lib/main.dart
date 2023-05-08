@@ -4,6 +4,10 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/models/projection.dart';
+import 'package:mobile/providers/category_provider.dart';
+import 'package:mobile/providers/location_provider.dart';
+import 'package:mobile/providers/movie_provider.dart';
+import 'package:mobile/providers/projection_provider.dart';
 import 'package:mobile/providers/seat_provider.dart';
 import 'package:mobile/providers/ticket_provider.dart';
 import 'package:mobile/providers/user_provider.dart';
@@ -35,6 +39,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SeatProvider()),
         ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => TicketProvider()),
+        ChangeNotifierProvider(create: (_) => CategoryProvider()),
+        ChangeNotifierProvider(create: (_) => MovieProvider()),
+        ChangeNotifierProvider(create: (_) => LocationProvider()),
+        ChangeNotifierProvider(create: (_) => ProjectionProvider()),
       ],
       child: MaterialApp(
         title: appTitle,
