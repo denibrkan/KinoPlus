@@ -78,6 +78,8 @@ builder.Services.AddScoped<IHallService, HallService>();
 builder.Services.AddScoped<ISeatService, SeatService>();
 builder.Services.AddScoped<ITicketService, TicketService>();
 builder.Services.AddScoped<IDayOfWeekService, DayOfWeekService>();
+builder.Services.AddScoped<IMovieReactionService, MovieReactionService>();
+
 
 var app = builder.Build();
 

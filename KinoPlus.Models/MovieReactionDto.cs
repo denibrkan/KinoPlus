@@ -2,7 +2,7 @@
 
 namespace KinoPlus.Models
 {
-    public class ReactionDto
+    public class MovieReactionDto
     {
         public int Id { get; set; }
         public byte Rating { get; set; }

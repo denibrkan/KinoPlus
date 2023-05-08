@@ -19,7 +19,8 @@ namespace KinoPlus.API.Helper
             CreateMap<MovieUpsertObject, Movie>()
                 .ForMember(x => x.MovieStatusId, opt => opt.MapFrom(y => y.StatusId));
 
-            CreateMap<MovieReaction, ReactionDto>();
+            CreateMap<MovieReaction, MovieReactionDto>();
+            CreateMap<MovieReactionUpsertObject, MovieReaction>();
             CreateMap<MovieStatus, MovieStatusDto>();
 
             CreateMap<Movie, CategoryMovieDto>()
