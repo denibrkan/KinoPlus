@@ -8,8 +8,10 @@ import 'package:mobile/models/movie.dart';
 import 'package:mobile/models/reaction.dart';
 import 'package:mobile/providers/date_provider.dart';
 import 'package:mobile/providers/movie_tab_provider.dart';
+import 'package:mobile/providers/reaction_provider.dart';
 import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/utils/get_form_input_decoration.dart';
+import 'package:mobile/utils/show_error_dialog.dart';
 import 'package:provider/provider.dart';
 
 class MovieTabs extends StatefulWidget {
@@ -23,7 +25,10 @@ class MovieTabs extends StatefulWidget {
 
 class _MovieTabsState extends State<MovieTabs> {
   TabOptions? selectedTab;
+  int rating = 3;
+
   late UserProvider _userProvider;
+  late ReactionProvider _reactionProvider;
 
   final _reactionController = TextEditingController();
 
@@ -32,6 +37,26 @@ class _MovieTabsState extends State<MovieTabs> {
     super.initState();
 
     _userProvider = context.read<UserProvider>();
+    _reactionProvider = context.read<ReactionProvider>();
+  }
+
+  onRatingUpdate(double value) {
+    rating = value.toInt();
+  }
+
+  insertReaction() async {
+    var reaction = ReactionInsert(
+      rating: rating,
+      comment: _reactionController.text,
+      movieId: widget.movie.id,
+      userId: _userProvider.user!.id,
+    );
+
+    try {
+      await _reactionProvider.insert(reaction);
+    } on Exception catch (e) {
+      showErrorDialog(context, e.toString().substring(11));
+    }
   }
 
   @override
@@ -190,7 +215,7 @@ class _MovieTabsState extends State<MovieTabs> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            r.user.username,
+                            r.user!.username,
                             style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 15,
@@ -225,9 +250,11 @@ class _MovieTabsState extends State<MovieTabs> {
         margin: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            const RatingStars(
+            RatingStars(
               rating: 3,
-              canChange: true,
+              canUpdate: true,
+              onUpdate: (value) => onRatingUpdate(value),
+              allowHalfRating: false,
             ),
             const SizedBox(
               height: 15,
@@ -245,7 +272,7 @@ class _MovieTabsState extends State<MovieTabs> {
                 ? SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => insertReaction(),
                       style: ElevatedButton.styleFrom(
                           backgroundColor:
                               const Color.fromARGB(255, 0, 101, 151),

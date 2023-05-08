@@ -3,8 +3,16 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class RatingStars extends StatefulWidget {
   final num rating;
-  final bool canChange;
-  const RatingStars({super.key, required this.rating, this.canChange = false});
+  final bool canUpdate;
+  final Function(double)? onUpdate;
+  final bool allowHalfRating;
+
+  const RatingStars(
+      {super.key,
+      required this.rating,
+      this.canUpdate = false,
+      this.onUpdate,
+      this.allowHalfRating = true});
 
   @override
   State<RatingStars> createState() => _RatingStarsState();
@@ -14,10 +22,10 @@ class _RatingStarsState extends State<RatingStars> {
   @override
   Widget build(BuildContext context) {
     return RatingBar.builder(
-      ignoreGestures: !widget.canChange,
+      ignoreGestures: !widget.canUpdate,
       initialRating: widget.rating.toDouble(),
       direction: Axis.horizontal,
-      allowHalfRating: true,
+      allowHalfRating: widget.allowHalfRating,
       itemCount: 5,
       itemSize: 22,
       itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
@@ -26,7 +34,11 @@ class _RatingStarsState extends State<RatingStars> {
         color: Colors.amber,
       ),
       unratedColor: const Color.fromARGB(50, 192, 137, 35),
-      onRatingUpdate: (rating) {},
+      onRatingUpdate: (rating) {
+        if (widget.canUpdate && widget.onUpdate != null) {
+          widget.onUpdate!(rating);
+        }
+      },
     );
   }
 }

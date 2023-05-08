@@ -44,7 +44,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
 
       return fromJson(data);
     } else {
-      throw Exception();
+      throw Exception('Greška prilikom unosa');
     }
   }
 
