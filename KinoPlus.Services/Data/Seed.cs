@@ -15,6 +15,7 @@ namespace KinoPlus.Services.Data
                 if (roles == null) return;
 
                 await db.AddRangeAsync(roles);
+                await db.SaveChangesAsync();
             }
             if (!await db.Users.AnyAsync())
             {
@@ -23,7 +24,6 @@ namespace KinoPlus.Services.Data
                 if (users == null) return;
 
                 await db.AddRangeAsync(users);
-
                 await db.SaveChangesAsync();
             }
             if (!await db.UserRoles.AnyAsync())
@@ -33,6 +33,7 @@ namespace KinoPlus.Services.Data
                 if (userRoles == null) return;
 
                 await db.AddRangeAsync(userRoles);
+                await db.SaveChangesAsync();
             }
             if (!await db.ProjectionTypes.AnyAsync())
             {
@@ -41,6 +42,7 @@ namespace KinoPlus.Services.Data
                 if (projectionTypes == null) return;
 
                 await db.AddRangeAsync(projectionTypes);
+                await db.SaveChangesAsync();
             }
             if (!await db.Categories.AnyAsync())
             {
@@ -49,6 +51,7 @@ namespace KinoPlus.Services.Data
                 if (categories == null) return;
 
                 await db.AddRangeAsync(categories);
+                await db.SaveChangesAsync();
             }
             if (!await db.Actors.AnyAsync())
             {
@@ -57,6 +60,7 @@ namespace KinoPlus.Services.Data
                 if (actors == null) return;
 
                 await db.AddRangeAsync(actors);
+                await db.SaveChangesAsync();
             }
             if (!await db.Genres.AnyAsync())
             {
@@ -65,6 +69,7 @@ namespace KinoPlus.Services.Data
                 if (genres == null) return;
 
                 await db.AddRangeAsync(genres);
+                await db.SaveChangesAsync();
             }
             if (!await db.Years.AnyAsync())
             {
@@ -73,6 +78,7 @@ namespace KinoPlus.Services.Data
                 if (years == null) return;
 
                 await db.AddRangeAsync(years);
+                await db.SaveChangesAsync();
             }
             if (!await db.MovieStatuses.AnyAsync())
             {
@@ -81,6 +87,7 @@ namespace KinoPlus.Services.Data
                 if (statuses == null) return;
 
                 await db.AddRangeAsync(statuses);
+                await db.SaveChangesAsync();
             }
             if (!await db.Halls.AnyAsync())
             {
@@ -89,6 +96,7 @@ namespace KinoPlus.Services.Data
                 if (halls == null) return;
 
                 await db.AddRangeAsync(halls);
+                await db.SaveChangesAsync();
             }
             if (!await db.Seats.AnyAsync())
             {
@@ -97,6 +105,7 @@ namespace KinoPlus.Services.Data
                 if (seats == null) return;
 
                 await db.AddRangeAsync(seats);
+                await db.SaveChangesAsync();
             }
             if (!await db.Countries.AnyAsync())
             {
@@ -114,9 +123,8 @@ namespace KinoPlus.Services.Data
                 if (cities == null) return;
 
                 await db.AddRangeAsync(cities);
+                await db.SaveChangesAsync();
             }
-
-            await db.SaveChangesAsync();
         }
     }
 }
