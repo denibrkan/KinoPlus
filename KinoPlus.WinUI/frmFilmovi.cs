@@ -52,6 +52,7 @@ namespace KinoPlus.WinUI
                     Zanr = string.Join(", ", m.Genres.Select(g => g.Name)),
                     Trajanje = m.Duration,
                     Godina = m.Year.Name,
+                    Popularnost = $"{m.Popularity}/10",
                     Kategorija = string.Join(", ", m.Categories.Select(g => g.Name)),
                     Status = m.Status.Name,
                     DatumDodavanja = m.DateCreated.ToShortDateString(),

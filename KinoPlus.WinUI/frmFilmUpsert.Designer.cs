@@ -52,9 +52,12 @@
             txtTrailer = new TextBox();
             numTrajanje = new NumericUpDown();
             errorProvider = new ErrorProvider(components);
+            lblPopularnost = new Label();
+            numPopularnost = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)pcbSlika).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numTrajanje).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numPopularnost).BeginInit();
             SuspendLayout();
             // 
             // lblNaziv
@@ -292,11 +295,37 @@
             // 
             errorProvider.ContainerControl = this;
             // 
+            // lblPopularnost
+            // 
+            lblPopularnost.AutoSize = true;
+            lblPopularnost.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPopularnost.ForeColor = SystemColors.ControlDarkDark;
+            lblPopularnost.Location = new Point(108, 376);
+            lblPopularnost.Name = "lblPopularnost";
+            lblPopularnost.Size = new Size(86, 25);
+            lblPopularnost.TabIndex = 6;
+            lblPopularnost.Text = "Popularnost";
+            // 
+            // numPopularnost
+            // 
+            numPopularnost.DecimalPlaces = 1;
+            numPopularnost.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            numPopularnost.Location = new Point(108, 404);
+            numPopularnost.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            numPopularnost.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numPopularnost.Name = "numPopularnost";
+            numPopularnost.RightToLeft = RightToLeft.No;
+            numPopularnost.Size = new Size(130, 35);
+            numPopularnost.TabIndex = 3;
+            numPopularnost.Value = new decimal(new int[] { 8, 0, 0, 0 });
+            numPopularnost.Validating += numTrajanje_Validating;
+            // 
             // frmFilmUpsert
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1270, 725);
+            Controls.Add(numPopularnost);
             Controls.Add(numTrajanje);
             Controls.Add(rtbOpis);
             Controls.Add(lbZanr);
@@ -312,6 +341,7 @@
             Controls.Add(lblKategorija);
             Controls.Add(lblStatus);
             Controls.Add(cmbGodina);
+            Controls.Add(lblPopularnost);
             Controls.Add(lblGodina);
             Controls.Add(lblTrajanje);
             Controls.Add(txtTrailer);
@@ -325,6 +355,7 @@
             ((System.ComponentModel.ISupportInitialize)pcbSlika).EndInit();
             ((System.ComponentModel.ISupportInitialize)numTrajanje).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numPopularnost).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -354,5 +385,7 @@
         private TextBox txtTrailer;
         private NumericUpDown numTrajanje;
         private ErrorProvider errorProvider;
+        private NumericUpDown numPopularnost;
+        private Label lblPopularnost;
     }
 }

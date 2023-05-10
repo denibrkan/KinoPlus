@@ -12,7 +12,9 @@ public partial class Movie
 
     public string? TrailerUrl { get; set; }
 
-    public Guid ImageId { get; set; }
+    public double Popularity { get; set; }
+
+    public Guid? ImageId { get; set; }
 
     public int YearId { get; set; }
 
@@ -20,7 +22,7 @@ public partial class Movie
 
     public DateTime DateCreated { get; set; }
 
-    public virtual Image Image { get; set; } = null!;
+    public virtual Image? Image { get; set; }
 
     public virtual ICollection<MovieActor> MovieActors { get; } = new List<MovieActor>();
 

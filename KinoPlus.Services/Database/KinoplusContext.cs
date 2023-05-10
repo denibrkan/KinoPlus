@@ -187,7 +187,6 @@ public partial class KinoplusContext : DbContext
 
             entity.HasOne(d => d.Image).WithMany(p => p.Movies)
                 .HasForeignKey(d => d.ImageId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Movie_Image");
 
             entity.HasOne(d => d.MovieStatus).WithMany(p => p.Movies)

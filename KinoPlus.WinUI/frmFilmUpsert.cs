@@ -80,6 +80,7 @@ namespace KinoPlus.WinUI
             cmbGodina.SelectedValue = movie.Year.Id;
             cmbStatus.SelectedValue = movie.Status.Id;
             rtbOpis.Text = movie.Description;
+            numPopularnost.Value = (decimal)movie.Popularity;
             pcbSlika.ImageLocation = $"{Settings.Default.ApiUrl}images/{movie.ImageId}";
             MovieImageId = movie.ImageId;
             foreach (var item in movie.Categories)
@@ -134,6 +135,7 @@ namespace KinoPlus.WinUI
             movie.StatusId = (int)cmbStatus.SelectedValue!;
             movie.YearId = (int)cmbGodina.SelectedValue!;
             movie.Description = rtbOpis.Text;
+            movie.Popularity = (double)numPopularnost.Value;
             movie.CategoryIds = lbKategorija.SelectedItems.Cast<CategoryDto>().Select(c => c.Id).ToArray();
             movie.GenreIds = lbZanr.SelectedItems.Cast<GenreDto>().Select(g => g.Id).ToArray();
             movie.ActorIds = lbUloge.SelectedItems.Cast<ActorDto>().Select(a => a.Id).ToArray();

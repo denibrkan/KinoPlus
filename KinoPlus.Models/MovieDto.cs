@@ -12,6 +12,7 @@ namespace KinoPlus.Models
         public Guid ImageId { get; set; }
         public string TrailerUrl { get; set; }
         public double AverageRating { get; set; }
+        public double Popularity { get; set; }
         public DateTime DateCreated { get; set; }
         public YearDto Year { get; set; }
         public MovieStatusDto Status { get; set; }
