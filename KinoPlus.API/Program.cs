@@ -77,7 +77,7 @@ builder.Services.AddScoped<ICityService, CityService>();
 builder.Services.AddScoped<IHallService, HallService>();
 builder.Services.AddScoped<ISeatService, SeatService>();
 builder.Services.AddScoped<ITicketService, TicketService>();
-builder.Services.AddScoped<IDayOfWeekService, DayOfWeekService>();
+builder.Services.AddScoped<IWeekDayService, WeekDayService>();
 builder.Services.AddScoped<IMovieReactionService, MovieReactionService>();
 
 

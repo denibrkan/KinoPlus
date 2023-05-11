@@ -134,10 +134,10 @@ namespace KinoPlus.Services.Data
                 await db.AddRangeAsync(locations);
                 await db.SaveChangesAsync();
             }
-            if (!await db.DayOfWeeks.AnyAsync())
+            if (!await db.WeekDays.AnyAsync())
             {
                 var dayData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/WeekDays.json");
-                var days = JsonSerializer.Deserialize<List<Database.DayOfWeek>>(dayData);
+                var days = JsonSerializer.Deserialize<List<WeekDay>>(dayData);
                 if (days == null) return;
 
                 await db.AddRangeAsync(days);

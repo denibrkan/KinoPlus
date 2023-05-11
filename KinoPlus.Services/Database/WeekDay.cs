@@ -1,6 +1,9 @@
-﻿namespace KinoPlus.Services.Database;
+﻿using System;
+using System.Collections.Generic;
 
-public partial class DayOfWeek
+namespace KinoPlus.Services.Database;
+
+public partial class WeekDay
 {
     public int Id { get; set; }
 

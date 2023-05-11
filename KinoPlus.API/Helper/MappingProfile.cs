@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using KinoPlus.Models;
+using KinoPlus.Services;
 using KinoPlus.Services.Database;
 
 namespace KinoPlus.API.Helper
@@ -78,7 +79,7 @@ namespace KinoPlus.API.Helper
             CreateMap<City, CityDto>();
             CreateMap<Country, CountryDto>();
             CreateMap<Year, YearDto>();
-            CreateMap<Services.Database.DayOfWeek, DayOfWeekDto>();
+            CreateMap<WeekDay, WeekDayDto>();
         }
 
         public double CalculateAverageRating(IEnumerable<MovieReaction> reactions)

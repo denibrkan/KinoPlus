@@ -69,9 +69,9 @@ namespace KinoPlus.Services
             {
                 var recurring = new RecurringProjection
                 {
-                    DayOfWeekId = insert.DayOfWeekId!.Value,
-                    StartsAt = insert.StartingDate!.Value,
-                    EndsAt = insert.EndingDate!.Value,
+                    WeekDayId = insert.WeekDayId!.Value,
+                    StartingDate = insert.StartingDate!.Value,
+                    EndingDate = insert.EndingDate!.Value,
                     ProjectionTime = insert.ProjectionTime!.Value.TimeOfDay,
                 };
 
@@ -100,7 +100,7 @@ namespace KinoPlus.Services
                 var comparingDate = insert.StartingDate;
                 do
                 {
-                    if (((int)comparingDate!.Value.DayOfWeek) == insert.DayOfWeekId - 1)
+                    if (((int)comparingDate!.Value.DayOfWeek) == insert.WeekDayId - 1)
                     {
                         projectionDates.Add(comparingDate.Value);
                     }

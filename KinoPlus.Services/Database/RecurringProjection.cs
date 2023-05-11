@@ -1,18 +1,21 @@
-﻿namespace KinoPlus.Services.Database;
+﻿using System;
+using System.Collections.Generic;
+
+namespace KinoPlus.Services.Database;
 
 public partial class RecurringProjection
 {
     public int Id { get; set; }
 
-    public int DayOfWeekId { get; set; }
+    public int WeekDayId { get; set; }
 
-    public DateTime StartsAt { get; set; }
+    public DateTime StartingDate { get; set; }
 
-    public DateTime EndsAt { get; set; }
+    public DateTime EndingDate { get; set; }
 
     public TimeSpan ProjectionTime { get; set; }
 
-    public virtual DayOfWeek DayOfWeek { get; set; } = null!;
-
     public virtual ICollection<Projection> Projections { get; } = new List<Projection>();
+
+    public virtual WeekDay WeekDay { get; set; } = null!;
 }

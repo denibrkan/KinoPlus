@@ -11,7 +11,7 @@ namespace KinoPlus.Models
         public DateTime? ProjectionDate { get; set; }
         public DateTime? StartingDate { get; set; }
         public DateTime? EndingDate { get; set; }
-        public int? DayOfWeekId { get; set; }
+        public int? WeekDayId { get; set; }
         [Required]
         public decimal? Price { get; set; }
         [Required]

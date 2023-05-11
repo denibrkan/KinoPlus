@@ -1,6 +1,6 @@
 ﻿namespace KinoPlus.Models
 {
-    public class DayOfWeekDto
+    public class WeekDayDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

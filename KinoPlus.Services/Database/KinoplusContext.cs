@@ -23,8 +23,6 @@ public partial class KinoplusContext : DbContext
 
     public virtual DbSet<Country> Countries { get; set; }
 
-    public virtual DbSet<DayOfWeek> DayOfWeeks { get; set; }
-
     public virtual DbSet<Genre> Genres { get; set; }
 
     public virtual DbSet<Hall> Halls { get; set; }
@@ -65,6 +63,8 @@ public partial class KinoplusContext : DbContext
 
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
+    public virtual DbSet<WeekDay> WeekDays { get; set; }
+
     public virtual DbSet<Year> Years { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -100,13 +100,6 @@ public partial class KinoplusContext : DbContext
             entity.ToTable("Country");
 
             entity.Property(e => e.Name).HasMaxLength(50);
-        });
-
-        modelBuilder.Entity<DayOfWeek>(entity =>
-        {
-            entity.ToTable("DayOfWeek");
-
-            entity.Property(e => e.Name).HasMaxLength(30);
         });
 
         modelBuilder.Entity<Genre>(entity =>
@@ -313,13 +306,13 @@ public partial class KinoplusContext : DbContext
         {
             entity.ToTable("RecurringProjection");
 
-            entity.Property(e => e.EndsAt).HasColumnType("date");
-            entity.Property(e => e.StartsAt).HasColumnType("date");
+            entity.Property(e => e.EndingDate).HasColumnType("date");
+            entity.Property(e => e.StartingDate).HasColumnType("date");
 
-            entity.HasOne(d => d.DayOfWeek).WithMany(p => p.RecurringProjections)
-                .HasForeignKey(d => d.DayOfWeekId)
+            entity.HasOne(d => d.WeekDay).WithMany(p => p.RecurringProjections)
+                .HasForeignKey(d => d.WeekDayId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_RecurringProjection_DayOfWeek");
+                .HasConstraintName("FK_RecurringProjection_WeekDay");
         });
 
         modelBuilder.Entity<Role>(entity =>
@@ -391,6 +384,13 @@ public partial class KinoplusContext : DbContext
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_UserRole_User");
+        });
+
+        modelBuilder.Entity<WeekDay>(entity =>
+        {
+            entity.ToTable("WeekDay");
+
+            entity.Property(e => e.Name).HasMaxLength(30);
         });
 
         modelBuilder.Entity<Year>(entity =>

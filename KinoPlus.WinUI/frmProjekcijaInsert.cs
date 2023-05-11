@@ -27,7 +27,7 @@ namespace KinoPlus.WinUI
 
         public async Task loadWeekDays()
         {
-            await ListControlHelper.loadControlEntity<DayOfWeekDto>(cmbDan, "DaysOfWeek", "Name");
+            await ListControlHelper.loadControlEntity<WeekDayDto>(cmbDan, "DaysOfWeek", "Name");
         }
 
         public async Task loadMovies()
@@ -109,7 +109,7 @@ namespace KinoPlus.WinUI
             projectionInsert.IsRecurring = cbRedovnaProjekcija.Checked;
             projectionInsert.StartingDate = dtpDatumPocinje.Value;
             projectionInsert.EndingDate = dtpDatumTrajeDo.Value;
-            projectionInsert.DayOfWeekId = (int?)cmbDan.SelectedValue;
+            projectionInsert.WeekDayId = (int?)cmbDan.SelectedValue;
             projectionInsert.Locations = new List<LocationHallInsertObject>();
 
             foreach (var locationHall in LocationHalls)
