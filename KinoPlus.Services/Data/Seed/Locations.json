@@ -1,0 +1,17 @@
+[
+	{
+		"Name": "Lokacija 1",
+		"Address": "Ljepsa buducnost 1",
+		"CityId": 1
+	},
+	{
+		"Name": "Lokacija 2 ",
+		"Address": "Novi zanos 54",
+		"CityId": 2
+	},
+	{
+		"Name": "Lokacija 3",
+		"Address": "Izgubljeni snovi 22",
+		"CityId": 3
+	}
+]

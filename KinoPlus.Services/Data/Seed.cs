@@ -125,6 +125,24 @@ namespace KinoPlus.Services.Data
                 await db.AddRangeAsync(cities);
                 await db.SaveChangesAsync();
             }
+            if (!await db.Locations.AnyAsync())
+            {
+                var locationData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Locations.json");
+                var locations = JsonSerializer.Deserialize<List<City>>(locationData);
+                if (locations == null) return;
+
+                await db.AddRangeAsync(locations);
+                await db.SaveChangesAsync();
+            }
+            if (!await db.DayOfWeeks.AnyAsync())
+            {
+                var dayData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Cities.json");
+                var days = JsonSerializer.Deserialize<List<City>>(dayData);
+                if (days == null) return;
+
+                await db.AddRangeAsync(days);
+                await db.SaveChangesAsync();
+            }
         }
     }
 }
