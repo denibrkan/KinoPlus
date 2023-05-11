@@ -1,0 +1,1142 @@
+[
+	{
+		"Rating": 5,
+		"MovieId": 1,
+		"UserId": 20,
+		"DateCreated": "2023-05-11T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 1,
+		"UserId": 3,
+		"DateCreated": "2023-05-10T14:50:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 1,
+		"UserId": 2,
+		"DateCreated": "2023-05-10T13:00:06.38"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 1,
+		"UserId": 19,
+		"DateCreated": "2023-05-10T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 1,
+		"UserId": 18,
+		"DateCreated": "2023-05-07T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 1,
+		"UserId": 17,
+		"DateCreated": "2023-05-06T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 1,
+		"UserId": 16,
+		"DateCreated": "2023-05-05T00:00:00"
+	},
+	{
+		"Rating": 2,
+		"MovieId": 1,
+		"UserId": 15,
+		"DateCreated": "2023-04-28T00:00:00"
+	},
+	{
+		"Rating": 2,
+		"MovieId": 1,
+		"UserId": 14,
+		"DateCreated": "2023-04-26T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 1,
+		"UserId": 13,
+		"DateCreated": "2023-04-25T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 1,
+		"UserId": 11,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 1,
+		"UserId": 12,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 1,
+		"UserId": 10,
+		"DateCreated": "2023-04-21T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 1,
+		"UserId": 8,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 1,
+		"UserId": 9,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 1,
+		"UserId": 7,
+		"DateCreated": "2023-04-19T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 1,
+		"UserId": 6,
+		"DateCreated": "2023-04-18T00:00:00"
+	},
+	{
+		"Rating": 2,
+		"MovieId": 1,
+		"UserId": 5,
+		"DateCreated": "2023-04-17T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 1,
+		"UserId": 4,
+		"DateCreated": "2023-04-16T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 2,
+		"UserId": 20,
+		"DateCreated": "2023-05-11T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 2,
+		"UserId": 3,
+		"DateCreated": "2023-05-10T14:50:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 2,
+		"UserId": 2,
+		"DateCreated": "2023-05-10T13:00:06.38"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 2,
+		"UserId": 19,
+		"DateCreated": "2023-05-10T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 2,
+		"UserId": 18,
+		"DateCreated": "2023-05-07T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 2,
+		"UserId": 17,
+		"DateCreated": "2023-05-06T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 2,
+		"UserId": 16,
+		"DateCreated": "2023-05-05T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 2,
+		"UserId": 15,
+		"DateCreated": "2023-04-28T00:00:00"
+	},
+	{
+		"Rating": 2,
+		"MovieId": 2,
+		"UserId": 14,
+		"DateCreated": "2023-04-26T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 2,
+		"UserId": 13,
+		"DateCreated": "2023-04-25T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 2,
+		"UserId": 11,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 1,
+		"MovieId": 2,
+		"UserId": 12,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 2,
+		"MovieId": 2,
+		"UserId": 10,
+		"DateCreated": "2023-04-21T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 2,
+		"UserId": 8,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 2,
+		"UserId": 9,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 2,
+		"UserId": 7,
+		"DateCreated": "2023-04-19T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 2,
+		"UserId": 6,
+		"DateCreated": "2023-04-18T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 2,
+		"UserId": 5,
+		"DateCreated": "2023-04-17T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 2,
+		"UserId": 4,
+		"DateCreated": "2023-04-16T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 3,
+		"UserId": 20,
+		"DateCreated": "2023-05-11T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 3,
+		"UserId": 3,
+		"DateCreated": "2023-05-10T14:50:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 3,
+		"UserId": 2,
+		"DateCreated": "2023-05-10T13:00:06.38"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 3,
+		"UserId": 19,
+		"DateCreated": "2023-05-10T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 3,
+		"UserId": 18,
+		"DateCreated": "2023-05-07T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 3,
+		"UserId": 17,
+		"DateCreated": "2023-05-06T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 3,
+		"UserId": 16,
+		"DateCreated": "2023-05-05T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 3,
+		"UserId": 15,
+		"DateCreated": "2023-04-28T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 3,
+		"UserId": 14,
+		"DateCreated": "2023-04-26T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 3,
+		"UserId": 13,
+		"DateCreated": "2023-04-25T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 3,
+		"UserId": 11,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 3,
+		"UserId": 12,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 3,
+		"UserId": 10,
+		"DateCreated": "2023-04-21T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 3,
+		"UserId": 8,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 3,
+		"UserId": 9,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 3,
+		"UserId": 7,
+		"DateCreated": "2023-04-19T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 3,
+		"UserId": 6,
+		"DateCreated": "2023-04-18T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 3,
+		"UserId": 5,
+		"DateCreated": "2023-04-17T00:00:00"
+	},
+	{
+		"Rating": 2,
+		"MovieId": 3,
+		"UserId": 4,
+		"DateCreated": "2023-04-16T00:00:00"
+	},
+	{
+		"Rating": 2,
+		"MovieId": 4,
+		"UserId": 20,
+		"DateCreated": "2023-05-11T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 4,
+		"UserId": 3,
+		"DateCreated": "2023-05-10T14:50:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 4,
+		"UserId": 2,
+		"DateCreated": "2023-05-10T13:00:06.38"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 4,
+		"UserId": 19,
+		"DateCreated": "2023-05-10T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 4,
+		"UserId": 18,
+		"DateCreated": "2023-05-07T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 4,
+		"UserId": 17,
+		"DateCreated": "2023-05-06T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 4,
+		"UserId": 16,
+		"DateCreated": "2023-05-05T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 4,
+		"UserId": 15,
+		"DateCreated": "2023-04-28T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 4,
+		"UserId": 14,
+		"DateCreated": "2023-04-26T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 4,
+		"UserId": 13,
+		"DateCreated": "2023-04-25T00:00:00"
+	},
+	{
+		"Rating": 1,
+		"MovieId": 4,
+		"UserId": 11,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 4,
+		"UserId": 12,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 4,
+		"UserId": 10,
+		"DateCreated": "2023-04-21T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 4,
+		"UserId": 8,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 4,
+		"UserId": 9,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 4,
+		"UserId": 7,
+		"DateCreated": "2023-04-19T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 4,
+		"UserId": 6,
+		"DateCreated": "2023-04-18T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 4,
+		"UserId": 5,
+		"DateCreated": "2023-04-17T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 4,
+		"UserId": 4,
+		"DateCreated": "2023-04-16T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 5,
+		"UserId": 20,
+		"DateCreated": "2023-05-11T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 5,
+		"UserId": 3,
+		"DateCreated": "2023-05-10T14:50:00"
+	},
+	{
+		"Rating": 1,
+		"MovieId": 5,
+		"UserId": 2,
+		"DateCreated": "2023-05-10T13:00:06.38"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 5,
+		"UserId": 19,
+		"DateCreated": "2023-05-10T00:00:00"
+	},
+	{
+		"Rating": 1,
+		"MovieId": 5,
+		"UserId": 18,
+		"DateCreated": "2023-05-07T00:00:00"
+	},
+	{
+		"Rating": 2,
+		"MovieId": 5,
+		"UserId": 17,
+		"DateCreated": "2023-05-06T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 5,
+		"UserId": 16,
+		"DateCreated": "2023-05-05T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 5,
+		"UserId": 15,
+		"DateCreated": "2023-04-28T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 5,
+		"UserId": 14,
+		"DateCreated": "2023-04-26T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 5,
+		"UserId": 13,
+		"DateCreated": "2023-04-25T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 5,
+		"UserId": 11,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 1,
+		"MovieId": 5,
+		"UserId": 12,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 5,
+		"UserId": 10,
+		"DateCreated": "2023-04-21T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 5,
+		"UserId": 8,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 5,
+		"UserId": 9,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 5,
+		"UserId": 7,
+		"DateCreated": "2023-04-19T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 5,
+		"UserId": 6,
+		"DateCreated": "2023-04-18T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 5,
+		"UserId": 5,
+		"DateCreated": "2023-04-17T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 5,
+		"UserId": 4,
+		"DateCreated": "2023-04-16T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 6,
+		"UserId": 20,
+		"DateCreated": "2023-05-11T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 6,
+		"UserId": 3,
+		"DateCreated": "2023-05-10T14:50:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 6,
+		"UserId": 2,
+		"DateCreated": "2023-05-10T13:00:06.38"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 6,
+		"UserId": 19,
+		"DateCreated": "2023-05-10T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 6,
+		"UserId": 18,
+		"DateCreated": "2023-05-07T00:00:00"
+	},
+	{
+		"Rating": 2,
+		"MovieId": 6,
+		"UserId": 17,
+		"DateCreated": "2023-05-06T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 6,
+		"UserId": 16,
+		"DateCreated": "2023-05-05T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 6,
+		"UserId": 15,
+		"DateCreated": "2023-04-28T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 6,
+		"UserId": 14,
+		"DateCreated": "2023-04-26T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 6,
+		"UserId": 13,
+		"DateCreated": "2023-04-25T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 6,
+		"UserId": 11,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 2,
+		"MovieId": 6,
+		"UserId": 12,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 6,
+		"UserId": 10,
+		"DateCreated": "2023-04-21T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 6,
+		"UserId": 8,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 2,
+		"MovieId": 6,
+		"UserId": 9,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 2,
+		"MovieId": 6,
+		"UserId": 7,
+		"DateCreated": "2023-04-19T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 6,
+		"UserId": 6,
+		"DateCreated": "2023-04-18T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 6,
+		"UserId": 5,
+		"DateCreated": "2023-04-17T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 6,
+		"UserId": 4,
+		"DateCreated": "2023-04-16T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 7,
+		"UserId": 20,
+		"DateCreated": "2023-05-11T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 7,
+		"UserId": 3,
+		"DateCreated": "2023-05-10T14:50:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 7,
+		"UserId": 2,
+		"DateCreated": "2023-05-10T13:00:06.38"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 7,
+		"UserId": 19,
+		"DateCreated": "2023-05-10T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 7,
+		"UserId": 18,
+		"DateCreated": "2023-05-07T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 7,
+		"UserId": 17,
+		"DateCreated": "2023-05-06T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 7,
+		"UserId": 16,
+		"DateCreated": "2023-05-05T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 7,
+		"UserId": 15,
+		"DateCreated": "2023-04-28T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 7,
+		"UserId": 14,
+		"DateCreated": "2023-04-26T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 7,
+		"UserId": 13,
+		"DateCreated": "2023-04-25T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 7,
+		"UserId": 11,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 7,
+		"UserId": 12,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 7,
+		"UserId": 10,
+		"DateCreated": "2023-04-21T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 7,
+		"UserId": 8,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 7,
+		"UserId": 9,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 7,
+		"UserId": 7,
+		"DateCreated": "2023-04-19T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 7,
+		"UserId": 6,
+		"DateCreated": "2023-04-18T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 7,
+		"UserId": 5,
+		"DateCreated": "2023-04-17T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 7,
+		"UserId": 4,
+		"DateCreated": "2023-04-16T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 8,
+		"UserId": 20,
+		"DateCreated": "2023-05-11T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 8,
+		"UserId": 3,
+		"DateCreated": "2023-05-10T14:50:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 8,
+		"UserId": 2,
+		"DateCreated": "2023-05-10T13:00:06.38"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 8,
+		"UserId": 19,
+		"DateCreated": "2023-05-10T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 8,
+		"UserId": 18,
+		"DateCreated": "2023-05-07T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 8,
+		"UserId": 17,
+		"DateCreated": "2023-05-06T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 8,
+		"UserId": 16,
+		"DateCreated": "2023-05-05T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 8,
+		"UserId": 15,
+		"DateCreated": "2023-04-28T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 8,
+		"UserId": 14,
+		"DateCreated": "2023-04-26T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 8,
+		"UserId": 13,
+		"DateCreated": "2023-04-25T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 8,
+		"UserId": 11,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 8,
+		"UserId": 12,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 8,
+		"UserId": 10,
+		"DateCreated": "2023-04-21T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 8,
+		"UserId": 8,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 8,
+		"UserId": 9,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 8,
+		"UserId": 7,
+		"DateCreated": "2023-04-19T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 8,
+		"UserId": 6,
+		"DateCreated": "2023-04-18T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 8,
+		"UserId": 5,
+		"DateCreated": "2023-04-17T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 8,
+		"UserId": 4,
+		"DateCreated": "2023-04-16T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 9,
+		"UserId": 20,
+		"DateCreated": "2023-05-11T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 9,
+		"UserId": 3,
+		"DateCreated": "2023-05-10T14:50:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 9,
+		"UserId": 2,
+		"DateCreated": "2023-05-10T13:00:06.38"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 9,
+		"UserId": 19,
+		"DateCreated": "2023-05-10T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 9,
+		"UserId": 18,
+		"DateCreated": "2023-05-07T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 9,
+		"UserId": 17,
+		"DateCreated": "2023-05-06T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 9,
+		"UserId": 16,
+		"DateCreated": "2023-05-05T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 9,
+		"UserId": 15,
+		"DateCreated": "2023-04-28T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 9,
+		"UserId": 14,
+		"DateCreated": "2023-04-26T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 9,
+		"UserId": 13,
+		"DateCreated": "2023-04-25T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 9,
+		"UserId": 11,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 3,
+		"MovieId": 9,
+		"UserId": 12,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 9,
+		"UserId": 10,
+		"DateCreated": "2023-04-21T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 9,
+		"UserId": 8,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 9,
+		"UserId": 9,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 9,
+		"UserId": 7,
+		"DateCreated": "2023-04-19T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 9,
+		"UserId": 6,
+		"DateCreated": "2023-04-18T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 9,
+		"UserId": 5,
+		"DateCreated": "2023-04-17T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 9,
+		"UserId": 4,
+		"DateCreated": "2023-04-16T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 10,
+		"UserId": 20,
+		"DateCreated": "2023-05-11T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 10,
+		"UserId": 3,
+		"DateCreated": "2023-05-10T14:50:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 10,
+		"UserId": 2,
+		"DateCreated": "2023-05-10T13:00:06.38"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 10,
+		"UserId": 19,
+		"DateCreated": "2023-05-10T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 10,
+		"UserId": 18,
+		"DateCreated": "2023-05-07T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 10,
+		"UserId": 17,
+		"DateCreated": "2023-05-06T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 10,
+		"UserId": 16,
+		"DateCreated": "2023-05-05T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 10,
+		"UserId": 15,
+		"DateCreated": "2023-04-28T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 10,
+		"UserId": 14,
+		"DateCreated": "2023-04-26T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 10,
+		"UserId": 13,
+		"DateCreated": "2023-04-25T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 10,
+		"UserId": 11,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 10,
+		"UserId": 12,
+		"DateCreated": "2023-04-22T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 10,
+		"UserId": 10,
+		"DateCreated": "2023-04-21T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 10,
+		"UserId": 8,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 10,
+		"UserId": 9,
+		"DateCreated": "2023-04-20T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 10,
+		"UserId": 7,
+		"DateCreated": "2023-04-19T00:00:00"
+	},
+	{
+		"Rating": 5,
+		"MovieId": 10,
+		"UserId": 6,
+		"DateCreated": "2023-04-18T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 10,
+		"UserId": 5,
+		"DateCreated": "2023-04-17T00:00:00"
+	},
+	{
+		"Rating": 4,
+		"MovieId": 10,
+		"UserId": 4,
+		"DateCreated": "2023-04-16T00:00:00"
+	}
+]

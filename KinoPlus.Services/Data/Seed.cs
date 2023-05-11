@@ -116,7 +116,7 @@ namespace KinoPlus.Services.Data
                 await db.AddRangeAsync(countries);
                 await db.SaveChangesAsync();
             }
-            if (!await db.Cities.AnyAsync() && await db.Countries.AnyAsync())
+            if (!await db.Cities.AnyAsync())
             {
                 var cityData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Cities.json");
                 var cities = JsonSerializer.Deserialize<List<City>>(cityData);
@@ -128,7 +128,7 @@ namespace KinoPlus.Services.Data
             if (!await db.Locations.AnyAsync())
             {
                 var locationData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Locations.json");
-                var locations = JsonSerializer.Deserialize<List<City>>(locationData);
+                var locations = JsonSerializer.Deserialize<List<Location>>(locationData);
                 if (locations == null) return;
 
                 await db.AddRangeAsync(locations);
@@ -136,11 +136,20 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.DayOfWeeks.AnyAsync())
             {
-                var dayData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Cities.json");
-                var days = JsonSerializer.Deserialize<List<City>>(dayData);
+                var dayData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/WeekDays.json");
+                var days = JsonSerializer.Deserialize<List<Database.DayOfWeek>>(dayData);
                 if (days == null) return;
 
                 await db.AddRangeAsync(days);
+                await db.SaveChangesAsync();
+            }
+            if (!await db.MovieReactions.AnyAsync())
+            {
+                var reactionData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/MovieReactions.json");
+                var reactions = JsonSerializer.Deserialize<List<MovieReaction>>(reactionData);
+                if (reactions == null) return;
+
+                await db.AddRangeAsync(reactions);
                 await db.SaveChangesAsync();
             }
         }
