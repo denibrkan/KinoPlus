@@ -9,7 +9,7 @@ class Ticket {
   late int userId;
   late int projectionId;
   late String movieTitle;
-  late String movieImageId;
+  late String? movieImageId;
   late String projectionStart;
   late String projectionEnd;
   late Location location;

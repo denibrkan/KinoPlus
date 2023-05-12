@@ -75,12 +75,15 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
           child: SizedBox(
             height: MediaQuery.of(context).size.height * 0.7,
             width: MediaQuery.of(context).size.width,
-            child: FadeInImage.memoryNetwork(
-              placeholder: kTransparentImage,
-              image: '$apiUrl/images/${widget.movie.imageId}?original=true',
-              fadeInCurve: Curves.linear,
-              fadeInDuration: const Duration(milliseconds: 500),
-            ),
+            child: widget.movie.imageId != null
+                ? FadeInImage.memoryNetwork(
+                    placeholder: kTransparentImage,
+                    image:
+                        '$apiUrl/images/${widget.movie.imageId}?original=true',
+                    fadeInCurve: Curves.linear,
+                    fadeInDuration: const Duration(milliseconds: 500),
+                  )
+                : const Placeholder(),
           ),
         ),
         Padding(

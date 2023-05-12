@@ -135,12 +135,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     MovieDetailScreen.routeName,
                     arguments: movie,
                   ),
-                  child: FadeInImage.memoryNetwork(
-                    placeholder: kTransparentImage,
-                    image: '$apiUrl/images/${movie.imageId}',
-                    height: 210,
-                    fadeInDuration: const Duration(milliseconds: 300),
-                  ),
+                  child: movie.imageId != null
+                      ? FadeInImage.memoryNetwork(
+                          placeholder: kTransparentImage,
+                          image: '$apiUrl/images/${movie.imageId}',
+                          height: 210,
+                          fadeInDuration: const Duration(milliseconds: 300),
+                        )
+                      : const Placeholder(
+                          fallbackHeight: 210,
+                        ),
                 ),
                 const SizedBox(
                   height: 12,
@@ -197,22 +201,24 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: c.movies.take(4).map((m) {
                         return InkWell(
-                          onTap: () => Navigator.pushNamed(
-                            context,
-                            MovieDetailScreen.routeName,
-                            arguments: m,
-                          ),
-                          child: SizedBox(
+                            onTap: () => Navigator.pushNamed(
+                                  context,
+                                  MovieDetailScreen.routeName,
+                                  arguments: m,
+                                ),
+                            child: SizedBox(
                               width: 70,
                               height: 90,
-                              child: FadeInImage.memoryNetwork(
-                                placeholder: kTransparentImage,
-                                image: '$apiUrl/images/${m.imageId}',
-                                fit: BoxFit.fill,
-                                fadeInDuration:
-                                    const Duration(milliseconds: 300),
-                              )),
-                        );
+                              child: m.imageId != null
+                                  ? FadeInImage.memoryNetwork(
+                                      placeholder: kTransparentImage,
+                                      image: '$apiUrl/images/${m.imageId}',
+                                      fit: BoxFit.fill,
+                                      fadeInDuration:
+                                          const Duration(milliseconds: 300),
+                                    )
+                                  : const Placeholder(),
+                            ));
                       }).toList(),
                     ),
                   )

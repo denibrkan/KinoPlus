@@ -47,7 +47,7 @@ namespace KinoPlus.WinUI
                 .Select(m => new
                 {
                     Id = m.Id,
-                    Slika = ImageUtility.resizeImage(ImageUtility.GetImageFromUrl(Settings.Default.ApiUrl + "images/" + m.ImageId), new Size(50, 70)),
+                    Slika = m.ImageId != null ? ImageUtility.resizeImage(ImageUtility.GetImageFromUrl(Settings.Default.ApiUrl + "images/" + m.ImageId), new Size(50, 70)) : null,
                     Naziv = m.Title,
                     Zanr = string.Join(", ", m.Genres.Select(g => g.Name)),
                     Trajanje = m.Duration,
@@ -56,7 +56,7 @@ namespace KinoPlus.WinUI
                     Kategorija = string.Join(", ", m.Categories.Select(g => g.Name)),
                     Status = m.Status.Name,
                     DatumDodavanja = m.DateCreated.ToShortDateString(),
-                    Ocjena = m.AverageRating != 0 ? m.AverageRating.ToString() + "/5" : "-",
+                    Ocjena = m.AverageRating != 0 ? m.AverageRating.ToString("F") + "/5" : "-",
                 })
                 .ToList();
 

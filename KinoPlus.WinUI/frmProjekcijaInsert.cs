@@ -27,7 +27,7 @@ namespace KinoPlus.WinUI
 
         public async Task loadWeekDays()
         {
-            await ListControlHelper.loadControlEntity<WeekDayDto>(cmbDan, "DaysOfWeek", "Name");
+            await ListControlHelper.loadControlEntity<WeekDayDto>(cmbDan, "WeekDays", "Name");
         }
 
         public async Task loadMovies()

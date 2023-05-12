@@ -211,9 +211,9 @@ class _MovieTabsState extends State<MovieTabs> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         RatingStars(rating: r.rating, size: 16),
-                        SizedBox(height: 12),
+                        const SizedBox(height: 12),
                         Container(
-                          margin: EdgeInsets.only(left: 4),
+                          margin: const EdgeInsets.only(left: 4),
                           child: Text(
                             r.comment ?? '',
                             style: const TextStyle(

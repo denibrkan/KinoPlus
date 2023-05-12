@@ -7,7 +7,7 @@ class Movie {
   String title;
   int duration;
   String description;
-  String imageId;
+  String? imageId;
   String? trailerUrl;
   num averageRating;
   String dateCreated;

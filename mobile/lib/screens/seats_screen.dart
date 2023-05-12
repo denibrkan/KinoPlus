@@ -248,12 +248,15 @@ class _SeatsScreenState extends State<SeatsScreen> {
               margin: const EdgeInsets.only(right: 20),
               width: 40,
               height: 50,
-              child: FadeInImage.memoryNetwork(
-                placeholder: kTransparentImage,
-                image: '$apiUrl/images/${widget.projection.movie.imageId}',
-                fit: BoxFit.fill,
-                fadeInDuration: const Duration(milliseconds: 300),
-              )),
+              child: widget.projection.movie.imageId != null
+                  ? FadeInImage.memoryNetwork(
+                      placeholder: kTransparentImage,
+                      image:
+                          '$apiUrl/images/${widget.projection.movie.imageId}',
+                      fit: BoxFit.fill,
+                      fadeInDuration: const Duration(milliseconds: 300),
+                    )
+                  : const Placeholder()),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

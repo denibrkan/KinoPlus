@@ -107,14 +107,19 @@ class _TicketsScreenState extends State<TicketsScreen> {
                         topLeft: Radius.circular(12),
                         topRight: Radius.circular(12),
                       ),
-                      child: FadeInImage.memoryNetwork(
-                        placeholder: kTransparentImage,
-                        image: '$apiUrl/images/${t.movieImageId}?original=true',
-                        height: 270,
-                        width: MediaQuery.of(context).size.width,
-                        fadeInDuration: const Duration(milliseconds: 300),
-                        fit: BoxFit.cover,
-                      ),
+                      child: t.movieImageId != null
+                          ? FadeInImage.memoryNetwork(
+                              placeholder: kTransparentImage,
+                              image:
+                                  '$apiUrl/images/${t.movieImageId}?original=true',
+                              height: 270,
+                              width: MediaQuery.of(context).size.width,
+                              fadeInDuration: const Duration(milliseconds: 300),
+                              fit: BoxFit.cover,
+                            )
+                          : const Placeholder(
+                              fallbackHeight: 270,
+                            ),
                     ),
                     Container(
                       color: const Color(0xFF2B3543),

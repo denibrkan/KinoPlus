@@ -9,7 +9,7 @@ namespace KinoPlus.WinUI
     public partial class frmFilmUpsert : Form
     {
         public APIService MovieService { get; set; } = new APIService("movies");
-        public Guid MovieImageId { get; set; }
+        public Guid? MovieImageId { get; set; }
         public bool isEdit { get; set; }
         public int? EditMovieId { get; set; }
 

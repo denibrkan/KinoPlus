@@ -9,7 +9,7 @@ namespace KinoPlus.Models
         public string Title { get; set; }
         public int Duration { get; set; }
         public string Description { get; set; }
-        public Guid ImageId { get; set; }
+        public Guid? ImageId { get; set; }
         public string TrailerUrl { get; set; }
         public double AverageRating { get; set; }
         public DateTime DateCreated { get; set; }
