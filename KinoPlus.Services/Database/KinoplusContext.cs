@@ -396,6 +396,8 @@ public partial class KinoplusContext : DbContext
         modelBuilder.Entity<Year>(entity =>
         {
             entity.ToTable("Year");
+
+            entity.Property(e => e.Name).HasMaxLength(10);
         });
 
         OnModelCreatingPartial(modelBuilder);

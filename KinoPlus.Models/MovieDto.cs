@@ -20,6 +20,5 @@ namespace KinoPlus.Models
         public List<ActorDto> Actors { get; set; }
         public List<GenreDto> Genres { get; set; }
         public List<MovieReactionDto> Reactions { get; set; }
-        //public List<ProjectionDto> Projections { get; set; }
     }
 }

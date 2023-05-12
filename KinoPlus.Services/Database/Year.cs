@@ -4,7 +4,7 @@ public partial class Year
 {
     public int Id { get; set; }
 
-    public int Name { get; set; }
+    public string Name { get; set; } = null!;
 
     public virtual ICollection<Movie> Movies { get; } = new List<Movie>();
 }

@@ -1,0 +1,102 @@
+[
+	{
+		"Title": "Up",
+		"Duration": 113,
+		"Description": "Carl, stari udovac, kreće u avanturu u svojoj letećoj kući u potrazi za Rajskim vodopadima, odredištem iz snova njegove žene.",
+		"TrailerUrl": "https://www.youtube.com/watch?v=HWEW_qTLSEE",
+		"Popularity": 9,
+		"DateCreated": "2023-05-11T17:38:04.09",
+		"YearId": 15,
+		"MovieStatusId": 2
+	},
+	{
+		"Title": "War Dogs",
+		"Duration": 143,
+		"Description": "Trgovci sitnim oružjem DavId Packouz i Efraim Diveroli dobivaju veliki odmor kada im se dodjeljuje ugovor od milion dolara od američke vlade.",
+		"TrailerUrl": "https://www.youtube.com/watch?v=Rwh9c_E3dJk",
+		"Popularity": 8,
+		"DateCreated": "2023-05-11T17:36:20.883",
+		"YearId": 17,
+		"MovieStatusId": 1
+	},
+	{
+		"Title": "Barbie",
+		"Duration": 102,
+		"Description": "Nakon što je izbačena iz Barbielanda jer je lutka manje nego savršenog izgleda, Barbie kreće u ljudski svijet da pronađe pravu sreću.",
+		"TrailerUrl": "https://www.youtube.com/watch?v=GRyt3Ov4zz0",
+		"Popularity": 7.3,
+		"DateCreated": "2023-05-11T17:35:05.777",
+		"YearId": 24,
+		"MovieStatusId": 1
+	},
+	{
+		"Title": "The Girl next door",
+		"Duration": 89,
+		"Description": "Matthew, maturant, misli da je pronašao ženu svojih snova. Međutim, ubrzo saznaje da je Danielle, predmet njegove naklonosti, bivša filmska glumica za odrasle.",
+		"TrailerUrl": "https://www.youtube.com/watch?v=VANdjKvdLp4",
+		"Popularity": 6,
+		"DateCreated": "2023-05-11T17:33:39.26",
+		"YearId": 5,
+		"MovieStatusId": 1
+	},
+	{
+		"Title": "John Wick 4",
+		"Duration": 172,
+		"Description": "S obzirom da mu cijena glave stalno raste, legendarni ubica John Wick vodi borbu protiv High Table globalnog dok traži najmoćnije igrače u podzemlju, od New Yorka preko Pariza, Japana do Berlina.",
+		"TrailerUrl": "https://www.youtube.com/watch?v=yjRHZEUamCc",
+		"Popularity": 9,
+		"DateCreated": "2023-05-11T17:32:13.96",
+		"YearId": 24,
+		"MovieStatusId": 1
+	},
+	{
+		"Title": "All Quiet on the Western Front",
+		"Duration": 97,
+		"Description": "Rat izbija u Njemačkoj 1914. Paul Bäumer i njegovi drugovi iz razreda brzo se prijavljuju u vojsku da služe svojoj domovini. Čim su regrutovani, prve slike sa bojnog polja pokazuju im realnost rata.",
+		"TrailerUrl": "https://www.youtube.com/watch?v=hf8EYbVxtCY",
+		"Popularity": 7,
+		"DateCreated": "2023-05-11T17:30:50.483",
+		"YearId": 23,
+		"MovieStatusId": 1
+	},
+	{
+		"Title": "Super Mario Bros Movie",
+		"Duration": 122,
+		"Description": "Uz pomoć princeze Peach, Mario se sprema da se obračuna sa svemoćnim Bowserom kako bi zaustavio svoje planove za osvajanje svijeta.",
+		"TrailerUrl": "https://www.youtube.com/watch?v=TnGl01FkMMo",
+		"Popularity": 7.5,
+		"DateCreated": "2023-05-11T17:28:24.667",
+		"YearId": 24,
+		"MovieStatusId": 1
+	},
+	{
+		"Title": "Avatar: The Way of Water",
+		"Duration": 109,
+		"Description": "Jake Sully i Ney'tiri su osnovali porodicu i čine sve da ostanu zajedno. Međutim, moraju napustiti svoj dom i istražiti regije Pandore. Kada se drevna prijetnja ponovo pojavi, Jake mora voditi težak rat protiv ljudi.",
+		"TrailerUrl": "https://www.youtube.com/watch?v=d9MyW72ELq0",
+		"Popularity": 8.4,
+		"DateCreated": "2023-05-11T17:26:57.387",
+		"YearId": 23,
+		"MovieStatusId": 1
+	},
+	{
+		"Title": "Shawshank Redemption",
+		"Duration": 156,
+		"Description": "Andy Dufresne, uspješni bankar, uhapšen je zbog ubistava svoje žene i njenog ljubavnika i osuđen na doživotni zatvor u zatvoru Shawshank. Postaje najnekonvencionalniji zatvorenik.",
+		"TrailerUrl": "https://www.youtube.com/watch?v=NmzuHjWmXOc",
+		"Popularity": 9.5,
+		"DateCreated": "2023-05-11T17:25:31.287",
+		"YearId": 1,
+		"MovieStatusId": 1
+	},
+	{
+		"Title": "Top Gun: Maverick",
+		"Duration": 105,
+		"Description": "Nakon više od 30 godina službe kao jedan od najboljih mornaričkih avijatičara, Pete \"Maverick\" Mitchell je tamo gdje mu je mjesto, pogurao je okvir kao hrabri probni pilot i izbjegao napredak u činu koji bi ga prizemljio. Obučavajući odred diplomaca za poseban zadatak, Maverick se mora suočiti s duhovima svoje prošlosti i svojim najdubljim strahovima, što kulminira misijom koja zahtijeva konačnu žrtvu od onih koji odluče da njome lete.",
+		"TrailerUrl": "https://www.youtube.com/watch?v=giXco2jaZ_4&t=24s",
+		"Popularity": 8,
+		"DateCreated": "2023-05-11T17:24:05.583",
+		"YearId": 23,
+		"MovieStatusId": 1
+	}
+]

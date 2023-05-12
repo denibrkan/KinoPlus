@@ -143,6 +143,42 @@ namespace KinoPlus.Services.Data
                 await db.AddRangeAsync(days);
                 await db.SaveChangesAsync();
             }
+            if (!await db.Movies.AnyAsync())
+            {
+                var movieData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Movies.json");
+                var movies = JsonSerializer.Deserialize<List<Movie>>(movieData);
+                if (movies == null) return;
+
+                await db.AddRangeAsync(movies);
+                await db.SaveChangesAsync();
+            }
+            if (!await db.MovieGenres.AnyAsync())
+            {
+                var movieGenreData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/MovieGenres.json");
+                var movieGenres = JsonSerializer.Deserialize<List<MovieGenre>>(movieGenreData);
+                if (movieGenres == null) return;
+
+                await db.AddRangeAsync(movieGenres);
+                await db.SaveChangesAsync();
+            }
+            if (!await db.MovieCategories.AnyAsync())
+            {
+                var movieCategoryData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/MovieCategories.json");
+                var movieCategories = JsonSerializer.Deserialize<List<MovieCategory>>(movieCategoryData);
+                if (movieCategories == null) return;
+
+                await db.AddRangeAsync(movieCategories);
+                await db.SaveChangesAsync();
+            }
+            if (!await db.MovieActors.AnyAsync())
+            {
+                var movieActorData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/MovieActors.json");
+                var movieActors = JsonSerializer.Deserialize<List<MovieActor>>(movieActorData);
+                if (movieActors == null) return;
+
+                await db.AddRangeAsync(movieActors);
+                await db.SaveChangesAsync();
+            }
             if (!await db.MovieReactions.AnyAsync())
             {
                 var reactionData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/MovieReactions.json");

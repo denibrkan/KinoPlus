@@ -1,0 +1,82 @@
+[
+	{
+		"MovieId": 1,
+		"GenreId": 1
+	},
+	{
+		"MovieId": 1,
+		"GenreId": 3
+	},
+	{
+		"MovieId": 2,
+		"GenreId": 2
+	},
+	{
+		"MovieId": 2,
+		"GenreId": 6
+	},
+	{
+		"MovieId": 2,
+		"GenreId": 11
+	},
+	{
+		"MovieId": 3,
+		"GenreId": 1
+	},
+	{
+		"MovieId": 3,
+		"GenreId": 7
+	},
+	{
+		"MovieId": 3,
+		"GenreId": 11
+	},
+	{
+		"MovieId": 4,
+		"GenreId": 11
+	},
+	{
+		"MovieId": 5,
+		"GenreId": 5
+	},
+	{
+		"MovieId": 5,
+		"GenreId": 6
+	},
+	{
+		"MovieId": 6,
+		"GenreId": 5
+	},
+	{
+		"MovieId": 6,
+		"GenreId": 12
+	},
+	{
+		"MovieId": 7,
+		"GenreId": 1
+	},
+	{
+		"MovieId": 7,
+		"GenreId": 3
+	},
+	{
+		"MovieId": 8,
+		"GenreId": 1
+	},
+	{
+		"MovieId": 8,
+		"GenreId": 7
+	},
+	{
+		"MovieId": 9,
+		"GenreId": 2
+	},
+	{
+		"MovieId": 9,
+		"GenreId": 6
+	},
+	{
+		"MovieId": 10,
+		"GenreId": 5
+	}
+]
