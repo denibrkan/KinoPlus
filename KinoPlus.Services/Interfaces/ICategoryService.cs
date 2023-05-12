@@ -3,7 +3,7 @@ using KinoPlus.Services.Database;
 
 namespace KinoPlus.Services.Interfaces
 {
-    public interface ICategoryService : ICRUDService<Category, CategoryInsertObject, CategoryUpdateObject, CategorySearchObject>
+    public interface ICategoryService : ICRUDService<Category, CategoryUpsertObject, CategoryUpsertObject, CategorySearchObject>
     {
     }
 }

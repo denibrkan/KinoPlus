@@ -34,7 +34,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ProjectionDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Update="frmKategorije.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmKorisnici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmKategorijaUpsert.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="kinoplusDataSet2.Designer.cs">

@@ -79,6 +79,11 @@ namespace KinoPlus.WinUI
                 Locations.Clear();
                 return;
             }
+            if (typeof(List<T>) == Categories.GetType())
+            {
+                Categories.Clear();
+                return;
+            }
 
             throw new Exception("non existant cache entity");
         }

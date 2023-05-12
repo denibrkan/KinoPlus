@@ -6,5 +6,9 @@ public partial class Category
 
     public string Name { get; set; } = null!;
 
+    public int OrderPoints { get; set; }
+
+    public bool IsDisplayed { get; set; }
+
     public virtual ICollection<MovieCategory> MovieCategories { get; } = new List<MovieCategory>();
 }

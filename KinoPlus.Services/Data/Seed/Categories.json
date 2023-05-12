@@ -1,38 +1,52 @@
 [
 	{
-		"Name": "Uskoro"
+		"Name": "Uskoro",
+		"OrderPoints": 100,
+		"IsDisplayed": true
 	},
 	{
-		"Name": "Pretpremijera"
+		"Name": "Pretpremijera",
+		"OrderPoints": 90,
+		"IsDisplayed": true
 	},
 	{
-		"Name": "Premijera"
+		"Name": "Premijera",
+		"OrderPoints": 80,
+		"IsDisplayed": true
 	},
 	{
-		"Name": "3D"
+		"Name": "3D",
+		"OrderPoints": 70,
+		"IsDisplayed": false
 	},
 	{
-		"Name": "4D"
+		"Name": "4D",
+		"OrderPoints": 60,
+		"IsDisplayed": true
 	},
 	{
-		"Name": "Klasik"
+		"Name": "Klasik",
+		"OrderPoints": 50,
+		"IsDisplayed": false
 	},
 	{
-		"Name": "Dječiji"
+		"Name": "Dječiji",
+		"OrderPoints": 40,
+		"IsDisplayed": false
 	},
 	{
-		"Name": "Animirani"
+		"Name": "Animirani",
+		"OrderPoints": 30,
+		"IsDisplayed": true
 	},
 	{
-		"Name": "Domaći"
+		"Name": "Domaći",
+		"OrderPoints": 20,
+		"IsDisplayed": false
 	},
 	{
-		"Name": "Oskar"
-	},
-	{
-		"Name": "Komedija"
-	},
-	{
-		"Name": "Ratni"
+		"Name": "Oskar",
+		"OrderPoints": 10,
+		"IsDisplayed": false
 	}
 ]

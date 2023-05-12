@@ -82,16 +82,5 @@ namespace KinoPlus.WinUI
             }
             await loadUsers();
         }
-
-        private async void btnDodaj_Click(object sender, EventArgs e)
-        {
-            var frmKorisniciUpsert = new frmLokacijaUpsert();
-
-            if (frmKorisniciUpsert.ShowDialog() == DialogResult.OK)
-            {
-                await loadUsers();
-            }
-        }
-
     }
 }

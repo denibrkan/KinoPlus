@@ -34,8 +34,7 @@ namespace KinoPlus.API.Helper
             CreateMap<Category, MovieCategoryDto>();
             CreateMap<Category, CategoryDto>()
                 .ForMember(x => x.Movies, options => options.MapFrom(y => y.MovieCategories.Select(z => z.Movie)));
-            CreateMap<CategoryInsertObject, Category>();
-            CreateMap<CategoryUpdateObject, Category>();
+            CreateMap<CategoryUpsertObject, Category>();
 
             CreateMap<User, UserDto>()
                 .ForMember(x => x.Roles, opt => opt.MapFrom(y => y.UserRoles.Select(z => z.Role)))

@@ -36,7 +36,6 @@
             btnNazad = new Button();
             txtTrazi = new TextBox();
             btnTrazi = new Button();
-            btnDodaj = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvKorisnici).BeginInit();
             SuspendLayout();
             // 
@@ -127,26 +126,12 @@
             btnTrazi.UseVisualStyleBackColor = true;
             btnTrazi.Click += btnTrazi_Click;
             // 
-            // btnDodaj
-            // 
-            btnDodaj.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnDodaj.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDodaj.Location = new Point(1041, 83);
-            btnDodaj.Margin = new Padding(4, 3, 4, 3);
-            btnDodaj.Name = "btnDodaj";
-            btnDodaj.Size = new Size(122, 33);
-            btnDodaj.TabIndex = 15;
-            btnDodaj.Text = "Dodaj";
-            btnDodaj.UseVisualStyleBackColor = true;
-            btnDodaj.Click += btnDodaj_Click;
-            // 
             // frmKorisnici
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1275, 797);
             ControlBox = false;
-            Controls.Add(btnDodaj);
             Controls.Add(txtTrazi);
             Controls.Add(btnTrazi);
             Controls.Add(lblPaging);
@@ -170,6 +155,5 @@
         private Button btnNazad;
         private TextBox txtTrazi;
         private Button btnTrazi;
-        private Button btnDodaj;
     }
 }
