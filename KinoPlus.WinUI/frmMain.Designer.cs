@@ -81,6 +81,7 @@
             korisniciToolStripMenuItem.Padding = new Padding(20, 10, 20, 10);
             korisniciToolStripMenuItem.Size = new Size(114, 51);
             korisniciToolStripMenuItem.Text = "Korisnici";
+            korisniciToolStripMenuItem.Click += korisniciToolStripMenuItem_Click;
             // 
             // lokacijeToolStripMenuItem
             // 

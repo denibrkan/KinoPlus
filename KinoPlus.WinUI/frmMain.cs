@@ -87,5 +87,16 @@
 
             frmIzvjestaji.Show();
         }
+
+        private void korisniciToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.ActiveMdiChild?.Close();
+
+            var frmKorisnici = new frmKorisnici();
+            frmKorisnici.MdiParent = this;
+            frmKorisnici.WindowState = FormWindowState.Maximized;
+
+            frmKorisnici.Show();
+        }
     }
 }

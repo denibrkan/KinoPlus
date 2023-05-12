@@ -5,7 +5,7 @@ using KinoPlus.Services.Interfaces;
 
 namespace KinoPlus.API.Controllers
 {
-    public class UsersController : BaseCRUDController<User, UserDto, UserInsertObject, UserUpdateObject, BaseSearchObject>
+    public class UsersController : BaseCRUDController<User, UserDto, UserInsertObject, UserUpdateObject, UserSearchObject>
     {
         public UsersController(IUserService service, IMapper mapper) : base(service, mapper)
         {

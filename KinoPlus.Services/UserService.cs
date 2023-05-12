@@ -8,13 +8,24 @@ using System.Text;
 
 namespace KinoPlus.Services
 {
-    public class UserService : BaseCRUDService<User, UserInsertObject, UserUpdateObject, BaseSearchObject>, IUserService
+    public class UserService : BaseCRUDService<User, UserInsertObject, UserUpdateObject, UserSearchObject>, IUserService
     {
         private readonly KinoplusContext _context;
 
         public UserService(KinoplusContext context, IMapper mapper) : base(context, mapper)
         {
             _context = context;
+        }
+
+        public override IQueryable<User> AddFilter(IQueryable<User> query, UserSearchObject search)
+        {
+            if (!string.IsNullOrEmpty(search.NameFTS))
+            {
+                query = query.Where(l => (l.FirstName + " " + l.LastName).Contains(search.NameFTS) ||
+                                        (l.LastName + " " + l.FirstName).Contains(search.NameFTS));
+            }
+
+            return query;
         }
 
         public async override Task<User> InsertAsync(UserInsertObject insert)
@@ -57,7 +68,7 @@ namespace KinoPlus.Services
             return await query.SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public override IQueryable<User> AddInclude(IQueryable<User> query, BaseSearchObject? search)
+        public override IQueryable<User> AddInclude(IQueryable<User> query, UserSearchObject? search)
         {
             query = base.AddInclude(query, search);
 
