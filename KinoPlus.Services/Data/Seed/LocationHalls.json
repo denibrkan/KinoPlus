@@ -1,0 +1,82 @@
+[
+	{
+		"LocationId": 1,
+		"HallId": 1
+	},
+	{
+		"LocationId": 1,
+		"HallId": 2
+	},
+	{
+		"LocationId": 1,
+		"HallId": 3
+	},
+	{
+		"LocationId": 1,
+		"HallId": 4
+	},
+	{
+		"LocationId": 1,
+		"HallId": 5
+	},
+	{
+		"LocationId": 1,
+		"HallId": 6
+	},
+	{
+		"LocationId": 1,
+		"HallId": 7
+	},
+	{
+		"LocationId": 1,
+		"HallId": 8
+	},
+	{
+		"LocationId": 1,
+		"HallId": 9
+	},
+	{
+		"LocationId": 1,
+		"HallId": 10
+	},
+	{
+		"LocationId": 2,
+		"HallId": 1
+	},
+	{
+		"LocationId": 2,
+		"HallId": 2
+	},
+	{
+		"LocationId": 2,
+		"HallId": 3
+	},
+	{
+		"LocationId": 2,
+		"HallId": 4
+	},
+	{
+		"LocationId": 2,
+		"HallId": 5
+	},
+	{
+		"LocationId": 3,
+		"HallId": 1
+	},
+	{
+		"LocationId": 3,
+		"HallId": 2
+	},
+	{
+		"LocationId": 3,
+		"HallId": 3
+	},
+	{
+		"LocationId": 3,
+		"HallId": 4
+	},
+	{
+		"LocationId": 3,
+		"HallId": 5
+	}
+]

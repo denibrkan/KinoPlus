@@ -134,6 +134,24 @@ namespace KinoPlus.Services.Data
                 await db.AddRangeAsync(locations);
                 await db.SaveChangesAsync();
             }
+            if (!await db.LocationHalls.AnyAsync())
+            {
+                var locationHallData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/LocationHalls.json");
+                var locationHalls = JsonSerializer.Deserialize<List<LocationHall>>(locationHallData);
+                if (locationHalls == null) return;
+
+                await db.AddRangeAsync(locationHalls);
+                await db.SaveChangesAsync();
+            }
+            if (!await db.LocationProjectionTypes.AnyAsync())
+            {
+                var locationProjectionTypeData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/LocationProjectionTypes.json");
+                var locationProjectionTypes = JsonSerializer.Deserialize<List<LocationProjectionType>>(locationProjectionTypeData);
+                if (locationProjectionTypes == null) return;
+
+                await db.AddRangeAsync(locationProjectionTypes);
+                await db.SaveChangesAsync();
+            }
             if (!await db.WeekDays.AnyAsync())
             {
                 var dayData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/WeekDays.json");

@@ -1,0 +1,50 @@
+[
+	{
+		"LocationId": 1,
+		"ProjectionTypeId": 1
+	},
+	{
+		"LocationId": 1,
+		"ProjectionTypeId": 2
+	},
+	{
+		"LocationId": 1,
+		"ProjectionTypeId": 3
+	},
+	{
+		"LocationId": 1,
+		"ProjectionTypeId": 4
+	},
+	{
+		"LocationId": 2,
+		"ProjectionTypeId": 1
+	},
+	{
+		"LocationId": 2,
+		"ProjectionTypeId": 2
+	},
+	{
+		"LocationId": 2,
+		"ProjectionTypeId": 3
+	},
+	{
+		"LocationId": 2,
+		"ProjectionTypeId": 4
+	},
+	{
+		"LocationId": 3,
+		"ProjectionTypeId": 1
+	},
+	{
+		"LocationId": 3,
+		"ProjectionTypeId": 2
+	},
+	{
+		"LocationId": 3,
+		"ProjectionTypeId": 3
+	},
+	{
+		"LocationId": 3,
+		"ProjectionTypeId": 4
+	}
+]

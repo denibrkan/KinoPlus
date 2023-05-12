@@ -1,17 +1,32 @@
 [
-  {
-    "Name": "Dvorana 1"
-  },
-  {
-    "Name": "Dvorana 2"
-  },
-  {
-    "Name": "Dvorana 3"
-  },
-  {
-    "Name": "Dvorana 4"
-  },
-  {
-    "Name": "Dvorana 5"
-  }
+	{
+		"Name": "Dvorana 1"
+	},
+	{
+		"Name": "Dvorana 2"
+	},
+	{
+		"Name": "Dvorana 3"
+	},
+	{
+		"Name": "Dvorana 4"
+	},
+	{
+		"Name": "Dvorana 5"
+	},
+	{
+		"Name": "Dvorana 6"
+	},
+	{
+		"Name": "Dvorana 7"
+	},
+	{
+		"Name": "Dvorana 8"
+	},
+	{
+		"Name": "Dvorana 9"
+	},
+	{
+		"Name": "Dvorana 10"
+	}
 ]

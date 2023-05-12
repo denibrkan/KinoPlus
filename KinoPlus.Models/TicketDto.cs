@@ -11,7 +11,7 @@ namespace KinoPlus.Models
         public int ProjectionId { get; set; }
         public SeatDto Seat { get; set; }
         public string MovieTitle { get; set; }
-        public Guid MovieImageId { get; set; }
+        public Guid? MovieImageId { get; set; }
         public DateTime ProjectionStart { get; set; }
         public DateTime ProjectionEnd { get; set; }
         public HallDto Hall { get; set; }

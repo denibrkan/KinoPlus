@@ -45,7 +45,7 @@ namespace KinoPlus.WinUI
                 .Select(p => new
                 {
                     Id = p.Id,
-                    Slika = ImageUtility.resizeImage(ImageUtility.GetImageFromUrl(Settings.Default.ApiUrl + "images/" + p.Movie.ImageId), new Size(50, 70)),
+                    Slika = p.Movie.ImageId != null ? ImageUtility.resizeImage(ImageUtility.GetImageFromUrl(Settings.Default.ApiUrl + "images/" + p.Movie.ImageId), new Size(50, 70)) : null,
                     Naziv = p.Movie.Title,
                     Vrijeme = $"{p.StartsAt.ToShortTimeString()} - {p.EndsAt.ToShortTimeString()}",
                     Trajanje = p.Movie.Duration,
