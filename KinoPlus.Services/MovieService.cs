@@ -15,6 +15,34 @@ namespace KinoPlus.Services
             _context = context;
         }
 
+        public async Task<List<Movie>> GetMostPopularAsync()
+        {
+            var activeStatus = _context.MovieStatuses.Single(s => s.Name == "Active");
+            var query = _context.Movies.AsQueryable();
+
+            query = AddInclude(query, null);
+
+            return await query
+                 .Where(m => m.MovieStatusId == activeStatus.Id)
+                 .OrderByDescending(m => m.Popularity)
+                 .Take(5)
+                 .ToListAsync();
+        }
+
+        public List<Movie> GetByIds(List<int> ids)
+        {
+            var activeStatus = _context.MovieStatuses.Single(s => s.Name == "Active");
+            var query = _context.Movies.AsQueryable();
+
+            query = AddInclude(query, null);
+
+            return query
+                 .Where(m => m.MovieStatusId == activeStatus.Id && ids.Contains(m.Id))
+                 .AsEnumerable()
+                 .OrderBy(x => ids.IndexOf(x.Id))
+                 .ToList();
+        }
+
         public override async Task<Movie?> GetByIdAsync(int id)
         {
             var query = _context.Movies.AsQueryable();

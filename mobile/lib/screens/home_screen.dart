@@ -5,6 +5,7 @@ import 'package:mobile/models/category.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/providers/category_provider.dart';
 import 'package:mobile/providers/movie_provider.dart';
+import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/movie_detail_screen.dart';
 import 'package:mobile/utils/show_error_dialog.dart';
 import 'package:provider/provider.dart';
@@ -25,10 +26,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   late CategoryProvider _categoryProvider;
   late MovieProvider _movieProvider;
+  late UserProvider _userProvider;
 
   Future<List<Movie>> fetchMovies() async {
     try {
-      return await _movieProvider.get(null);
+      return await _movieProvider.recommend(_userProvider.user!.id);
     } catch (e) {
       showErrorDialog(context, e.toString().substring(11));
 
@@ -53,6 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     _categoryProvider = context.read<CategoryProvider>();
     _movieProvider = context.read<MovieProvider>();
+    _userProvider = context.read<UserProvider>();
 
     futureMovies = fetchMovies();
     futureCategories = fetchByCategories();

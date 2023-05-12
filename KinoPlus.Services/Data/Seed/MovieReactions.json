@@ -914,12 +914,6 @@
 	{
 		"Rating": 5,
 		"MovieId": 9,
-		"UserId": 20,
-		"DateCreated": "2023-05-11T00:00:00"
-	},
-	{
-		"Rating": 5,
-		"MovieId": 9,
 		"UserId": 3,
 		"DateCreated": "2023-05-10T14:50:00"
 	},
@@ -928,12 +922,6 @@
 		"MovieId": 9,
 		"UserId": 2,
 		"DateCreated": "2023-05-10T13:00:06.38"
-	},
-	{
-		"Rating": 5,
-		"MovieId": 9,
-		"UserId": 19,
-		"DateCreated": "2023-05-10T00:00:00"
 	},
 	{
 		"Rating": 4,
@@ -1028,12 +1016,6 @@
 	{
 		"Rating": 5,
 		"MovieId": 10,
-		"UserId": 20,
-		"DateCreated": "2023-05-11T00:00:00"
-	},
-	{
-		"Rating": 5,
-		"MovieId": 10,
 		"UserId": 3,
 		"DateCreated": "2023-05-10T14:50:00"
 	},
@@ -1042,12 +1024,6 @@
 		"MovieId": 10,
 		"UserId": 2,
 		"DateCreated": "2023-05-10T13:00:06.38"
-	},
-	{
-		"Rating": 5,
-		"MovieId": 10,
-		"UserId": 19,
-		"DateCreated": "2023-05-10T00:00:00"
 	},
 	{
 		"Rating": 4,
