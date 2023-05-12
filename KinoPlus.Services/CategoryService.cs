@@ -55,6 +55,10 @@ namespace KinoPlus.Services
 
         public override IQueryable<Category> AddFilter(IQueryable<Category> query, CategorySearchObject search)
         {
+            if (search.IsDisplayed.HasValue && search.IsDisplayed.Value == true)
+            {
+                query = query.Where(c => c.IsDisplayed);
+            }
             if (!string.IsNullOrEmpty(search.NameFTS))
             {
                 query = query.Where(c => c.Name.Contains(search.NameFTS));
