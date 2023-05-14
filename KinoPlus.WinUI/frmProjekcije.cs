@@ -61,6 +61,8 @@ namespace KinoPlus.WinUI
 
             dgvProjections.Columns["Id"].Visible = false;
             dgvProjections.Columns["VrstaProjekcije"].HeaderText = "Vrsta projekcije";
+            dgvProjections.Columns["Slika"].HeaderText = "";
+
             lblPaging.Text = "Page " + PageNumber;
         }
 

@@ -140,7 +140,7 @@
             Controls.Add(dgvKorisnici);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmKorisnici";
-            Text = "Lokacije";
+            Text = "Korisnici";
             Load += frmKorisnici_Load;
             ((System.ComponentModel.ISupportInitialize)dgvKorisnici).EndInit();
             ResumeLayout(false);

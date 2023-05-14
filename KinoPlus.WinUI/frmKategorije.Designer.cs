@@ -156,7 +156,7 @@
             Controls.Add(dgvKategorije);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmKategorije";
-            Text = "Lokacije";
+            Text = "Kategorije";
             Load += frmKategorije_Load;
             ((System.ComponentModel.ISupportInitialize)dgvKategorije).EndInit();
             ResumeLayout(false);
