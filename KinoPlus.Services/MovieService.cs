@@ -31,13 +31,12 @@ namespace KinoPlus.Services
 
         public List<Movie> GetByIds(List<int> ids)
         {
-            var activeStatus = _context.MovieStatuses.Single(s => s.Name == "Active");
             var query = _context.Movies.AsQueryable();
 
             query = AddInclude(query, null);
 
             return query
-                 .Where(m => m.MovieStatusId == activeStatus.Id && ids.Contains(m.Id))
+                 .Where(m => ids.Contains(m.Id))
                  .AsEnumerable()
                  .OrderBy(x => ids.IndexOf(x.Id))
                  .ToList();
@@ -108,8 +107,7 @@ namespace KinoPlus.Services
                 .Include(x => x.MovieActors).ThenInclude(x => x.Actor)
                 .Include(x => x.MovieReactions).ThenInclude(mr => mr.User)
                 .Include(x => x.Year)
-                .Include(x => x.MovieStatus)
-            .AsNoTracking();
+                .Include(x => x.MovieStatus);
 
             return query;
         }
@@ -143,33 +141,9 @@ namespace KinoPlus.Services
 
         public void InsertRelatedEntities(MovieUpsertObject movie, int movieId)
         {
-            foreach (var item in movie.GenreIds)
-            {
-                var movieGenre = new MovieGenre
-                {
-                    MovieId = movieId,
-                    GenreId = item
-                };
-                _context.MovieGenres.Add(movieGenre);
-            }
-            foreach (var item in movie.CategoryIds)
-            {
-                var movieCategory = new MovieCategory
-                {
-                    MovieId = movieId,
-                    CategoryId = item
-                };
-                _context.MovieCategories.Add(movieCategory);
-            }
-            foreach (var item in movie.ActorIds)
-            {
-                var actors = new MovieActor
-                {
-                    MovieId = movieId,
-                    ActorId = item
-                };
-                _context.MovieActors.Add(actors);
-            }
+            InsertRelatedCategories(movie, movieId);
+            InsertRelatedGenres(movie, movieId);
+            InsertRelatedActors(movie, movieId);
         }
 
         public void InsertRelatedCategories(MovieUpsertObject movie, int movieId)

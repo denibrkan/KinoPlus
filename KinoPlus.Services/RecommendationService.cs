@@ -44,8 +44,12 @@ namespace KinoPlus.Services
 
             EvaluateModel(mlContext, testData, model);
 
-            var reactedMovieIds = user.MovieReactions.Select(mr => mr.MovieId);
-            var movieIds = _context.Movies.Select(x => x.Id).AsEnumerable().Except(reactedMovieIds).ToList();
+            var activeStatus = _context.MovieStatuses.Single(s => s.Name == "Active");
+
+            var movieIds = _context.Movies
+                            .Where(m => m.MovieStatusId == activeStatus.Id)
+                            .Select(x => x.Id)
+                            .ToList();
 
             var recommendedMovieIds = UseModelForSinglePrediction(mlContext, model, userId, movieIds);
 
