@@ -105,7 +105,9 @@ var services = scope.ServiceProvider;
 try
 {
     var context = services.GetRequiredService<KinoplusContext>();
+    await context.Database.MigrateAsync();
     await Seed.SeedEntities(context);
+
 }
 catch (Exception ex)
 {
