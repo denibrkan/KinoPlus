@@ -25,7 +25,7 @@ namespace KinoPlus.WinUI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:44396/api/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8080/api/")]
         public string ApiUrl {
             get {
                 return ((string)(this["ApiUrl"]));
