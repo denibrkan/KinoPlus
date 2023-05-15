@@ -14,7 +14,6 @@ namespace KinoPlus.Models
         public string TrailerUrl { get; set; }
         [Required]
         public double Popularity { get; set; }
-        [Required]
         public Guid? ImageId { get; set; }
         [Required]
         public int? YearId { get; set; }
