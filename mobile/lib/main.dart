@@ -107,7 +107,7 @@ class Main extends StatefulWidget {
 class _MainState extends State<Main> {
   final List<Widget> screens = [
     const HomeScreen(title: appTitle),
-    const MoviesScreen(),
+    //const MoviesScreen(),
     const TicketsScreen(),
     const ProfileScreen(),
   ];
@@ -141,16 +141,16 @@ class _MainState extends State<Main> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.home,
+                Icons.theaters,
               ),
               label: 'Home',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.theaters,
-              ),
-              label: 'Movie',
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(
+            //     Icons.theaters,
+            //   ),
+            //   label: 'Movie',
+            // ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.local_activity,
