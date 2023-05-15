@@ -10,7 +10,7 @@ namespace KinoPlus.Services.Data
         {
             if (!await db.Roles.AnyAsync())
             {
-                var roleData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Roles.json");
+                var roleData = await System.IO.File.ReadAllTextAsync("Data/Seed/Roles.json");
                 var roles = JsonSerializer.Deserialize<List<Role>>(roleData);
                 if (roles == null) return;
 
@@ -19,7 +19,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.Users.AnyAsync())
             {
-                var usersData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Users.json");
+                var usersData = await System.IO.File.ReadAllTextAsync("Data/Seed/Users.json");
                 var users = JsonSerializer.Deserialize<List<User>>(usersData);
                 if (users == null) return;
 
@@ -28,7 +28,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.UserRoles.AnyAsync())
             {
-                var userRoleData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/UserRoles.json");
+                var userRoleData = await System.IO.File.ReadAllTextAsync("Data/Seed/UserRoles.json");
                 var userRoles = JsonSerializer.Deserialize<List<UserRole>>(userRoleData);
                 if (userRoles == null) return;
 
@@ -37,7 +37,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.ProjectionTypes.AnyAsync())
             {
-                var projectionTypeData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/ProjectionTypes.json");
+                var projectionTypeData = await System.IO.File.ReadAllTextAsync("Data/Seed/ProjectionTypes.json");
                 var projectionTypes = JsonSerializer.Deserialize<List<ProjectionType>>(projectionTypeData);
                 if (projectionTypes == null) return;
 
@@ -46,7 +46,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.Categories.AnyAsync())
             {
-                var categorieData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Categories.json");
+                var categorieData = await System.IO.File.ReadAllTextAsync("Data/Seed/Categories.json");
                 var categories = JsonSerializer.Deserialize<List<Category>>(categorieData);
                 if (categories == null) return;
 
@@ -55,7 +55,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.Actors.AnyAsync())
             {
-                var actorData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Actors.json");
+                var actorData = await System.IO.File.ReadAllTextAsync("Data/Seed/Actors.json");
                 var actors = JsonSerializer.Deserialize<List<Actor>>(actorData);
                 if (actors == null) return;
 
@@ -64,7 +64,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.Genres.AnyAsync())
             {
-                var genreData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Genres.json");
+                var genreData = await System.IO.File.ReadAllTextAsync("Data/Seed/Genres.json");
                 var genres = JsonSerializer.Deserialize<List<Genre>>(genreData);
                 if (genres == null) return;
 
@@ -73,7 +73,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.Years.AnyAsync())
             {
-                var yearData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Years.json");
+                var yearData = await System.IO.File.ReadAllTextAsync("Data/Seed/Years.json");
                 var years = JsonSerializer.Deserialize<List<Year>>(yearData);
                 if (years == null) return;
 
@@ -82,7 +82,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.MovieStatuses.AnyAsync())
             {
-                var statusData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Statuses.json");
+                var statusData = await System.IO.File.ReadAllTextAsync("Data/Seed/Statuses.json");
                 var statuses = JsonSerializer.Deserialize<List<MovieStatus>>(statusData);
                 if (statuses == null) return;
 
@@ -91,7 +91,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.Halls.AnyAsync())
             {
-                var hallData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Halls.json");
+                var hallData = await System.IO.File.ReadAllTextAsync("Data/Seed/Halls.json");
                 var halls = JsonSerializer.Deserialize<List<Hall>>(hallData);
                 if (halls == null) return;
 
@@ -100,7 +100,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.Seats.AnyAsync())
             {
-                var seatData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Seats.json");
+                var seatData = await System.IO.File.ReadAllTextAsync("Data/Seed/Seats.json");
                 var seats = JsonSerializer.Deserialize<List<Seat>>(seatData);
                 if (seats == null) return;
 
@@ -109,7 +109,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.Countries.AnyAsync())
             {
-                var countryData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Countries.json");
+                var countryData = await System.IO.File.ReadAllTextAsync("Data/Seed/Countries.json");
                 var countries = JsonSerializer.Deserialize<List<Country>>(countryData);
                 if (countries == null) return;
 
@@ -118,7 +118,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.Cities.AnyAsync())
             {
-                var cityData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Cities.json");
+                var cityData = await System.IO.File.ReadAllTextAsync("Data/Seed/Cities.json");
                 var cities = JsonSerializer.Deserialize<List<City>>(cityData);
                 if (cities == null) return;
 
@@ -127,7 +127,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.Locations.AnyAsync())
             {
-                var locationData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Locations.json");
+                var locationData = await System.IO.File.ReadAllTextAsync("Data/Seed/Locations.json");
                 var locations = JsonSerializer.Deserialize<List<Location>>(locationData);
                 if (locations == null) return;
 
@@ -136,7 +136,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.LocationHalls.AnyAsync())
             {
-                var locationHallData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/LocationHalls.json");
+                var locationHallData = await System.IO.File.ReadAllTextAsync("Data/Seed/LocationHalls.json");
                 var locationHalls = JsonSerializer.Deserialize<List<LocationHall>>(locationHallData);
                 if (locationHalls == null) return;
 
@@ -145,7 +145,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.LocationProjectionTypes.AnyAsync())
             {
-                var locationProjectionTypeData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/LocationProjectionTypes.json");
+                var locationProjectionTypeData = await System.IO.File.ReadAllTextAsync("Data/Seed/LocationProjectionTypes.json");
                 var locationProjectionTypes = JsonSerializer.Deserialize<List<LocationProjectionType>>(locationProjectionTypeData);
                 if (locationProjectionTypes == null) return;
 
@@ -154,7 +154,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.WeekDays.AnyAsync())
             {
-                var dayData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/WeekDays.json");
+                var dayData = await System.IO.File.ReadAllTextAsync("Data/Seed/WeekDays.json");
                 var days = JsonSerializer.Deserialize<List<WeekDay>>(dayData);
                 if (days == null) return;
 
@@ -163,7 +163,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.Movies.AnyAsync())
             {
-                var movieData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/Movies.json");
+                var movieData = await System.IO.File.ReadAllTextAsync("Data/Seed/Movies.json");
                 var movies = JsonSerializer.Deserialize<List<Movie>>(movieData);
                 if (movies == null) return;
 
@@ -172,7 +172,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.MovieGenres.AnyAsync())
             {
-                var movieGenreData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/MovieGenres.json");
+                var movieGenreData = await System.IO.File.ReadAllTextAsync("Data/Seed/MovieGenres.json");
                 var movieGenres = JsonSerializer.Deserialize<List<MovieGenre>>(movieGenreData);
                 if (movieGenres == null) return;
 
@@ -181,7 +181,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.MovieCategories.AnyAsync())
             {
-                var movieCategoryData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/MovieCategories.json");
+                var movieCategoryData = await System.IO.File.ReadAllTextAsync("Data/Seed/MovieCategories.json");
                 var movieCategories = JsonSerializer.Deserialize<List<MovieCategory>>(movieCategoryData);
                 if (movieCategories == null) return;
 
@@ -190,7 +190,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.MovieActors.AnyAsync())
             {
-                var movieActorData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/MovieActors.json");
+                var movieActorData = await System.IO.File.ReadAllTextAsync("Data/Seed/MovieActors.json");
                 var movieActors = JsonSerializer.Deserialize<List<MovieActor>>(movieActorData);
                 if (movieActors == null) return;
 
@@ -199,7 +199,7 @@ namespace KinoPlus.Services.Data
             }
             if (!await db.MovieReactions.AnyAsync())
             {
-                var reactionData = await System.IO.File.ReadAllTextAsync("../KinoPlus.Services/Data/Seed/MovieReactions.json");
+                var reactionData = await System.IO.File.ReadAllTextAsync("Data/Seed/MovieReactions.json");
                 var reactions = JsonSerializer.Deserialize<List<MovieReaction>>(reactionData);
                 if (reactions == null) return;
 
