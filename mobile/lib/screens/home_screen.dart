@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/common/rating_stars.dart';
 import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/category.dart';
@@ -160,6 +161,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: Theme.of(context).textTheme.titleMedium,
                   textAlign: TextAlign.center,
                 ),
+                const SizedBox(height: 6),
+                RatingStars(
+                  rating: movie.averageRating,
+                  size: 16,
+                )
               ],
             ))
         .toList();
