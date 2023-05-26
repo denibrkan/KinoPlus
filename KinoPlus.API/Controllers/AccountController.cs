@@ -57,6 +57,7 @@ namespace KinoPlus.API.Controllers
                 FirstName = register.FirstName,
                 LastName = register.LastName,
                 Phone = register.PhoneNumber,
+                ImageId = register.ImageId,
             };
 
             userInsert.RoleIds = (await _userService.GetRoles()).Where(r => r.Name == "Klijent").Select(r => r.Id).ToArray();

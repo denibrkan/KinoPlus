@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/user.dart';
 import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/login_screen.dart';
@@ -25,13 +26,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               _buildHeader(),
               const SizedBox(
-                height: 100,
+                height: 50,
               ),
-              Image.asset(
-                'assets/images/user-96.png',
-                color: Colors.grey,
-              ),
-              const SizedBox(height: 20),
+              user?.imageId != null
+                  ? SizedBox(
+                      width: 200,
+                      height: 200,
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            '$apiUrl/images/${user?.imageId}?original=true'),
+                      ),
+                    )
+                  : Image.asset(
+                      'assets/images/user-96.png',
+                      color: Colors.grey,
+                    ),
+              const SizedBox(height: 40),
               Text(user!.username, style: const TextStyle(fontSize: 22)),
               const SizedBox(
                 height: 10,

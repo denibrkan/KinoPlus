@@ -5,9 +5,16 @@ class Register {
   late String lastName;
   late String email;
   late String? phoneNumber;
+  late String? imageId;
 
-  Register(this.username, this.password, this.firstName, this.lastName,
-      this.email, this.phoneNumber);
+  Register(
+      {required this.username,
+      required this.password,
+      required this.firstName,
+      required this.lastName,
+      required this.email,
+      this.phoneNumber,
+      this.imageId});
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
@@ -17,6 +24,7 @@ class Register {
       'lastName': lastName,
       'email': email,
       'phoneNumber': phoneNumber,
+      'imageId': imageId
     };
   }
 }

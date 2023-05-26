@@ -19,6 +19,7 @@ namespace KinoPlus.API.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Guid>>> Upload(IFormFile[] images)
         {
+            if (images.Length == 0) return BadRequest("Slike nisu poslane");
             if (images.Length > 10)
             {
                 return BadRequest("You cannot upload more than 10 images");
