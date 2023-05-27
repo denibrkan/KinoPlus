@@ -16,7 +16,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
     if (params != null) {
       uri = uri.replace(queryParameters: params);
     }
-    var headers = createHeaders();
+    var headers = Authorization.createHeaders();
 
     final response = await http.get(uri, headers: headers);
 
@@ -35,7 +35,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
     if (params != null) {
       uri = uri.replace(queryParameters: params);
     }
-    var headers = createHeaders();
+    var headers = Authorization.createHeaders();
 
     final response = await http.get(uri, headers: headers);
 
@@ -50,7 +50,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
 
   Future<dynamic> insert(dynamic resource) async {
     var uri = Uri.parse('$apiUrl/$endpoint');
-    Map<String, String> headers = createHeaders();
+    Map<String, String> headers = Authorization.createHeaders();
 
     var jsonRequest = jsonEncode(resource);
     var response = await http.post(uri, headers: headers, body: jsonRequest);
@@ -65,17 +65,6 @@ abstract class BaseProvider<T> with ChangeNotifier {
     } else {
       throw Exception('Greška prilikom unosa');
     }
-  }
-
-  Map<String, String> createHeaders() {
-    String token = Authorization.token ?? '';
-
-    var headers = {
-      "Content-Type": "application/json",
-      "Authorization": 'Bearer $token'
-    };
-
-    return headers;
   }
 
   T fromJson(data) {

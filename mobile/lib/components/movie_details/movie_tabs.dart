@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:mobile/common/rating_stars.dart';
 import 'package:mobile/components/movie_details/projections_tab.dart';
 import 'package:mobile/components/movie_details/tab_pills.dart';
+import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/helpers/enums.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/models/reaction.dart';
@@ -10,6 +11,7 @@ import 'package:mobile/providers/date_provider.dart';
 import 'package:mobile/providers/movie_tab_provider.dart';
 import 'package:mobile/providers/reaction_provider.dart';
 import 'package:mobile/providers/user_provider.dart';
+import 'package:mobile/utils/authorization.dart';
 import 'package:mobile/utils/get_form_input_decoration.dart';
 import 'package:mobile/utils/show_error_dialog.dart';
 import 'package:provider/provider.dart';
@@ -227,21 +229,32 @@ class _MovieTabsState extends State<MovieTabs> {
                   margin: const EdgeInsets.only(left: 20, bottom: 30),
                   child: Row(
                     children: [
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.grey[800]!,
-                          ),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Image.asset(
-                          'assets/images/user.png',
-                          color: Colors.grey,
-                          width: 22,
-                          height: 22,
-                        ),
-                      ),
+                      r.user?.imageId != null
+                          ? SizedBox(
+                              width: 40,
+                              height: 40,
+                              child: CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                  '$apiUrl/images/${r.user?.imageId}',
+                                  headers: Authorization.createHeaders(),
+                                ),
+                              ),
+                            )
+                          : Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.grey[800]!,
+                                ),
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: Image.asset(
+                                'assets/images/user.png',
+                                color: Colors.grey,
+                                width: 22,
+                                height: 22,
+                              ),
+                            ),
                       const SizedBox(
                         width: 12,
                       ),

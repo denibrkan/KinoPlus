@@ -8,6 +8,7 @@ import 'package:mobile/providers/category_provider.dart';
 import 'package:mobile/providers/movie_provider.dart';
 import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/movie_detail_screen.dart';
+import 'package:mobile/utils/authorization.dart';
 import 'package:mobile/utils/show_error_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -143,9 +144,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     arguments: movie,
                   ),
                   child: movie.imageId != null
-                      ? FadeInImage.memoryNetwork(
-                          placeholder: kTransparentImage,
-                          image: '$apiUrl/images/${movie.imageId}',
+                      ? FadeInImage(
+                          image: NetworkImage(
+                            '$apiUrl/images/${movie.imageId}',
+                            headers: Authorization.createHeaders(),
+                          ),
+                          placeholder: MemoryImage(kTransparentImage),
                           height: 210,
                           fadeInDuration: const Duration(milliseconds: 300),
                         )
@@ -222,9 +226,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: 70,
                               height: 90,
                               child: m.imageId != null
-                                  ? FadeInImage.memoryNetwork(
-                                      placeholder: kTransparentImage,
-                                      image: '$apiUrl/images/${m.imageId}',
+                                  ? FadeInImage(
+                                      image: NetworkImage(
+                                        '$apiUrl/images/${m.imageId}',
+                                        headers: Authorization.createHeaders(),
+                                      ),
+                                      placeholder:
+                                          MemoryImage(kTransparentImage),
                                       fit: BoxFit.fill,
                                       fadeInDuration:
                                           const Duration(milliseconds: 300),

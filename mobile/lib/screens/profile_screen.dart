@@ -3,6 +3,7 @@ import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/user.dart';
 import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/login_screen.dart';
+import 'package:mobile/utils/authorization.dart';
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -34,7 +35,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: 200,
                       child: CircleAvatar(
                         backgroundImage: NetworkImage(
-                            '$apiUrl/images/${user?.imageId}?original=true'),
+                          '$apiUrl/images/${user?.imageId}?original=true',
+                          headers: Authorization.createHeaders(),
+                        ),
                       ),
                     )
                   : Image.asset(

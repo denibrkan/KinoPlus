@@ -8,6 +8,7 @@ import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/helpers/enums.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/providers/movie_tab_provider.dart';
+import 'package:mobile/utils/authorization.dart';
 import 'package:mobile/utils/get_duration.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -76,10 +77,12 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
             height: MediaQuery.of(context).size.height * 0.7,
             width: MediaQuery.of(context).size.width,
             child: widget.movie.imageId != null
-                ? FadeInImage.memoryNetwork(
-                    placeholder: kTransparentImage,
-                    image:
-                        '$apiUrl/images/${widget.movie.imageId}?original=true',
+                ? FadeInImage(
+                    placeholder: MemoryImage(kTransparentImage),
+                    image: NetworkImage(
+                      '$apiUrl/images/${widget.movie.imageId}?original=true',
+                      headers: Authorization.createHeaders(),
+                    ),
                     fadeInCurve: Curves.linear,
                     fadeInDuration: const Duration(milliseconds: 500),
                   )

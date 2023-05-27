@@ -9,6 +9,7 @@ import 'package:mobile/providers/ticket_provider.dart';
 import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/profile_screen.dart';
 import 'package:mobile/screens/reservation_success.dart';
+import 'package:mobile/utils/authorization.dart';
 import 'package:mobile/utils/show_error_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -249,12 +250,14 @@ class _SeatsScreenState extends State<SeatsScreen> {
               width: 40,
               height: 50,
               child: widget.projection.movie.imageId != null
-                  ? FadeInImage.memoryNetwork(
-                      placeholder: kTransparentImage,
-                      image:
-                          '$apiUrl/images/${widget.projection.movie.imageId}',
-                      fit: BoxFit.fill,
+                  ? FadeInImage(
+                      placeholder: MemoryImage(kTransparentImage),
+                      image: NetworkImage(
+                        '$apiUrl/images/${widget.projection.movie.imageId}',
+                        headers: Authorization.createHeaders(),
+                      ),
                       fadeInDuration: const Duration(milliseconds: 300),
+                      fit: BoxFit.fill,
                     )
                   : const Placeholder()),
           Column(

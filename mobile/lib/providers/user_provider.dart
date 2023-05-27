@@ -23,7 +23,7 @@ class UserProvider extends BaseProvider {
     if (params != null) {
       uri = uri.replace(queryParameters: params);
     }
-    var headers = createHeaders();
+    var headers = Authorization.createHeaders();
 
     final response = await http.get(uri, headers: headers);
 

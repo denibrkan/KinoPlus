@@ -7,6 +7,7 @@ import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/ticket.dart';
 import 'package:mobile/providers/ticket_provider.dart';
 import 'package:mobile/providers/user_provider.dart';
+import 'package:mobile/utils/authorization.dart';
 import 'package:mobile/utils/show_error_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -108,10 +109,12 @@ class _TicketsScreenState extends State<TicketsScreen> {
                         topRight: Radius.circular(12),
                       ),
                       child: t.movieImageId != null
-                          ? FadeInImage.memoryNetwork(
-                              placeholder: kTransparentImage,
-                              image:
-                                  '$apiUrl/images/${t.movieImageId}?original=true',
+                          ? FadeInImage(
+                              image: NetworkImage(
+                                '$apiUrl/images/${t.movieImageId}?original=true',
+                                headers: Authorization.createHeaders(),
+                              ),
+                              placeholder: MemoryImage(kTransparentImage),
                               height: 270,
                               width: MediaQuery.of(context).size.width,
                               fadeInDuration: const Duration(milliseconds: 300),
