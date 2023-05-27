@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
 namespace KinoPlus.Models
@@ -16,6 +16,6 @@ namespace KinoPlus.Models
         [Required]
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public Guid? ImageId { get; set; }
+        public IFormFile Image { get; set; }
     }
 }

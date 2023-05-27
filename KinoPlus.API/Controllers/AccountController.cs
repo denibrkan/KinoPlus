@@ -13,12 +13,14 @@ namespace KinoPlus.API.Controllers
     {
         private readonly IUserService _userService;
         private readonly ITokenService _tokenService;
+        private readonly IImageService _imageService;
         private readonly IMapper _mapper;
 
-        public AccountController(IUserService userService, IMapper mapper, ITokenService tokenService)
+        public AccountController(IUserService userService, IMapper mapper, ITokenService tokenService, IImageService imageService)
         {
             _userService = userService;
             _tokenService = tokenService;
+            _imageService = imageService;
             _mapper = mapper;
         }
 
@@ -44,10 +46,23 @@ namespace KinoPlus.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult> RegisterAsync(RegisterDto register)
+        public async Task<ActionResult> RegisterAsync([FromForm] RegisterDto register)
         {
             var user = await _userService.GetByUsernameAsync(register.Username);
             if (user != null) return BadRequest("Korisničko ime već postoji");
+
+            Guid? imageId = null;
+            if (register.Image != null)
+            {
+                var i = new ImageInputModel
+                {
+                    FileName = register.Image.FileName,
+                    Type = register.Image.ContentType,
+                    Content = register.Image.OpenReadStream()
+                };
+                var imageIds = await _imageService.ProcessAsync(new[] { i });
+                imageId = imageIds.FirstOrDefault();
+            }
 
             var userInsert = new UserInsertObject
             {
@@ -57,7 +72,7 @@ namespace KinoPlus.API.Controllers
                 FirstName = register.FirstName,
                 LastName = register.LastName,
                 Phone = register.PhoneNumber,
-                ImageId = register.ImageId,
+                ImageId = imageId
             };
 
             userInsert.RoleIds = (await _userService.GetRoles()).Where(r => r.Name == "Klijent").Select(r => r.Id).ToArray();

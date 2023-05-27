@@ -1,8 +1,6 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/helpers/enums.dart';
 import 'package:mobile/models/register.dart';
 import 'package:mobile/providers/user_provider.dart';
@@ -11,7 +9,6 @@ import 'package:mobile/utils/get_form_input_decoration.dart';
 import 'package:mobile/utils/show_error_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:http/http.dart' as http;
 
 class RegisterScreen extends StatefulWidget {
   static const routeName = '/register';
@@ -34,8 +31,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _phoneController = TextEditingController();
   final _emailController = TextEditingController();
 
-  String? profileImageId;
-
   RegistrationSteps _registrationStep = RegistrationSteps.stepOne;
   File? _imageFile;
 
@@ -49,15 +44,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void register() async {
     try {
       var registerData = Register(
-          username: _usernameController.text,
-          password: _passwordController.text,
-          firstName: _firstNameController.text,
-          lastName: _lastNameController.text,
-          email: _emailController.text,
-          phoneNumber: _phoneController.text,
-          imageId: profileImageId);
+        username: _usernameController.text,
+        password: _passwordController.text,
+        firstName: _firstNameController.text,
+        lastName: _lastNameController.text,
+        email: _emailController.text,
+        phoneNumber: _phoneController.text,
+      );
 
-      await _userProvider.register(registerData);
+      await _userProvider.registerAsync(registerData, _imageFile);
 
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -170,13 +165,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     setState(
                         () => _registrationStep = RegistrationSteps.stepTwo);
                   } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                          backgroundColor: Colors.redAccent,
-                          content: Text(
-                            'Korisničko ime se koristi.',
-                          )),
-                    );
+                    if (mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            backgroundColor: Colors.redAccent,
+                            content: Text(
+                              'Korisničko ime se koristi.',
+                            )),
+                      );
+                    }
                   }
                 }
               },
@@ -249,13 +246,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     setState(
                         () => _registrationStep = RegistrationSteps.stepThree);
                   } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                          backgroundColor: Colors.redAccent,
-                          content: Text(
-                            'Korisničko ime se koristi.',
-                          )),
-                    );
+                    if (mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            backgroundColor: Colors.redAccent,
+                            content: Text(
+                              'Korisničko ime se koristi.',
+                            )),
+                      );
+                    }
                   }
                 }
               },
@@ -302,9 +301,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
               label: const Text('Nazad'),
             ),
             ElevatedButton(
-              onPressed: () async {
+              onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  await uploadProfileImage();
                   register();
                 }
               },
@@ -329,28 +327,5 @@ class _RegisterScreenState extends State<RegisterScreen> {
     setState(() {
       _imageFile = image != null ? File(image.path) : null;
     });
-  }
-
-  Future uploadProfileImage() async {
-    if (_imageFile == null) return;
-
-    var uri = Uri.parse('$apiUrl/images');
-    http.MultipartRequest request = http.MultipartRequest("POST", uri);
-
-    http.MultipartFile multipartFile =
-        await http.MultipartFile.fromPath('images', _imageFile!.path);
-
-    request.files.add(multipartFile);
-
-    http.StreamedResponse response = await request.send();
-
-    if (response.statusCode == 200) {
-      var res = await http.Response.fromStream(response);
-      profileImageId = jsonDecode(res.body).first;
-    } else {
-      if (mounted) {
-        showErrorDialog(context, 'Upload profilne slike neuspješan');
-      }
-    }
   }
 }
