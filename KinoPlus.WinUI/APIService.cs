@@ -9,7 +9,7 @@ namespace eProdaja.WinUI
     {
         private string _apiUrl = Settings.Default.ApiUrl;
         private string _resource { get; set; }
-        private static string? _token { get; set; }
+        public static string? Token { get; set; }
         public static List<MovieDto> Movies { get; set; } = new List<MovieDto>();
 
         public APIService(string resource)
@@ -22,7 +22,7 @@ namespace eProdaja.WinUI
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                var resource = await $"{_apiUrl}{_resource}".SetQueryParams(queryParams).WithOAuthBearerToken(_token).GetJsonAsync<T>();
+                var resource = await $"{_apiUrl}{_resource}".SetQueryParams(queryParams).WithOAuthBearerToken(Token).GetJsonAsync<T>();
                 Cursor.Current = Cursors.Arrow;
 
                 return resource;
@@ -40,7 +40,7 @@ namespace eProdaja.WinUI
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                var resource = await $"{_apiUrl}{_resource}/{id}".WithOAuthBearerToken(_token).GetJsonAsync<T>();
+                var resource = await $"{_apiUrl}{_resource}/{id}".WithOAuthBearerToken(Token).GetJsonAsync<T>();
                 Cursor.Current = Cursors.Arrow;
 
                 return resource;
@@ -58,7 +58,7 @@ namespace eProdaja.WinUI
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                var resource = await $"{_apiUrl}{_resource}".WithOAuthBearerToken(_token).PostJsonAsync(data).ReceiveJson<T>();
+                var resource = await $"{_apiUrl}{_resource}".WithOAuthBearerToken(Token).PostJsonAsync(data).ReceiveJson<T>();
                 Cursor.Current = Cursors.Arrow;
 
                 return resource;
@@ -76,7 +76,7 @@ namespace eProdaja.WinUI
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                var resource = await $"{_apiUrl}{_resource}/{id}".WithOAuthBearerToken(_token).PutJsonAsync(data).ReceiveJson<T>();
+                var resource = await $"{_apiUrl}{_resource}/{id}".WithOAuthBearerToken(Token).PutJsonAsync(data).ReceiveJson<T>();
                 Cursor.Current = Cursors.Arrow;
 
                 return resource;
@@ -101,7 +101,7 @@ namespace eProdaja.WinUI
                 var user = await $"{_apiUrl}{_resource}/login".PostJsonAsync(login).ReceiveJson<UserDto>();
                 Cursor.Current = Cursors.Arrow;
 
-                _token = user.Token;
+                Token = user.Token;
 
                 return user;
             }

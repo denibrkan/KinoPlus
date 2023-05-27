@@ -1,40 +1,24 @@
-﻿using System.Net;
+﻿using eProdaja.WinUI;
+using System.Net;
 
 namespace KinoPlus.WinUI.Utils
 {
     public static class ImageUtility
     {
-        public static Image? Base64ToImage(string base64String, int width, int height)
-        {
-            if (string.IsNullOrEmpty(base64String)) return null;
-
-            // Convert Base64 String to byte[]
-            byte[] imageBytes = Convert.FromBase64String(base64String);
-            MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
-
-            // Convert byte[] to Image
-            ms.Write(imageBytes, 0, imageBytes.Length);
-            Image image = Image.FromStream(ms, true);
-
-            return resizeImage(image, new Size(width, height));
-        }
-
         public static Image resizeImage(Image imgToResize, Size size)
         {
-            return (Image)(new Bitmap(imgToResize, size));
+            return new Bitmap(imgToResize, size);
         }
 
         public static Image GetImageFromUrl(string url)
         {
-            HttpWebRequest? httpWebRequest = WebRequest.Create(url) as HttpWebRequest;
+            HttpWebRequest? httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+            httpWebRequest.Headers.Add("Authorization", "Bearer " + APIService.Token);
 
-            using (HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse())
-            {
-                using (Stream stream = httpWebReponse.GetResponseStream())
-                {
-                    return Image.FromStream(stream);
-                }
-            }
+            using var httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using Stream stream = httpWebReponse.GetResponseStream();
+
+            return Image.FromStream(stream);
         }
     }
 }
