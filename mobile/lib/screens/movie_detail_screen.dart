@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:mobile/common/rating_bar.dart';
+import 'package:mobile/common/video_player_modal.dart';
 import 'package:mobile/components/movie_details/movie_tabs.dart';
 import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/helpers/constants.dart';
@@ -39,6 +40,9 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
         child: Column(
           children: [
             _buildImageStack(),
+            const SizedBox(
+              height: 12,
+            ),
             _buildMovieInfo(),
             const SizedBox(height: 30),
             MovieTabs(movie: widget.movie),
@@ -59,10 +63,8 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        const Center(
-          child: CircularProgressIndicator(
-            color: Colors.lightBlue,
-          ),
+        const CircularProgressIndicator(
+          color: Colors.lightBlueAccent,
         ),
         ShaderMask(
           shaderCallback: (rect) {
@@ -89,11 +91,20 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                 : const Placeholder(),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Icon(
+        IconButton(
+          onPressed: () {
+            if (widget.movie.trailerUrl?.isNotEmpty == true) {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) =>
+                    VideoPlayerModal(videoUrl: widget.movie.trailerUrl!),
+                useSafeArea: true,
+              );
+            }
+          },
+          icon: Icon(
             Icons.play_circle,
-            color: Colors.white70,
+            color: Colors.white54,
             size: 50,
             shadows: [
               Shadow(
@@ -101,8 +112,14 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                 blurRadius: 20,
                 offset: const Offset(5, 5),
               ),
+              Shadow(
+                color: Colors.black.withOpacity(0.5),
+                blurRadius: 20,
+                offset: const Offset(-5, -5),
+              ),
             ],
           ),
+          padding: const EdgeInsets.all(0),
         ),
       ],
     );
