@@ -31,8 +31,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               user?.imageId != null
                   ? SizedBox(
-                      width: 200,
-                      height: 200,
+                      width: 120,
+                      height: 120,
                       child: CircleAvatar(
                         backgroundImage: NetworkImage(
                           '$apiUrl/images/${user?.imageId}?original=true',
@@ -42,6 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     )
                   : Image.asset(
                       'assets/images/user-96.png',
+                      width: 70,
                       color: Colors.grey,
                     ),
               const SizedBox(height: 40),

@@ -280,6 +280,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               )
             : Image.asset(
                 'assets/images/user-96.png',
+                width: 70,
                 color: Colors.grey,
               ),
         const SizedBox(
