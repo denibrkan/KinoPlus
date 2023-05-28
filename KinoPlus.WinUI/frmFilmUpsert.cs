@@ -2,6 +2,7 @@
 using KinoPlus.Models;
 using KinoPlus.WinUI.Properties;
 using KinoPlus.WinUI.Utils;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
 namespace KinoPlus.WinUI
@@ -31,6 +32,8 @@ namespace KinoPlus.WinUI
                 if (ofdSlika.ShowDialog() == DialogResult.OK)
                 {
                     HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", APIService.Token);
+
                     var multiForm = new MultipartFormDataContent();
 
                     var files = ofdSlika.FileNames;
