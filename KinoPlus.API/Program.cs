@@ -103,9 +103,12 @@ var services = scope.ServiceProvider;
 try
 {
     var context = services.GetRequiredService<KinoplusContext>();
+    var recommendationService = services.GetRequiredService<IRecommendationService>();
+
     await context.Database.MigrateAsync();
     await Seed.SeedEntities(context);
 
+    await recommendationService.CreateModel();
 }
 catch (Exception ex)
 {

@@ -36,13 +36,7 @@ namespace KinoPlus.Services
             // set up a new machine learning context
             var mlContext = new MLContext();
 
-            var ratings = await _context.MovieReactions.ToListAsync();
-            var trainingData = mlContext.Data.LoadFromEnumerable(_mapper.Map<IEnumerable<MovieRating>>(ratings));
-            var testData = mlContext.Data.LoadFromEnumerable(GetTestData());
-
-            ITransformer model = BuildAndTrainModel(mlContext, trainingData);
-
-            EvaluateModel(mlContext, testData, model);
+            var model = LoadModel(mlContext);
 
             var activeStatus = _context.MovieStatuses.Single(s => s.Name == "Active");
 
@@ -51,7 +45,7 @@ namespace KinoPlus.Services
                             .Select(x => x.Id)
                             .ToList();
 
-            var recommendedMovieIds = UseModelForSinglePrediction(mlContext, model, userId, movieIds);
+            var recommendedMovieIds = GetMoviePredictions(mlContext, model, userId, movieIds);
 
             return _movieService.GetByIds(recommendedMovieIds);
         }
@@ -94,7 +88,7 @@ namespace KinoPlus.Services
             Console.WriteLine("RSquared: " + metrics.RSquared.ToString());
         }
 
-        List<int> UseModelForSinglePrediction(MLContext mlContext, ITransformer model, int userId, List<int> movieIds)
+        List<int> GetMoviePredictions(MLContext mlContext, ITransformer model, int userId, List<int> movieIds)
         {
             var predictionEngine = mlContext.Model.CreatePredictionEngine<MovieRating, MovieRatingPrediction>(model);
             var predictionList = new List<MovieRatingPrediction>();
@@ -154,15 +148,40 @@ namespace KinoPlus.Services
             return testDataList;
         }
 
+        ITransformer LoadModel(MLContext mlContext)
+        {
+            DataViewSchema modelSchema;
+
+            var modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "MovieRecommenderModel.zip");
+            // Load trained model
+            ITransformer trainedModel = mlContext.Model.Load(modelPath, out modelSchema);
+
+            return trainedModel;
+        }
+
+        public async Task CreateModel()
+        {
+            var mlContext = new MLContext();
+
+            var ratings = await _context.MovieReactions.ToListAsync();
+            var trainingData = mlContext.Data.LoadFromEnumerable(_mapper.Map<IEnumerable<MovieRating>>(ratings));
+            var testData = mlContext.Data.LoadFromEnumerable(GetTestData());
+
+            ITransformer model = BuildAndTrainModel(mlContext, trainingData);
+
+            EvaluateModel(mlContext, testData, model);
+
+            SaveModel(mlContext, trainingData.Schema, model);
+        }
+
+        void SaveModel(MLContext mlContext, DataViewSchema trainingDataViewSchema, ITransformer model)
+        {
+            var modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "MovieRecommenderModel.zip");
+
+            Console.WriteLine("=============== Saving the model to a file ===============");
+            mlContext.Model.Save(model, trainingDataViewSchema, modelPath);
+        }
     }
-
-    //void SaveModel(MLContext mlContext, DataViewSchema trainingDataViewSchema, ITransformer model)
-    //{
-    //    var modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "MovieRecommenderModel.zip");
-
-    //    Console.WriteLine("=============== Saving the model to a file ===============");
-    //    mlContext.Model.Save(model, trainingDataViewSchema, modelPath);
-    //}
 
     public class MovieRating
     {

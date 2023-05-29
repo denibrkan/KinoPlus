@@ -5,5 +5,6 @@ namespace KinoPlus.Services.Interfaces
     public interface IRecommendationService
     {
         Task<List<Movie>> Recommend(int userId);
+        Task CreateModel();
     }
 }
