@@ -1,7 +1,6 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
 using KinoPlus.WinUI.Constants;
-using KinoPlus.WinUI.Properties;
 using KinoPlus.WinUI.Utils;
 using System.Data;
 
@@ -50,7 +49,7 @@ namespace KinoPlus.WinUI
                     .Select(m => new
                     {
                         Id = m.Id,
-                        Slika = m.ImageId != null ? ImageUtility.resizeImage(ImageUtility.GetImageFromUrl(Settings.Default.ApiUrl + "images/" + m.ImageId), new Size(50, 70)) : null,
+                        Slika = m.ImageId != null ? ImageUtility.resizeImage(ImageUtility.GetImageById((Guid)m.ImageId!), new Size(50, 70)) : null,
                         Naziv = m.Title,
                         Zanr = string.Join(", ", m.Genres.Select(g => g.Name)),
                         Trajanje = m.Duration,

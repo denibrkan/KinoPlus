@@ -1,4 +1,5 @@
 ﻿using eProdaja.WinUI;
+using KinoPlus.WinUI.Properties;
 using System.Net;
 
 namespace KinoPlus.WinUI.Utils
@@ -10,8 +11,9 @@ namespace KinoPlus.WinUI.Utils
             return new Bitmap(imgToResize, size);
         }
 
-        public static Image GetImageFromUrl(string url)
+        public static Image GetImageById(Guid id)
         {
+            var url = Settings.Default.ApiUrl + "images/" + id;
             HttpWebRequest? httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
             httpWebRequest.Headers.Add("Authorization", "Bearer " + APIService.Token);
 

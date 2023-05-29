@@ -77,6 +77,7 @@ namespace KinoPlus.WinUI
         public async Task loadMovie(int movieId)
         {
             var movie = await MovieService.GetById<MovieDto>(movieId);
+
             txtNaziv.Text = movie!.Title;
             numTrajanje.Value = movie.Duration;
             txtTrailer.Text = movie.TrailerUrl;
@@ -84,7 +85,9 @@ namespace KinoPlus.WinUI
             cmbStatus.SelectedValue = movie.Status.Id;
             rtbOpis.Text = movie.Description;
             numPopularnost.Value = (decimal)movie.Popularity;
-            pcbSlika.ImageLocation = $"{Settings.Default.ApiUrl}images/{movie.ImageId}";
+            pcbSlika.Image = movie.ImageId != null ?
+                    ImageUtility.GetImageById((Guid)movie.ImageId!)
+                    : null;
             MovieImageId = movie.ImageId;
             foreach (var item in movie.Categories)
             {
