@@ -104,9 +104,11 @@ try
 {
     var context = services.GetRequiredService<KinoplusContext>();
     var recommendationService = services.GetRequiredService<IRecommendationService>();
+    var imageService = services.GetRequiredService<IImageService>();
 
     await context.Database.MigrateAsync();
     await Seed.SeedEntities(context);
+    await Seed.SeedImages(context, imageService);
 
     await recommendationService.CreateModel();
 }

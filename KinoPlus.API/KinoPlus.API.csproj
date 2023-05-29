@@ -9,6 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\Images\allquietonthewesternfront.jpg" />
+    <None Remove="Data\Images\avatar.jpg" />
+    <None Remove="Data\Images\barbie.jpeg" />
+    <None Remove="Data\Images\johnwick.jpg" />
+    <None Remove="Data\Images\shawshank.jpg" />
+    <None Remove="Data\Images\supermario.jpg" />
+    <None Remove="Data\Images\thegirlnextdoor.jpg" />
+    <None Remove="Data\Images\topgunmaverick.jpg" />
+    <None Remove="Data\Images\up.jpeg" />
+    <None Remove="Data\Images\wardogs.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
 	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
 	  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.4" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
@@ -23,6 +36,39 @@
   <ItemGroup>
     <ProjectReference Include="..\KinoPlus.Models\KinoPlus.Models.csproj" />
     <ProjectReference Include="..\KinoPlus.Services\KinoPlus.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\Images\avatar.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Images\barbie.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Images\thegirlnextdoor.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Images\johnwick.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Images\topgunmaverick.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Images\shawshank.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Images\supermario.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Images\up.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Images\wardogs.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Images\allquietonthewesternfront.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

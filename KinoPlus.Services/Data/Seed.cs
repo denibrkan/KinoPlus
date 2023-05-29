@@ -1,4 +1,6 @@
-﻿using KinoPlus.Services.Database;
+﻿using KinoPlus.Models;
+using KinoPlus.Services.Database;
+using KinoPlus.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using System.Text.Json;
@@ -208,6 +210,41 @@ namespace KinoPlus.Services.Data
                 await db.AddRangeAsync(reactions);
                 await db.SaveChangesAsync();
             }
+        }
+
+        public static async Task SeedImages(KinoplusContext db, IImageService imageService)
+        {
+            if (db.Images.Any()) return;
+
+            string applicationDir = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).AbsolutePath) + '/';
+            string imgDirPath = applicationDir + "Data/Images";
+
+            //sorted alphabetically
+            var imagePaths = Directory.GetFiles(imgDirPath, "*.jp*g").OrderBy(f => f);
+            var images = new List<ImageInputModel>();
+
+            foreach (var imgPath in imagePaths)
+            {
+                var fileStream = File.OpenRead(imgPath);
+                var image = new ImageInputModel
+                {
+                    FileName = Path.GetFileName(imgPath),
+                    Content = fileStream,
+                };
+
+                images.Add(image);
+            }
+
+            var imageIds = await imageService.ProcessAsync(images);
+
+            var movies = db.Movies.OrderBy(x => x.Title).ToList();
+
+            for (int i = 0; i < movies.Count; i++)
+            {
+                movies[i].ImageId = imageIds[i];
+            }
+
+            await db.SaveChangesAsync();
         }
     }
 }
