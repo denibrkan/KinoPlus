@@ -13,10 +13,7 @@ namespace KinoPlus.Models
         public string TrailerUrl { get; set; }
         public double AverageRating { get; set; }
         public DateTime DateCreated { get; set; }
-        public YearDto Year { get; set; }
-        public MovieStatusDto Status { get; set; }
         public List<ActorDto> Actors { get; set; }
         public List<GenreDto> Genres { get; set; }
-        public List<MovieReactionDto> Reactions { get; set; }
     }
 }
