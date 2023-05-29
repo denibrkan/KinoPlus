@@ -1,5 +1,6 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
+using KinoPlus.WinUI.Constants;
 using KinoPlus.WinUI.Properties;
 using KinoPlus.WinUI.Utils;
 using System.Data;
@@ -42,33 +43,41 @@ namespace KinoPlus.WinUI
                 categoryId
             };
 
-            var movies = await APIService.Get<List<MovieDto>>(queryParams);
-            var bindMovies = movies?
-                .Select(m => new
-                {
-                    Id = m.Id,
-                    Slika = m.ImageId != null ? ImageUtility.resizeImage(ImageUtility.GetImageFromUrl(Settings.Default.ApiUrl + "images/" + m.ImageId), new Size(50, 70)) : null,
-                    Naziv = m.Title,
-                    Zanr = string.Join(", ", m.Genres.Select(g => g.Name)),
-                    Trajanje = m.Duration,
-                    Godina = m.Year.Name,
-                    Popularnost = $"{m.Popularity}/10",
-                    Kategorija = string.Join(", ", m.Categories.Select(g => g.Name)),
-                    Status = m.Status.Name,
-                    DatumDodavanja = m.DateCreated.ToShortDateString(),
-                    Ocjena = m.AverageRating != 0 ? m.AverageRating.ToString("F") + "/5" : "-",
-                })
-                .ToList();
+            try
+            {
+                var movies = await APIService.Get<List<MovieDto>>(queryParams);
+                var bindMovies = movies?
+                    .Select(m => new
+                    {
+                        Id = m.Id,
+                        Slika = m.ImageId != null ? ImageUtility.resizeImage(ImageUtility.GetImageFromUrl(Settings.Default.ApiUrl + "images/" + m.ImageId), new Size(50, 70)) : null,
+                        Naziv = m.Title,
+                        Zanr = string.Join(", ", m.Genres.Select(g => g.Name)),
+                        Trajanje = m.Duration,
+                        Godina = m.Year.Name,
+                        Popularnost = $"{m.Popularity}/10",
+                        Kategorija = string.Join(", ", m.Categories.Select(g => g.Name)),
+                        Status = m.Status.Name,
+                        DatumDodavanja = m.DateCreated.ToShortDateString(),
+                        Ocjena = m.AverageRating != 0 ? m.AverageRating.ToString("F") + "/5" : "-",
+                    })
+                    .ToList();
 
-            dgvMovies.DataSource = bindMovies;
+                dgvMovies.DataSource = bindMovies;
 
-            dgvMovies.Columns["Id"].Visible = false;
-            dgvMovies.Columns["Slika"].HeaderText = "";
-            dgvMovies.Columns["Naziv"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvMovies.Columns["Zanr"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvMovies.Columns["Kategorija"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvMovies.Columns["Id"].Visible = false;
+                dgvMovies.Columns["Slika"].HeaderText = "";
+                dgvMovies.Columns["Naziv"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvMovies.Columns["Zanr"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvMovies.Columns["Kategorija"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            lblPaging.Text = "Page " + PageNumber;
+                lblPaging.Text = "Page " + PageNumber;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(ErrorMessages.LoadingError);
+            }
+
         }
 
         public async Task loadStatuses()

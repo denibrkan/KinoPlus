@@ -1,5 +1,6 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
+using KinoPlus.WinUI.Constants;
 using System.Data;
 
 namespace KinoPlus.WinUI
@@ -31,27 +32,35 @@ namespace KinoPlus.WinUI
                 NameFTS = search
             };
 
-            var locations = await APIService.Get<List<LocationDto>>(queryParams);
-            var bindLocations = locations?
-                .Select(l => new
-                {
-                    Id = l.Id,
-                    Naziv = $"{l.Name} - {l.City.Name}",
-                    BrojDvorana = l.Halls.Count(),
-                    VrsteProjekcije = string.Join(", ", l.ProjectionTypes.Select(g => g.Name)),
-                    Adresa = l.Address,
-                    Drzava = l.City.Country.Name,
-                })
-                .ToList();
+            try
+            {
+                var locations = await APIService.Get<List<LocationDto>>(queryParams);
+                var bindLocations = locations?
+                    .Select(l => new
+                    {
+                        Id = l.Id,
+                        Naziv = $"{l.Name} - {l.City.Name}",
+                        BrojDvorana = l.Halls.Count(),
+                        VrsteProjekcije = string.Join(", ", l.ProjectionTypes.Select(g => g.Name)),
+                        Adresa = l.Address,
+                        Drzava = l.City.Country.Name,
+                    })
+                    .ToList();
 
-            dgvLocations.DataSource = bindLocations;
+                dgvLocations.DataSource = bindLocations;
 
-            dgvLocations.Columns["Id"].Visible = false;
-            dgvLocations.Columns["BrojDvorana"].HeaderText = "Broj dvorana";
-            dgvLocations.Columns["BrojDvorana"].Width = 100;
-            dgvLocations.Columns["VrsteProjekcije"].HeaderText = "Vrste projekcije";
+                dgvLocations.Columns["Id"].Visible = false;
+                dgvLocations.Columns["BrojDvorana"].HeaderText = "Broj dvorana";
+                dgvLocations.Columns["BrojDvorana"].Width = 100;
+                dgvLocations.Columns["VrsteProjekcije"].HeaderText = "Vrste projekcije";
 
-            lblPaging.Text = "Page " + PageNumber;
+                lblPaging.Text = "Page " + PageNumber;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(ErrorMessages.LoadingError);
+            }
+
         }
 
         private async void btnTrazi_Click(object sender, EventArgs e)

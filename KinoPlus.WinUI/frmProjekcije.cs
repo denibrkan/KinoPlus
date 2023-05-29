@@ -1,5 +1,6 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
+using KinoPlus.WinUI.Constants;
 using KinoPlus.WinUI.Properties;
 using KinoPlus.WinUI.Utils;
 using System.Data;
@@ -40,30 +41,38 @@ namespace KinoPlus.WinUI
                 LocationId = locationId
             };
 
-            var projections = await APIService.Get<List<ProjectionDto>>(queryParams);
-            var bindProjections = projections?
-                .Select(p => new
-                {
-                    Id = p.Id,
-                    Slika = p.Movie.ImageId != null ? ImageUtility.resizeImage(ImageUtility.GetImageFromUrl(Settings.Default.ApiUrl + "images/" + p.Movie.ImageId), new Size(50, 70)) : null,
-                    Naziv = p.Movie.Title,
-                    Vrijeme = $"{p.StartsAt.ToShortTimeString()} - {p.EndsAt.ToShortTimeString()}",
-                    Trajanje = p.Movie.Duration,
-                    Dvorana = p.Hall?.Name,
-                    VrstaProjekcije = p.ProjectionType.Name,
-                    Popunjenost = $"{p.TicketCount}/80",
-                    Redovna = p.RecurringProjectionId != null ? "DA" : "NE",
-                    Cijena = p.Price,
-                })
-                .ToList();
+            try
+            {
+                var projections = await APIService.Get<List<ProjectionDto>>(queryParams);
+                var bindProjections = projections?
+                    .Select(p => new
+                    {
+                        Id = p.Id,
+                        Slika = p.Movie.ImageId != null ? ImageUtility.resizeImage(ImageUtility.GetImageFromUrl(Settings.Default.ApiUrl + "images/" + p.Movie.ImageId), new Size(50, 70)) : null,
+                        Naziv = p.Movie.Title,
+                        Vrijeme = $"{p.StartsAt.ToShortTimeString()} - {p.EndsAt.ToShortTimeString()}",
+                        Trajanje = p.Movie.Duration,
+                        Dvorana = p.Hall?.Name,
+                        VrstaProjekcije = p.ProjectionType.Name,
+                        Popunjenost = $"{p.TicketCount}/80",
+                        Redovna = p.RecurringProjectionId != null ? "DA" : "NE",
+                        Cijena = p.Price,
+                    })
+                    .ToList();
 
-            dgvProjections.DataSource = bindProjections;
+                dgvProjections.DataSource = bindProjections;
 
-            dgvProjections.Columns["Id"].Visible = false;
-            dgvProjections.Columns["VrstaProjekcije"].HeaderText = "Vrsta projekcije";
-            dgvProjections.Columns["Slika"].HeaderText = "";
+                dgvProjections.Columns["Id"].Visible = false;
+                dgvProjections.Columns["VrstaProjekcije"].HeaderText = "Vrsta projekcije";
+                dgvProjections.Columns["Slika"].HeaderText = "";
 
-            lblPaging.Text = "Page " + PageNumber;
+                lblPaging.Text = "Page " + PageNumber;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(ErrorMessages.LoadingError);
+            }
+
         }
 
         public async Task loadLocations()

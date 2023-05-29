@@ -1,5 +1,6 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
+using KinoPlus.WinUI.Constants;
 using System.Data;
 
 namespace KinoPlus.WinUI
@@ -30,28 +31,35 @@ namespace KinoPlus.WinUI
                 PageSize = PageSize,
                 NameFTS = search
             };
+            try
+            {
+                var users = await APIService.Get<List<UserDto>>(queryParams);
+                var bindUsers = users?
+                    .Select(user => new
+                    {
+                        Id = user.Id,
+                        ImePrezime = $"{user.FirstName} {user.LastName}",
+                        KorisnickoIme = user.Username,
+                        Email = user.Email,
+                        LoyaltyPoeni = user.LoyaltyPoints,
+                        Filmovi = user.MovieCount,
+                    })
+                    .ToList();
 
-            var Users = await APIService.Get<List<UserDto>>(queryParams);
-            var bindUsers = Users?
-                .Select(user => new
-                {
-                    Id = user.Id,
-                    ImePrezime = $"{user.FirstName} {user.LastName}",
-                    KorisnickoIme = user.Username,
-                    Email = user.Email,
-                    LoyaltyPoeni = user.LoyaltyPoints,
-                    Filmovi = user.MovieCount,
-                })
-                .ToList();
+                dgvKorisnici.DataSource = bindUsers;
 
-            dgvKorisnici.DataSource = bindUsers;
+                dgvKorisnici.Columns["Id"].Visible = false;
+                dgvKorisnici.Columns["ImePrezime"].HeaderText = "Ime prezime";
+                dgvKorisnici.Columns["KorisnickoIme"].HeaderText = "Korisnicko ime";
+                dgvKorisnici.Columns["LoyaltyPoeni"].HeaderText = "Loyalty poeni";
 
-            dgvKorisnici.Columns["Id"].Visible = false;
-            dgvKorisnici.Columns["ImePrezime"].HeaderText = "Ime prezime";
-            dgvKorisnici.Columns["KorisnickoIme"].HeaderText = "Korisnicko ime";
-            dgvKorisnici.Columns["LoyaltyPoeni"].HeaderText = "Loyalty poeni";
+                lblPaging.Text = "Page " + PageNumber;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(ErrorMessages.LoadingError);
+            }
 
-            lblPaging.Text = "Page " + PageNumber;
         }
 
         private async void btnTrazi_Click(object sender, EventArgs e)

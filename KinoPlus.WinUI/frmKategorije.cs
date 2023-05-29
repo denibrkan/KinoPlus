@@ -1,5 +1,6 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
+using KinoPlus.WinUI.Constants;
 using System.Data;
 
 namespace KinoPlus.WinUI
@@ -33,26 +34,33 @@ namespace KinoPlus.WinUI
                 NameFTS = search
             };
 
-            var categories = await APIService.Get<List<CategoryDto>>(queryParams);
-            Categories = categories!;
-            var bindCategories = Categories?
-                .Select(category => new
-                {
-                    Id = category.Id,
-                    Naziv = category.Name,
-                    OrderPoeni = category.OrderPoints,
-                    Prikazan = category.IsDisplayed,
-                    BrojFilmova = category.Movies?.Count
-                })
-                .ToList();
+            try
+            {
+                var categories = await APIService.Get<List<CategoryDto>>(queryParams);
+                Categories = categories!;
+                var bindCategories = Categories
+                    .Select(category => new
+                    {
+                        Id = category.Id,
+                        Naziv = category.Name,
+                        OrderPoeni = category.OrderPoints,
+                        Prikazan = category.IsDisplayed,
+                        BrojFilmova = category.Movies?.Count
+                    })
+                    .ToList();
 
-            dgvKategorije.DataSource = bindCategories;
+                dgvKategorije.DataSource = bindCategories;
 
-            dgvKategorije.Columns["Id"].Visible = false;
-            dgvKategorije.Columns["OrderPoeni"].HeaderText = "Order poeni";
-            dgvKategorije.Columns["BrojFilmova"].HeaderText = "Broj filmova";
+                dgvKategorije.Columns["Id"].Visible = false;
+                dgvKategorije.Columns["OrderPoeni"].HeaderText = "Order poeni";
+                dgvKategorije.Columns["BrojFilmova"].HeaderText = "Broj filmova";
 
-            lblPaging.Text = "Page " + PageNumber;
+                lblPaging.Text = "Page " + PageNumber;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(ErrorMessages.LoadingError);
+            }
         }
 
         private async void btnTrazi_Click(object sender, EventArgs e)
