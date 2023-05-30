@@ -30,10 +30,10 @@
 		"MovieStatusId": 1
 	},
 	{
-		"Title": "The Girl next door",
+		"Title": "Big Hero 6",
 		"Duration": 89,
-		"Description": "Matthew, maturant, misli da je pronašao ženu svojih snova. Međutim, ubrzo saznaje da je Danielle, predmet njegove naklonosti, bivša filmska glumica za odrasle.",
-		"TrailerUrl": "https://www.youtube.com/watch?v=VANdjKvdLp4",
+		"Description": "Hiro, čudo od robota, pridružuje se Baymaxu kako bi osvetio smrt svog brata. Zatim se udružuju sa Hirovim prijateljima kako bi formirali tim heroja visoke tehnologije.",
+		"TrailerUrl": "https://www.youtube.com/watch?v=z3biFxZIJOQ",
 		"Popularity": 6,
 		"DateCreated": "2023-05-11T17:33:39.26",
 		"YearId": 5,
