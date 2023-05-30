@@ -45,51 +45,58 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: Scaffold(
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text('Kino+',
-                style: Theme.of(context)
-                    .textTheme
-                    .displaySmall!
-                    .copyWith(fontWeight: FontWeight.w300)),
-            Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
+            Expanded(
+              child: Align(
+                alignment: Alignment.center,
+                child: Text('Kino+',
+                    style: Theme.of(context)
+                        .textTheme
+                        .displaySmall!
+                        .copyWith(fontWeight: FontWeight.w300)),
+              ),
+            ),
+            Expanded(
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 16),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      width: double.infinity,
+                      child: TextFormField(
+                          controller: _usernameController,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Unesite vaše korisničko ime.';
+                            }
+                            return null;
+                          },
+                          decoration: getFormInputDecoration(
+                              'Korisničko ime', Icons.account_circle)),
                     ),
-                    width: double.infinity,
-                    child: TextFormField(
-                        controller: _usernameController,
+                    const SizedBox(height: 20),
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 16),
+                      width: double.infinity,
+                      child: TextFormField(
+                        controller: _passwordController,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Unesite vaše korisničko ime.';
+                            return 'Unesite vašu lozinku.';
                           }
                           return null;
                         },
-                        decoration: getFormInputDecoration(
-                            'Korisničko ime', Icons.account_circle)),
-                  ),
-                  const SizedBox(height: 20),
-                  Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 16),
-                    width: double.infinity,
-                    child: TextFormField(
-                      controller: _passwordController,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Unesite vašu lozinku.';
-                        }
-                        return null;
-                      },
-                      obscureText: true,
-                      decoration: getFormInputDecoration('Lozinka', Icons.lock),
+                        obscureText: true,
+                        decoration:
+                            getFormInputDecoration('Lozinka', Icons.lock),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Column(
@@ -98,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      'Nisi registrovan/a?',
+                      'Niste registrovani?',
                       style: TextStyle(color: Colors.grey),
                     ),
                     const SizedBox(
@@ -114,9 +121,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                   height: 50,
                   width: double.infinity,
                   child: ElevatedButton(
