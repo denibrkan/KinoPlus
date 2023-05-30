@@ -31,22 +31,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
     user = context.watch<UserProvider>().user;
 
     if (user == null) {
-      return const LoginScreen();
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+      });
     }
 
-    return Column(
-      children: [
-        _buildHeader(),
-        const SizedBox(
-          height: 50,
-        ),
-        _buildInfo(),
-        const SizedBox(height: 50),
-        _buildStats(),
-        const SizedBox(height: 50),
-        _buildLinks(),
-      ],
-    );
+    return user == null
+        ? Container()
+        : Column(
+            children: [
+              _buildHeader(),
+              const SizedBox(
+                height: 50,
+              ),
+              _buildInfo(),
+              const SizedBox(height: 50),
+              _buildStats(),
+              const SizedBox(height: 50),
+              _buildLinks(),
+            ],
+          );
   }
 
   Widget _buildHeader() {
