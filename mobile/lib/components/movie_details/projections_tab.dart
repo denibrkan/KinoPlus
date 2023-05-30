@@ -65,19 +65,23 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
 
     var data = await _projectionProvider.get(params);
 
-    setState(() {
-      projections = data;
-      loading = false;
-    });
+    if (mounted) {
+      setState(() {
+        projections = data;
+        loading = false;
+      });
+    }
   }
 
   Future loadLocations() async {
     var data = await _locationProvider.get(null);
 
-    setState(() {
-      selectedLocation = data.first;
-      locations = data;
-    });
+    if (mounted) {
+      setState(() {
+        selectedLocation = data.first;
+        locations = data;
+      });
+    }
   }
 
   @override
