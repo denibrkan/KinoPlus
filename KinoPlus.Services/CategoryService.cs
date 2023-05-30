@@ -82,7 +82,7 @@ namespace KinoPlus.Services
             {
                 query = query
                     .AsSplitQuery()
-                    .Include(c => c.MovieCategories)
+                    .Include(c => c.MovieCategories.OrderByDescending(mc => mc.Movie.DateCreated))
                         .ThenInclude(c => c.Movie)
                         .ThenInclude(m => m.MovieGenres)
                         .ThenInclude(mg => mg.Genre)
