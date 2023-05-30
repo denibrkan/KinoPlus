@@ -8,9 +8,20 @@ namespace KinoPlus.Services
 {
     public class MovieReactionService : BaseCRUDService<MovieReaction, MovieReactionUpsertObject, MovieReactionUpsertObject, MovieReactionSearchObject>, IMovieReactionService
     {
-        public MovieReactionService(KinoplusContext context, IMapper mapper) : base(context, mapper)
-        {
+        private readonly IRecommendationService _recommendationService;
 
+        public MovieReactionService(KinoplusContext context, IMapper mapper, IRecommendationService recommendationService) : base(context, mapper)
+        {
+            _recommendationService = recommendationService;
+        }
+
+        public async override Task<MovieReaction> InsertAsync(MovieReactionUpsertObject insert)
+        {
+            var inserted = await base.InsertAsync(insert);
+
+            await _recommendationService.CreateModel();
+
+            return inserted;
         }
 
         public override IQueryable<MovieReaction> AddSorting(IQueryable<MovieReaction> query, MovieReactionSearchObject search)
