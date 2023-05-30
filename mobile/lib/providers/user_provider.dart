@@ -108,6 +108,12 @@ class UserProvider extends BaseProvider {
     return false;
   }
 
+  void logout() {
+    user = null;
+
+    notifyListeners();
+  }
+
   @override
   fromJson(data) {
     return User.fromJson(data);
