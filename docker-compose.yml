@@ -1,6 +1,5 @@
-version: '1'
+version: '3'
 services:
-#mssql docker
   sql:
     image: mcr.microsoft.com/mssql/server:2022-latest
     restart: unless-stopped
@@ -12,7 +11,6 @@ services:
       - 1435:1433
     networks:
       - kinoplusnet
-
   api:
     restart: unless-stopped
     build:

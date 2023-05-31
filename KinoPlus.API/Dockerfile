@@ -1,7 +1,5 @@
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
-#EXPOSE 5192
-#ENV ASPNETCORE_URLS=http://+:5192
 
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
