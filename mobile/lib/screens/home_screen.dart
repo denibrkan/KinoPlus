@@ -162,7 +162,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Text(
                   movie.title,
-                  style: Theme.of(context).textTheme.titleMedium,
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 6),
@@ -207,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               foregroundColor: MaterialStateProperty.all<Color>(
                             Colors.lightBlue[300]!,
                           )),
-                          onPressed: () => {},
+                          onPressed: () => openMoviesScreen(c),
                           child: const Text('Pogledaj sve'))
                     ],
                   ),
@@ -248,5 +251,12 @@ class _HomeScreenState extends State<HomeScreen> {
           )
           .toList(),
     );
+  }
+
+  openMoviesScreen(Category category) {
+    _movieProvider.setCategory(category);
+
+    Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false,
+        arguments: 1);
   }
 }

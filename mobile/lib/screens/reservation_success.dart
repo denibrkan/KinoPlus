@@ -43,7 +43,7 @@ class ReservationSuccessScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () => Navigator.pushNamedAndRemoveUntil(
                     context, '/', (route) => false,
-                    arguments: 1),
+                    arguments: 2),
                 child: const Icon(Icons.close_rounded),
               )
             ],

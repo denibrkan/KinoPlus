@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:mobile/helpers/constants.dart';
+import 'package:mobile/models/category.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/providers/base_provider.dart';
 import 'package:http/http.dart' as http;
@@ -8,6 +9,8 @@ import 'package:mobile/utils/authorization.dart';
 
 class MovieProvider extends BaseProvider<Movie> {
   MovieProvider() : super('movies');
+
+  Category? _selectedCategory;
 
   Future<List<Movie>> recommend(int userId) async {
     var uri = Uri.parse('$apiUrl/recommendation/$userId');
@@ -24,6 +27,12 @@ class MovieProvider extends BaseProvider<Movie> {
       throw Exception(response.body);
     }
   }
+
+  setCategory(Category? category) {
+    _selectedCategory = category;
+  }
+
+  Category? get category => _selectedCategory;
 
   @override
   Movie fromJson(data) {

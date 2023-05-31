@@ -116,6 +116,12 @@ namespace KinoPlus.Services
         {
             base.AddFilter(query, search);
 
+            if (search.ActiveOnly == true)
+            {
+                var activeStatus = _context.MovieStatuses.Single(s => s.Name == "Active");
+
+                query = query.Where(x => x.MovieStatusId == activeStatus.Id);
+            }
             if (!string.IsNullOrEmpty(search.TitleFTS))
             {
                 query = query.Where(x => x.Title.Contains(search.TitleFTS));
