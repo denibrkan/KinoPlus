@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using KinoPlus.Models;
 using KinoPlus.Services.Database;
+using KinoPlus.Services.Enumerations;
 using KinoPlus.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -134,13 +135,34 @@ namespace KinoPlus.Services
             {
                 query = query.Where(x => x.MovieCategories.Any(y => y.CategoryId == search.CategoryId.Value));
             }
-
+            if (search.GenreId.HasValue)
+            {
+                query = query.Where(x => x.MovieGenres.Any(y => y.GenreId == search.GenreId.Value));
+            }
             return query;
         }
 
         public override IQueryable<Movie> AddSorting(IQueryable<Movie> query, MovieSearchObject search)
         {
-            query = query.OrderByDescending(x => x.DateCreated);
+            if (!string.IsNullOrEmpty(search.SortBy))
+            {
+                switch (search.SortBy)
+                {
+                    case MovieSorting.DateCreated:
+                        query = query.OrderByDescending(x => x.DateCreated);
+                        break;
+                    case MovieSorting.Popularity:
+                        query = query.OrderByDescending(x => x.Popularity);
+                        break;
+                    case MovieSorting.Rating:
+                        query = query.OrderByDescending(x => x.MovieReactions.Average(mr => mr.Rating));
+                        break;
+                }
+            }
+            else
+            {
+                query = query.OrderByDescending(x => x.DateCreated);
+            }
 
             return query;
         }

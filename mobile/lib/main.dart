@@ -5,6 +5,7 @@ import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/models/projection.dart';
 import 'package:mobile/providers/category_provider.dart';
+import 'package:mobile/providers/genre_provider.dart';
 import 'package:mobile/providers/location_provider.dart';
 import 'package:mobile/providers/movie_provider.dart';
 import 'package:mobile/providers/movie_tab_provider.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProjectionProvider()),
         ChangeNotifierProvider(create: (_) => MovieTabProvider()),
         ChangeNotifierProvider(create: (_) => ReactionProvider()),
+        ChangeNotifierProvider(create: (_) => GenreProvider()),
       ],
       child: MaterialApp(
         title: appTitle,

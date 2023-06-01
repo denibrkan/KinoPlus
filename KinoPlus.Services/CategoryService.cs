@@ -78,11 +78,15 @@ namespace KinoPlus.Services
         {
             query = base.AddInclude(query, search);
 
-            if (search?.IncludeMovies == true)
+            var activeStatus = _context.MovieStatuses.Single(ms => ms.Name == "Active");
+
+            if (search?.IncludeMoviesWithData == true)
             {
                 query = query
                     .AsSplitQuery()
-                    .Include(c => c.MovieCategories.OrderByDescending(mc => mc.Movie.DateCreated))
+                    .Include(c => c.MovieCategories
+                    .Where(mc => mc.Movie.MovieStatusId == activeStatus.Id)
+                    .OrderByDescending(mc => mc.Movie.DateCreated))
                         .ThenInclude(c => c.Movie)
                         .ThenInclude(m => m.MovieGenres)
                         .ThenInclude(mg => mg.Genre)
@@ -95,7 +99,12 @@ namespace KinoPlus.Services
                         .ThenInclude(m => m.MovieReactions)
                     .AsNoTracking();
             }
-
+            else if (search?.IncludeMovies == true)
+            {
+                query = query
+                    .Include(c => c.MovieCategories)
+                    .ThenInclude(mc => mc.Movie);
+            }
             return query;
         }
     }

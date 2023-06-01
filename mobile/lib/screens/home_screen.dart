@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<List<Category>> fetchByCategories() async {
     try {
       var params = <String, String>{
-        'includeMovies': 'true',
+        'includeMoviesWithData': 'true',
         'isDisplayed': 'true'
       };
       return await _categoryProvider.get(params);
