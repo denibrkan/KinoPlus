@@ -36,41 +36,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
       });
     }
 
-    return user == null
-        ? Container()
-        : Column(
-            children: [
-              _buildHeader(),
-              const SizedBox(
-                height: 50,
-              ),
-              _buildInfo(),
-              const SizedBox(height: 50),
-              _buildStats(),
-              const SizedBox(height: 50),
-              _buildLinks(),
-            ],
-          );
-  }
-
-  Widget _buildHeader() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          margin: const EdgeInsets.only(left: 16, top: 20, bottom: 8),
-          child: const Text(
-            'Profil',
-            style: TextStyle(
-              fontSize: 20,
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profil'),
+      ),
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 50,
           ),
-        ),
-        const Divider(
-          height: 2,
-          color: Colors.grey,
-        ),
-      ],
+          _buildInfo(),
+          const SizedBox(height: 50),
+          _buildStats(),
+          const SizedBox(height: 50),
+          _buildLinks(),
+        ],
+      ),
     );
   }
 

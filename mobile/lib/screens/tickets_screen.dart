@@ -63,15 +63,19 @@ class _TicketsScreenState extends State<TicketsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          _buildHeader(),
-          Container(
-            constraints: const BoxConstraints(minHeight: 300),
-            child: _buildTickets(),
-          ),
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Ulaznice'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              constraints: const BoxConstraints(minHeight: 300),
+              child: _buildTickets(),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -93,12 +97,15 @@ class _TicketsScreenState extends State<TicketsScreen> {
         ),
         child: CarouselSlider(
           options: CarouselOptions(
-              scrollDirection: Axis.vertical,
-              height: 725,
-              enableInfiniteScroll: false,
-              viewportFraction: 0.8,
-              enlargeCenterPage: true,
-              enlargeFactor: 0.3),
+            scrollDirection: Axis.vertical,
+            enableInfiniteScroll: false,
+            viewportFraction: 0.8,
+            enlargeCenterPage: true,
+            enlargeFactor: 0.3,
+            enlargeStrategy: CenterPageEnlargeStrategy.scale,
+            height: MediaQuery.of(context).size.height -
+                ((kToolbarHeight * 2) + kBottomNavigationBarHeight),
+          ),
           items: tickets
               .map(
                 (t) => Column(
@@ -115,7 +122,7 @@ class _TicketsScreenState extends State<TicketsScreen> {
                                 headers: Authorization.createHeaders(),
                               ),
                               placeholder: MemoryImage(kTransparentImage),
-                              height: 270,
+                              height: 250,
                               width: MediaQuery.of(context).size.width,
                               fadeInDuration: const Duration(milliseconds: 300),
                               fit: BoxFit.cover,
@@ -275,27 +282,6 @@ class _TicketsScreenState extends State<TicketsScreen> {
               .toList(),
         ),
       ),
-    );
-  }
-
-  Widget _buildHeader() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          margin: const EdgeInsets.only(left: 16, top: 20, bottom: 8),
-          child: const Text(
-            'Ulaznice',
-            style: TextStyle(
-              fontSize: 20,
-            ),
-          ),
-        ),
-        const Divider(
-          height: 2,
-          color: Colors.grey,
-        ),
-      ],
     );
   }
 }
