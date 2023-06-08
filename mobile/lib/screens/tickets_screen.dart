@@ -68,19 +68,19 @@ class _TicketsScreenState extends State<TicketsScreen> {
         title: const Text('Ulaznice'),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              constraints: const BoxConstraints(minHeight: 300),
-              child: _buildTickets(),
-            ),
-          ],
+        child: Container(
+          constraints: const BoxConstraints(minHeight: 300),
+          child: _buildTickets(),
         ),
       ),
     );
   }
 
   Widget _buildTickets() {
+    var screenHeight = MediaQuery.of(context).size.height -
+        ((kToolbarHeight * 2) + kBottomNavigationBarHeight);
+    double viewPortFraction = 0.8;
+    double ticketHeight = screenHeight * viewPortFraction;
     if (loading) {
       return const Center(
         child: CircularProgressIndicator(
@@ -99,101 +99,83 @@ class _TicketsScreenState extends State<TicketsScreen> {
           options: CarouselOptions(
             scrollDirection: Axis.vertical,
             enableInfiniteScroll: false,
-            viewportFraction: 0.8,
+            viewportFraction: viewPortFraction,
             enlargeCenterPage: true,
             enlargeFactor: 0.3,
             enlargeStrategy: CenterPageEnlargeStrategy.scale,
-            height: MediaQuery.of(context).size.height -
-                ((kToolbarHeight * 2) + kBottomNavigationBarHeight),
+            height: screenHeight,
           ),
           items: tickets
               .map(
-                (t) => Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
+                (t) => SizedBox(
+                  height: ticketHeight,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(12),
+                            topRight: Radius.circular(12),
+                          ),
+                          child: t.movieImageId != null
+                              ? FadeInImage(
+                                  image: NetworkImage(
+                                    '$apiUrl/images/${t.movieImageId}?original=true',
+                                    headers: Authorization.createHeaders(),
+                                  ),
+                                  placeholder: MemoryImage(kTransparentImage),
+                                  width: MediaQuery.of(context).size.width,
+                                  fadeInDuration:
+                                      const Duration(milliseconds: 300),
+                                  fit: BoxFit.cover,
+                                )
+                              : Placeholder(
+                                  fallbackHeight: ticketHeight * 0.45,
+                                ),
+                        ),
                       ),
-                      child: t.movieImageId != null
-                          ? FadeInImage(
-                              image: NetworkImage(
-                                '$apiUrl/images/${t.movieImageId}?original=true',
-                                headers: Authorization.createHeaders(),
-                              ),
-                              placeholder: MemoryImage(kTransparentImage),
-                              height: 250,
-                              width: MediaQuery.of(context).size.width,
-                              fadeInDuration: const Duration(milliseconds: 300),
-                              fit: BoxFit.cover,
-                            )
-                          : const Placeholder(
-                              fallbackHeight: 270,
+                      Container(
+                        color: const Color(0xFF2B3543),
+                        padding: const EdgeInsets.only(
+                            top: 16, left: 22, right: 22, bottom: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Center(
+                                child: Text(t.movieTitle,
+                                    style: const TextStyle(fontSize: 18))),
+                            const SizedBox(
+                              height: 6,
                             ),
-                    ),
-                    Container(
-                      color: const Color(0xFF2B3543),
-                      padding: const EdgeInsets.only(
-                          top: 12, left: 22, right: 22, bottom: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                              child: Text(t.movieTitle,
-                                  style: const TextStyle(fontSize: 18))),
-                          const SizedBox(
-                            height: 6,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'KINO',
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'KINO',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 12,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 4,
-                              ),
-                              Text(
-                                '${t.location.name} - ${t.location.city.name}',
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text(
-                                    'DATUM',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 4,
-                                  ),
-                                  Text(
-                                    DateFormat.yMMMd('bs').format(
-                                        DateTime.parse(t.projectionStart)),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                width: 100,
-                                child: Column(
+                                const SizedBox(
+                                  height: 4,
+                                ),
+                                Text(
+                                  '${t.location.name} - ${t.location.city.name}',
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     const Text(
-                                      'VRIJEME',
+                                      'DATUM',
                                       style: TextStyle(
                                         color: Colors.grey,
                                         fontSize: 12,
@@ -203,44 +185,46 @@ class _TicketsScreenState extends State<TicketsScreen> {
                                       height: 4,
                                     ),
                                     Text(
-                                      '${DateFormat.Hm('bs').format(DateTime.parse(t.projectionStart))} - ${DateFormat.Hm('bs').format(DateTime.parse(t.projectionEnd))}',
+                                      DateFormat.yMMMd('bs').format(
+                                          DateTime.parse(t.projectionStart)),
                                     ),
                                   ],
                                 ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text(
-                                    'DVORANA',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 12,
-                                    ),
+                                SizedBox(
+                                  width: 100,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'VRIJEME',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 4,
+                                      ),
+                                      Text(
+                                        '${DateFormat.Hm('bs').format(DateTime.parse(t.projectionStart))} - ${DateFormat.Hm('bs').format(DateTime.parse(t.projectionEnd))}',
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(
-                                    height: 4,
-                                  ),
-                                  Text(
-                                    t.hall.name,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                width: 100,
-                                child: Column(
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     const Text(
-                                      'SJEDIŠTE',
+                                      'DVORANA',
                                       style: TextStyle(
                                         color: Colors.grey,
                                         fontSize: 12,
@@ -250,33 +234,55 @@ class _TicketsScreenState extends State<TicketsScreen> {
                                       height: 4,
                                     ),
                                     Text(
-                                      t.seat.toString(),
+                                      t.hall.name,
                                     ),
                                   ],
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                                SizedBox(
+                                  width: 100,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'SJEDIŠTE',
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 4,
+                                      ),
+                                      Text(
+                                        t.seat.toString(),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12, horizontal: 20),
-                      decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(12),
-                              bottomRight: Radius.circular(12))),
-                      child: BarcodeWidget(
-                        barcode: Barcode.code128(escapes: true),
-                        data: 'Ticket ${t.id}',
-                        height: 100,
-                        textPadding: 12,
-                        style: TextStyle(color: primary.shade800),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 12, horizontal: 20),
+                        decoration: const BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(12),
+                                bottomRight: Radius.circular(12))),
+                        child: BarcodeWidget(
+                          barcode: Barcode.code128(escapes: true),
+                          data: 'Ticket ${t.id}',
+                          textPadding: 12,
+                          style: TextStyle(color: primary.shade800),
+                          height: 80,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               )
               .toList(),
