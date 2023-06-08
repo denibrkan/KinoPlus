@@ -26,6 +26,8 @@ import 'package:mobile/screens/tickets_screen.dart';
 import 'package:provider/provider.dart';
 import 'helpers/my_http_overrides.dart';
 import 'helpers/colors.dart';
+import 'models/user.dart';
+import 'utils/authorization.dart';
 
 void main() async {
   HttpOverrides.global = MyHttpOverrides();
@@ -133,36 +135,49 @@ class _MainState extends State<Main> {
 
   @override
   Widget build(BuildContext context) {
-    if (userProvider.user == null) {
+    User? user = userProvider.user;
+    if (user == null) {
       return const LoginScreen();
     }
+    Widget userIcon = user.imageId != null
+        ? SizedBox(
+            width: 30,
+            height: 30,
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(
+                '$apiUrl/images/${user.imageId}',
+                headers: Authorization.createHeaders(),
+              ),
+            ),
+          )
+        : const Icon(
+            Icons.account_circle,
+          );
     return SafeArea(
       child: Scaffold(
         body: screens.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
+          items: <BottomNavigationBarItem>[
+            const BottomNavigationBarItem(
               icon: Icon(
                 Icons.home_filled,
               ),
               label: 'Home',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(
                 Icons.theaters,
               ),
               label: 'Movie',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(
                 Icons.local_activity,
               ),
               label: 'Ticket',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.account_circle,
-              ),
+              icon: userIcon,
               label: 'Profile',
             ),
           ],
