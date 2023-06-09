@@ -34,6 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
       });
+      return Container();
     }
 
     return Scaffold(
