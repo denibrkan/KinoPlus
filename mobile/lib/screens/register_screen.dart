@@ -62,11 +62,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 'Registracija uspješna.',
               )),
         );
-
-        Timer(
-            const Duration(milliseconds: 1500),
-            () => Navigator.pushNamedAndRemoveUntil(
-                context, LoginScreen.routeName, (route) => false));
+        Navigator.pushNamedAndRemoveUntil(
+            context, LoginScreen.routeName, (route) => false);
       }
     } on Exception catch (e) {
       showErrorDialog(context, e.toString().substring(11));
@@ -157,7 +154,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            ElevatedButton.icon(
+            TextButton.icon(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
                   if (await _userProvider
@@ -177,8 +174,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   }
                 }
               },
-              icon: const Icon(Icons.arrow_forward),
-              label: const Text('Dalje'),
+              icon: const Icon(
+                Icons.arrow_forward,
+                color: Colors.white,
+              ),
+              label: const Text(
+                'Dalje',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),
@@ -232,13 +235,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ElevatedButton.icon(
+            TextButton.icon(
               onPressed: () =>
                   setState(() => _registrationStep = RegistrationSteps.stepOne),
-              icon: const Icon(Icons.arrow_back),
-              label: const Text('Nazad'),
+              icon: const Icon(Icons.arrow_back, color: Colors.white),
+              label: const Text(
+                'Nazad',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
-            ElevatedButton.icon(
+            TextButton.icon(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
                   if (await _userProvider
@@ -258,8 +264,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   }
                 }
               },
-              icon: const Icon(Icons.arrow_forward),
-              label: const Text('Dalje'),
+              icon: const Icon(
+                Icons.arrow_forward,
+                color: Colors.white,
+              ),
+              label: const Text(
+                'Dalje',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),
@@ -286,20 +298,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
         const SizedBox(
           height: 30,
         ),
-        ElevatedButton.icon(
+        TextButton.icon(
           onPressed: getImageFromGallery,
-          icon: const Icon(Icons.add_a_photo),
-          label: const Text('Odaberi profilnu sliku'),
+          icon: const Icon(
+            Icons.add_a_photo,
+            color: Colors.white,
+          ),
+          label: const Text(
+            'Odaberi profilnu sliku',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
         const SizedBox(height: 32),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ElevatedButton.icon(
+            TextButton.icon(
               onPressed: () =>
                   setState(() => _registrationStep = RegistrationSteps.stepTwo),
-              icon: const Icon(Icons.arrow_back),
-              label: const Text('Nazad'),
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
+              label: const Text(
+                'Nazad',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             ElevatedButton(
               onPressed: () {
