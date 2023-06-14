@@ -1,4 +1,5 @@
 using KinoPlus.API.Extensions;
+using KinoPlus.API.Middleware;
 using KinoPlus.Services.Data;
 using KinoPlus.Services.Database;
 using KinoPlus.Services.Interfaces;
@@ -23,7 +24,7 @@ builder.Services.AddApplicationServices(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseSwagger();
 app.UseSwaggerUI();
