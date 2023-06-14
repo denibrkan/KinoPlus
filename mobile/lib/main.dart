@@ -140,9 +140,18 @@ class _MainState extends State<Main> {
       return const LoginScreen();
     }
     Widget userIcon = user.imageId != null
-        ? SizedBox(
+        ? Container(
             width: 30,
             height: 30,
+            decoration: _selectedIndex == 3
+                ? BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.lightBlue[300] as Color,
+                      width: 2.0,
+                    ),
+                  )
+                : null,
             child: CircleAvatar(
               backgroundImage: NetworkImage(
                 '$apiUrl/images/${user.imageId}',
