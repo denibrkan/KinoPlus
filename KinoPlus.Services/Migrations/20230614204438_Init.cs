@@ -192,31 +192,6 @@ namespace KinoPlus.Services.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Username = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    PasswordSalt = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    ImageId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_User_Image",
-                        column: x => x.ImageId,
-                        principalTable: "Image",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "RecurringProjection",
                 columns: table => new
                 {
@@ -294,30 +269,6 @@ namespace KinoPlus.Services.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserRole",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    RoleId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserRole", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_UserRole_Role",
-                        column: x => x.RoleId,
-                        principalTable: "Role",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_UserRole_User",
-                        column: x => x.UserId,
-                        principalTable: "User",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "MovieActor",
                 columns: table => new
                 {
@@ -386,33 +337,6 @@ namespace KinoPlus.Services.Migrations
                         name: "FK_MovieGenre_Movie",
                         column: x => x.MovieId,
                         principalTable: "Movie",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MovieReaction",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Rating = table.Column<byte>(type: "tinyint", nullable: false),
-                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MovieId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "datetime", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MovieReaction", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_MovieReaction_Movie",
-                        column: x => x.MovieId,
-                        principalTable: "Movie",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_MovieReaction_User",
-                        column: x => x.UserId,
-                        principalTable: "User",
                         principalColumn: "Id");
                 });
 
@@ -510,6 +434,64 @@ namespace KinoPlus.Services.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    PasswordSalt = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    ImageId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LocationId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_User_Image",
+                        column: x => x.ImageId,
+                        principalTable: "Image",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_User_Location",
+                        column: x => x.LocationId,
+                        principalTable: "Location",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MovieReaction",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Rating = table.Column<byte>(type: "tinyint", nullable: false),
+                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MovieId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "datetime", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MovieReaction", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MovieReaction_Movie",
+                        column: x => x.MovieId,
+                        principalTable: "Movie",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_MovieReaction_User",
+                        column: x => x.UserId,
+                        principalTable: "User",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Ticket",
                 columns: table => new
                 {
@@ -535,6 +517,30 @@ namespace KinoPlus.Services.Migrations
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Ticket_User",
+                        column: x => x.UserId,
+                        principalTable: "User",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserRole",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    RoleId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserRole", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserRole_Role",
+                        column: x => x.RoleId,
+                        principalTable: "Role",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_UserRole_User",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id");
@@ -677,6 +683,11 @@ namespace KinoPlus.Services.Migrations
                 column: "ImageId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_User_LocationId",
+                table: "User",
+                column: "LocationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserRole_RoleId",
                 table: "UserRole",
                 column: "RoleId");
@@ -739,9 +750,6 @@ namespace KinoPlus.Services.Migrations
                 name: "Hall");
 
             migrationBuilder.DropTable(
-                name: "Location");
-
-            migrationBuilder.DropTable(
                 name: "Movie");
 
             migrationBuilder.DropTable(
@@ -751,7 +759,7 @@ namespace KinoPlus.Services.Migrations
                 name: "RecurringProjection");
 
             migrationBuilder.DropTable(
-                name: "City");
+                name: "Location");
 
             migrationBuilder.DropTable(
                 name: "Image");
@@ -764,6 +772,9 @@ namespace KinoPlus.Services.Migrations
 
             migrationBuilder.DropTable(
                 name: "WeekDay");
+
+            migrationBuilder.DropTable(
+                name: "City");
 
             migrationBuilder.DropTable(
                 name: "Country");

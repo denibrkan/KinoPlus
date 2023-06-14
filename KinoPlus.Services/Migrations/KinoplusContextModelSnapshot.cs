@@ -82,7 +82,7 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CountryId");
+                    b.HasIndex(new[] { "CountryId" }, "IX_City_CountryId");
 
                     b.ToTable("City", (string)null);
                 });
@@ -191,7 +191,7 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CityId");
+                    b.HasIndex(new[] { "CityId" }, "IX_Location_CityId");
 
                     b.ToTable("Location", (string)null);
                 });
@@ -212,9 +212,9 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HallId");
+                    b.HasIndex(new[] { "HallId" }, "IX_LocationHall_HallId");
 
-                    b.HasIndex("LocationId");
+                    b.HasIndex(new[] { "LocationId" }, "IX_LocationHall_LocationId");
 
                     b.ToTable("LocationHall", (string)null);
                 });
@@ -235,10 +235,10 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProjectionTypeId");
-
                     b.HasIndex(new[] { "LocationId", "ProjectionTypeId" }, "IX_LocationProjectionType")
                         .IsUnique();
+
+                    b.HasIndex(new[] { "ProjectionTypeId" }, "IX_LocationProjectionType_ProjectionTypeId");
 
                     b.ToTable("LocationProjectionType", (string)null);
                 });
@@ -283,11 +283,11 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ImageId");
+                    b.HasIndex(new[] { "ImageId" }, "IX_Movie_ImageId");
 
-                    b.HasIndex("MovieStatusId");
+                    b.HasIndex(new[] { "MovieStatusId" }, "IX_Movie_MovieStatusId");
 
-                    b.HasIndex("YearId");
+                    b.HasIndex(new[] { "YearId" }, "IX_Movie_YearId");
 
                     b.ToTable("Movie", (string)null);
                 });
@@ -308,9 +308,9 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ActorId");
+                    b.HasIndex(new[] { "ActorId" }, "IX_MovieActor_ActorId");
 
-                    b.HasIndex("MovieId");
+                    b.HasIndex(new[] { "MovieId" }, "IX_MovieActor_MovieId");
 
                     b.ToTable("MovieActor", (string)null);
                 });
@@ -331,9 +331,9 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex(new[] { "CategoryId" }, "IX_MovieCategory_CategoryId");
 
-                    b.HasIndex("MovieId");
+                    b.HasIndex(new[] { "MovieId" }, "IX_MovieCategory_MovieId");
 
                     b.ToTable("MovieCategory", (string)null);
                 });
@@ -354,9 +354,9 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GenreId");
+                    b.HasIndex(new[] { "GenreId" }, "IX_MovieGenre_GenreId");
 
-                    b.HasIndex("MovieId");
+                    b.HasIndex(new[] { "MovieId" }, "IX_MovieGenre_MovieId");
 
                     b.ToTable("MovieGenre", (string)null);
                 });
@@ -386,9 +386,9 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MovieId");
+                    b.HasIndex(new[] { "MovieId" }, "IX_MovieReaction_MovieId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex(new[] { "UserId" }, "IX_MovieReaction_UserId");
 
                     b.ToTable("MovieReaction", (string)null);
                 });
@@ -445,15 +445,15 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HallId");
+                    b.HasIndex(new[] { "HallId" }, "IX_Projection_HallId");
 
-                    b.HasIndex("LocationId");
+                    b.HasIndex(new[] { "LocationId" }, "IX_Projection_LocationId");
 
-                    b.HasIndex("MovieId");
+                    b.HasIndex(new[] { "MovieId" }, "IX_Projection_MovieId");
 
-                    b.HasIndex("ProjectionTypeId");
+                    b.HasIndex(new[] { "ProjectionTypeId" }, "IX_Projection_ProjectionTypeId");
 
-                    b.HasIndex("RecurringProjectionId");
+                    b.HasIndex(new[] { "RecurringProjectionId" }, "IX_Projection_RecurringProjectionId");
 
                     b.ToTable("Projection", (string)null);
                 });
@@ -498,7 +498,7 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("WeekDayId");
+                    b.HasIndex(new[] { "WeekDayId" }, "IX_RecurringProjection_WeekDayId");
 
                     b.ToTable("RecurringProjection", (string)null);
                 });
@@ -566,11 +566,11 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProjectionId");
+                    b.HasIndex(new[] { "ProjectionId" }, "IX_Ticket_ProjectionId");
 
-                    b.HasIndex("SeatId");
+                    b.HasIndex(new[] { "SeatId" }, "IX_Ticket_SeatId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex(new[] { "UserId" }, "IX_Ticket_UserId");
 
                     b.ToTable("Ticket", (string)null);
                 });
@@ -601,6 +601,9 @@ namespace KinoPlus.Services.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int?>("LocationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -622,7 +625,9 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ImageId");
+                    b.HasIndex("LocationId");
+
+                    b.HasIndex(new[] { "ImageId" }, "IX_User_ImageId");
 
                     b.ToTable("User", (string)null);
                 });
@@ -643,9 +648,9 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RoleId");
+                    b.HasIndex(new[] { "RoleId" }, "IX_UserRole_RoleId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex(new[] { "UserId" }, "IX_UserRole_UserId");
 
                     b.ToTable("UserRole", (string)null);
                 });
@@ -935,7 +940,14 @@ namespace KinoPlus.Services.Migrations
                         .HasForeignKey("ImageId")
                         .HasConstraintName("FK_User_Image");
 
+                    b.HasOne("KinoPlus.Services.Database.Location", "Location")
+                        .WithMany("Users")
+                        .HasForeignKey("LocationId")
+                        .HasConstraintName("FK_User_Location");
+
                     b.Navigation("Image");
+
+                    b.Navigation("Location");
                 });
 
             modelBuilder.Entity("KinoPlus.Services.Database.UserRole", b =>
@@ -1003,6 +1015,8 @@ namespace KinoPlus.Services.Migrations
                     b.Navigation("LocationProjectionTypes");
 
                     b.Navigation("Projections");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("KinoPlus.Services.Database.Movie", b =>
