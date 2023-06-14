@@ -1,3 +1,4 @@
+import 'package:mobile/models/location.dart';
 import 'package:mobile/models/movie.dart';
 
 class User {
@@ -22,6 +23,7 @@ class User {
   late num movieCount;
   late num loyaltyPoints;
   late int? locationId;
+  late Location? location;
   late List<dynamic> roles;
   late List<Movie> moviesWatched;
 
@@ -37,6 +39,8 @@ class User {
     movieCount = json['movieCount'];
     loyaltyPoints = json['loyaltyPoints'];
     locationId = json['locationId'];
+    location =
+        json['location'] != null ? Location.fromJson(json['location']) : null;
     moviesWatched =
         json['moviesWatched'] != null && json['moviesWatched'].isNotEmpty
             ? json['moviesWatched']
