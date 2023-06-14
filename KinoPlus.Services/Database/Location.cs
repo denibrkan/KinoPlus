@@ -20,4 +20,6 @@ public partial class Location
     public virtual ICollection<LocationProjectionType> LocationProjectionTypes { get; } = new List<LocationProjectionType>();
 
     public virtual ICollection<Projection> Projections { get; } = new List<Projection>();
+
+    public virtual ICollection<User> Users { get; } = new List<User>();
 }

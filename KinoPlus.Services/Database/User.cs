@@ -1,4 +1,7 @@
-﻿namespace KinoPlus.Services.Database;
+﻿using System;
+using System.Collections.Generic;
+
+namespace KinoPlus.Services.Database;
 
 public partial class User
 {
@@ -20,7 +23,11 @@ public partial class User
 
     public Guid? ImageId { get; set; }
 
+    public int? LocationId { get; set; }
+
     public virtual Image? Image { get; set; }
+
+    public virtual Location? Location { get; set; }
 
     public virtual ICollection<MovieReaction> MovieReactions { get; } = new List<MovieReaction>();
 

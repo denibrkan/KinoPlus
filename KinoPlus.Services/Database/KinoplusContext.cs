@@ -87,6 +87,8 @@ public partial class KinoplusContext : DbContext
         {
             entity.ToTable("City");
 
+            entity.HasIndex(e => e.CountryId, "IX_City_CountryId");
+
             entity.Property(e => e.Name).HasMaxLength(50);
 
             entity.HasOne(d => d.Country).WithMany(p => p.Cities)
@@ -129,6 +131,8 @@ public partial class KinoplusContext : DbContext
         {
             entity.ToTable("Location");
 
+            entity.HasIndex(e => e.CityId, "IX_Location_CityId");
+
             entity.Property(e => e.Address).HasMaxLength(100);
             entity.Property(e => e.Name).HasMaxLength(100);
 
@@ -141,6 +145,10 @@ public partial class KinoplusContext : DbContext
         modelBuilder.Entity<LocationHall>(entity =>
         {
             entity.ToTable("LocationHall");
+
+            entity.HasIndex(e => e.HallId, "IX_LocationHall_HallId");
+
+            entity.HasIndex(e => e.LocationId, "IX_LocationHall_LocationId");
 
             entity.HasOne(d => d.Hall).WithMany(p => p.LocationHalls)
                 .HasForeignKey(d => d.HallId)
@@ -159,6 +167,8 @@ public partial class KinoplusContext : DbContext
 
             entity.HasIndex(e => new { e.LocationId, e.ProjectionTypeId }, "IX_LocationProjectionType").IsUnique();
 
+            entity.HasIndex(e => e.ProjectionTypeId, "IX_LocationProjectionType_ProjectionTypeId");
+
             entity.HasOne(d => d.Location).WithMany(p => p.LocationProjectionTypes)
                 .HasForeignKey(d => d.LocationId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -173,6 +183,12 @@ public partial class KinoplusContext : DbContext
         modelBuilder.Entity<Movie>(entity =>
         {
             entity.ToTable("Movie");
+
+            entity.HasIndex(e => e.ImageId, "IX_Movie_ImageId");
+
+            entity.HasIndex(e => e.MovieStatusId, "IX_Movie_MovieStatusId");
+
+            entity.HasIndex(e => e.YearId, "IX_Movie_YearId");
 
             entity.Property(e => e.DateCreated).HasColumnType("datetime");
             entity.Property(e => e.Title).HasMaxLength(200);
@@ -197,6 +213,10 @@ public partial class KinoplusContext : DbContext
         {
             entity.ToTable("MovieActor");
 
+            entity.HasIndex(e => e.ActorId, "IX_MovieActor_ActorId");
+
+            entity.HasIndex(e => e.MovieId, "IX_MovieActor_MovieId");
+
             entity.HasOne(d => d.Actor).WithMany(p => p.MovieActors)
                 .HasForeignKey(d => d.ActorId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -211,6 +231,10 @@ public partial class KinoplusContext : DbContext
         modelBuilder.Entity<MovieCategory>(entity =>
         {
             entity.ToTable("MovieCategory");
+
+            entity.HasIndex(e => e.CategoryId, "IX_MovieCategory_CategoryId");
+
+            entity.HasIndex(e => e.MovieId, "IX_MovieCategory_MovieId");
 
             entity.HasOne(d => d.Category).WithMany(p => p.MovieCategories)
                 .HasForeignKey(d => d.CategoryId)
@@ -227,6 +251,10 @@ public partial class KinoplusContext : DbContext
         {
             entity.ToTable("MovieGenre");
 
+            entity.HasIndex(e => e.GenreId, "IX_MovieGenre_GenreId");
+
+            entity.HasIndex(e => e.MovieId, "IX_MovieGenre_MovieId");
+
             entity.HasOne(d => d.Genre).WithMany(p => p.MovieGenres)
                 .HasForeignKey(d => d.GenreId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -241,6 +269,10 @@ public partial class KinoplusContext : DbContext
         modelBuilder.Entity<MovieReaction>(entity =>
         {
             entity.ToTable("MovieReaction");
+
+            entity.HasIndex(e => e.MovieId, "IX_MovieReaction_MovieId");
+
+            entity.HasIndex(e => e.UserId, "IX_MovieReaction_UserId");
 
             entity.Property(e => e.DateCreated).HasColumnType("datetime");
 
@@ -265,6 +297,16 @@ public partial class KinoplusContext : DbContext
         modelBuilder.Entity<Projection>(entity =>
         {
             entity.ToTable("Projection");
+
+            entity.HasIndex(e => e.HallId, "IX_Projection_HallId");
+
+            entity.HasIndex(e => e.LocationId, "IX_Projection_LocationId");
+
+            entity.HasIndex(e => e.MovieId, "IX_Projection_MovieId");
+
+            entity.HasIndex(e => e.ProjectionTypeId, "IX_Projection_ProjectionTypeId");
+
+            entity.HasIndex(e => e.RecurringProjectionId, "IX_Projection_RecurringProjectionId");
 
             entity.Property(e => e.EndsAt).HasColumnType("smalldatetime");
             entity.Property(e => e.Price).HasColumnType("decimal(7, 2)");
@@ -306,6 +348,8 @@ public partial class KinoplusContext : DbContext
         {
             entity.ToTable("RecurringProjection");
 
+            entity.HasIndex(e => e.WeekDayId, "IX_RecurringProjection_WeekDayId");
+
             entity.Property(e => e.EndingDate).HasColumnType("date");
             entity.Property(e => e.StartingDate).HasColumnType("date");
 
@@ -336,6 +380,12 @@ public partial class KinoplusContext : DbContext
         {
             entity.ToTable("Ticket");
 
+            entity.HasIndex(e => e.ProjectionId, "IX_Ticket_ProjectionId");
+
+            entity.HasIndex(e => e.SeatId, "IX_Ticket_SeatId");
+
+            entity.HasIndex(e => e.UserId, "IX_Ticket_UserId");
+
             entity.Property(e => e.DateOfPurchase).HasColumnType("datetime");
 
             entity.HasOne(d => d.Projection).WithMany(p => p.Tickets)
@@ -358,6 +408,8 @@ public partial class KinoplusContext : DbContext
         {
             entity.ToTable("User");
 
+            entity.HasIndex(e => e.ImageId, "IX_User_ImageId");
+
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.FirstName).HasMaxLength(50);
             entity.Property(e => e.LastName).HasMaxLength(50);
@@ -369,11 +421,19 @@ public partial class KinoplusContext : DbContext
             entity.HasOne(d => d.Image).WithMany(p => p.Users)
                 .HasForeignKey(d => d.ImageId)
                 .HasConstraintName("FK_User_Image");
+
+            entity.HasOne(d => d.Location).WithMany(p => p.Users)
+                .HasForeignKey(d => d.LocationId)
+                .HasConstraintName("FK_User_Location");
         });
 
         modelBuilder.Entity<UserRole>(entity =>
         {
             entity.ToTable("UserRole");
+
+            entity.HasIndex(e => e.RoleId, "IX_UserRole_RoleId");
+
+            entity.HasIndex(e => e.UserId, "IX_UserRole_UserId");
 
             entity.HasOne(d => d.Role).WithMany(p => p.UserRoles)
                 .HasForeignKey(d => d.RoleId)

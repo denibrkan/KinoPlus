@@ -15,6 +15,8 @@ namespace KinoPlus.Models
         public string Token { get; set; }
         public int MovieCount { get; set; }
         public int LoyaltyPoints { get; set; }
+        public int? LocationId { get; set; }
+        public LocationDto Location { get; set; }
         public List<RoleDto> Roles { get; set; }
         public List<MovieDto> MoviesWatched { get; set; }
     }
