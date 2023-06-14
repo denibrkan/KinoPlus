@@ -5,6 +5,7 @@ class Register {
   late String lastName;
   late String email;
   late String? phoneNumber;
+  late int locationId;
 
   Register({
     required this.username,
@@ -12,6 +13,7 @@ class Register {
     required this.firstName,
     required this.lastName,
     required this.email,
+    required this.locationId,
     this.phoneNumber,
   });
 
@@ -23,6 +25,7 @@ class Register {
       'lastName': lastName,
       'email': email,
       'phoneNumber': phoneNumber,
+      'locationId': locationId,
     };
   }
 }

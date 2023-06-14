@@ -16,6 +16,7 @@ namespace KinoPlus.Models
         [Required]
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
+        public int LocationId { get; set; }
         public IFormFile Image { get; set; }
     }
 }

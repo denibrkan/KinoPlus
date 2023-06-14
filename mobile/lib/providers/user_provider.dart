@@ -82,6 +82,7 @@ class UserProvider extends BaseProvider {
       'lastName': data.lastName,
       'email': data.email,
       'phoneNumber': data.phoneNumber ?? '',
+      'locationId': data.locationId.toString(),
     });
 
     http.StreamedResponse response = await request.send();

@@ -67,6 +67,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Icons.location_on_sharp,
                     color: Colors.red,
                   ),
+                  const SizedBox(
+                    width: 5,
+                  ),
                   Text(
                     '${user!.location!.name} - ${user!.location!.city.name}',
                     style: const TextStyle(fontSize: 16),
