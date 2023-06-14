@@ -5,6 +5,7 @@ import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/login_screen.dart';
 import 'package:mobile/utils/authorization.dart';
 import 'package:provider/provider.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -47,9 +48,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             height: 50,
           ),
           _buildInfo(),
-          const SizedBox(height: 50),
+          const SizedBox(height: 40),
           _buildStats(),
-          const SizedBox(height: 50),
           _buildLinks(),
         ],
       ),
@@ -59,15 +59,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget _buildInfo() {
     return Column(
       children: [
+        user!.location != null
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.location_on_sharp,
+                    color: Colors.red,
+                  ),
+                  Text(
+                    '${user!.location!.name} - ${user!.location!.city.name}',
+                    style: const TextStyle(fontSize: 16),
+                  )
+                ],
+              )
+            : Container(),
+        const SizedBox(height: 40),
         user!.imageId != null
-            ? SizedBox(
-                width: 120,
-                height: 120,
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(
+            ? ClipRRect(
+                borderRadius: BorderRadius.circular(70),
+                child: FadeInImage(
+                  placeholder: MemoryImage(kTransparentImage),
+                  image: NetworkImage(
                     '$apiUrl/images/${user?.imageId}?original=true',
                     headers: Authorization.createHeaders(),
                   ),
+                  width: 120,
+                  height: 120,
+                  fit: BoxFit.cover,
                 ),
               )
             : Image.asset(
@@ -75,7 +94,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 width: 70,
                 color: Colors.grey,
               ),
-        const SizedBox(height: 40),
+        const SizedBox(height: 30),
         Text(user!.username, style: const TextStyle(fontSize: 22)),
         const SizedBox(
           height: 10,
@@ -155,7 +174,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     backgroundColor: const Color.fromARGB(255, 0, 101, 151),
                     padding: const EdgeInsets.all(12)),
                 onPressed: _userProvider.logout,
-                child: const Text('Odjavi se'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(
+                      Icons.logout,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('Odjavi se')
+                  ],
+                ),
               ),
             ),
           ],
