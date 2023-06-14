@@ -21,6 +21,7 @@ class User {
   late String? token;
   late num movieCount;
   late num loyaltyPoints;
+  late int? locationId;
   late List<dynamic> roles;
   late List<Movie> moviesWatched;
 
@@ -35,6 +36,7 @@ class User {
     token = json['token'];
     movieCount = json['movieCount'];
     loyaltyPoints = json['loyaltyPoints'];
+    locationId = json['locationId'];
     moviesWatched =
         json['moviesWatched'] != null && json['moviesWatched'].isNotEmpty
             ? json['moviesWatched']
@@ -55,6 +57,7 @@ class User {
     data['imageId'] = imageId;
     data['token'] = token;
     data['roles'] = roles;
+    data['locationId'] = locationId;
     return data;
   }
 }

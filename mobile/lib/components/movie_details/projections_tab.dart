@@ -9,6 +9,7 @@ import 'package:mobile/models/projection.dart';
 import 'package:mobile/providers/date_provider.dart';
 import 'package:mobile/providers/location_provider.dart';
 import 'package:mobile/providers/projection_provider.dart';
+import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/seats_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -28,6 +29,7 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
   late DateProvider _dateProvider;
   late LocationProvider _locationProvider;
   late ProjectionProvider _projectionProvider;
+  late UserProvider _userProvider;
 
   Location? selectedLocation;
   late DateTime selectedDate;
@@ -42,6 +44,7 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
     _dateProvider = context.read<DateProvider>();
     _locationProvider = context.read<LocationProvider>();
     _projectionProvider = context.read<ProjectionProvider>();
+    _userProvider = context.read<UserProvider>();
 
     selectedDate = _dateProvider.selectedDate;
 
@@ -77,8 +80,11 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
     var data = await _locationProvider.get(null);
 
     if (mounted) {
+      int? userLocationId = _userProvider.user!.locationId;
       setState(() {
-        selectedLocation = data.first;
+        selectedLocation = userLocationId != null
+            ? data.firstWhere((location) => location.id == userLocationId)
+            : data.first;
         locations = data;
       });
     }
