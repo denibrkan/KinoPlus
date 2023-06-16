@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile/extensions/date_only_compare.dart';
-import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/providers/date_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -86,7 +85,7 @@ class _DateContainerState extends State<DateContainer> {
             border: Border.all(
               color: Colors.grey,
             ),
-            color: widget.isSelected ? Colors.amber : primary.shade500,
+            color: widget.isSelected ? Colors.amber : null,
           ),
           width: 100,
           height: 80,
@@ -99,7 +98,7 @@ class _DateContainerState extends State<DateContainer> {
                     : DateFormat.MMMd('bs').format(widget.date),
                 style: Theme.of(context).textTheme.titleMedium!.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: widget.isSelected ? Colors.black : Colors.white),
+                    color: widget.isSelected ? Colors.black : null),
               ),
               const SizedBox(
                 height: 8,

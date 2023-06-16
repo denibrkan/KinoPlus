@@ -1,7 +1,9 @@
 import 'dart:io';
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:mobile/helpers/constants.dart';
+import 'package:mobile/helpers/themes.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/models/projection.dart';
 import 'package:mobile/providers/category_provider.dart';
@@ -25,77 +27,78 @@ import 'package:mobile/screens/seats_screen.dart';
 import 'package:mobile/screens/tickets_screen.dart';
 import 'package:provider/provider.dart';
 import 'helpers/my_http_overrides.dart';
-import 'helpers/colors.dart';
 import 'models/user.dart';
 import 'utils/authorization.dart';
 
 void main() async {
   HttpOverrides.global = MyHttpOverrides();
-  initializeDateFormatting('fr_FR', null).then((_) => runApp(const MyApp()));
+  WidgetsFlutterBinding.ensureInitialized();
+  final savedThemeMode = await AdaptiveTheme.getThemeMode();
+  initializeDateFormatting('fr_FR', null).then((_) => runApp(MyApp(
+        savedThemeMode: savedThemeMode,
+      )));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final AdaptiveThemeMode? savedThemeMode;
+  const MyApp({super.key, required this.savedThemeMode});
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => SeatProvider()),
-        ChangeNotifierProvider(create: (_) => UserProvider()),
-        ChangeNotifierProvider(create: (_) => TicketProvider()),
-        ChangeNotifierProvider(create: (_) => CategoryProvider()),
-        ChangeNotifierProvider(create: (_) => MovieProvider()),
-        ChangeNotifierProvider(create: (_) => LocationProvider()),
-        ChangeNotifierProvider(create: (_) => ProjectionProvider()),
-        ChangeNotifierProvider(create: (_) => MovieTabProvider()),
-        ChangeNotifierProvider(create: (_) => ReactionProvider()),
-        ChangeNotifierProvider(create: (_) => GenreProvider()),
-      ],
-      child: MaterialApp(
-        title: appTitle,
-        theme: ThemeData(
-          primarySwatch: primary,
-          textTheme: Theme.of(context).textTheme.apply(
-                displayColor: const Color.fromRGBO(233, 233, 233, 1),
-                bodyColor: const Color.fromRGBO(233, 233, 233, 1),
-                fontFamily: 'Albert Sans',
-              ),
-          scaffoldBackgroundColor: primary.shade500,
-        ),
-        routes: {
-          ReservationSuccessScreen.routeName: (context) =>
-              const ReservationSuccessScreen(),
-          TicketsScreen.routeName: (context) => const TicketsScreen(),
-          RegisterScreen.routeName: (context) => const RegisterScreen(),
-          LoginScreen.routeName: (context) => const LoginScreen(),
-        },
-        onGenerateRoute: (settings) {
-          if (settings.name == MovieDetailScreen.routeName) {
-            return MaterialPageRoute(
-                builder: (context) =>
-                    MovieDetailScreen(movie: settings.arguments as Movie));
-          }
-          if (settings.name == SeatsScreen.routeName) {
-            return MaterialPageRoute(
-                builder: (context) =>
-                    SeatsScreen(projection: settings.arguments as Projection));
-          }
-          if (settings.name == ProfileScreen.routeName) {
-            return MaterialPageRoute(
-                builder: (context) => const ProfileScreen());
-          }
-          if (settings.name == '/') {
-            return MaterialPageRoute(
-                builder: (context) => Main(
-                    index: settings.arguments != null
-                        ? settings.arguments as int
-                        : 0));
-          }
-          return null;
-        },
-      ),
-    );
+        providers: [
+          ChangeNotifierProvider(create: (_) => SeatProvider()),
+          ChangeNotifierProvider(create: (_) => UserProvider()),
+          ChangeNotifierProvider(create: (_) => TicketProvider()),
+          ChangeNotifierProvider(create: (_) => CategoryProvider()),
+          ChangeNotifierProvider(create: (_) => MovieProvider()),
+          ChangeNotifierProvider(create: (_) => LocationProvider()),
+          ChangeNotifierProvider(create: (_) => ProjectionProvider()),
+          ChangeNotifierProvider(create: (_) => MovieTabProvider()),
+          ChangeNotifierProvider(create: (_) => ReactionProvider()),
+          ChangeNotifierProvider(create: (_) => GenreProvider()),
+        ],
+        child: AdaptiveTheme(
+          light: ThemeClass.lightTheme,
+          dark: ThemeClass.darkTheme,
+          initial: savedThemeMode ?? AdaptiveThemeMode.dark,
+          builder: (theme, darkTheme) => MaterialApp(
+            title: appTitle,
+            theme: theme,
+            darkTheme: darkTheme,
+            routes: {
+              ReservationSuccessScreen.routeName: (context) =>
+                  const ReservationSuccessScreen(),
+              TicketsScreen.routeName: (context) => const TicketsScreen(),
+              RegisterScreen.routeName: (context) => const RegisterScreen(),
+              LoginScreen.routeName: (context) => const LoginScreen(),
+            },
+            onGenerateRoute: (settings) {
+              if (settings.name == MovieDetailScreen.routeName) {
+                return MaterialPageRoute(
+                    builder: (context) =>
+                        MovieDetailScreen(movie: settings.arguments as Movie));
+              }
+              if (settings.name == SeatsScreen.routeName) {
+                return MaterialPageRoute(
+                    builder: (context) => SeatsScreen(
+                        projection: settings.arguments as Projection));
+              }
+              if (settings.name == ProfileScreen.routeName) {
+                return MaterialPageRoute(
+                    builder: (context) => const ProfileScreen());
+              }
+              if (settings.name == '/') {
+                return MaterialPageRoute(
+                    builder: (context) => Main(
+                        index: settings.arguments != null
+                            ? settings.arguments as int
+                            : 0));
+              }
+              return null;
+            },
+          ),
+        ));
   }
 }
 
@@ -191,12 +194,11 @@ class _MainState extends State<Main> {
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.lightBlue[300],
+          selectedItemColor: Colors.lightBlueAccent,
           unselectedItemColor: Colors.grey,
           onTap: _onItemTapped,
           showSelectedLabels: false,
           showUnselectedLabels: false,
-          backgroundColor: primary.shade800,
           type: BottomNavigationBarType.fixed,
         ),
       ),

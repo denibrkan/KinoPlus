@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile/helpers/colors.dart';
@@ -92,7 +93,6 @@ class _SeatsScreenState extends State<SeatsScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: primary.shade500,
         body: Column(
           children: [
             _buildProjectionHeader(),
@@ -157,7 +157,7 @@ class _SeatsScreenState extends State<SeatsScreen> {
                 ? Colors.grey
                 : s.isSelected
                     ? Colors.lightBlueAccent
-                    : primary.shade500,
+                    : null,
             border: Border.all(color: Colors.grey),
             borderRadius: BorderRadius.circular(4),
           ),
@@ -285,9 +285,9 @@ class _SeatsScreenState extends State<SeatsScreen> {
     return Container(
       height: 12,
       width: 350,
-      decoration: BoxDecoration(
-        color: primary.shade200,
-        borderRadius: const BorderRadius.vertical(
+      decoration: const BoxDecoration(
+        color: lightGrayColor,
+        borderRadius: BorderRadius.vertical(
           top: Radius.elliptical(400, 100),
         ),
       ),
@@ -296,10 +296,12 @@ class _SeatsScreenState extends State<SeatsScreen> {
 
   Widget _buildBottomBar() {
     if (selectedSeats.isEmpty) return Container();
-
+    var color = AdaptiveTheme.of(context).mode == AdaptiveThemeMode.dark
+        ? darkSecondaryColor
+        : darkPrimaryColor;
     return Container(
       height: 100,
-      color: const Color(0xFF2B3543),
+      color: color,
       padding: const EdgeInsets.all(16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

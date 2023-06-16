@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -124,7 +125,7 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
         _buildLocationDropdown(),
         Container(
             constraints: const BoxConstraints(minHeight: 250),
-            child: _buildProjectionTickets()),
+            child: _buildProjectionTickets(context)),
         if (selectedProjection != null)
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
@@ -178,10 +179,6 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
                     value: selectedLocation,
                     icon: const Icon(Icons.arrow_drop_down),
                     elevation: 16,
-                    style: const TextStyle(
-                      fontSize: 16,
-                    ),
-                    dropdownColor: const Color(0xFF2B3543),
                     onChanged: (Location? value) {
                       setState(() {
                         selectedLocation = value;
@@ -202,7 +199,11 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
         ));
   }
 
-  Widget _buildProjectionTickets() {
+  Widget _buildProjectionTickets(context) {
+    var themeMode = AdaptiveTheme.of(context).mode;
+    var ticketColor = themeMode == AdaptiveThemeMode.light
+        ? darkPrimaryColor
+        : darkSecondaryColor;
     if (loading) {
       return const Center(
         child: CircularProgressIndicator(
@@ -213,7 +214,6 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
     if (projections.isEmpty) {
       return const Text(
         'Prazno :(',
-        style: TextStyle(color: Color.fromRGBO(233, 233, 233, 1), fontSize: 16),
       );
     }
     var groupedProjections =
@@ -249,30 +249,25 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
                             Image.asset(
                               'assets/images/ticket120.png',
                               color: selectedProjection == p
-                                  ? const Color.fromARGB(255, 68, 85, 107)
-                                  : const Color(0xFF2B3543),
+                                  ? selectedTicketColor
+                                  : ticketColor,
                             ),
                             Positioned(
                               top: 35,
                               child: Text(
                                 DateFormat.Hm('bs').format(p.startsAt),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                                style: const TextStyle(color: Colors.white),
                               ),
                             ),
-                            Icon(Icons.star, color: primary.shade500, size: 20),
+                            const Icon(Icons.star,
+                                color: Colors.grey, size: 16),
                             Positioned(
                                 bottom: 35,
                                 child: Text(
                                   NumberFormat.currency(locale: 'bs')
                                       .format(p.price),
                                   style: const TextStyle(
-                                    color: Colors.yellow,
-                                    fontWeight: FontWeight.w300,
+                                    color: Colors.amber,
                                   ),
                                 ))
                           ],
@@ -292,10 +287,26 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime.now(),
-        lastDate: DateTime(2101));
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2101),
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: darkPrimaryColor,
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                foregroundColor: darkSecondaryColor, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
     if (picked != null && !picked.isSameDate(selectedDate)) {
       _dateProvider.addDate(picked);
     }

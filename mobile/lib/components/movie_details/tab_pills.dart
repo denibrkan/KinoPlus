@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/helpers/enums.dart';
 import 'package:mobile/models/reaction.dart';
 import 'package:mobile/providers/movie_tab_provider.dart';
@@ -73,26 +72,10 @@ class _TabPillsState extends State<TabPills> {
               showSelectedIcon: false,
               style: ButtonStyle(
                 visualDensity: const VisualDensity(vertical: -2),
-                side: MaterialStateProperty.all(
-                    BorderSide(width: 0.2, color: primary.shade100)),
+                side: MaterialStateProperty.all(const BorderSide(
+                    width: 0.2, color: Color.fromARGB(255, 219, 219, 219))),
                 padding: MaterialStateProperty.all(
                     const EdgeInsets.fromLTRB(0, 0, 0, 0)),
-                backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                  (Set<MaterialState> states) {
-                    if (states.contains(MaterialState.selected)) {
-                      return const Color(0xFFE51937);
-                    }
-                    return primary.shade500; // Use the component's default.
-                  },
-                ),
-                foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-                  (Set<MaterialState> states) {
-                    if (states.contains(MaterialState.selected)) {
-                      return Colors.white;
-                    }
-                    return primary.shade100; // Use the component's default.
-                  },
-                ),
               ),
             ),
           ),

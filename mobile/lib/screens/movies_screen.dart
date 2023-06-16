@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/common/rating_stars.dart';
 import 'package:mobile/helpers/colors.dart';
@@ -123,10 +124,10 @@ class _MoviesScreenState extends State<MoviesScreen> {
 
   Widget _buildButtons() {
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6),
-        color: Colors.white,
-      ),
+      decoration: const BoxDecoration(
+          border: Border(
+        bottom: BorderSide(color: lightGrayColor, width: 0.2),
+      )),
       child: IntrinsicHeight(
         child: Row(
           children: [
@@ -135,15 +136,13 @@ class _MoviesScreenState extends State<MoviesScreen> {
                   onPressed: () => sortingDialog,
                   icon: const Icon(
                     Icons.sort,
-                    color: Color.fromARGB(255, 0, 101, 151),
                   ),
-                  label: Text(
+                  label: const Text(
                     'Poredaj',
-                    style: TextStyle(color: primary[500]),
                   )),
             ),
             const VerticalDivider(
-              thickness: 0.5,
+              thickness: 0.2,
               color: Colors.grey,
             ),
             Expanded(
@@ -153,11 +152,9 @@ class _MoviesScreenState extends State<MoviesScreen> {
                   },
                   icon: const Icon(
                     Icons.filter_alt,
-                    color: Color.fromARGB(255, 0, 101, 151),
                   ),
-                  label: Text(
+                  label: const Text(
                     'Filtriraj',
-                    style: TextStyle(color: primary[500]),
                   )),
             ),
           ],
@@ -205,14 +202,17 @@ class _MoviesScreenState extends State<MoviesScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-              color: primary[500],
+              color: darkPrimaryColor,
               padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 12),
               margin: const EdgeInsets.only(bottom: 20),
               child: Row(
                 children: [
                   Text(
                     'Filtriraj rezultate',
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(color: Colors.white),
                   ),
                 ],
               )),
@@ -222,20 +222,14 @@ class _MoviesScreenState extends State<MoviesScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Kategorija',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(color: primary[500]),
+                    style: TextStyle(fontSize: 18, color: darkPrimaryColor),
                   ),
                   _buildCategoryDropdown(),
-                  Text(
+                  const Text(
                     'Žanr',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(color: primary[500]),
+                    style: TextStyle(fontSize: 18, color: darkPrimaryColor),
                   ),
                   _buildGenreDropdown(),
                 ],
@@ -248,6 +242,8 @@ class _MoviesScreenState extends State<MoviesScreen> {
                 child: TextButton(
                     style: TextButton.styleFrom(
                       minimumSize: const Size.fromHeight(50),
+                      foregroundColor: darkPrimaryColor,
+                      backgroundColor: Colors.white,
                     ),
                     onPressed: () {
                       setState(() {
@@ -262,6 +258,8 @@ class _MoviesScreenState extends State<MoviesScreen> {
                 child: TextButton(
                     style: TextButton.styleFrom(
                       minimumSize: const Size.fromHeight(50),
+                      foregroundColor: darkPrimaryColor,
+                      backgroundColor: Colors.white,
                     ),
                     onPressed: () {
                       _scaffoldKey.currentState!.closeEndDrawer();
@@ -282,10 +280,15 @@ class _MoviesScreenState extends State<MoviesScreen> {
             ? DropdownButton<Category>(
                 isExpanded: true,
                 value: selectedCategory,
-                icon: const Icon(Icons.arrow_drop_down),
+                icon: const Icon(
+                  Icons.arrow_drop_down,
+                  color: Colors.grey,
+                ),
                 elevation: 16,
-                hint: const Text('Odaberi kategoriju...'),
-                dropdownColor: const Color(0xFF2B3543),
+                hint: const Text(
+                  'Odaberi kategoriju...',
+                  style: TextStyle(color: Colors.grey),
+                ),
                 onChanged: (Category? value) {
                   setState(() {
                     selectedCategory = value;
@@ -296,8 +299,9 @@ class _MoviesScreenState extends State<MoviesScreen> {
                     .map<DropdownMenuItem<Category>>(
                         (c) => DropdownMenuItem<Category>(
                               value: c,
-                              child: Text(c.name,
-                                  style: const TextStyle(color: Colors.white)),
+                              child: Text(
+                                c.name,
+                              ),
                             ))
                     .toList(),
                 selectedItemBuilder: (_) {
@@ -306,7 +310,7 @@ class _MoviesScreenState extends State<MoviesScreen> {
                             alignment: Alignment.centerLeft,
                             child: Text(
                               c.name,
-                              style: TextStyle(color: primary[500]),
+                              style: const TextStyle(color: darkPrimaryColor),
                             ),
                           ))
                       .toList();
@@ -322,10 +326,15 @@ class _MoviesScreenState extends State<MoviesScreen> {
             ? DropdownButton<Genre>(
                 isExpanded: true,
                 value: selectedGenre,
-                icon: const Icon(Icons.arrow_drop_down),
+                icon: const Icon(
+                  Icons.arrow_drop_down,
+                  color: Colors.grey,
+                ),
                 elevation: 16,
-                hint: const Text('Odaberi žanr...'),
-                dropdownColor: const Color(0xFF2B3543),
+                hint: const Text(
+                  'Odaberi žanr...',
+                  style: TextStyle(color: Colors.grey),
+                ),
                 onChanged: (Genre? value) {
                   setState(() {
                     selectedGenre = value;
@@ -336,8 +345,9 @@ class _MoviesScreenState extends State<MoviesScreen> {
                     .map<DropdownMenuItem<Genre>>(
                         (c) => DropdownMenuItem<Genre>(
                               value: c,
-                              child: Text(c.name,
-                                  style: const TextStyle(color: Colors.white)),
+                              child: Text(
+                                c.name,
+                              ),
                             ))
                     .toList(),
                 selectedItemBuilder: (_) {
@@ -346,7 +356,7 @@ class _MoviesScreenState extends State<MoviesScreen> {
                             alignment: Alignment.centerLeft,
                             child: Text(
                               c.name,
-                              style: TextStyle(color: primary[500]),
+                              style: const TextStyle(color: darkPrimaryColor),
                             ),
                           ))
                       .toList();
@@ -359,9 +369,9 @@ class _MoviesScreenState extends State<MoviesScreen> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text(
+            title: const Text(
               'Poredaj rezultate',
-              style: TextStyle(color: primary[500]),
+              style: TextStyle(color: darkPrimaryColor),
             ),
             content: SingleChildScrollView(
               child: ListBody(
@@ -377,12 +387,12 @@ class _MoviesScreenState extends State<MoviesScreen> {
                             children: [
                               Text(
                                 _getMovieSorterName(sorter),
-                                style: TextStyle(color: primary[500]),
+                                style: const TextStyle(color: darkPrimaryColor),
                               ),
                               sortBy == sorter
-                                  ? Icon(
+                                  ? const Icon(
                                       Icons.check,
-                                      color: primary[500],
+                                      color: darkPrimaryColor,
                                       size: 20,
                                     )
                                   : Container()
@@ -446,8 +456,6 @@ class MovieSearchDelegate extends SearchDelegate {
       inputDecorationTheme: const InputDecorationTheme(
         hintStyle: TextStyle(color: Colors.grey, fontSize: 15),
       ),
-      textTheme: const TextTheme(
-          titleMedium: TextStyle(color: Color.fromRGBO(233, 233, 233, 1))),
     );
   }
 
@@ -518,6 +526,7 @@ Widget _buildMovieListView(List<Movie> movies) {
 }
 
 Widget _buildMovie(BuildContext context, Movie movie) {
+  var themeMode = AdaptiveTheme.of(context).mode;
   return GestureDetector(
     onTap: () => Navigator.pushNamed(
       context,
@@ -528,7 +537,9 @@ Widget _buildMovie(BuildContext context, Movie movie) {
         margin: const EdgeInsets.only(top: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: primary[400],
+          color: themeMode == AdaptiveThemeMode.dark
+              ? darkSecondaryColor
+              : lightPrimaryColor,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -568,7 +579,7 @@ Widget _buildMovie(BuildContext context, Movie movie) {
                     padding: const EdgeInsets.only(left: 2.5),
                     child: Text(
                       getDuration(movie.duration),
-                      style: const TextStyle(color: Colors.white54),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   ),
                   const SizedBox(
@@ -578,7 +589,7 @@ Widget _buildMovie(BuildContext context, Movie movie) {
                     padding: const EdgeInsets.only(left: 2.5),
                     child: Text(
                       movie.genres.map((e) => e.name).join(', '),
-                      style: const TextStyle(color: Colors.white54),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   ),
                   const SizedBox(

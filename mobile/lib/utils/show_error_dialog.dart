@@ -6,7 +6,7 @@ Future<dynamic> showErrorDialog(BuildContext context, String? message) async {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('Greška', style: TextStyle(color: primary.shade500)),
+        title: const Text('Greška', style: TextStyle(color: darkPrimaryColor)),
         content: Text(message ?? 'Dogodila se greška.',
             style: const TextStyle(color: Colors.grey)),
         actions: [

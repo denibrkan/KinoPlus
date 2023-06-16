@@ -1,8 +1,10 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile/common/rating_stars.dart';
 import 'package:mobile/components/movie_details/projections_tab.dart';
 import 'package:mobile/components/movie_details/tab_pills.dart';
+import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/helpers/enums.dart';
 import 'package:mobile/models/movie.dart';
@@ -126,7 +128,7 @@ class _MovieTabsState extends State<MovieTabs> {
                   Text(
                     movie.description,
                     style: const TextStyle(
-                      color: Colors.white54,
+                      color: Colors.grey,
                     ),
                     textAlign: TextAlign.justify,
                   )
@@ -167,7 +169,7 @@ class _MovieTabsState extends State<MovieTabs> {
             child: Column(
               children: [
                 _buildReactionInsertField(),
-                _buildReactionList(),
+                _buildReactionList(context),
               ],
             ));
         break;
@@ -183,7 +185,9 @@ class _MovieTabsState extends State<MovieTabs> {
     );
   }
 
-  Widget _buildReactionList() {
+  Widget _buildReactionList(BuildContext context) {
+    var themeMode = AdaptiveTheme.of(context).mode;
+
     if (loading) {
       return const Center(
         child: CircularProgressIndicator(
@@ -207,7 +211,9 @@ class _MovieTabsState extends State<MovieTabs> {
                   margin: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: const Color(0xFF2B3543),
+                    color: themeMode == AdaptiveThemeMode.dark
+                        ? darkSecondaryColor
+                        : lightPrimaryColor,
                   ),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -219,7 +225,7 @@ class _MovieTabsState extends State<MovieTabs> {
                           child: Text(
                             r.comment ?? '',
                             style: const TextStyle(
-                              color: Color.fromARGB(255, 201, 201, 201),
+                              color: Colors.grey,
                             ),
                           ),
                         ),
@@ -243,9 +249,8 @@ class _MovieTabsState extends State<MovieTabs> {
                           : Container(
                               padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.grey[800]!,
-                                ),
+                                border:
+                                    Border.all(color: Colors.grey, width: 0.5),
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: Image.asset(
@@ -322,8 +327,7 @@ class _MovieTabsState extends State<MovieTabs> {
                     child: ElevatedButton(
                       onPressed: () => insertReaction(),
                       style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 0, 101, 151),
+                          backgroundColor: blueButtonColor,
                           padding: const EdgeInsets.symmetric(vertical: 12)),
                       child: const Text('Spremi'),
                     ),

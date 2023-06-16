@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/common/rating_stars.dart';
-import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/category.dart';
 import 'package:mobile/models/movie.dart';
@@ -11,6 +10,7 @@ import 'package:mobile/screens/movie_detail_screen.dart';
 import 'package:mobile/utils/authorization.dart';
 import 'package:mobile/utils/show_error_dialog.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_shadow/simple_shadow.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -70,11 +70,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title,
-            style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.w400,
-            )),
+        title: Text(
+          widget.title,
+          style: const TextStyle(fontSize: 24),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -83,7 +82,6 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               height: 350,
               padding: const EdgeInsets.fromLTRB(0, 30, 0, 30),
-              color: primary.shade700,
               child: FutureBuilder(
                 future: futureMovies,
                 builder: (context, snapshot) {
@@ -144,14 +142,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     arguments: movie,
                   ),
                   child: movie.imageId != null
-                      ? FadeInImage(
-                          image: NetworkImage(
-                            '$apiUrl/images/${movie.imageId}',
-                            headers: Authorization.createHeaders(),
+                      ? SimpleShadow(
+                          sigma: 4,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(6),
+                            child: FadeInImage(
+                              image: NetworkImage(
+                                '$apiUrl/images/${movie.imageId}',
+                                headers: Authorization.createHeaders(),
+                              ),
+                              placeholder: MemoryImage(kTransparentImage),
+                              height: 210,
+                              fadeInDuration: const Duration(milliseconds: 300),
+                            ),
                           ),
-                          placeholder: MemoryImage(kTransparentImage),
-                          height: 210,
-                          fadeInDuration: const Duration(milliseconds: 300),
                         )
                       : const Placeholder(
                           fallbackHeight: 210,
@@ -190,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: const BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                    color: Colors.blueAccent,
+                    color: Colors.lightBlueAccent,
                     width: 0.2,
                   ),
                 ),
@@ -206,12 +210,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               .titleMedium!
                               .copyWith(fontSize: 18)),
                       TextButton(
-                          style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all<Color>(
-                            Colors.lightBlue[300]!,
-                          )),
-                          onPressed: () => openMoviesScreen(c),
-                          child: const Text('Pogledaj sve'))
+                        onPressed: () => openMoviesScreen(c),
+                        child: const Text(
+                          'Pogledaj sve',
+                          style: TextStyle(color: Colors.lightBlueAccent),
+                        ),
+                      )
                     ],
                   ),
                   Padding(
@@ -229,16 +233,20 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: 70,
                               height: 90,
                               child: m.imageId != null
-                                  ? FadeInImage(
-                                      image: NetworkImage(
-                                        '$apiUrl/images/${m.imageId}',
-                                        headers: Authorization.createHeaders(),
+                                  ? ClipRRect(
+                                      borderRadius: BorderRadius.circular(6),
+                                      child: FadeInImage(
+                                        image: NetworkImage(
+                                          '$apiUrl/images/${m.imageId}',
+                                          headers:
+                                              Authorization.createHeaders(),
+                                        ),
+                                        placeholder:
+                                            MemoryImage(kTransparentImage),
+                                        fit: BoxFit.fill,
+                                        fadeInDuration:
+                                            const Duration(milliseconds: 300),
                                       ),
-                                      placeholder:
-                                          MemoryImage(kTransparentImage),
-                                      fit: BoxFit.fill,
-                                      fadeInDuration:
-                                          const Duration(milliseconds: 300),
                                     )
                                   : const Placeholder(),
                             ));

@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -77,6 +78,9 @@ class _TicketsScreenState extends State<TicketsScreen> {
   }
 
   Widget _buildTickets() {
+    var ticketColor = AdaptiveTheme.of(context).mode == AdaptiveThemeMode.dark
+        ? darkSecondaryColor
+        : lightPrimaryColor;
     var screenHeight = MediaQuery.of(context).size.height -
         ((kToolbarHeight * 2) + kBottomNavigationBarHeight);
     double viewPortFraction = 0.8;
@@ -107,98 +111,83 @@ class _TicketsScreenState extends State<TicketsScreen> {
           ),
           items: tickets
               .map(
-                (t) => SizedBox(
-                  height: ticketHeight,
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(12),
-                            topRight: Radius.circular(12),
+                (t) => Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(22.0),
+                  ),
+                  elevation: 12,
+                  child: SizedBox(
+                    height: ticketHeight,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(12),
+                              topRight: Radius.circular(12),
+                            ),
+                            child: t.movieImageId != null
+                                ? FadeInImage(
+                                    image: NetworkImage(
+                                      '$apiUrl/images/${t.movieImageId}?original=true',
+                                      headers: Authorization.createHeaders(),
+                                    ),
+                                    placeholder: MemoryImage(kTransparentImage),
+                                    width: MediaQuery.of(context).size.width,
+                                    fadeInDuration:
+                                        const Duration(milliseconds: 300),
+                                    fit: BoxFit.cover,
+                                  )
+                                : Placeholder(
+                                    fallbackHeight: ticketHeight * 0.45,
+                                  ),
                           ),
-                          child: t.movieImageId != null
-                              ? FadeInImage(
-                                  image: NetworkImage(
-                                    '$apiUrl/images/${t.movieImageId}?original=true',
-                                    headers: Authorization.createHeaders(),
-                                  ),
-                                  placeholder: MemoryImage(kTransparentImage),
-                                  width: MediaQuery.of(context).size.width,
-                                  fadeInDuration:
-                                      const Duration(milliseconds: 300),
-                                  fit: BoxFit.cover,
-                                )
-                              : Placeholder(
-                                  fallbackHeight: ticketHeight * 0.45,
-                                ),
                         ),
-                      ),
-                      Container(
-                        color: const Color(0xFF2B3543),
-                        padding: const EdgeInsets.only(
-                            top: 16, left: 22, right: 22, bottom: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Center(
-                                child: Text(t.movieTitle,
-                                    style: const TextStyle(fontSize: 18))),
-                            const SizedBox(
-                              height: 6,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  'KINO',
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 12,
+                        Container(
+                          color: ticketColor,
+                          padding: const EdgeInsets.only(
+                              top: 16, left: 22, right: 22, bottom: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Center(
+                                  child: Text(t.movieTitle,
+                                      style: const TextStyle(fontSize: 18))),
+                              const SizedBox(
+                                height: 6,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Kino'.toUpperCase(),
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 12,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 4,
-                                ),
-                                Text(
-                                  '${t.location.name} - ${t.location.city.name}',
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      'DATUM',
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 4,
-                                    ),
-                                    Text(
-                                      DateFormat.yMMMd('bs').format(
-                                          DateTime.parse(t.projectionStart)),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  width: 100,
-                                  child: Column(
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  Text(
+                                    '${t.location.name} - ${t.location.city.name}',
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
-                                        'VRIJEME',
-                                        style: TextStyle(
+                                      Text(
+                                        'Datum'.toUpperCase(),
+                                        style: const TextStyle(
                                           color: Colors.grey,
                                           fontSize: 12,
                                         ),
@@ -207,46 +196,49 @@ class _TicketsScreenState extends State<TicketsScreen> {
                                         height: 4,
                                       ),
                                       Text(
-                                        '${DateFormat.Hm('bs').format(DateTime.parse(t.projectionStart))} - ${DateFormat.Hm('bs').format(DateTime.parse(t.projectionEnd))}',
+                                        DateFormat.yMMMd('bs').format(
+                                            DateTime.parse(t.projectionStart)),
                                       ),
                                     ],
                                   ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      'DVORANA',
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                      ),
+                                  SizedBox(
+                                    width: 100,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Vrijeme'.toUpperCase(),
+                                          style: const TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 4,
+                                        ),
+                                        Text(
+                                          '${DateFormat.Hm('bs').format(DateTime.parse(t.projectionStart))} - ${DateFormat.Hm('bs').format(DateTime.parse(t.projectionEnd))}',
+                                        ),
+                                      ],
                                     ),
-                                    const SizedBox(
-                                      height: 4,
-                                    ),
-                                    Text(
-                                      t.hall.name,
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  width: 100,
-                                  child: Column(
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
-                                        'SJEDIŠTE',
-                                        style: TextStyle(
+                                      Text(
+                                        'Dvorana'.toUpperCase(),
+                                        style: const TextStyle(
                                           color: Colors.grey,
                                           fontSize: 12,
                                         ),
@@ -255,33 +247,55 @@ class _TicketsScreenState extends State<TicketsScreen> {
                                         height: 4,
                                       ),
                                       Text(
-                                        t.seat.toString(),
+                                        t.hall.name,
                                       ),
                                     ],
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                  SizedBox(
+                                    width: 100,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Sjedište'.toUpperCase(),
+                                          style: const TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 4,
+                                        ),
+                                        Text(
+                                          t.seat.toString(),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 12, horizontal: 20),
-                        decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(12),
-                                bottomRight: Radius.circular(12))),
-                        child: BarcodeWidget(
-                          barcode: Barcode.code128(escapes: true),
-                          data: 'Ticket ${t.id}',
-                          textPadding: 12,
-                          style: TextStyle(color: primary.shade800),
-                          height: 80,
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 12, horizontal: 20),
+                          decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(12),
+                                  bottomRight: Radius.circular(12))),
+                          child: BarcodeWidget(
+                            barcode: Barcode.code128(escapes: true),
+                            data: 'Ulaznica ${t.id}',
+                            textPadding: 12,
+                            style: const TextStyle(color: Colors.black),
+                            height: 80,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               )

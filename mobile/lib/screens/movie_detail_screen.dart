@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:mobile/common/rating_bar.dart';
 import 'package:mobile/common/video_player_modal.dart';
 import 'package:mobile/components/movie_details/movie_tabs.dart';
-import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/helpers/enums.dart';
 import 'package:mobile/models/movie.dart';
@@ -34,7 +33,6 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     selectedTab = context.watch<MovieTabProvider>().selectedTab;
 
     return Scaffold(
-      backgroundColor: primary.shade500,
       body: SingleChildScrollView(
         controller: scrollController,
         child: Column(
@@ -87,6 +85,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                     ),
                     fadeInCurve: Curves.linear,
                     fadeInDuration: const Duration(milliseconds: 500),
+                    fit: BoxFit.cover,
                   )
                 : const Placeholder(),
           ),
@@ -140,14 +139,14 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
         ),
         Text(
           getDuration(widget.movie.duration),
-          style: const TextStyle(color: Colors.white54),
+          style: const TextStyle(color: Colors.grey),
         ),
         const SizedBox(
           height: 6,
         ),
         Text(
           widget.movie.genres.map((e) => e.name).join(', '),
-          style: const TextStyle(color: Colors.white54),
+          style: const TextStyle(color: Colors.grey),
         ),
         if (widget.movie.averageRating != 0)
           Container(

@@ -1,4 +1,6 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/models/user.dart';
 import 'package:mobile/providers/user_provider.dart';
@@ -30,6 +32,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     user = context.watch<UserProvider>().user;
+    var themeMode = AdaptiveTheme.of(context).mode;
 
     if (user == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -41,6 +44,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profil'),
+        actions: [
+          Switch(
+              activeColor: blueButtonColor,
+              value: themeMode == AdaptiveThemeMode.dark,
+              onChanged: (value) {
+                themeMode == AdaptiveThemeMode.dark
+                    ? AdaptiveTheme.of(context).setLight()
+                    : AdaptiveTheme.of(context).setDark();
+              })
+        ],
       ),
       body: Column(
         children: [

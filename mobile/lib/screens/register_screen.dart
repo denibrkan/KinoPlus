@@ -77,9 +77,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
               backgroundColor: Colors.lightBlueAccent,
-              content: Text(
-                'Registracija uspješna.',
-              )),
+              content: Text('Registracija uspješna.',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ))),
         );
         Navigator.pushNamedAndRemoveUntil(
             context, LoginScreen.routeName, (route) => false);
@@ -157,11 +158,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               },
               icon: const Icon(
                 Icons.arrow_forward,
-                color: Colors.white,
               ),
               label: const Text(
                 'Dalje',
-                style: TextStyle(color: Colors.white),
               ),
             ),
           ],
@@ -193,9 +192,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
         locations.isNotEmpty
             ? Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
-                decoration: BoxDecoration(
-                    color: const Color(0xFF2B3543),
-                    borderRadius: BorderRadius.circular(5)),
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(5)),
                 child: DropdownButton<Location>(
                   isExpanded: true,
                   underline: Container(),
@@ -206,11 +204,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     style: TextStyle(color: Colors.grey, fontSize: 15),
                   ),
                   elevation: 16,
-                  style: const TextStyle(
-                    fontSize: 16,
-                  ),
                   borderRadius: BorderRadius.circular(5),
-                  dropdownColor: const Color(0xFF2B3543),
                   onChanged: (Location? value) {
                     setState(() {
                       selectedLocation = value;
@@ -280,10 +274,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             TextButton.icon(
               onPressed: () =>
                   setState(() => _registrationStep = RegistrationSteps.stepOne),
-              icon: const Icon(Icons.arrow_back, color: Colors.white),
+              icon: const Icon(Icons.arrow_back),
               label: const Text(
                 'Nazad',
-                style: TextStyle(color: Colors.white),
               ),
             ),
             TextButton.icon(
@@ -298,9 +291,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                             backgroundColor: Colors.redAccent,
-                            content: Text(
-                              'Korisničko ime se koristi.',
-                            )),
+                            content: Text('Korisničko ime se koristi.',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ))),
                       );
                     }
                   }
@@ -308,11 +302,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               },
               icon: const Icon(
                 Icons.arrow_forward,
-                color: Colors.white,
               ),
               label: const Text(
                 'Dalje',
-                style: TextStyle(color: Colors.white),
               ),
             ),
           ],
@@ -370,10 +362,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             TextButton.icon(
               onPressed: () =>
                   setState(() => _registrationStep = RegistrationSteps.stepTwo),
-              icon: const Icon(Icons.arrow_back, color: Colors.white),
+              icon: const Icon(Icons.arrow_back),
               label: const Text(
                 'Nazad',
-                style: TextStyle(color: Colors.white),
               ),
             ),
             TextButton.icon(
@@ -390,6 +381,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             backgroundColor: Colors.redAccent,
                             content: Text(
                               'Korisničko ime se koristi.',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
                             )),
                       );
                     }
@@ -398,11 +392,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               },
               icon: const Icon(
                 Icons.arrow_forward,
-                color: Colors.white,
               ),
               label: const Text(
                 'Dalje',
-                style: TextStyle(color: Colors.white),
               ),
             ),
           ],
@@ -434,11 +426,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
           onPressed: getImageFromGallery,
           icon: const Icon(
             Icons.add_a_photo,
-            color: Colors.white,
           ),
           label: const Text(
             'Odaberi profilnu sliku',
-            style: TextStyle(color: Colors.white),
           ),
         ),
         const SizedBox(height: 32),
@@ -450,11 +440,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   () => _registrationStep = RegistrationSteps.stepThree),
               icon: const Icon(
                 Icons.arrow_back,
-                color: Colors.white,
               ),
               label: const Text(
                 'Nazad',
-                style: TextStyle(color: Colors.white),
               ),
             ),
             ElevatedButton(

@@ -17,7 +17,6 @@ class ReservationSuccessScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(25),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: const Color(0xFF2B3543),
                 ),
                 child: Column(
                   children: const [
@@ -40,11 +39,14 @@ class ReservationSuccessScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              ElevatedButton(
+              IconButton(
+                icon: const Icon(
+                  Icons.close_rounded,
+                  color: Colors.lightBlueAccent,
+                ),
                 onPressed: () => Navigator.pushNamedAndRemoveUntil(
                     context, '/', (route) => false,
                     arguments: 2),
-                child: const Icon(Icons.close_rounded),
               )
             ],
           ),
