@@ -105,9 +105,11 @@ namespace eProdaja.WinUI
 
                 return user;
             }
-            catch (Exception)
+            catch (FlurlHttpException ex)
             {
-                MessageBox.Show("Wrong username or password");
+                var error = await ex.GetResponseStringAsync();
+                MessageBox.Show(error);
+
                 return default;
             }
         }

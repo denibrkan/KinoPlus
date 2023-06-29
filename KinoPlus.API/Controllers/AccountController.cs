@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using KinoPlus.API.Constants;
 using KinoPlus.Models;
 using KinoPlus.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -29,14 +30,14 @@ namespace KinoPlus.API.Controllers
         {
             var user = await _userService.GetByUsernameAsync(login.Username);
 
-            if (user == null) return Unauthorized("Pogrešno korisničko ime ili password.");
+            if (user == null) return Unauthorized(ErrorMessages.LoginError);
 
             using var hmac = new HMACSHA512(Convert.FromBase64String(user.PasswordSalt));
 
             var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(login.Password));
 
             if (user.PasswordHash != Convert.ToBase64String(computedHash))
-                return Unauthorized("Pogresno korisnicko ime ili password");
+                return Unauthorized(ErrorMessages.LoginError);
 
             var korisnik = _mapper.Map<UserDto>(user);
 
