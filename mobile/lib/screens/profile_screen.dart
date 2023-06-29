@@ -48,6 +48,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Switch(
               activeColor: blueButtonColor,
               value: themeMode == AdaptiveThemeMode.dark,
+              activeThumbImage: const AssetImage('assets/images/dark-mode.png'),
+              inactiveThumbImage:
+                  const AssetImage('assets/images/light-mode.png'),
               onChanged: (value) {
                 themeMode == AdaptiveThemeMode.dark
                     ? AdaptiveTheme.of(context).setLight()
