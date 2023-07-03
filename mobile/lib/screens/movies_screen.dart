@@ -531,7 +531,7 @@ Widget _buildMovie(BuildContext context, Movie movie) {
     onTap: () => Navigator.pushNamed(
       context,
       MovieDetailScreen.routeName,
-      arguments: movie,
+      arguments: {'movie': movie, 'fetchData': false},
     ),
     child: Container(
         margin: const EdgeInsets.only(top: 16),

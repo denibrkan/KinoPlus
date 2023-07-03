@@ -80,23 +80,14 @@ namespace KinoPlus.Services
 
             var activeStatus = _context.MovieStatuses.Single(ms => ms.Name == "Active");
 
-            if (search?.IncludeMoviesWithData == true)
+            if (search?.IncludeActiveMovies == true)
             {
                 query = query
                     .AsSplitQuery()
                     .Include(c => c.MovieCategories
-                    .Where(mc => mc.Movie.MovieStatusId == activeStatus.Id)
-                    .OrderByDescending(mc => mc.Movie.DateCreated))
-                        .ThenInclude(c => c.Movie)
-                        .ThenInclude(m => m.MovieGenres)
-                        .ThenInclude(mg => mg.Genre)
-                    .Include(c => c.MovieCategories)
-                        .ThenInclude(m => m.Movie)
-                        .ThenInclude(m => m.MovieActors)
-                        .ThenInclude(ma => ma.Actor)
-                    .Include(c => c.MovieCategories)
-                        .ThenInclude(m => m.Movie)
-                        .ThenInclude(m => m.MovieReactions)
+                        .Where(mc => mc.Movie.MovieStatusId == activeStatus.Id)
+                        .OrderByDescending(mc => mc.Movie.DateCreated))
+                     .ThenInclude(c => c.Movie)
                     .AsNoTracking();
             }
             else if (search?.IncludeMovies == true)

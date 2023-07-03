@@ -81,9 +81,12 @@ class MyApp extends StatelessWidget {
             },
             onGenerateRoute: (settings) {
               if (settings.name == MovieDetailScreen.routeName) {
+                final args = settings.arguments as Map;
                 return MaterialPageRoute(
-                    builder: (context) =>
-                        MovieDetailScreen(movie: settings.arguments as Movie));
+                    builder: (context) => MovieDetailScreen(
+                          movie: args['movie'] as Movie,
+                          fetchData: args['fetchData'],
+                        ));
               }
               if (settings.name == SeatsScreen.routeName) {
                 return MaterialPageRoute(

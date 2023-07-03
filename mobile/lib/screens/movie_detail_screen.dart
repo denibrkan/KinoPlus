@@ -7,6 +7,7 @@ import 'package:mobile/components/movie_details/movie_tabs.dart';
 import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/helpers/enums.dart';
 import 'package:mobile/models/movie.dart';
+import 'package:mobile/providers/movie_provider.dart';
 import 'package:mobile/providers/movie_tab_provider.dart';
 import 'package:mobile/utils/authorization.dart';
 import 'package:mobile/utils/get_duration.dart';
@@ -14,27 +15,48 @@ import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MovieDetailScreen extends StatefulWidget {
-  const MovieDetailScreen({super.key, required this.movie});
+  const MovieDetailScreen(
+      {super.key, required this.movie, required this.fetchData});
 
   static const String routeName = '/movie';
 
   final Movie movie;
+  final bool fetchData;
 
   @override
   State<MovieDetailScreen> createState() => _MovieDetailScreenState();
 }
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
-  var scrollController = ScrollController();
   TabOptions? selectedTab;
+
+  late MovieProvider _movieProvider;
+
+  late Movie movie;
+
+  @override
+  void initState() {
+    super.initState();
+    movie = widget.movie;
+
+    if (widget.fetchData) {
+      _movieProvider = context.read<MovieProvider>();
+      loadData();
+    }
+  }
+
+  void loadData() async {
+    var data = await _movieProvider.getById(widget.movie.id, null);
+    setState(() {
+      movie = data;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     selectedTab = context.watch<MovieTabProvider>().selectedTab;
-
     return Scaffold(
       body: SingleChildScrollView(
-        controller: scrollController,
         child: Column(
           children: [
             _buildImageStack(),
@@ -43,18 +65,11 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
             ),
             _buildMovieInfo(),
             const SizedBox(height: 30),
-            MovieTabs(movie: widget.movie),
+            MovieTabs(movie: movie),
           ],
         ),
       ),
     );
-  }
-
-  void handleScroll() async {
-    Timer(const Duration(milliseconds: 500), () {
-      scrollController.animateTo(scrollController.position.maxScrollExtent,
-          duration: const Duration(milliseconds: 500), curve: Curves.easeOut);
-    });
   }
 
   Widget _buildImageStack() {
@@ -76,11 +91,11 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
           child: SizedBox(
             height: MediaQuery.of(context).size.height * 0.7,
             width: MediaQuery.of(context).size.width,
-            child: widget.movie.imageId != null
+            child: movie.imageId != null
                 ? FadeInImage(
                     placeholder: MemoryImage(kTransparentImage),
                     image: NetworkImage(
-                      '$apiUrl/images/${widget.movie.imageId}?original=true',
+                      '$apiUrl/images/${movie.imageId}?original=true',
                       headers: Authorization.createHeaders(),
                     ),
                     fadeInCurve: Curves.linear,
@@ -92,11 +107,11 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
         ),
         IconButton(
           onPressed: () {
-            if (widget.movie.trailerUrl?.isNotEmpty == true) {
+            if (movie.trailerUrl?.isNotEmpty == true) {
               showDialog(
                 context: context,
                 builder: (BuildContext context) =>
-                    VideoPlayerModal(videoUrl: widget.movie.trailerUrl!),
+                    VideoPlayerModal(videoUrl: movie.trailerUrl!),
                 useSafeArea: true,
               );
             }
@@ -128,7 +143,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     return Column(
       children: [
         Text(
-          widget.movie.title,
+          movie.title,
           style: const TextStyle(
             fontSize: 20,
           ),
@@ -138,20 +153,20 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
           height: 10,
         ),
         Text(
-          getDuration(widget.movie.duration),
+          getDuration(movie.duration),
           style: const TextStyle(color: Colors.grey),
         ),
         const SizedBox(
           height: 6,
         ),
         Text(
-          widget.movie.genres.map((e) => e.name).join(', '),
+          movie.genres.map((e) => e.name).join(', '),
           style: const TextStyle(color: Colors.grey),
         ),
-        if (widget.movie.averageRating != 0)
+        if (movie.averageRating != 0)
           Container(
             margin: const EdgeInsets.only(top: 16),
-            child: RatingBar(rating: widget.movie.averageRating),
+            child: RatingBar(rating: movie.averageRating),
           ),
       ],
     );

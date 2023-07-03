@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<List<Category>> fetchByCategories() async {
     try {
       var params = <String, String>{
-        'includeMoviesWithData': 'true',
+        'includeActiveMovies': 'true',
         'isDisplayed': 'true'
       };
       return await _categoryProvider.get(params);
@@ -139,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () => Navigator.pushNamed(
                     context,
                     MovieDetailScreen.routeName,
-                    arguments: movie,
+                    arguments: {'movie': movie, 'fetchData': false},
                   ),
                   child: movie.imageId != null
                       ? SimpleShadow(
@@ -222,22 +222,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.fromLTRB(0, 12, 12, 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: c.movies.take(4).map((m) {
+                      children: c.movies.take(4).map((movie) {
                         return InkWell(
                             onTap: () => Navigator.pushNamed(
                                   context,
                                   MovieDetailScreen.routeName,
-                                  arguments: m,
+                                  arguments: {
+                                    'movie': movie,
+                                    'fetchData': true
+                                  },
                                 ),
                             child: SizedBox(
                               width: 70,
                               height: 90,
-                              child: m.imageId != null
+                              child: movie.imageId != null
                                   ? ClipRRect(
                                       borderRadius: BorderRadius.circular(6),
                                       child: FadeInImage(
                                         image: NetworkImage(
-                                          '$apiUrl/images/${m.imageId}',
+                                          '$apiUrl/images/${movie.imageId}',
                                           headers:
                                               Authorization.createHeaders(),
                                         ),
