@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:mobile/helpers/constants.dart';
 import 'package:mobile/helpers/themes.dart';
@@ -20,6 +21,7 @@ import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/screens/login_screen.dart';
 import 'package:mobile/screens/movie_detail_screen.dart';
 import 'package:mobile/screens/movies_screen.dart';
+import 'package:mobile/screens/payment_screen.dart';
 import 'package:mobile/screens/profile_screen.dart';
 import 'package:mobile/screens/register_screen.dart';
 import 'package:mobile/screens/reservation_success.dart';
@@ -33,6 +35,8 @@ import 'utils/authorization.dart';
 void main() async {
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey = stripePublishKey;
+
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
   initializeDateFormatting('fr_FR', null).then((_) => runApp(MyApp(
         savedThemeMode: savedThemeMode,
@@ -72,6 +76,7 @@ class MyApp extends StatelessWidget {
               TicketsScreen.routeName: (context) => const TicketsScreen(),
               RegisterScreen.routeName: (context) => const RegisterScreen(),
               LoginScreen.routeName: (context) => const LoginScreen(),
+              PaymentScreen.routeName: (context) => const PaymentScreen(),
             },
             onGenerateRoute: (settings) {
               if (settings.name == MovieDetailScreen.routeName) {

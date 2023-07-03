@@ -8,10 +8,8 @@ import 'package:mobile/models/seat.dart';
 import 'package:mobile/providers/seat_provider.dart';
 import 'package:mobile/providers/ticket_provider.dart';
 import 'package:mobile/providers/user_provider.dart';
-import 'package:mobile/screens/profile_screen.dart';
-import 'package:mobile/screens/reservation_success.dart';
+import 'package:mobile/screens/payment_screen.dart';
 import 'package:mobile/utils/authorization.dart';
-import 'package:mobile/utils/show_error_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -47,6 +45,11 @@ class _SeatsScreenState extends State<SeatsScreen> {
     load();
   }
 
+  updateTicketProvider() {
+    ticketProvider.setSelectedSeats(selectedSeats);
+    ticketProvider.setProjection(widget.projection);
+  }
+
   void load() async {
     var data = await seatProvider.get(null);
     var seatsData = data.map<Seat>(
@@ -61,32 +64,6 @@ class _SeatsScreenState extends State<SeatsScreen> {
     setState(() {
       seats = seatsData;
     });
-  }
-
-  void reservate() async {
-    if (userProvider.user == null) {
-      Navigator.pushNamed(context, ProfileScreen.routeName);
-      return;
-    }
-    try {
-      final tickets = <Map>[];
-      for (var seat in selectedSeats) {
-        tickets.add({
-          'userId': userProvider.user!.id,
-          'projectionId': widget.projection.id,
-          'seatId': seat.id
-        });
-      }
-      await ticketProvider.insert(tickets);
-
-      userProvider.refreshUser();
-      if (mounted) {
-        Navigator.pushNamedAndRemoveUntil(
-            context, ReservationSuccessScreen.routeName, (route) => false);
-      }
-    } on Exception catch (e) {
-      showErrorDialog(context, e.toString().substring(11));
-    }
   }
 
   @override
@@ -337,7 +314,10 @@ class _SeatsScreenState extends State<SeatsScreen> {
             width: 150,
             height: 50,
             child: ElevatedButton(
-              onPressed: () => reservate(),
+              onPressed: () {
+                updateTicketProvider();
+                Navigator.pushNamed(context, PaymentScreen.routeName);
+              },
               style: ButtonStyle(
                 backgroundColor:
                     MaterialStateProperty.all(const Color(0xFFE51937)),

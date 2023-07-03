@@ -1,3 +1,5 @@
+import 'package:mobile/models/hall.dart';
+import 'package:mobile/models/location.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/models/projection_type.dart';
 import 'package:mobile/models/ticket.dart';
@@ -12,6 +14,8 @@ class Projection {
   late ProjectionType? projectionType;
   late Movie movie;
   late List<Ticket> tickets;
+  late Location location;
+  late Hall hall;
 
   Projection(
       {required this.id,
@@ -36,6 +40,8 @@ class Projection {
     tickets = json['tickets'] != null && json['tickets'].isNotEmpty
         ? json['tickets'].map((t) => Ticket.fromJson(t)).cast<Ticket>().toList()
         : <Ticket>[];
+    location = Location.fromJson(json['location']);
+    hall = Hall.fromJson(json['hall']);
   }
 
   Map<String, dynamic> toJson() {
