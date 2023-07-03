@@ -324,11 +324,12 @@ class _MovieTabsState extends State<MovieTabs> {
             _reactionController.text.isNotEmpty
                 ? SizedBox(
                     width: double.infinity,
+                    height: 45,
                     child: ElevatedButton(
                       onPressed: () => insertReaction(),
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: blueButtonColor,
-                          padding: const EdgeInsets.symmetric(vertical: 12)),
+                        backgroundColor: blueButtonColor,
+                      ),
                       child: const Text('Spremi'),
                     ),
                   )

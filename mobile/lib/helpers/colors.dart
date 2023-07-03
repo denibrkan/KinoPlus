@@ -7,5 +7,6 @@ const lightPrimaryColor = Colors.white;
 const lightSecondaryColor = Color.fromARGB(240, 0, 40, 73);
 const lightGrayColor = Color(0xFFDBDBDB);
 const veryLightGrayColor = Color.fromARGB(255, 246, 246, 248);
-const blueButtonColor = Color(0xFF006597);
+const blueButtonColor = Colors.blue;
+const redButtonColor = Color(0xFFE51937);
 const selectedTicketColor = Color.fromARGB(255, 0, 127, 190);

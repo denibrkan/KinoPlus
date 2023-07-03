@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/helpers/enums.dart';
 import 'package:mobile/models/location.dart';
 import 'package:mobile/models/register.dart';
@@ -454,7 +455,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 }
               },
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFE51937),
+                  backgroundColor: redButtonColor,
                   padding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 25)),
               child: const Text(

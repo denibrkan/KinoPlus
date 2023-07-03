@@ -1,4 +1,3 @@
-import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile/helpers/colors.dart';
@@ -273,12 +272,9 @@ class _SeatsScreenState extends State<SeatsScreen> {
 
   Widget _buildBottomBar() {
     if (selectedSeats.isEmpty) return Container();
-    var color = AdaptiveTheme.of(context).mode == AdaptiveThemeMode.dark
-        ? darkSecondaryColor
-        : darkPrimaryColor;
     return Container(
       height: 100,
-      color: color,
+      color: darkSecondaryColor,
       padding: const EdgeInsets.all(16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -319,8 +315,7 @@ class _SeatsScreenState extends State<SeatsScreen> {
                 Navigator.pushNamed(context, PaymentScreen.routeName);
               },
               style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(const Color(0xFFE51937)),
+                backgroundColor: MaterialStateProperty.all(redButtonColor),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),

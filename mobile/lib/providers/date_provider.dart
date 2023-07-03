@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/extensions/date_only_compare.dart';
+import 'package:mobile/helpers/extensions.dart';
 
 class DateProvider extends ChangeNotifier {
   List<DateTime> dates = <DateTime>[];

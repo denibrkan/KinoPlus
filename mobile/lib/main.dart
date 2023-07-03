@@ -77,6 +77,7 @@ class MyApp extends StatelessWidget {
               RegisterScreen.routeName: (context) => const RegisterScreen(),
               LoginScreen.routeName: (context) => const LoginScreen(),
               PaymentScreen.routeName: (context) => const PaymentScreen(),
+              ProfileScreen.routeName: (context) => const ProfileScreen(),
             },
             onGenerateRoute: (settings) {
               if (settings.name == MovieDetailScreen.routeName) {
@@ -88,10 +89,6 @@ class MyApp extends StatelessWidget {
                 return MaterialPageRoute(
                     builder: (context) => SeatsScreen(
                         projection: settings.arguments as Projection));
-              }
-              if (settings.name == ProfileScreen.routeName) {
-                return MaterialPageRoute(
-                    builder: (context) => const ProfileScreen());
               }
               if (settings.name == '/') {
                 return MaterialPageRoute(

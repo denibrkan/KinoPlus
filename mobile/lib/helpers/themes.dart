@@ -34,7 +34,7 @@ class ThemeClass {
         backgroundColor: MaterialStateProperty.resolveWith<Color?>(
           (Set<MaterialState> states) {
             if (states.contains(MaterialState.selected)) {
-              return const Color(0xFFE51937);
+              return redButtonColor;
             }
             return lightPrimaryColor; // Use the component's default.
           },
@@ -85,7 +85,7 @@ class ThemeClass {
         backgroundColor: MaterialStateProperty.resolveWith<Color?>(
           (Set<MaterialState> states) {
             if (states.contains(MaterialState.selected)) {
-              return const Color(0xFFE51937);
+              return redButtonColor;
             }
             return darkPrimaryColor; // Use the component's default.
           },

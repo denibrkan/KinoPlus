@@ -10,6 +10,8 @@ class TicketProvider extends BaseProvider<Ticket> {
   Projection? _projection;
 
   setSelectedSeats(List<Seat> seats) {
+    seats.sort((a, b) => a.number.compareTo(b.number));
+    seats.sort((a, b) => a.row.compareTo(b.row));
     _selectedSeats = seats;
   }
 

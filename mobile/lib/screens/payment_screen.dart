@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/helpers/constants.dart';
+import 'package:mobile/helpers/extensions.dart';
 import 'package:mobile/providers/seat_provider.dart';
 import 'package:mobile/providers/ticket_provider.dart';
 import 'package:mobile/providers/user_provider.dart';
@@ -45,9 +46,17 @@ class _PaymentScreenState extends State<PaymentScreen> {
         'BAM');
     await Stripe.instance
         .initPaymentSheet(
-            paymentSheetParameters: SetupPaymentSheetParameters(
-                paymentIntentClientSecret: paymentIntentData!['client_secret'],
-                merchantDisplayName: 'KinoPlus'))
+          paymentSheetParameters: SetupPaymentSheetParameters(
+            paymentIntentClientSecret: paymentIntentData!['client_secret'],
+            merchantDisplayName: 'KinoPlus',
+            appearance: const PaymentSheetAppearance(
+              primaryButton: PaymentSheetPrimaryButtonAppearance(
+                  colors: PaymentSheetPrimaryButtonTheme(
+                      light: PaymentSheetPrimaryButtonThemeColors(
+                          background: blueButtonColor))),
+            ),
+          ),
+        )
         .then((value) {})
         .onError((error, stackTrace) {
       showDialog(
@@ -83,7 +92,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           });
       return jsonDecode(response.body);
     } catch (err) {
-      print('err charging user: ${err.toString()}');
+      //silent
     }
   }
 
@@ -157,55 +166,65 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         const SizedBox(
                           width: 20,
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 8),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                ticketProvider.projection!.movie.title,
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w600),
-                              ),
-                              const SizedBox(
-                                height: 12,
-                              ),
-                              Text(
-                                '${ticketProvider.projection!.location.name} - ${ticketProvider.projection!.hall.name} - ${ticketProvider.projection!.projectionType?.name}',
-                                style: const TextStyle(
-                                  color: Colors.grey,
+                        Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 8),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  ticketProvider.projection!.movie.title,
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 6,
-                              ),
-                              Text(
-                                '${DateFormat.Hm().format(ticketProvider.projection!.startsAt)} - ${DateFormat.Hm().format(ticketProvider.projection!.endsAt)}',
-                                style: const TextStyle(
-                                  color: Colors.grey,
+                                const SizedBox(
+                                  height: 12,
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 6,
-                              ),
-                              Text(
-                                DateFormat.MMMMEEEEd('bs').format(
-                                    ticketProvider.projection!.startsAt),
-                                style: const TextStyle(
-                                  color: Colors.grey,
+                                Text(
+                                  '${ticketProvider.projection!.location.name} - ${ticketProvider.projection!.hall.name} - ${ticketProvider.projection!.projectionType?.name}',
+                                  style: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 6,
-                              ),
-                              Text(
-                                'Sjedište ${ticketProvider.selectedSeats.join(', ').toString()}',
-                                style: const TextStyle(
-                                  color: Colors.grey,
+                                const SizedBox(
+                                  height: 6,
                                 ),
-                              ),
-                            ],
+                                Text(
+                                  '${DateFormat.Hm().format(ticketProvider.projection!.startsAt)} - ${DateFormat.Hm().format(ticketProvider.projection!.endsAt)}',
+                                  style: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 6,
+                                ),
+                                Text(
+                                  DateFormat.MMMMEEEEd('bs')
+                                      .format(
+                                          ticketProvider.projection!.startsAt)
+                                      .capitalize(),
+                                  style: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 6,
+                                ),
+                                Text(
+                                  'Sjedište ${ticketProvider.selectedSeats.join(', ').toString()}',
+                                  style: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 15,
+                                  ),
+                                  softWrap: true,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -242,8 +261,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
               height: 50,
               child: ElevatedButton(
                   onPressed: () async => await showPaymentSheet(),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFE51937)),
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: redButtonColor),
                   child: const Text(
                     'Plaćanje',
                     style: TextStyle(fontSize: 18),

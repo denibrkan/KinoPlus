@@ -46,11 +46,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: const Text('Profil'),
         actions: [
           Switch(
-              activeColor: blueButtonColor,
-              value: themeMode == AdaptiveThemeMode.dark,
-              activeThumbImage: const AssetImage('assets/images/dark-mode.png'),
-              inactiveThumbImage:
+              activeColor: Colors.lightBlueAccent,
+              value: themeMode == AdaptiveThemeMode.light,
+              activeThumbImage:
                   const AssetImage('assets/images/light-mode.png'),
+              inactiveThumbImage:
+                  const AssetImage('assets/images/dark-mode.png'),
               onChanged: (value) {
                 themeMode == AdaptiveThemeMode.dark
                     ? AdaptiveTheme.of(context).setLight()
@@ -190,7 +191,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 0, 101, 151),
+                    backgroundColor: blueButtonColor,
                     padding: const EdgeInsets.all(12)),
                 onPressed: _userProvider.logout,
                 child: Row(

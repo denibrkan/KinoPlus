@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/helpers/colors.dart';
 import 'package:mobile/providers/user_provider.dart';
 import 'package:mobile/screens/register_screen.dart';
 import 'package:mobile/utils/get_form_input_decoration.dart';
@@ -133,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFE51937)),
+                        backgroundColor: redButtonColor),
                     child: const Text(
                       'Prijavi se',
                       style: TextStyle(fontSize: 18),

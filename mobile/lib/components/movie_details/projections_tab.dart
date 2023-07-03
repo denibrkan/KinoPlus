@@ -1,10 +1,9 @@
-import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile/components/movie_details/date_selector.dart';
-import 'package:mobile/extensions/date_only_compare.dart';
 import 'package:mobile/helpers/colors.dart';
+import 'package:mobile/helpers/extensions.dart';
 import 'package:mobile/models/location.dart';
 import 'package:mobile/models/projection.dart';
 import 'package:mobile/providers/date_provider.dart';
@@ -140,8 +139,7 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
                 );
               },
               style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(const Color(0xFFE51937)),
+                backgroundColor: MaterialStateProperty.all(redButtonColor),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
@@ -200,10 +198,6 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
   }
 
   Widget _buildProjectionTickets(context) {
-    var themeMode = AdaptiveTheme.of(context).mode;
-    var ticketColor = themeMode == AdaptiveThemeMode.light
-        ? darkPrimaryColor
-        : darkSecondaryColor;
     if (loading) {
       return const Center(
         child: CircularProgressIndicator(
@@ -250,7 +244,7 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
                               'assets/images/ticket120.png',
                               color: selectedProjection == p
                                   ? selectedTicketColor
-                                  : ticketColor,
+                                  : darkSecondaryColor,
                             ),
                             Positioned(
                               top: 35,
