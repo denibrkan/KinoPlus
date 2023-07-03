@@ -16,6 +16,7 @@ import 'package:mobile/screens/reservation_success.dart';
 import 'package:mobile/utils/authorization.dart';
 import 'package:mobile/utils/show_error_dialog.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_shadow/simple_shadow.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -134,101 +135,105 @@ class _PaymentScreenState extends State<PaymentScreen> {
             Expanded(
               child: Align(
                 alignment: Alignment.topCenter,
-                child: Container(
-                    padding: const EdgeInsets.all(16),
-                    margin: const EdgeInsets.symmetric(
-                        vertical: 100, horizontal: 12),
-                    decoration: BoxDecoration(
+                child: SimpleShadow(
+                  child: Container(
+                      padding: const EdgeInsets.all(16),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 100, horizontal: 12),
+                      decoration: BoxDecoration(
                         color: AdaptiveTheme.of(context).mode ==
                                 AdaptiveThemeMode.dark
                             ? darkSecondaryColor
                             : Colors.white,
                         borderRadius:
-                            const BorderRadius.all(Radius.circular(6))),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 100,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(6),
-                            child: FadeInImage(
-                              placeholder: MemoryImage(kTransparentImage),
-                              image: NetworkImage(
-                                '$apiUrl/images/${ticketProvider.projection!.movie.imageId}?original=true',
-                                headers: Authorization.createHeaders(),
+                            const BorderRadius.all(Radius.circular(6)),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: 100,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6),
+                              child: FadeInImage(
+                                placeholder: MemoryImage(kTransparentImage),
+                                image: NetworkImage(
+                                  '$apiUrl/images/${ticketProvider.projection!.movie.imageId}?original=true',
+                                  headers: Authorization.createHeaders(),
+                                ),
+                                fadeInDuration:
+                                    const Duration(milliseconds: 300),
+                                fit: BoxFit.fill,
                               ),
-                              fadeInDuration: const Duration(milliseconds: 300),
-                              fit: BoxFit.fill,
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Expanded(
-                          child: Container(
-                            margin: const EdgeInsets.only(top: 8),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  ticketProvider.projection!.movie.title,
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                const SizedBox(
-                                  height: 12,
-                                ),
-                                Text(
-                                  '${ticketProvider.projection!.location.name} - ${ticketProvider.projection!.hall.name} - ${ticketProvider.projection!.projectionType?.name}',
-                                  style: const TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 8),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    ticketProvider.projection!.movie.title,
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600),
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 6,
-                                ),
-                                Text(
-                                  '${DateFormat.Hm().format(ticketProvider.projection!.startsAt)} - ${DateFormat.Hm().format(ticketProvider.projection!.endsAt)}',
-                                  style: const TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
+                                  const SizedBox(
+                                    height: 12,
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 6,
-                                ),
-                                Text(
-                                  DateFormat.MMMMEEEEd('bs')
-                                      .format(
-                                          ticketProvider.projection!.startsAt)
-                                      .capitalize(),
-                                  style: const TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
+                                  Text(
+                                    '${ticketProvider.projection!.location.name} - ${ticketProvider.projection!.hall.name} - ${ticketProvider.projection!.projectionType?.name}',
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 6,
-                                ),
-                                Text(
-                                  'Sjedište ${ticketProvider.selectedSeats.join(', ').toString()}',
-                                  style: const TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
+                                  const SizedBox(
+                                    height: 4,
                                   ),
-                                  softWrap: true,
-                                ),
-                              ],
+                                  Text(
+                                    '${DateFormat.Hm().format(ticketProvider.projection!.startsAt)} - ${DateFormat.Hm().format(ticketProvider.projection!.endsAt)}',
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  Text(
+                                    DateFormat.MMMMEEEEd('bs')
+                                        .format(
+                                            ticketProvider.projection!.startsAt)
+                                        .capitalize(),
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  Text(
+                                    'Sjedište ${ticketProvider.selectedSeats.join(', ').toString()}',
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                    ),
+                                    softWrap: true,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    )),
+                        ],
+                      )),
+                ),
               ),
             ),
             Padding(

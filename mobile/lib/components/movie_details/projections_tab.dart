@@ -243,7 +243,7 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
                             Image.asset(
                               'assets/images/ticket120.png',
                               color: selectedProjection == p
-                                  ? selectedTicketColor
+                                  ? blueButtonColor
                                   : darkSecondaryColor,
                             ),
                             Positioned(

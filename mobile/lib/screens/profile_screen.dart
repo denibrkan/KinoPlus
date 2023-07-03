@@ -46,7 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: const Text('Profil'),
         actions: [
           Switch(
-              activeColor: Colors.lightBlueAccent,
+              activeColor: Colors.blue,
               value: themeMode == AdaptiveThemeMode.light,
               activeThumbImage:
                   const AssetImage('assets/images/light-mode.png'),
