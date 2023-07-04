@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:mobile/common/rating_bar.dart';
 import 'package:mobile/common/video_player_modal.dart';
