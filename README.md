@@ -15,5 +15,7 @@ Login Credentials:
   - username: desktop 
   - password: test
 
-</br></br>
+<br></br>
+*Note: Use 4242 4242 4242 4242 card number to successfully purchase the tickets.
+
 enjoy 😎
