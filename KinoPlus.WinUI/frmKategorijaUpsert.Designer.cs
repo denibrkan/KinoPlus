@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             txtNaziv = new TextBox();
             lblNaziv = new Label();
             lblOrderPoeni = new Label();
@@ -37,7 +38,9 @@
             lbFilmovi = new ListBox();
             cbPrikazan = new CheckBox();
             lblPrikazan = new Label();
+            errorProvider = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)numOrderPoints).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // txtNaziv
@@ -47,6 +50,7 @@
             txtNaziv.Name = "txtNaziv";
             txtNaziv.Size = new Size(359, 35);
             txtNaziv.TabIndex = 1;
+            txtNaziv.Validating += txtNaziv_Validating;
             // 
             // lblNaziv
             // 
@@ -139,6 +143,10 @@
             lblPrikazan.TabIndex = 20;
             lblPrikazan.Text = "Prikazi na naslovnici?";
             // 
+            // errorProvider
+            // 
+            errorProvider.ContainerControl = this;
+            // 
             // frmKategorijaUpsert
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -157,6 +165,7 @@
             Text = "Nova Kategorija";
             Load += frmKategorijaUpsert_Load;
             ((System.ComponentModel.ISupportInitialize)numOrderPoints).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -172,5 +181,6 @@
         private NumericUpDown numOrderPoints;
         private CheckBox cbPrikazan;
         private Label lblPrikazan;
+        private ErrorProvider errorProvider;
     }
 }

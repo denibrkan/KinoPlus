@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             txtNaziv = new TextBox();
             lblNaziv = new Label();
             lblAdresa = new Label();
@@ -39,6 +40,8 @@
             lblDvorane = new Label();
             lblVrstaProjekcije = new Label();
             btnSpasi = new Button();
+            errorProvider = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // txtNaziv
@@ -48,6 +51,7 @@
             txtNaziv.Name = "txtNaziv";
             txtNaziv.Size = new Size(259, 35);
             txtNaziv.TabIndex = 1;
+            txtNaziv.Validating += txtNaziv_Validating;
             // 
             // lblNaziv
             // 
@@ -78,6 +82,7 @@
             txtAdresa.Name = "txtAdresa";
             txtAdresa.Size = new Size(259, 35);
             txtAdresa.TabIndex = 2;
+            txtAdresa.Validating += txtAdresa_Validating;
             // 
             // cmbGrad
             // 
@@ -89,6 +94,7 @@
             cmbGrad.Name = "cmbGrad";
             cmbGrad.Size = new Size(212, 35);
             cmbGrad.TabIndex = 3;
+            cmbGrad.Validating += cmbGrad_Validating;
             // 
             // lblGrad
             // 
@@ -157,6 +163,10 @@
             btnSpasi.UseVisualStyleBackColor = true;
             btnSpasi.Click += btnSpasi_Click;
             // 
+            // errorProvider
+            // 
+            errorProvider.ContainerControl = this;
+            // 
             // frmLokacijaUpsert
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -176,6 +186,7 @@
             Name = "frmLokacijaUpsert";
             Text = "Nova Lokacija";
             Load += frmLokacijaUpsert_Load;
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -193,5 +204,6 @@
         private Label lblDvorane;
         private Label lblVrstaProjekcije;
         private Button btnSpasi;
+        private ErrorProvider errorProvider;
     }
 }

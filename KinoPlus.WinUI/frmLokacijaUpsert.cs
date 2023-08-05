@@ -66,6 +66,9 @@ namespace KinoPlus.WinUI
 
         private async void btnSpasi_Click(object sender, EventArgs e)
         {
+            if (!checkValidation())
+                return;
+
             var location = new LocationUpsertObject();
 
             location.Name = txtNaziv.Text;
@@ -88,6 +91,56 @@ namespace KinoPlus.WinUI
                 Cache.Remove<LocationDto>();
                 this.DialogResult = DialogResult.OK;
                 Close();
+            }
+        }
+
+        private bool checkValidation()
+        {
+            return ValidateChildren(ValidationConstraints.Enabled);
+        }
+
+        private void cmbGrad_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (cmbGrad.SelectedValue == null)
+            {
+                e.Cancel = true;
+                cmbGrad.Focus();
+                errorProvider.SetError(cmbGrad, "Grad nije odabran");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(cmbGrad, "");
+            }
+        }
+
+        private void txtNaziv_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNaziv.Text))
+            {
+                e.Cancel = true;
+                txtNaziv.Focus();
+                errorProvider.SetError(txtNaziv, "Naziv nije unesen");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(txtNaziv, "");
+            }
+        }
+
+        private void txtAdresa_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAdresa.Text))
+            {
+                e.Cancel = true;
+                txtAdresa.Focus();
+                errorProvider.SetError(txtAdresa, "Adresa nije unesena");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(txtAdresa, "");
             }
         }
     }
