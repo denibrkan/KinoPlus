@@ -13,12 +13,19 @@ namespace KinoPlus.WinUI
         public frmProjekcijaInsert()
         {
             InitializeComponent();
+
+            dtpDatumZavrsava.Value = dtpDatumZavrsava.Value.AddMonths(1);
+            dtpDatumPocinje.Visible = false;
+            dtpDatumZavrsava.Visible = false;
+            cmbDan.Visible = false;
+
+            lblDatumPocinje.Visible = false;
+            lblDatumZavrsava.Visible = false;
+            lblDan.Visible = false;
         }
 
         private async void frmProjekcijaInsert_Load(object sender, EventArgs e)
         {
-            dtpDatumTrajeDo.Value = dtpDatumTrajeDo.Value.AddMonths(1);
-
             await loadMovies();
             await loadProjectionTypes();
             await loadLocations();
@@ -62,27 +69,33 @@ namespace KinoPlus.WinUI
 
             foreach (var location in locations!)
             {
-                var cbLocation = new CheckBox();
-                cbLocation.Text = $"{location.Name} - {location.City.Name}";
-                cbLocation.Font = font;
-                cbLocation.Checked = true;
-                cbLocation.AutoSize = true;
-                cbLocation.Width = 200;
-                cbLocation.Height = 40;
-                cbLocation.Location = new Point(locationLbl.X, locationLbl.Y + lblLokacije.Height + (index * cbLocation.Height));
+                var cbLocation = new CheckBox
+                {
+                    Text = $"{location.Name} - {location.City.Name}",
+                    Font = font,
+                    Checked = true,
+                    AutoSize = true,
+                    MaximumSize = new Size(hallsLbl.X - locationLbl.X, 50),
+                    Height = 50,
+                };
 
-                var cmbHalls = new ComboBox();
-                cmbHalls.Font = font2;
-                cmbHalls.Margin = new Padding(0, 0, 0, 10);
+                cbLocation.Location = new Point(locationLbl.X, locationLbl.Y + lblLokacije.Height + (index * cbLocation.Height + index * 20) + 10);
+
+                cbLocation.CheckedChanged += cbLokacijaCheckedChange!;
+
+                var cmbHalls = new ComboBox
+                {
+                    DropDownStyle = ComboBoxStyle.DropDownList,
+                    FlatStyle = FlatStyle.Flat,
+                    Font = font2,
+                    DataSource = location.Halls,
+                    ValueMember = "Id",
+                    DisplayMember = "Name",
+                    Width = 200,
+                };
 
                 cmbHalls.DataSource = location.Halls;
-
-                cmbHalls.ValueMember = "Id";
-                cmbHalls.DisplayMember = "Name";
-                cmbHalls.DataSource = location.Halls;
-                cmbHalls.Height = 25;
-
-                cmbHalls.Location = new Point(hallsLbl.X, hallsLbl.Y + lblDvorane.Height + (index * cmbHalls.Height) + index * 5);
+                cmbHalls.Location = new Point(hallsLbl.X, hallsLbl.Y + lblDvorane.Height + (index * cmbHalls.Height + index * 20) + 10);
 
                 index += 1;
 
@@ -99,18 +112,26 @@ namespace KinoPlus.WinUI
             if (!ValidateChildren(ValidationConstraints.Enabled))
                 return;
 
-            var projectionInsert = new ProjectionInsertObject();
+            if (LocationHalls.All(lh => lh.Item1.Checked == false))
+            {
+                MessageBox.Show("Odaberite barem jednu lokaciju za prikaz projekcije", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            projectionInsert.Price = numCijena.Value;
-            projectionInsert.MovieId = (int)cmbFilm.SelectedValue!;
-            projectionInsert.ProjectionTypeId = (int)cmbVrstaProjekcije.SelectedValue!;
-            projectionInsert.ProjectionTime = dtpVrijeme.Value;
-            projectionInsert.ProjectionDate = dtpDatumProjekcije.Value;
-            projectionInsert.IsRecurring = cbRedovnaProjekcija.Checked;
-            projectionInsert.StartingDate = dtpDatumPocinje.Value;
-            projectionInsert.EndingDate = dtpDatumTrajeDo.Value;
-            projectionInsert.WeekDayId = (int?)cmbDan.SelectedValue;
-            projectionInsert.Locations = new List<LocationHallInsertObject>();
+                return;
+            }
+
+            var projectionInsert = new ProjectionInsertObject
+            {
+                Price = numCijena.Value,
+                MovieId = (int)cmbFilm.SelectedValue!,
+                ProjectionTypeId = (int)cmbVrstaProjekcije.SelectedValue!,
+                ProjectionTime = dtpVrijeme.Value,
+                ProjectionDate = dtpDatumProjekcije.Value,
+                IsRecurring = cbRedovnaProjekcija.Checked,
+                StartingDate = dtpDatumPocinje.Value,
+                EndingDate = dtpDatumZavrsava.Value,
+                WeekDayId = (int?)cmbDan.SelectedValue,
+                Locations = new List<LocationHallInsertObject>()
+            };
 
             foreach (var locationHall in LocationHalls)
             {
@@ -183,10 +204,27 @@ namespace KinoPlus.WinUI
 
         private void cbRedovnaProjekcija_CheckedChanged(object sender, EventArgs e)
         {
-            dtpDatumProjekcije.Enabled = !dtpDatumProjekcije.Enabled;
-            dtpDatumPocinje.Enabled = !dtpDatumPocinje.Enabled;
-            dtpDatumTrajeDo.Enabled = !dtpDatumTrajeDo.Enabled;
-            cmbDan.Enabled = !cmbDan.Enabled;
+            dtpDatumProjekcije.Visible = !dtpDatumProjekcije.Visible;
+
+            dtpDatumPocinje.Visible = !dtpDatumPocinje.Visible;
+            dtpDatumZavrsava.Visible = !dtpDatumZavrsava.Visible;
+            cmbDan.Visible = !cmbDan.Visible;
+
+            lblDatumProjekcije.Visible = !lblDatumProjekcije.Visible;
+            lblDatumPocinje.Visible = !lblDatumPocinje.Visible;
+            lblDatumZavrsava.Visible = !lblDatumZavrsava.Visible;
+            lblDan.Visible = !lblDan.Visible;
+        }
+
+        private void cbLokacijaCheckedChange(object sender, EventArgs e)
+        {
+            foreach (var locationHall in LocationHalls)
+            {
+                if (sender == locationHall.Item1)
+                {
+                    locationHall.Item2.Enabled = !locationHall.Item2.Enabled;
+                }
+            }
         }
     }
 }

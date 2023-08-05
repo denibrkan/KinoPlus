@@ -37,20 +37,20 @@
             lblCijena = new Label();
             dtpVrijeme = new DateTimePicker();
             numCijena = new NumericUpDown();
-            dtpDatumProjekcije = new DateTimePicker();
-            lblDatumProjekcije = new Label();
             lblLokacije = new Label();
             lblDvorane = new Label();
             btnSpasi = new Button();
             errorProvider = new ErrorProvider(components);
-            lblRedovnaProjekcija = new Label();
+            dtpDatumProjekcije = new DateTimePicker();
+            lblDatumProjekcije = new Label();
             cbRedovnaProjekcija = new CheckBox();
-            label1 = new Label();
-            cmbDan = new ComboBox();
+            dtpDatumZavrsava = new DateTimePicker();
             dtpDatumPocinje = new DateTimePicker();
-            label2 = new Label();
-            label3 = new Label();
-            dtpDatumTrajeDo = new DateTimePicker();
+            cmbDan = new ComboBox();
+            lblDatumZavrsava = new Label();
+            lblDatumPocinje = new Label();
+            lblDan = new Label();
+            lblRedovnaProjekcija = new Label();
             ((System.ComponentModel.ISupportInitialize)numCijena).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
@@ -72,7 +72,7 @@
             lblFilm.AutoSize = true;
             lblFilm.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblFilm.ForeColor = SystemColors.ControlDarkDark;
-            lblFilm.Location = new Point(87, 87);
+            lblFilm.Location = new Point(88, 87);
             lblFilm.Name = "lblFilm";
             lblFilm.Size = new Size(38, 25);
             lblFilm.TabIndex = 13;
@@ -145,32 +145,12 @@
             numCijena.TabIndex = 4;
             numCijena.Validating += numCijena_Validating;
             // 
-            // dtpDatumProjekcije
-            // 
-            dtpDatumProjekcije.Enabled = false;
-            dtpDatumProjekcije.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpDatumProjekcije.Location = new Point(769, 257);
-            dtpDatumProjekcije.Name = "dtpDatumProjekcije";
-            dtpDatumProjekcije.Size = new Size(197, 35);
-            dtpDatumProjekcije.TabIndex = 5;
-            // 
-            // lblDatumProjekcije
-            // 
-            lblDatumProjekcije.AutoSize = true;
-            lblDatumProjekcije.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDatumProjekcije.ForeColor = SystemColors.ControlDarkDark;
-            lblDatumProjekcije.Location = new Point(769, 229);
-            lblDatumProjekcije.Name = "lblDatumProjekcije";
-            lblDatumProjekcije.Size = new Size(54, 25);
-            lblDatumProjekcije.TabIndex = 13;
-            lblDatumProjekcije.Text = "Datum";
-            // 
             // lblLokacije
             // 
             lblLokacije.AutoSize = true;
             lblLokacije.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblLokacije.ForeColor = SystemColors.ControlDarkDark;
-            lblLokacije.Location = new Point(88, 228);
+            lblLokacije.Location = new Point(668, 229);
             lblLokacije.Name = "lblLokacije";
             lblLokacije.Size = new Size(61, 25);
             lblLokacije.TabIndex = 13;
@@ -181,7 +161,7 @@
             lblDvorane.AutoSize = true;
             lblDvorane.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDvorane.ForeColor = SystemColors.ControlDarkDark;
-            lblDvorane.Location = new Point(465, 228);
+            lblDvorane.Location = new Point(968, 229);
             lblDvorane.Name = "lblDvorane";
             lblDvorane.Size = new Size(64, 25);
             lblDvorane.TabIndex = 13;
@@ -203,40 +183,52 @@
             // 
             errorProvider.ContainerControl = this;
             // 
-            // lblRedovnaProjekcija
+            // dtpDatumProjekcije
             // 
-            lblRedovnaProjekcija.AutoSize = true;
-            lblRedovnaProjekcija.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblRedovnaProjekcija.ForeColor = SystemColors.ControlDarkDark;
-            lblRedovnaProjekcija.Location = new Point(769, 315);
-            lblRedovnaProjekcija.Name = "lblRedovnaProjekcija";
-            lblRedovnaProjekcija.Size = new Size(134, 25);
-            lblRedovnaProjekcija.TabIndex = 13;
-            lblRedovnaProjekcija.Text = "Redovna projekcija?";
+            dtpDatumProjekcije.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDatumProjekcije.Location = new Point(88, 294);
+            dtpDatumProjekcije.Name = "dtpDatumProjekcije";
+            dtpDatumProjekcije.Size = new Size(197, 35);
+            dtpDatumProjekcije.TabIndex = 25;
+            // 
+            // lblDatumProjekcije
+            // 
+            lblDatumProjekcije.AutoSize = true;
+            lblDatumProjekcije.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDatumProjekcije.ForeColor = SystemColors.ControlDarkDark;
+            lblDatumProjekcije.Location = new Point(88, 266);
+            lblDatumProjekcije.Name = "lblDatumProjekcije";
+            lblDatumProjekcije.Size = new Size(54, 25);
+            lblDatumProjekcije.TabIndex = 26;
+            lblDatumProjekcije.Text = "Datum";
             // 
             // cbRedovnaProjekcija
             // 
-            cbRedovnaProjekcija.AutoSize = true;
-            cbRedovnaProjekcija.Checked = true;
-            cbRedovnaProjekcija.CheckState = CheckState.Checked;
-            cbRedovnaProjekcija.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            cbRedovnaProjekcija.Location = new Point(951, 320);
+            cbRedovnaProjekcija.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            cbRedovnaProjekcija.Location = new Point(270, 229);
             cbRedovnaProjekcija.Name = "cbRedovnaProjekcija";
-            cbRedovnaProjekcija.Size = new Size(15, 14);
-            cbRedovnaProjekcija.TabIndex = 14;
+            cbRedovnaProjekcija.Size = new Size(30, 30);
+            cbRedovnaProjekcija.TabIndex = 24;
             cbRedovnaProjekcija.UseVisualStyleBackColor = true;
             cbRedovnaProjekcija.CheckedChanged += cbRedovnaProjekcija_CheckedChanged;
             // 
-            // label1
+            // dtpDatumZavrsava
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ControlDarkDark;
-            label1.Location = new Point(769, 354);
-            label1.Name = "label1";
-            label1.Size = new Size(98, 25);
-            label1.TabIndex = 13;
-            label1.Text = "Dan u sedmici";
+            dtpDatumZavrsava.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDatumZavrsava.Format = DateTimePickerFormat.Short;
+            dtpDatumZavrsava.Location = new Point(335, 376);
+            dtpDatumZavrsava.Name = "dtpDatumZavrsava";
+            dtpDatumZavrsava.Size = new Size(197, 35);
+            dtpDatumZavrsava.TabIndex = 18;
+            // 
+            // dtpDatumPocinje
+            // 
+            dtpDatumPocinje.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDatumPocinje.Format = DateTimePickerFormat.Short;
+            dtpDatumPocinje.Location = new Point(88, 376);
+            dtpDatumPocinje.Name = "dtpDatumPocinje";
+            dtpDatumPocinje.Size = new Size(197, 35);
+            dtpDatumPocinje.TabIndex = 19;
             // 
             // cmbDan
             // 
@@ -244,72 +236,75 @@
             cmbDan.FlatStyle = FlatStyle.Flat;
             cmbDan.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbDan.FormattingEnabled = true;
-            cmbDan.Location = new Point(769, 382);
+            cmbDan.Location = new Point(88, 294);
             cmbDan.Name = "cmbDan";
             cmbDan.Size = new Size(197, 35);
-            cmbDan.TabIndex = 2;
-            cmbDan.Validating += cmbVrstaProjekcije_Validating;
+            cmbDan.TabIndex = 17;
             // 
-            // dtpDatumPocinje
+            // lblDatumZavrsava
             // 
-            dtpDatumPocinje.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpDatumPocinje.Format = DateTimePickerFormat.Short;
-            dtpDatumPocinje.Location = new Point(769, 464);
-            dtpDatumPocinje.Name = "dtpDatumPocinje";
-            dtpDatumPocinje.Size = new Size(197, 35);
-            dtpDatumPocinje.TabIndex = 5;
+            lblDatumZavrsava.AutoSize = true;
+            lblDatumZavrsava.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDatumZavrsava.ForeColor = SystemColors.ControlDarkDark;
+            lblDatumZavrsava.Location = new Point(335, 348);
+            lblDatumZavrsava.Name = "lblDatumZavrsava";
+            lblDatumZavrsava.Size = new Size(69, 25);
+            lblDatumZavrsava.TabIndex = 20;
+            lblDatumZavrsava.Text = "Završava:";
             // 
-            // label2
+            // lblDatumPocinje
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.ControlDarkDark;
-            label2.Location = new Point(769, 436);
-            label2.Name = "label2";
-            label2.Size = new Size(81, 25);
-            label2.TabIndex = 13;
-            label2.Text = "Počinje od:";
+            lblDatumPocinje.AutoSize = true;
+            lblDatumPocinje.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDatumPocinje.ForeColor = SystemColors.ControlDarkDark;
+            lblDatumPocinje.Location = new Point(88, 348);
+            lblDatumPocinje.Name = "lblDatumPocinje";
+            lblDatumPocinje.Size = new Size(61, 25);
+            lblDatumPocinje.TabIndex = 21;
+            lblDatumPocinje.Text = "Počinje:";
             // 
-            // label3
+            // lblDan
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.ControlDarkDark;
-            label3.Location = new Point(1016, 436);
-            label3.Name = "label3";
-            label3.Size = new Size(66, 25);
-            label3.TabIndex = 13;
-            label3.Text = "Traje do:";
+            lblDan.AutoSize = true;
+            lblDan.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDan.ForeColor = SystemColors.ControlDarkDark;
+            lblDan.Location = new Point(88, 266);
+            lblDan.Name = "lblDan";
+            lblDan.Size = new Size(98, 25);
+            lblDan.TabIndex = 22;
+            lblDan.Text = "Dan u sedmici";
             // 
-            // dtpDatumTrajeDo
+            // lblRedovnaProjekcija
             // 
-            dtpDatumTrajeDo.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpDatumTrajeDo.Format = DateTimePickerFormat.Short;
-            dtpDatumTrajeDo.Location = new Point(1016, 464);
-            dtpDatumTrajeDo.Name = "dtpDatumTrajeDo";
-            dtpDatumTrajeDo.Size = new Size(197, 35);
-            dtpDatumTrajeDo.TabIndex = 5;
+            lblRedovnaProjekcija.AutoSize = true;
+            lblRedovnaProjekcija.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblRedovnaProjekcija.ForeColor = SystemColors.ControlDarkDark;
+            lblRedovnaProjekcija.Location = new Point(88, 229);
+            lblRedovnaProjekcija.Name = "lblRedovnaProjekcija";
+            lblRedovnaProjekcija.Size = new Size(134, 25);
+            lblRedovnaProjekcija.TabIndex = 23;
+            lblRedovnaProjekcija.Text = "Redovna projekcija?";
             // 
             // frmProjekcijaInsert
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1270, 776);
-            Controls.Add(cbRedovnaProjekcija);
-            Controls.Add(btnSpasi);
-            Controls.Add(dtpDatumTrajeDo);
-            Controls.Add(dtpDatumPocinje);
             Controls.Add(dtpDatumProjekcije);
+            Controls.Add(lblDatumProjekcije);
+            Controls.Add(cbRedovnaProjekcija);
+            Controls.Add(dtpDatumZavrsava);
+            Controls.Add(dtpDatumPocinje);
+            Controls.Add(cmbDan);
+            Controls.Add(lblDatumZavrsava);
+            Controls.Add(lblDatumPocinje);
+            Controls.Add(lblDan);
+            Controls.Add(lblRedovnaProjekcija);
+            Controls.Add(btnSpasi);
             Controls.Add(numCijena);
             Controls.Add(dtpVrijeme);
-            Controls.Add(cmbDan);
             Controls.Add(cmbVrstaProjekcije);
             Controls.Add(lblCijena);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(lblRedovnaProjekcija);
-            Controls.Add(lblDatumProjekcije);
             Controls.Add(lblVrijeme);
             Controls.Add(lblDvorane);
             Controls.Add(lblVrstaProjekcije);
@@ -337,19 +332,19 @@
         private Label lblCijena;
         private DateTimePicker dtpVrijeme;
         private NumericUpDown numCijena;
-        private DateTimePicker dtpDatumProjekcije;
-        private Label lblDatumProjekcije;
         private Label lblLokacije;
         private Label lblDvorane;
         private Button btnSpasi;
         private ErrorProvider errorProvider;
+        private DateTimePicker dtpDatumProjekcije;
+        private Label lblDatumProjekcije;
         private CheckBox cbRedovnaProjekcija;
-        private Label lblRedovnaProjekcija;
-        private DateTimePicker dtpDatumTrajeDo;
+        private DateTimePicker dtpDatumZavrsava;
         private DateTimePicker dtpDatumPocinje;
         private ComboBox cmbDan;
-        private Label label3;
-        private Label label2;
-        private Label label1;
+        private Label lblDatumZavrsava;
+        private Label lblDatumPocinje;
+        private Label lblDan;
+        private Label lblRedovnaProjekcija;
     }
 }
