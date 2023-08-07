@@ -77,6 +77,13 @@ namespace KinoPlus.WinUI
             location.ProjectionTypeIds = lbVrstaProjekcije.SelectedItems.Cast<ProjectionTypeDto>().Select(pt => pt.Id).ToArray();
             location.HallIds = lbDvorane.SelectedItems.Cast<HallDto>().Select(h => h.Id).ToArray();
 
+            if (!location.ProjectionTypeIds.Any() || !location.HallIds.Any())
+            {
+                MessageBox.Show("Odaberite dvorane i vrste projekcije", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
             LocationDto? locationDto;
             if (IsEdit)
             {
