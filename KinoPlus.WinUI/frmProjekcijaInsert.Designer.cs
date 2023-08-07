@@ -151,7 +151,7 @@
             lblLokacije.AutoSize = true;
             lblLokacije.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblLokacije.ForeColor = SystemColors.ControlDarkDark;
-            lblLokacije.Location = new Point(604, 229);
+            lblLokacije.Location = new Point(694, 229);
             lblLokacije.Name = "lblLokacije";
             lblLokacije.Size = new Size(61, 25);
             lblLokacije.TabIndex = 13;
@@ -162,7 +162,7 @@
             lblDvorane.AutoSize = true;
             lblDvorane.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDvorane.ForeColor = SystemColors.ControlDarkDark;
-            lblDvorane.Location = new Point(968, 229);
+            lblDvorane.Location = new Point(1021, 229);
             lblDvorane.Name = "lblDvorane";
             lblDvorane.Size = new Size(64, 25);
             lblDvorane.TabIndex = 13;
@@ -290,9 +290,9 @@
             // 
             panel.AutoScroll = true;
             panel.BorderStyle = BorderStyle.FixedSingle;
-            panel.Location = new Point(588, 258);
+            panel.Location = new Point(679, 258);
             panel.Name = "panel";
-            panel.Size = new Size(615, 359);
+            panel.Size = new Size(524, 359);
             panel.TabIndex = 27;
             // 
             // frmProjekcijaInsert

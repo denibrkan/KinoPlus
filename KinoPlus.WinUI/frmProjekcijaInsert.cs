@@ -77,7 +77,7 @@ namespace KinoPlus.WinUI
                     DataSource = location.Halls,
                     ValueMember = "Id",
                     DisplayMember = "Name",
-                    Width = 200
+                    Width = 170
                 };
 
                 cmbHalls.DataSource = location.Halls;
