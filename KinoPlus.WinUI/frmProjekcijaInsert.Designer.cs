@@ -51,6 +51,7 @@
             lblDatumPocinje = new Label();
             lblDan = new Label();
             lblRedovnaProjekcija = new Label();
+            panel = new Panel();
             ((System.ComponentModel.ISupportInitialize)numCijena).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
@@ -150,7 +151,7 @@
             lblLokacije.AutoSize = true;
             lblLokacije.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblLokacije.ForeColor = SystemColors.ControlDarkDark;
-            lblLokacije.Location = new Point(668, 229);
+            lblLokacije.Location = new Point(604, 229);
             lblLokacije.Name = "lblLokacije";
             lblLokacije.Size = new Size(61, 25);
             lblLokacije.TabIndex = 13;
@@ -285,11 +286,23 @@
             lblRedovnaProjekcija.TabIndex = 23;
             lblRedovnaProjekcija.Text = "Redovna projekcija?";
             // 
+            // panel
+            // 
+            panel.AutoScroll = true;
+            panel.BorderStyle = BorderStyle.FixedSingle;
+            panel.Location = new Point(588, 258);
+            panel.Name = "panel";
+            panel.Size = new Size(615, 359);
+            panel.TabIndex = 27;
+            // 
             // frmProjekcijaInsert
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1270, 776);
+            Controls.Add(lblDvorane);
+            Controls.Add(lblLokacije);
+            Controls.Add(panel);
             Controls.Add(dtpDatumProjekcije);
             Controls.Add(lblDatumProjekcije);
             Controls.Add(cbRedovnaProjekcija);
@@ -306,10 +319,8 @@
             Controls.Add(cmbVrstaProjekcije);
             Controls.Add(lblCijena);
             Controls.Add(lblVrijeme);
-            Controls.Add(lblDvorane);
             Controls.Add(lblVrstaProjekcije);
             Controls.Add(cmbFilm);
-            Controls.Add(lblLokacije);
             Controls.Add(lblFilm);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "frmProjekcijaInsert";
@@ -346,5 +357,6 @@
         private Label lblDatumPocinje;
         private Label lblDan;
         private Label lblRedovnaProjekcija;
+        private Panel panel;
     }
 }

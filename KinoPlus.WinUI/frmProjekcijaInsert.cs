@@ -60,8 +60,8 @@ namespace KinoPlus.WinUI
             {
                 locations = Cache.Locations;
             }
-            var font = new Font("Dubai", 14, FontStyle.Underline);
-            var font2 = new Font("Dubai", 12);
+            var font = new Font("Dubai", 12, FontStyle.Underline);
+            var font2 = new Font("Dubai", 11);
 
             var locationLbl = lblLokacije.Location;
             var hallsLbl = lblDvorane.Location;
@@ -69,20 +69,6 @@ namespace KinoPlus.WinUI
 
             foreach (var location in locations!)
             {
-                var cbLocation = new CheckBox
-                {
-                    Text = $"{location.Name} - {location.City.Name}",
-                    Font = font,
-                    Checked = true,
-                    AutoSize = true,
-                    MaximumSize = new Size(hallsLbl.X - locationLbl.X, 50),
-                    Height = 50,
-                };
-
-                cbLocation.Location = new Point(locationLbl.X, locationLbl.Y + lblLokacije.Height + (index * cbLocation.Height + index * 20) + 10);
-
-                cbLocation.CheckedChanged += cbLokacijaCheckedChange!;
-
                 var cmbHalls = new ComboBox
                 {
                     DropDownStyle = ComboBoxStyle.DropDownList,
@@ -91,19 +77,34 @@ namespace KinoPlus.WinUI
                     DataSource = location.Halls,
                     ValueMember = "Id",
                     DisplayMember = "Name",
-                    Width = 200,
+                    Width = 200
                 };
 
                 cmbHalls.DataSource = location.Halls;
-                cmbHalls.Location = new Point(hallsLbl.X, hallsLbl.Y + lblDvorane.Height + (index * cmbHalls.Height + index * 20) + 10);
+
+                var cbLocation = new CheckBox
+                {
+                    Text = $"{location.Name} - {location.City.Name}",
+                    Font = font,
+                    Checked = true,
+                    Width = hallsLbl.X - locationLbl.X - 10,
+                    Height = cmbHalls.Height,
+                };
+
+                var itemYLocation = (index * cmbHalls.Height + index * 10) + 10;
+
+                cbLocation.Location = new Point(10, itemYLocation);
+                cmbHalls.Location = new Point(cbLocation.Width + 20, itemYLocation);
+
+                cbLocation.CheckedChanged += cbLokacijaCheckedChange!;
 
                 index += 1;
 
                 var tuple = new Tuple<CheckBox, ComboBox>(cbLocation, cmbHalls);
                 LocationHalls.Add(tuple);
 
-                this.Controls.Add(cbLocation);
-                this.Controls.Add(cmbHalls);
+                this.panel.Controls.Add(cbLocation);
+                this.panel.Controls.Add(cmbHalls);
             }
         }
 
