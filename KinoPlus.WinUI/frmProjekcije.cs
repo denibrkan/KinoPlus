@@ -117,10 +117,15 @@ namespace KinoPlus.WinUI
 
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
-            var frmProjekcija = new frmProjekcijaInsert();
+            var frmProjekcijaInsert = new frmProjekcijaInsert(dtpDatum.Value);
 
-            if (frmProjekcija.ShowDialog() == DialogResult.OK)
+            if (frmProjekcijaInsert.ShowDialog() == DialogResult.OK)
             {
+                if (frmProjekcijaInsert.InsertedProjectionDate != null)
+                {
+                    dtpDatum.Value = frmProjekcijaInsert.InsertedProjectionDate.Value;
+                }
+
                 await loadProjections();
             }
 

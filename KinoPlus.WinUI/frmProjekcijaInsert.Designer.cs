@@ -191,6 +191,7 @@
             dtpDatumProjekcije.Name = "dtpDatumProjekcije";
             dtpDatumProjekcije.Size = new Size(197, 35);
             dtpDatumProjekcije.TabIndex = 25;
+            dtpDatumProjekcije.Validating += dtpDatumProjekcije_Validating;
             // 
             // lblDatumProjekcije
             // 
@@ -221,6 +222,7 @@
             dtpDatumZavrsava.Name = "dtpDatumZavrsava";
             dtpDatumZavrsava.Size = new Size(197, 35);
             dtpDatumZavrsava.TabIndex = 18;
+            dtpDatumZavrsava.Validating += dtpDatumZavrsava_Validating;
             // 
             // dtpDatumPocinje
             // 
@@ -230,6 +232,7 @@
             dtpDatumPocinje.Name = "dtpDatumPocinje";
             dtpDatumPocinje.Size = new Size(197, 35);
             dtpDatumPocinje.TabIndex = 19;
+            dtpDatumPocinje.Validating += dtpDatumPocinje_Validating;
             // 
             // cmbDan
             // 

@@ -6,15 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KinoPlus.Services
 {
-    public class ProjectionService : BaseCRUDService<Projection, ProjectionInsertObject, ProjectionInsertObject, ProjectionSearchObject>, IProjectionService
+    public class ProjectionService : BaseService<Projection, ProjectionSearchObject>, IProjectionService
     {
         private readonly KinoplusContext _context;
-        private readonly IMapper _mapper;
 
-        public ProjectionService(KinoplusContext context, IMapper mapper) : base(context, mapper)
+        public ProjectionService(KinoplusContext context, IMapper mapper) : base(context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public override IQueryable<Projection> AddInclude(IQueryable<Projection> query, ProjectionSearchObject? search)
@@ -61,83 +59,91 @@ namespace KinoPlus.Services
             return query;
         }
 
-        public override async Task BeforeInsert(ProjectionInsertObject insert, Projection entity)
+        public async Task<List<Projection>> InsertProjectionsAsync(ProjectionInsertObject insert)
         {
-            await base.BeforeInsert(insert, entity);
+            int? recurringId = null;
+            var projectionDates = new List<DateTime>();
 
             if (insert.IsRecurring)
             {
-                var recurring = new RecurringProjection
-                {
-                    WeekDayId = insert.WeekDayId!.Value,
-                    StartingDate = insert.StartingDate!.Value,
-                    EndingDate = insert.EndingDate!.Value,
-                    ProjectionTime = insert.ProjectionTime!.Value.TimeOfDay,
-                };
-
-                await _context.AddAsync(recurring);
-                await _context.SaveChangesAsync();
-
-                entity.RecurringProjectionId = recurring.Id;
-            }
-        }
-
-        public override async Task<Projection> InsertAsync(ProjectionInsertObject insert)
-        {
-            var projection = _mapper.Map<Projection>(insert);
-
-            await BeforeInsert(insert, projection);
-
-            var movie = await _context.Movies.SingleAsync(m => m.Id == insert.MovieId);
-
-            Tuple<int, int> startingTime = Tuple.Create(insert.ProjectionTime!.Value.Hour, insert.ProjectionTime!.Value.Minute);
-
-            var projectionDates = new List<DateTime>();
-
-            if (projection.RecurringProjectionId != null)
-            {
-                //find projection dates using starting date and day of week
-                var comparingDate = insert.StartingDate;
-                do
-                {
-                    if (((int)comparingDate!.Value.DayOfWeek) == insert.WeekDayId - 1)
-                    {
-                        projectionDates.Add(comparingDate.Value);
-                    }
-
-                    comparingDate = comparingDate.Value.AddDays(1);
-                } while (comparingDate <= insert.EndingDate);
+                recurringId = await InsertRecurringProjectionAsync(insert);
+                projectionDates = GetProjectionDates(insert);
             }
             else
             {
                 projectionDates.Add(insert.ProjectionDate!.Value);
             }
 
-            foreach (var date in projectionDates)
+            var movie = await _context.Movies.SingleAsync(m => m.Id == insert.MovieId);
+
+            var projections = new List<Projection>();
+            var projectionTime = insert.ProjectionTime!.Value;
+
+            //insert projections by dates and locations
+            foreach (var projectionDate in projectionDates)
             {
-                var startsAtDate = new DateTime(date.Year, date.Month, date.Day, startingTime.Item1, startingTime.Item2, 0);
-                var endsAtDate = startsAtDate.AddMinutes(movie.Duration);
+                var startsAt = projectionDate.Date.AddHours(projectionTime.Hour).AddMinutes(projectionTime.Minute);
+                var endsAt = startsAt.AddMinutes(movie.Duration);
 
                 foreach (var locationHall in insert.Locations)
                 {
-                    _context.Projections.Add(
+                    projections.Add
+                    (
                         new Projection
                         {
-                            MovieId = projection.MovieId,
-                            ProjectionTypeId = projection.ProjectionTypeId,
-                            Price = projection.Price,
-                            StartsAt = startsAtDate,
-                            EndsAt = endsAtDate,
-                            RecurringProjectionId = projection.RecurringProjectionId,
+                            MovieId = insert.MovieId!.Value,
+                            ProjectionTypeId = insert.ProjectionTypeId!.Value,
+                            Price = insert.Price!.Value,
+                            StartsAt = startsAt,
+                            EndsAt = endsAt,
+                            RecurringProjectionId = recurringId,
                             LocationId = locationHall.LocationId!.Value,
                             HallId = locationHall.HallId!.Value,
-                        });
+                        }
+                    );
                 }
             }
 
+            _context.Projections.AddRange(projections);
             await _context.SaveChangesAsync();
 
-            return projection;
+            return projections;
+        }
+
+        private async Task<int> InsertRecurringProjectionAsync(ProjectionInsertObject insert)
+        {
+            var recurring = new RecurringProjection
+            {
+                WeekDayId = insert.WeekDayId!.Value,
+                StartingDate = insert.StartingDate!.Value,
+                EndingDate = insert.EndingDate!.Value,
+                ProjectionTime = insert.ProjectionTime!.Value.TimeOfDay,
+            };
+
+            await _context.AddAsync(recurring);
+            await _context.SaveChangesAsync();
+
+            return recurring.Id;
+        }
+
+        private List<DateTime> GetProjectionDates(ProjectionInsertObject insert)
+        {
+            var projectionDates = new List<DateTime>();
+
+            //find projection dates using starting date and day of week
+            var startDate = insert.StartingDate!.Value.Date;
+            var endDate = insert.EndingDate!.Value.Date;
+            do
+            {
+                if ((int)startDate.DayOfWeek == insert.WeekDayId - 1)
+                {
+                    projectionDates.Add(startDate);
+                }
+
+                startDate = startDate.AddDays(1);
+            } while (startDate <= endDate);
+
+            return projectionDates;
         }
     }
 }

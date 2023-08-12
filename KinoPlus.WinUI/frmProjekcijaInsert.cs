@@ -9,10 +9,12 @@ namespace KinoPlus.WinUI
         public APIService ProjectionService { get; set; } = new APIService("projections");
         public APIService LocationService { get; set; } = new APIService("locations");
         public List<Tuple<CheckBox, ComboBox>> LocationHalls { get; set; } = new List<Tuple<CheckBox, ComboBox>>();
+        public DateTime? InsertedProjectionDate { get; set; }
 
-        public frmProjekcijaInsert()
+        public frmProjekcijaInsert(DateTime date)
         {
             InitializeComponent();
+            dtpDatumProjekcije.Value = date;
 
             dtpDatumZavrsava.Value = dtpDatumZavrsava.Value.AddMonths(1);
             dtpDatumPocinje.Visible = false;
@@ -149,13 +151,17 @@ namespace KinoPlus.WinUI
                     projectionInsert.Locations.Add(locationHallInsert);
                 }
             }
-            var projection = await ProjectionService.Post<ProjectionDto>(projectionInsert);
+            var projections = await ProjectionService.Post<List<ProjectionDto>>(projectionInsert);
 
-            if (projection != null)
+            if (projections != null)
             {
-                this.DialogResult = DialogResult.OK;
-                Close();
+                MessageBox.Show($"Zakazano ukupno {projections.Count} {LetterEnding.GetLetterEnding(projections.Count, "projekcija")} na {projectionInsert.Locations.Count} {LetterEnding.GetLetterEnding(projectionInsert.Locations.Count, "lokacija")}");
+
+                InsertedProjectionDate = projections.FirstOrDefault()?.StartsAt;
             }
+
+            this.DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void cmbFilm_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -225,6 +231,61 @@ namespace KinoPlus.WinUI
                 {
                     locationHall.Item2.Enabled = !locationHall.Item2.Enabled;
                 }
+            }
+        }
+
+        private void dtpDatumProjekcije_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (cbRedovnaProjekcija.Checked)
+                return;
+
+            var selectedDate = dtpDatumProjekcije.Value.Date;
+            var selectedTime = dtpVrijeme.Value.TimeOfDay;
+            var now = DateTime.Now;
+            if (selectedDate < now.Date ||
+                selectedDate == now.Date && selectedTime < now.TimeOfDay)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(dtpDatumProjekcije, "Datum i vrijeme projekcije u prošlosti nisu validni");
+                errorProvider.SetError(dtpVrijeme, "Datum i vrijeme projekcije u prošlosti nisu validni");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(dtpDatumProjekcije, null);
+                errorProvider.SetError(dtpVrijeme, null);
+            }
+        }
+
+        private void dtpDatumPocinje_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!cbRedovnaProjekcija.Checked)
+                return;
+
+            checkDatumPocetkaAndDatumZavrsetka(e);
+        }
+
+        private void dtpDatumZavrsava_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!cbRedovnaProjekcija.Checked)
+                return;
+
+            checkDatumPocetkaAndDatumZavrsetka(e);
+        }
+
+        private void checkDatumPocetkaAndDatumZavrsetka(System.ComponentModel.CancelEventArgs e)
+        {
+            if (dtpDatumPocinje.Value.Date >= dtpDatumZavrsava.Value.Date)
+            {
+                e.Cancel = true;
+                errorProvider.SetError(dtpDatumPocinje, "Datum početka mora biti prije datuma završetka");
+                errorProvider.SetError(dtpDatumZavrsava, "Datum početka mora biti prije datuma završetka");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider.SetError(dtpDatumPocinje, null);
+                errorProvider.SetError(dtpDatumZavrsava, null);
             }
         }
     }
