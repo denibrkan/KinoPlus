@@ -145,5 +145,21 @@ namespace KinoPlus.Services
 
             return projectionDates;
         }
+
+        public async Task<Projection> UpdateAsync(int id, ProjectionUpdateObject updateObject)
+        {
+            var projection = _context.Projections.SingleOrDefault(p => p.Id == id);
+
+            if (projection == null) throw new Exception($"Projekcija sa id: {id} ne postoji");
+            var movie = _context.Movies.Single(m => m.Id == projection.MovieId);
+
+            projection.StartsAt = updateObject.StartsAt!.Value;
+            projection.EndsAt = projection.StartsAt.AddMinutes(movie.Duration);
+            projection.HallId = updateObject.HallId!.Value;
+
+            await _context.SaveChangesAsync();
+
+            return projection;
+        }
     }
 }

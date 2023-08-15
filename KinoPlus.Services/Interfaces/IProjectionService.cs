@@ -6,5 +6,6 @@ namespace KinoPlus.Services.Interfaces
     public interface IProjectionService : IService<Projection, ProjectionSearchObject>
     {
         Task<List<Projection>> InsertProjectionsAsync(ProjectionInsertObject insertObject);
+        Task<Projection> UpdateAsync(int id, ProjectionUpdateObject updateObject);
     }
 }

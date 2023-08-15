@@ -11,6 +11,8 @@ namespace KinoPlus.Models
         public decimal Price { get; set; }
         public int TicketCount { get; set; }
         public int MovieId { get; set; }
+        public int LocationId { get; set; }
+        public int HallId { get; set; }
         public MovieDto Movie { get; set; }
         public int ProjectionTypeId { get; set; }
         public ProjectionTypeDto ProjectionType { get; set; }

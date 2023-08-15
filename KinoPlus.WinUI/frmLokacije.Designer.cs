@@ -113,7 +113,7 @@
             txtTrazi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtTrazi.Location = new Point(91, 83);
             txtTrazi.Name = "txtTrazi";
-            txtTrazi.PlaceholderText = "Trazi";
+            txtTrazi.PlaceholderText = "Traži";
             txtTrazi.Size = new Size(240, 35);
             txtTrazi.TabIndex = 13;
             // 
@@ -122,7 +122,7 @@
             btnTrazi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnTrazi.Location = new Point(343, 83);
             btnTrazi.Name = "btnTrazi";
-            btnTrazi.Size = new Size(93, 33);
+            btnTrazi.Size = new Size(93, 35);
             btnTrazi.TabIndex = 14;
             btnTrazi.Text = "Pretraga";
             btnTrazi.UseVisualStyleBackColor = true;
@@ -131,14 +131,16 @@
             // btnDodaj
             // 
             btnDodaj.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDodaj.BackColor = Color.MidnightBlue;
             btnDodaj.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDodaj.ForeColor = Color.White;
             btnDodaj.Location = new Point(1041, 83);
             btnDodaj.Margin = new Padding(4, 3, 4, 3);
             btnDodaj.Name = "btnDodaj";
-            btnDodaj.Size = new Size(122, 33);
+            btnDodaj.Size = new Size(122, 40);
             btnDodaj.TabIndex = 15;
             btnDodaj.Text = "Dodaj";
-            btnDodaj.UseVisualStyleBackColor = true;
+            btnDodaj.UseVisualStyleBackColor = false;
             btnDodaj.Click += btnDodaj_Click;
             // 
             // frmLokacije

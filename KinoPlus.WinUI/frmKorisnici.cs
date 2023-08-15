@@ -53,7 +53,7 @@ namespace KinoPlus.WinUI
                 dgvKorisnici.Columns["KorisnickoIme"].HeaderText = "Korisnicko ime";
                 dgvKorisnici.Columns["LoyaltyPoeni"].HeaderText = "Loyalty poeni";
 
-                lblPaging.Text = "Page " + PageNumber;
+                lblPaging.Text = "Stranica " + PageNumber;
             }
             catch (Exception)
             {

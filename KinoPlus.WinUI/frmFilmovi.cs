@@ -70,7 +70,7 @@ namespace KinoPlus.WinUI
                 dgvMovies.Columns["Zanr"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dgvMovies.Columns["Kategorija"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-                lblPaging.Text = "Page " + PageNumber;
+                lblPaging.Text = "Stranica " + PageNumber;
             }
             catch (Exception)
             {
@@ -105,11 +105,6 @@ namespace KinoPlus.WinUI
         {
             if (!Loading)
                 await loadMovies();
-        }
-
-        private void txtTrazi_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private async void btnReset_Click(object sender, EventArgs e)

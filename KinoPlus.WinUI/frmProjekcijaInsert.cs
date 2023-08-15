@@ -79,7 +79,7 @@ namespace KinoPlus.WinUI
                     DataSource = location.Halls,
                     ValueMember = "Id",
                     DisplayMember = "Name",
-                    Width = 170
+                    Width = 150
                 };
 
                 cmbHalls.DataSource = location.Halls;
@@ -89,14 +89,14 @@ namespace KinoPlus.WinUI
                     Text = $"{location.Name} - {location.City.Name}",
                     Font = font,
                     Checked = true,
-                    Width = hallsLbl.X - locationLbl.X - 10,
+                    Width = hallsLbl.X - locationLbl.X,
                     Height = cmbHalls.Height,
                 };
 
-                var itemYLocation = (index * cmbHalls.Height + index * 10) + 10;
+                var itemYLocation = (index * cmbHalls.Height + index * 10);
 
-                cbLocation.Location = new Point(10, itemYLocation);
-                cmbHalls.Location = new Point(cbLocation.Width + 20, itemYLocation);
+                cbLocation.Location = new Point(0, itemYLocation);
+                cmbHalls.Location = new Point(cbLocation.Width, itemYLocation);
 
                 cbLocation.CheckedChanged += cbLokacijaCheckedChange!;
 

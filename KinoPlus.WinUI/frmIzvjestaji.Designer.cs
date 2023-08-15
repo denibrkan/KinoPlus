@@ -54,7 +54,7 @@
             // 
             dtpDatumOd.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
             dtpDatumOd.Format = DateTimePickerFormat.Short;
-            dtpDatumOd.Location = new Point(107, 160);
+            dtpDatumOd.Location = new Point(110, 160);
             dtpDatumOd.Name = "dtpDatumOd";
             dtpDatumOd.Size = new Size(161, 30);
             dtpDatumOd.TabIndex = 14;
@@ -62,9 +62,10 @@
             // lblDatumOd
             // 
             lblDatumOd.AutoSize = true;
+            lblDatumOd.FlatStyle = FlatStyle.System;
             lblDatumOd.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblDatumOd.ForeColor = SystemColors.ControlDarkDark;
-            lblDatumOd.Location = new Point(107, 132);
+            lblDatumOd.Location = new Point(110, 132);
             lblDatumOd.Name = "lblDatumOd";
             lblDatumOd.Size = new Size(27, 24);
             lblDatumOd.TabIndex = 15;
@@ -74,7 +75,7 @@
             // 
             dtpDatumDo.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
             dtpDatumDo.Format = DateTimePickerFormat.Short;
-            dtpDatumDo.Location = new Point(351, 160);
+            dtpDatumDo.Location = new Point(354, 160);
             dtpDatumDo.Name = "dtpDatumDo";
             dtpDatumDo.Size = new Size(148, 30);
             dtpDatumDo.TabIndex = 16;
@@ -82,9 +83,10 @@
             // lblDatumDo
             // 
             lblDatumDo.AutoSize = true;
+            lblDatumDo.FlatStyle = FlatStyle.System;
             lblDatumDo.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblDatumDo.ForeColor = SystemColors.ControlDarkDark;
-            lblDatumDo.Location = new Point(351, 132);
+            lblDatumDo.Location = new Point(354, 132);
             lblDatumDo.Name = "lblDatumDo";
             lblDatumDo.Size = new Size(26, 24);
             lblDatumDo.TabIndex = 17;
@@ -115,7 +117,7 @@
             // 
             cmbLokacija.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cmbLokacija.FormattingEnabled = true;
-            cmbLokacija.Location = new Point(576, 160);
+            cmbLokacija.Location = new Point(579, 160);
             cmbLokacija.Name = "cmbLokacija";
             cmbLokacija.Size = new Size(187, 30);
             cmbLokacija.TabIndex = 21;
@@ -123,9 +125,10 @@
             // lblLokacija
             // 
             lblLokacija.AutoSize = true;
+            lblLokacija.FlatStyle = FlatStyle.System;
             lblLokacija.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblLokacija.ForeColor = SystemColors.ControlDarkDark;
-            lblLokacija.Location = new Point(576, 135);
+            lblLokacija.Location = new Point(579, 135);
             lblLokacija.Name = "lblLokacija";
             lblLokacija.Size = new Size(53, 22);
             lblLokacija.TabIndex = 20;
@@ -134,9 +137,10 @@
             // lblFilm
             // 
             lblFilm.AutoSize = true;
+            lblFilm.FlatStyle = FlatStyle.System;
             lblFilm.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblFilm.ForeColor = SystemColors.ControlDarkDark;
-            lblFilm.Location = new Point(816, 135);
+            lblFilm.Location = new Point(819, 135);
             lblFilm.Name = "lblFilm";
             lblFilm.Size = new Size(33, 22);
             lblFilm.TabIndex = 20;
@@ -146,7 +150,7 @@
             // 
             cmbFilm.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cmbFilm.FormattingEnabled = true;
-            cmbFilm.Location = new Point(816, 160);
+            cmbFilm.Location = new Point(819, 160);
             cmbFilm.Name = "cmbFilm";
             cmbFilm.Size = new Size(187, 30);
             cmbFilm.TabIndex = 21;

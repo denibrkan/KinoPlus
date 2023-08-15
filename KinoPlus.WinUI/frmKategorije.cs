@@ -55,7 +55,7 @@ namespace KinoPlus.WinUI
                 dgvKategorije.Columns["OrderPoeni"].HeaderText = "Order poeni";
                 dgvKategorije.Columns["BrojFilmova"].HeaderText = "Broj filmova";
 
-                lblPaging.Text = "Page " + PageNumber;
+                lblPaging.Text = "Stranica " + PageNumber;
             }
             catch (Exception)
             {

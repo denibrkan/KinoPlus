@@ -1,6 +1,7 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
 using KinoPlus.WinUI.Constants;
+using KinoPlus.WinUI.Projections;
 using KinoPlus.WinUI.Utils;
 using System.Data;
 
@@ -16,6 +17,8 @@ namespace KinoPlus.WinUI
         public frmProjekcije()
         {
             InitializeComponent();
+
+            btnDatumNaprijed.Visible = true;
         }
 
         private async void frmProjekcije_Load(object sender, EventArgs e)
@@ -65,7 +68,7 @@ namespace KinoPlus.WinUI
                 dgvProjections.Columns["VrstaProjekcije"].HeaderText = "Vrsta projekcije";
                 dgvProjections.Columns["Slika"].HeaderText = "";
 
-                lblPaging.Text = "Page " + PageNumber;
+                lblPaging.Text = "Stranica " + PageNumber;
             }
             catch (Exception)
             {
@@ -129,6 +132,39 @@ namespace KinoPlus.WinUI
                 await loadProjections();
             }
 
+        }
+
+        private void btnDatumNaprijed_Click(object sender, EventArgs e)
+        {
+            dtpDatum.Value = dtpDatum.Value.AddDays(1);
+        }
+
+        private void btnDatumNazad_Click(object sender, EventArgs e)
+        {
+            dtpDatum.Value = dtpDatum.Value.AddDays(-1);
+        }
+
+        private async void dgvProjections_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var projectionId = dgvProjections.Rows[e.RowIndex].Cells["Id"].Value as int?;
+            if (projectionId == null) return;
+
+            var projection = await APIService.GetById<ProjectionDto>(projectionId);
+            if (projection == null) return;
+
+            var projectionUpdate = new ProjectionUpdateObject
+            {
+                Id = projectionId,
+                StartsAt = projection.StartsAt,
+                HallId = projection.HallId
+            };
+
+            var frmProjectionEdit = new frmProjectionEdit(projection.LocationId, projectionUpdate);
+
+            if (frmProjectionEdit.ShowDialog() == DialogResult.OK)
+            {
+                await loadProjections();
+            }
         }
     }
 }

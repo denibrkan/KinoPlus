@@ -111,7 +111,7 @@
             txtTrazi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtTrazi.Location = new Point(91, 83);
             txtTrazi.Name = "txtTrazi";
-            txtTrazi.PlaceholderText = "Trazi";
+            txtTrazi.PlaceholderText = "Traži";
             txtTrazi.Size = new Size(240, 35);
             txtTrazi.TabIndex = 13;
             // 

@@ -54,7 +54,7 @@ namespace KinoPlus.WinUI
                 dgvLocations.Columns["BrojDvorana"].Width = 100;
                 dgvLocations.Columns["VrsteProjekcije"].HeaderText = "Vrste projekcije";
 
-                lblPaging.Text = "Page " + PageNumber;
+                lblPaging.Text = "Stranica " + PageNumber;
             }
             catch (Exception)
             {

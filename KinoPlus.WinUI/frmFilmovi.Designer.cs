@@ -90,19 +90,22 @@
             // btnDodaj
             // 
             btnDodaj.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDodaj.BackColor = Color.MidnightBlue;
             btnDodaj.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDodaj.Location = new Point(999, 107);
+            btnDodaj.ForeColor = Color.White;
+            btnDodaj.Location = new Point(999, 104);
             btnDodaj.Margin = new Padding(4, 3, 4, 3);
             btnDodaj.Name = "btnDodaj";
-            btnDodaj.Size = new Size(122, 33);
+            btnDodaj.Size = new Size(122, 40);
             btnDodaj.TabIndex = 3;
             btnDodaj.Text = "Dodaj";
-            btnDodaj.UseVisualStyleBackColor = true;
+            btnDodaj.UseVisualStyleBackColor = false;
             btnDodaj.Click += btnDodaj_Click;
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
+            lblStatus.FlatStyle = FlatStyle.System;
             lblStatus.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblStatus.ForeColor = SystemColors.ControlDarkDark;
             lblStatus.Location = new Point(461, 84);
@@ -127,7 +130,7 @@
             // 
             btnNazad.Anchor = AnchorStyles.Bottom;
             btnNazad.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnNazad.Location = new Point(458, 752);
+            btnNazad.Location = new Point(479, 752);
             btnNazad.Name = "btnNazad";
             btnNazad.Size = new Size(75, 31);
             btnNazad.TabIndex = 7;
@@ -139,7 +142,7 @@
             // 
             btnNaprijed.Anchor = AnchorStyles.Bottom;
             btnNaprijed.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnNaprijed.Location = new Point(650, 752);
+            btnNaprijed.Location = new Point(658, 752);
             btnNaprijed.Name = "btnNaprijed";
             btnNaprijed.Size = new Size(75, 31);
             btnNaprijed.TabIndex = 7;
@@ -152,7 +155,7 @@
             lblPaging.Anchor = AnchorStyles.Bottom;
             lblPaging.AutoSize = true;
             lblPaging.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPaging.Location = new Point(572, 754);
+            lblPaging.Location = new Point(580, 754);
             lblPaging.Name = "lblPaging";
             lblPaging.Size = new Size(28, 22);
             lblPaging.TabIndex = 8;
@@ -163,14 +166,14 @@
             txtTrazi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtTrazi.Location = new Point(71, 107);
             txtTrazi.Name = "txtTrazi";
-            txtTrazi.PlaceholderText = "Trazi";
+            txtTrazi.PlaceholderText = "Traži";
             txtTrazi.Size = new Size(240, 35);
             txtTrazi.TabIndex = 9;
-            txtTrazi.TextChanged += txtTrazi_TextChanged;
             // 
             // lblKategorija
             // 
             lblKategorija.AutoSize = true;
+            lblKategorija.FlatStyle = FlatStyle.System;
             lblKategorija.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblKategorija.ForeColor = SystemColors.ControlDarkDark;
             lblKategorija.Location = new Point(670, 84);
@@ -197,7 +200,7 @@
             btnTrazi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnTrazi.Location = new Point(323, 107);
             btnTrazi.Name = "btnTrazi";
-            btnTrazi.Size = new Size(93, 33);
+            btnTrazi.Size = new Size(93, 35);
             btnTrazi.TabIndex = 12;
             btnTrazi.Text = "Pretraga";
             btnTrazi.UseVisualStyleBackColor = true;
@@ -206,12 +209,12 @@
             // btnReset
             // 
             btnReset.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnReset.Location = new Point(880, 107);
+            btnReset.Location = new Point(879, 107);
             btnReset.Margin = new Padding(4, 3, 4, 3);
             btnReset.Name = "btnReset";
-            btnReset.Size = new Size(74, 33);
+            btnReset.Size = new Size(74, 35);
             btnReset.TabIndex = 3;
-            btnReset.Text = "Ponisti";
+            btnReset.Text = "Poništi";
             btnReset.UseVisualStyleBackColor = true;
             btnReset.Click += btnReset_Click;
             // 

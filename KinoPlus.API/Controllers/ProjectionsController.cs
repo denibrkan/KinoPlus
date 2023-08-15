@@ -26,5 +26,13 @@ namespace KinoPlus.API.Controllers
 
             return Ok(_mapper.Map<List<ProjectionDto>>(created));
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<ProjectionDto>> Put(int id, ProjectionUpdateObject projectionUpdate)
+        {
+            var projection = await _service.UpdateAsync(id, projectionUpdate);
+
+            return _mapper.Map<ProjectionDto>(projection);
+        }
     }
 }
