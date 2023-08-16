@@ -58,6 +58,7 @@ namespace KinoPlus.WinUI
                         VrstaProjekcije = p.ProjectionType.Name,
                         Popunjenost = $"{p.TicketCount}/80",
                         Redovna = p.RecurringProjectionId != null ? "DA" : "NE",
+                        Otkazana = p.IsCanceled,
                         Cijena = p.Price,
                     })
                     .ToList();

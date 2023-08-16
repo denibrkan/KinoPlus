@@ -23,6 +23,8 @@ public partial class Projection
 
     public int HallId { get; set; }
 
+    public bool IsCanceled { get; set; }
+
     public virtual Hall Hall { get; set; } = null!;
 
     public virtual Location Location { get; set; } = null!;

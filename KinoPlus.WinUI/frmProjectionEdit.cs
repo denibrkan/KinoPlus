@@ -52,5 +52,22 @@ namespace KinoPlus.WinUI.Projections
 
             this.Close();
         }
+
+        private async void btnOtkazi_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Projekciju više neće biti moguće aktivirati.", "Jeste li sigurni?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                var apiService = new APIService("projections/cancel");
+
+                var isCanceled = await apiService.Update<bool>(ProjectionUpdateObject.Id!.Value, new object());
+
+                if (isCanceled)
+                {
+                    MessageBox.Show("Projekcija uspješno otkazana");
+                    DialogResult = DialogResult.OK;
+                    return;
+                }
+            }
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace KinoPlus.Models
         public int MovieId { get; set; }
         public int LocationId { get; set; }
         public int HallId { get; set; }
+        public bool IsCanceled { get; set; }
         public MovieDto Movie { get; set; }
         public int ProjectionTypeId { get; set; }
         public ProjectionTypeDto ProjectionType { get; set; }

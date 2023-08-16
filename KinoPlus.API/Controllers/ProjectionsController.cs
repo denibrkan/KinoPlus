@@ -34,5 +34,13 @@ namespace KinoPlus.API.Controllers
 
             return _mapper.Map<ProjectionDto>(projection);
         }
+
+        [HttpPut("cancel/{id}")]
+        public async Task<ActionResult<bool>> Cancel(int id)
+        {
+            await _service.CancelAsync(id);
+
+            return Ok(true);
+        }
     }
 }

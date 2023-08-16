@@ -161,5 +161,18 @@ namespace KinoPlus.Services
 
             return projection;
         }
+
+        public async Task CancelAsync(int id)
+        {
+            var projection = _context.Projections.SingleOrDefault(p => p.Id == id);
+
+            if (projection == null) throw new Exception($"Projekcija sa id: {id} ne postoji");
+
+            projection.IsCanceled = true;
+
+            await _context.SaveChangesAsync();
+
+            return;
+        }
     }
 }

@@ -410,6 +410,8 @@ public partial class KinoplusContext : DbContext
 
             entity.HasIndex(e => e.ImageId, "IX_User_ImageId");
 
+            entity.HasIndex(e => e.LocationId, "IX_User_LocationId");
+
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.FirstName).HasMaxLength(50);
             entity.Property(e => e.LastName).HasMaxLength(50);
