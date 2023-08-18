@@ -53,7 +53,7 @@
             dgvMovies.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowFrame;
             dataGridViewCellStyle1.SelectionBackColor = Color.MidnightBlue;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -62,7 +62,7 @@
             dgvMovies.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = Color.MidnightBlue;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -74,7 +74,7 @@
             dgvMovies.Name = "dgvMovies";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = Color.MidnightBlue;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
@@ -91,12 +91,12 @@
             // 
             btnDodaj.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnDodaj.BackColor = Color.MidnightBlue;
-            btnDodaj.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDodaj.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnDodaj.ForeColor = Color.White;
-            btnDodaj.Location = new Point(999, 104);
+            btnDodaj.Location = new Point(999, 111);
             btnDodaj.Margin = new Padding(4, 3, 4, 3);
             btnDodaj.Name = "btnDodaj";
-            btnDodaj.Size = new Size(122, 40);
+            btnDodaj.Size = new Size(122, 35);
             btnDodaj.TabIndex = 3;
             btnDodaj.Text = "Dodaj";
             btnDodaj.UseVisualStyleBackColor = false;
@@ -106,11 +106,11 @@
             // 
             lblStatus.AutoSize = true;
             lblStatus.FlatStyle = FlatStyle.System;
-            lblStatus.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStatus.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblStatus.ForeColor = SystemColors.ControlDarkDark;
-            lblStatus.Location = new Point(461, 84);
+            lblStatus.Location = new Point(460, 97);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(45, 22);
+            lblStatus.Size = new Size(51, 16);
             lblStatus.TabIndex = 5;
             lblStatus.Text = "Status";
             // 
@@ -118,18 +118,18 @@
             // 
             cmbStatus.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cmbStatus.AutoCompleteSource = AutoCompleteSource.ListItems;
-            cmbStatus.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbStatus.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(461, 107);
+            cmbStatus.Location = new Point(460, 116);
             cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(187, 35);
+            cmbStatus.Size = new Size(187, 26);
             cmbStatus.TabIndex = 6;
             cmbStatus.SelectedValueChanged += cmbStatus_SelectedValueChanged;
             // 
             // btnNazad
             // 
             btnNazad.Anchor = AnchorStyles.Bottom;
-            btnNazad.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNazad.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnNazad.Location = new Point(479, 752);
             btnNazad.Name = "btnNazad";
             btnNazad.Size = new Size(75, 31);
@@ -141,7 +141,7 @@
             // btnNaprijed
             // 
             btnNaprijed.Anchor = AnchorStyles.Bottom;
-            btnNaprijed.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNaprijed.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnNaprijed.Location = new Point(658, 752);
             btnNaprijed.Name = "btnNaprijed";
             btnNaprijed.Size = new Size(75, 31);
@@ -154,31 +154,31 @@
             // 
             lblPaging.Anchor = AnchorStyles.Bottom;
             lblPaging.AutoSize = true;
-            lblPaging.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPaging.Location = new Point(580, 754);
+            lblPaging.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPaging.Location = new Point(572, 761);
             lblPaging.Name = "lblPaging";
-            lblPaging.Size = new Size(28, 22);
+            lblPaging.Size = new Size(28, 16);
             lblPaging.TabIndex = 8;
             lblPaging.Text = "???";
             // 
             // txtTrazi
             // 
-            txtTrazi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtTrazi.Location = new Point(71, 107);
+            txtTrazi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTrazi.Location = new Point(71, 115);
             txtTrazi.Name = "txtTrazi";
             txtTrazi.PlaceholderText = "Traži";
-            txtTrazi.Size = new Size(240, 35);
+            txtTrazi.Size = new Size(240, 26);
             txtTrazi.TabIndex = 9;
             // 
             // lblKategorija
             // 
             lblKategorija.AutoSize = true;
             lblKategorija.FlatStyle = FlatStyle.System;
-            lblKategorija.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            lblKategorija.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblKategorija.ForeColor = SystemColors.ControlDarkDark;
-            lblKategorija.Location = new Point(670, 84);
+            lblKategorija.Location = new Point(669, 97);
             lblKategorija.Name = "lblKategorija";
-            lblKategorija.Size = new Size(65, 22);
+            lblKategorija.Size = new Size(73, 16);
             lblKategorija.TabIndex = 5;
             lblKategorija.Text = "Kategorija";
             // 
@@ -187,20 +187,20 @@
             cmbKategorija.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cmbKategorija.AutoCompleteSource = AutoCompleteSource.ListItems;
             cmbKategorija.BackColor = SystemColors.Window;
-            cmbKategorija.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbKategorija.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbKategorija.FormattingEnabled = true;
-            cmbKategorija.Location = new Point(670, 107);
+            cmbKategorija.Location = new Point(669, 116);
             cmbKategorija.Name = "cmbKategorija";
-            cmbKategorija.Size = new Size(187, 35);
+            cmbKategorija.Size = new Size(187, 26);
             cmbKategorija.TabIndex = 6;
             cmbKategorija.SelectedValueChanged += cmbKategorija_SelectedValueChanged;
             // 
             // btnTrazi
             // 
-            btnTrazi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnTrazi.Location = new Point(323, 107);
+            btnTrazi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTrazi.Location = new Point(323, 115);
             btnTrazi.Name = "btnTrazi";
-            btnTrazi.Size = new Size(93, 35);
+            btnTrazi.Size = new Size(85, 27);
             btnTrazi.TabIndex = 12;
             btnTrazi.Text = "Pretraga";
             btnTrazi.UseVisualStyleBackColor = true;
@@ -208,11 +208,11 @@
             // 
             // btnReset
             // 
-            btnReset.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnReset.Location = new Point(879, 107);
+            btnReset.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnReset.Location = new Point(875, 116);
             btnReset.Margin = new Padding(4, 3, 4, 3);
             btnReset.Name = "btnReset";
-            btnReset.Size = new Size(74, 35);
+            btnReset.Size = new Size(72, 27);
             btnReset.TabIndex = 3;
             btnReset.Text = "Poništi";
             btnReset.UseVisualStyleBackColor = true;

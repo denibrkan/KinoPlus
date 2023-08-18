@@ -37,47 +37,49 @@
             // 
             // txtKorisnickoIme
             // 
-            txtKorisnickoIme.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtKorisnickoIme.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtKorisnickoIme.Location = new Point(120, 113);
             txtKorisnickoIme.Name = "txtKorisnickoIme";
-            txtKorisnickoIme.Size = new Size(240, 33);
+            txtKorisnickoIme.Size = new Size(240, 27);
             txtKorisnickoIme.TabIndex = 0;
             // 
             // lblKorisnickoIme
             // 
             lblKorisnickoIme.AutoSize = true;
-            lblKorisnickoIme.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblKorisnickoIme.FlatStyle = FlatStyle.System;
+            lblKorisnickoIme.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblKorisnickoIme.ForeColor = SystemColors.ControlDarkDark;
-            lblKorisnickoIme.Location = new Point(116, 83);
+            lblKorisnickoIme.Location = new Point(120, 92);
             lblKorisnickoIme.Name = "lblKorisnickoIme";
-            lblKorisnickoIme.Size = new Size(110, 27);
+            lblKorisnickoIme.Size = new Size(115, 18);
             lblKorisnickoIme.TabIndex = 1;
             lblKorisnickoIme.Text = "Korisničko ime";
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPassword.FlatStyle = FlatStyle.System;
+            lblPassword.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblPassword.ForeColor = SystemColors.ControlDarkDark;
-            lblPassword.Location = new Point(117, 158);
+            lblPassword.Location = new Point(120, 167);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(61, 27);
+            lblPassword.Size = new Size(65, 18);
             lblPassword.TabIndex = 3;
             lblPassword.Text = "Lozinka";
             // 
             // txtPassword
             // 
-            txtPassword.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPassword.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtPassword.Location = new Point(120, 188);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(240, 33);
+            txtPassword.Size = new Size(240, 27);
             txtPassword.TabIndex = 2;
             txtPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
             btnLogin.BackColor = Color.MidnightBlue;
-            btnLogin.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLogin.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnLogin.ForeColor = SystemColors.Control;
             btnLogin.Location = new Point(120, 257);
             btnLogin.Name = "btnLogin";

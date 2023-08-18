@@ -60,7 +60,7 @@
             // 
             cmbFilm.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFilm.FlatStyle = FlatStyle.Flat;
-            cmbFilm.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbFilm.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbFilm.FormattingEnabled = true;
             cmbFilm.Location = new Point(88, 114);
             cmbFilm.Name = "cmbFilm";
@@ -72,7 +72,7 @@
             // 
             lblFilm.AutoSize = true;
             lblFilm.FlatStyle = FlatStyle.System;
-            lblFilm.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFilm.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblFilm.ForeColor = SystemColors.ControlDarkDark;
             lblFilm.Location = new Point(88, 87);
             lblFilm.Name = "lblFilm";
@@ -84,7 +84,7 @@
             // 
             lblVrstaProjekcije.AutoSize = true;
             lblVrstaProjekcije.FlatStyle = FlatStyle.System;
-            lblVrstaProjekcije.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblVrstaProjekcije.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblVrstaProjekcije.ForeColor = SystemColors.ControlDarkDark;
             lblVrstaProjekcije.Location = new Point(465, 87);
             lblVrstaProjekcije.Name = "lblVrstaProjekcije";
@@ -96,7 +96,7 @@
             // 
             cmbVrstaProjekcije.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbVrstaProjekcije.FlatStyle = FlatStyle.Flat;
-            cmbVrstaProjekcije.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbVrstaProjekcije.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbVrstaProjekcije.FormattingEnabled = true;
             cmbVrstaProjekcije.Location = new Point(466, 114);
             cmbVrstaProjekcije.Name = "cmbVrstaProjekcije";
@@ -108,7 +108,7 @@
             // 
             lblVrijeme.AutoSize = true;
             lblVrijeme.FlatStyle = FlatStyle.System;
-            lblVrijeme.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblVrijeme.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblVrijeme.ForeColor = SystemColors.ControlDarkDark;
             lblVrijeme.Location = new Point(769, 87);
             lblVrijeme.Name = "lblVrijeme";
@@ -120,7 +120,7 @@
             // 
             lblCijena.AutoSize = true;
             lblCijena.FlatStyle = FlatStyle.System;
-            lblCijena.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCijena.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblCijena.ForeColor = SystemColors.ControlDarkDark;
             lblCijena.Location = new Point(968, 87);
             lblCijena.Name = "lblCijena";
@@ -131,7 +131,7 @@
             // dtpVrijeme
             // 
             dtpVrijeme.CustomFormat = "HH:mm";
-            dtpVrijeme.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpVrijeme.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dtpVrijeme.Format = DateTimePickerFormat.Custom;
             dtpVrijeme.Location = new Point(769, 114);
             dtpVrijeme.Name = "dtpVrijeme";
@@ -142,7 +142,7 @@
             // numCijena
             // 
             numCijena.DecimalPlaces = 2;
-            numCijena.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            numCijena.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             numCijena.Location = new Point(968, 114);
             numCijena.Margin = new Padding(1);
             numCijena.Name = "numCijena";
@@ -154,7 +154,7 @@
             // 
             lblLokacije.AutoSize = true;
             lblLokacije.FlatStyle = FlatStyle.System;
-            lblLokacije.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblLokacije.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblLokacije.ForeColor = SystemColors.ControlDarkDark;
             lblLokacije.Location = new Point(689, 229);
             lblLokacije.Name = "lblLokacije";
@@ -166,7 +166,7 @@
             // 
             lblDvorane.AutoSize = true;
             lblDvorane.FlatStyle = FlatStyle.System;
-            lblDvorane.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDvorane.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDvorane.ForeColor = SystemColors.ControlDarkDark;
             lblDvorane.Location = new Point(968, 229);
             lblDvorane.Name = "lblDvorane";
@@ -177,7 +177,7 @@
             // btnSpasi
             // 
             btnSpasi.Anchor = AnchorStyles.None;
-            btnSpasi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSpasi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnSpasi.Location = new Point(588, 678);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(108, 35);
@@ -192,7 +192,7 @@
             // 
             // dtpDatumProjekcije
             // 
-            dtpDatumProjekcije.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDatumProjekcije.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dtpDatumProjekcije.Location = new Point(88, 294);
             dtpDatumProjekcije.Name = "dtpDatumProjekcije";
             dtpDatumProjekcije.Size = new Size(197, 35);
@@ -203,7 +203,7 @@
             // 
             lblDatumProjekcije.AutoSize = true;
             lblDatumProjekcije.FlatStyle = FlatStyle.System;
-            lblDatumProjekcije.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDatumProjekcije.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDatumProjekcije.ForeColor = SystemColors.ControlDarkDark;
             lblDatumProjekcije.Location = new Point(88, 266);
             lblDatumProjekcije.Name = "lblDatumProjekcije";
@@ -223,7 +223,7 @@
             // 
             // dtpDatumZavrsava
             // 
-            dtpDatumZavrsava.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDatumZavrsava.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dtpDatumZavrsava.Format = DateTimePickerFormat.Short;
             dtpDatumZavrsava.Location = new Point(335, 376);
             dtpDatumZavrsava.Name = "dtpDatumZavrsava";
@@ -233,7 +233,7 @@
             // 
             // dtpDatumPocinje
             // 
-            dtpDatumPocinje.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDatumPocinje.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dtpDatumPocinje.Format = DateTimePickerFormat.Short;
             dtpDatumPocinje.Location = new Point(88, 376);
             dtpDatumPocinje.Name = "dtpDatumPocinje";
@@ -245,7 +245,7 @@
             // 
             cmbDan.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDan.FlatStyle = FlatStyle.Flat;
-            cmbDan.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbDan.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbDan.FormattingEnabled = true;
             cmbDan.Location = new Point(88, 294);
             cmbDan.Name = "cmbDan";
@@ -256,7 +256,7 @@
             // 
             lblDatumZavrsava.AutoSize = true;
             lblDatumZavrsava.FlatStyle = FlatStyle.System;
-            lblDatumZavrsava.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDatumZavrsava.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDatumZavrsava.ForeColor = SystemColors.ControlDarkDark;
             lblDatumZavrsava.Location = new Point(335, 348);
             lblDatumZavrsava.Name = "lblDatumZavrsava";
@@ -268,7 +268,7 @@
             // 
             lblDatumPocinje.AutoSize = true;
             lblDatumPocinje.FlatStyle = FlatStyle.System;
-            lblDatumPocinje.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDatumPocinje.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDatumPocinje.ForeColor = SystemColors.ControlDarkDark;
             lblDatumPocinje.Location = new Point(88, 348);
             lblDatumPocinje.Name = "lblDatumPocinje";
@@ -279,7 +279,7 @@
             // lblDan
             // 
             lblDan.AutoSize = true;
-            lblDan.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDan.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDan.ForeColor = SystemColors.ControlDarkDark;
             lblDan.Location = new Point(88, 266);
             lblDan.Name = "lblDan";
@@ -291,7 +291,7 @@
             // 
             lblRedovnaProjekcija.AutoSize = true;
             lblRedovnaProjekcija.FlatStyle = FlatStyle.System;
-            lblRedovnaProjekcija.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblRedovnaProjekcija.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblRedovnaProjekcija.ForeColor = SystemColors.ControlDarkDark;
             lblRedovnaProjekcija.Location = new Point(88, 229);
             lblRedovnaProjekcija.Name = "lblRedovnaProjekcija";
@@ -334,7 +334,7 @@
             Controls.Add(lblVrstaProjekcije);
             Controls.Add(cmbFilm);
             Controls.Add(lblFilm);
-            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "frmProjekcijaInsert";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Nova Projekcija";

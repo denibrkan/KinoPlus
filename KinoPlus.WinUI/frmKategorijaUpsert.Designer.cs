@@ -45,50 +45,53 @@
             // 
             // txtNaziv
             // 
-            txtNaziv.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNaziv.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtNaziv.Location = new Point(116, 118);
             txtNaziv.Name = "txtNaziv";
-            txtNaziv.Size = new Size(359, 35);
+            txtNaziv.Size = new Size(359, 27);
             txtNaziv.TabIndex = 1;
             txtNaziv.Validating += txtNaziv_Validating;
             // 
             // lblNaziv
             // 
             lblNaziv.AutoSize = true;
-            lblNaziv.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNaziv.FlatStyle = FlatStyle.System;
+            lblNaziv.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblNaziv.ForeColor = SystemColors.ControlDarkDark;
             lblNaziv.Location = new Point(116, 90);
             lblNaziv.Name = "lblNaziv";
-            lblNaziv.Size = new Size(45, 25);
+            lblNaziv.Size = new Size(49, 18);
             lblNaziv.TabIndex = 8;
             lblNaziv.Text = "Naziv";
             // 
             // lblOrderPoeni
             // 
             lblOrderPoeni.AutoSize = true;
-            lblOrderPoeni.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblOrderPoeni.FlatStyle = FlatStyle.System;
+            lblOrderPoeni.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblOrderPoeni.ForeColor = SystemColors.ControlDarkDark;
             lblOrderPoeni.Location = new Point(572, 91);
             lblOrderPoeni.Name = "lblOrderPoeni";
-            lblOrderPoeni.Size = new Size(86, 25);
+            lblOrderPoeni.Size = new Size(95, 18);
             lblOrderPoeni.TabIndex = 8;
             lblOrderPoeni.Text = "Order poeni";
             // 
             // lblFilmovi
             // 
             lblFilmovi.AutoSize = true;
-            lblFilmovi.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFilmovi.FlatStyle = FlatStyle.System;
+            lblFilmovi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblFilmovi.ForeColor = SystemColors.ControlDarkDark;
             lblFilmovi.Location = new Point(116, 208);
             lblFilmovi.Name = "lblFilmovi";
-            lblFilmovi.Size = new Size(56, 25);
+            lblFilmovi.Size = new Size(60, 18);
             lblFilmovi.TabIndex = 18;
             lblFilmovi.Text = "Filmovi";
             // 
             // btnSpasi
             // 
             btnSpasi.Anchor = AnchorStyles.Bottom;
-            btnSpasi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSpasi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnSpasi.Location = new Point(467, 632);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(108, 35);
@@ -99,20 +102,20 @@
             // 
             // numOrderPoints
             // 
-            numOrderPoints.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            numOrderPoints.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             numOrderPoints.Increment = new decimal(new int[] { 10, 0, 0, 0 });
             numOrderPoints.Location = new Point(572, 119);
             numOrderPoints.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             numOrderPoints.Name = "numOrderPoints";
             numOrderPoints.RightToLeft = RightToLeft.No;
-            numOrderPoints.Size = new Size(130, 35);
+            numOrderPoints.Size = new Size(130, 27);
             numOrderPoints.TabIndex = 2;
             // 
             // lbFilmovi
             // 
-            lbFilmovi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbFilmovi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbFilmovi.FormattingEnabled = true;
-            lbFilmovi.ItemHeight = 27;
+            lbFilmovi.ItemHeight = 18;
             lbFilmovi.Location = new Point(116, 236);
             lbFilmovi.Name = "lbFilmovi";
             lbFilmovi.SelectionMode = SelectionMode.MultiSimple;
@@ -124,7 +127,7 @@
             cbPrikazan.AutoSize = true;
             cbPrikazan.Checked = true;
             cbPrikazan.CheckState = CheckState.Checked;
-            cbPrikazan.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            cbPrikazan.Font = new Font("Verdana", 13F, FontStyle.Regular, GraphicsUnit.Point);
             cbPrikazan.Location = new Point(771, 119);
             cbPrikazan.Name = "cbPrikazan";
             cbPrikazan.Padding = new Padding(8);
@@ -135,13 +138,14 @@
             // lblPrikazan
             // 
             lblPrikazan.AutoSize = true;
-            lblPrikazan.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPrikazan.FlatStyle = FlatStyle.System;
+            lblPrikazan.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblPrikazan.ForeColor = SystemColors.ControlDarkDark;
             lblPrikazan.Location = new Point(771, 91);
             lblPrikazan.Name = "lblPrikazan";
-            lblPrikazan.Size = new Size(140, 25);
+            lblPrikazan.Size = new Size(163, 18);
             lblPrikazan.TabIndex = 20;
-            lblPrikazan.Text = "Prikazi na naslovnici?";
+            lblPrikazan.Text = "Prikaži na naslovnici?";
             // 
             // errorProvider
             // 

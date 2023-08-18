@@ -39,23 +39,23 @@
             // dtpDatumVrijeme
             // 
             dtpDatumVrijeme.CustomFormat = "dd/MM/yyyy HH:mm";
-            dtpDatumVrijeme.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDatumVrijeme.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dtpDatumVrijeme.Format = DateTimePickerFormat.Custom;
             dtpDatumVrijeme.Location = new Point(78, 95);
             dtpDatumVrijeme.Name = "dtpDatumVrijeme";
-            dtpDatumVrijeme.Size = new Size(200, 35);
+            dtpDatumVrijeme.Size = new Size(200, 27);
             dtpDatumVrijeme.TabIndex = 0;
             // 
             // lblDatumProjekcije
             // 
             lblDatumProjekcije.AutoSize = true;
             lblDatumProjekcije.FlatStyle = FlatStyle.System;
-            lblDatumProjekcije.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDatumProjekcije.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDatumProjekcije.ForeColor = SystemColors.ControlDarkDark;
-            lblDatumProjekcije.Location = new Point(78, 67);
+            lblDatumProjekcije.Location = new Point(78, 65);
             lblDatumProjekcije.Margin = new Padding(0);
             lblDatumProjekcije.Name = "lblDatumProjekcije";
-            lblDatumProjekcije.Size = new Size(112, 25);
+            lblDatumProjekcije.Size = new Size(134, 18);
             lblDatumProjekcije.TabIndex = 27;
             lblDatumProjekcije.Text = "Datum i vrijeme:";
             // 
@@ -63,12 +63,12 @@
             // 
             lblDvorana.AutoSize = true;
             lblDvorana.FlatStyle = FlatStyle.System;
-            lblDvorana.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDvorana.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDvorana.ForeColor = SystemColors.ControlDarkDark;
-            lblDvorana.Location = new Point(375, 64);
+            lblDvorana.Location = new Point(375, 65);
             lblDvorana.Margin = new Padding(0);
             lblDvorana.Name = "lblDvorana";
-            lblDvorana.Size = new Size(64, 25);
+            lblDvorana.Size = new Size(71, 18);
             lblDvorana.TabIndex = 27;
             lblDvorana.Text = "Dvorana";
             // 
@@ -76,30 +76,31 @@
             // 
             cmbDvorana.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDvorana.FlatStyle = FlatStyle.Flat;
-            cmbDvorana.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbDvorana.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbDvorana.FormattingEnabled = true;
             cmbDvorana.Location = new Point(375, 95);
             cmbDvorana.Name = "cmbDvorana";
-            cmbDvorana.Size = new Size(199, 35);
+            cmbDvorana.Size = new Size(199, 26);
             cmbDvorana.TabIndex = 28;
             // 
             // btnOtkazi
             // 
             btnOtkazi.Anchor = AnchorStyles.None;
             btnOtkazi.BackColor = Color.Red;
-            btnOtkazi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnOtkazi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnOtkazi.ForeColor = Color.White;
             btnOtkazi.Location = new Point(85, 314);
             btnOtkazi.Name = "btnOtkazi";
-            btnOtkazi.Size = new Size(152, 35);
+            btnOtkazi.Size = new Size(115, 35);
             btnOtkazi.TabIndex = 29;
-            btnOtkazi.Text = "Otkaži Projekciju";
+            btnOtkazi.Text = "Otkaži";
             btnOtkazi.UseVisualStyleBackColor = false;
+            btnOtkazi.Click += btnOtkazi_Click;
             // 
             // btnSpasi
             // 
             btnSpasi.Anchor = AnchorStyles.None;
-            btnSpasi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSpasi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnSpasi.Location = new Point(306, 314);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(108, 35);

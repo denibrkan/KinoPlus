@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             dgvKorisnici = new DataGridView();
             lblPaging = new Label();
             btnNaprijed = new Button();
@@ -43,23 +43,23 @@
             // 
             dgvKorisnici.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvKorisnici.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.IndianRed;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvKorisnici.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.IndianRed;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvKorisnici.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvKorisnici.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvKorisnici.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvKorisnici.DefaultCellStyle = dataGridViewCellStyle4;
             dgvKorisnici.GridColor = Color.Navy;
             dgvKorisnici.Location = new Point(91, 133);
             dgvKorisnici.Name = "dgvKorisnici";
@@ -75,17 +75,18 @@
             // 
             lblPaging.Anchor = AnchorStyles.Bottom;
             lblPaging.AutoSize = true;
-            lblPaging.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPaging.Location = new Point(619, 714);
+            lblPaging.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPaging.Location = new Point(599, 721);
             lblPaging.Name = "lblPaging";
-            lblPaging.Size = new Size(28, 22);
+            lblPaging.Size = new Size(28, 16);
             lblPaging.TabIndex = 11;
             lblPaging.Text = "???";
+            lblPaging.Click += lblPaging_Click;
             // 
             // btnNaprijed
             // 
             btnNaprijed.Anchor = AnchorStyles.Bottom;
-            btnNaprijed.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNaprijed.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnNaprijed.Location = new Point(697, 712);
             btnNaprijed.Name = "btnNaprijed";
             btnNaprijed.Size = new Size(75, 31);
@@ -97,7 +98,7 @@
             // btnNazad
             // 
             btnNazad.Anchor = AnchorStyles.Bottom;
-            btnNazad.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNazad.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnNazad.Location = new Point(505, 712);
             btnNazad.Name = "btnNazad";
             btnNazad.Size = new Size(75, 31);
@@ -108,19 +109,19 @@
             // 
             // txtTrazi
             // 
-            txtTrazi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtTrazi.Location = new Point(91, 83);
+            txtTrazi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTrazi.Location = new Point(91, 91);
             txtTrazi.Name = "txtTrazi";
             txtTrazi.PlaceholderText = "Traži";
-            txtTrazi.Size = new Size(240, 35);
+            txtTrazi.Size = new Size(240, 26);
             txtTrazi.TabIndex = 13;
             // 
             // btnTrazi
             // 
-            btnTrazi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnTrazi.Location = new Point(343, 83);
+            btnTrazi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnTrazi.Location = new Point(343, 91);
             btnTrazi.Name = "btnTrazi";
-            btnTrazi.Size = new Size(93, 33);
+            btnTrazi.Size = new Size(91, 27);
             btnTrazi.TabIndex = 14;
             btnTrazi.Text = "Pretraga";
             btnTrazi.UseVisualStyleBackColor = true;

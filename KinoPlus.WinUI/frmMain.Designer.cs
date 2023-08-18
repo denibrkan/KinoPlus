@@ -40,7 +40,7 @@
             // 
             // menuStrip
             // 
-            menuStrip.Font = new Font("Dubai Medium", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            menuStrip.Font = new Font("Verdana Medium", 12F, FontStyle.Regular, GraphicsUnit.Point);
             menuStrip.Items.AddRange(new ToolStripItem[] { projekcijeToolStripMenuItem, filmoviToolStripMenuItem, kategorijeToolStripMenuItem, korisniciToolStripMenuItem, lokacijeToolStripMenuItem, izvještajiToolStripMenuItem });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Margin = new Padding(0, 20, 0, 20);
@@ -106,7 +106,7 @@
             AutoSize = true;
             ClientSize = new Size(1584, 705);
             Controls.Add(menuStrip);
-            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip;
             Margin = new Padding(4, 3, 4, 3);

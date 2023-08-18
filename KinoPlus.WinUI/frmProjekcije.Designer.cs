@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             cmbLokacija = new ComboBox();
             lblLokacija = new Label();
             lblDatum = new Label();
@@ -47,11 +47,11 @@
             // 
             // cmbLokacija
             // 
-            cmbLokacija.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbLokacija.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbLokacija.FormattingEnabled = true;
-            cmbLokacija.Location = new Point(479, 106);
+            cmbLokacija.Location = new Point(479, 115);
             cmbLokacija.Name = "cmbLokacija";
-            cmbLokacija.Size = new Size(187, 35);
+            cmbLokacija.Size = new Size(187, 26);
             cmbLokacija.TabIndex = 11;
             cmbLokacija.SelectedValueChanged += cmbLokacija_SelectedValueChanged;
             // 
@@ -59,11 +59,11 @@
             // 
             lblLokacija.AutoSize = true;
             lblLokacija.FlatStyle = FlatStyle.System;
-            lblLokacija.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            lblLokacija.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblLokacija.ForeColor = SystemColors.ControlDarkDark;
-            lblLokacija.Location = new Point(479, 81);
+            lblLokacija.Location = new Point(479, 96);
             lblLokacija.Name = "lblLokacija";
-            lblLokacija.Size = new Size(53, 22);
+            lblLokacija.Size = new Size(60, 16);
             lblLokacija.TabIndex = 9;
             lblLokacija.Text = "Lokacija";
             // 
@@ -71,21 +71,22 @@
             // 
             lblDatum.AutoSize = true;
             lblDatum.FlatStyle = FlatStyle.System;
-            lblDatum.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDatum.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblDatum.ForeColor = SystemColors.ControlDarkDark;
-            lblDatum.Location = new Point(119, 81);
+            lblDatum.Location = new Point(111, 96);
             lblDatum.Name = "lblDatum";
-            lblDatum.Size = new Size(47, 22);
+            lblDatum.Size = new Size(49, 16);
             lblDatum.TabIndex = 10;
             lblDatum.Text = "Datum";
             // 
             // dtpDatum
             // 
-            dtpDatum.CalendarFont = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpDatum.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpDatum.Location = new Point(119, 105);
+            dtpDatum.CalendarFont = new Font("Verdana", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDatum.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDatum.Location = new Point(111, 115);
+            dtpDatum.MinimumSize = new Size(0, 26);
             dtpDatum.Name = "dtpDatum";
-            dtpDatum.Size = new Size(256, 35);
+            dtpDatum.Size = new Size(256, 26);
             dtpDatum.TabIndex = 8;
             dtpDatum.ValueChanged += dtpDatum_ValueChanged;
             // 
@@ -93,12 +94,12 @@
             // 
             btnDodaj.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnDodaj.BackColor = Color.MidnightBlue;
-            btnDodaj.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDodaj.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnDodaj.ForeColor = Color.White;
-            btnDodaj.Location = new Point(1032, 102);
+            btnDodaj.Location = new Point(1032, 109);
             btnDodaj.Margin = new Padding(4, 3, 4, 3);
             btnDodaj.Name = "btnDodaj";
-            btnDodaj.Size = new Size(122, 40);
+            btnDodaj.Size = new Size(122, 35);
             btnDodaj.TabIndex = 7;
             btnDodaj.Text = "Dodaj";
             btnDodaj.UseVisualStyleBackColor = false;
@@ -108,10 +109,10 @@
             // 
             lblPaging.Anchor = AnchorStyles.Bottom;
             lblPaging.AutoSize = true;
-            lblPaging.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPaging.Location = new Point(580, 743);
+            lblPaging.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPaging.Location = new Point(569, 750);
             lblPaging.Name = "lblPaging";
-            lblPaging.Size = new Size(28, 22);
+            lblPaging.Size = new Size(28, 16);
             lblPaging.TabIndex = 15;
             lblPaging.Text = "???";
             // 
@@ -119,7 +120,7 @@
             // 
             btnNaprijed.Anchor = AnchorStyles.Bottom;
             btnNaprijed.BackColor = SystemColors.Control;
-            btnNaprijed.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNaprijed.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnNaprijed.Location = new Point(658, 741);
             btnNaprijed.Margin = new Padding(0);
             btnNaprijed.Name = "btnNaprijed";
@@ -132,7 +133,7 @@
             // 
             btnNazad.Anchor = AnchorStyles.Bottom;
             btnNazad.BackColor = SystemColors.Control;
-            btnNazad.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnNazad.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnNazad.Location = new Point(479, 741);
             btnNazad.Name = "btnNazad";
             btnNazad.Size = new Size(75, 31);
@@ -145,35 +146,35 @@
             dgvProjections.AllowUserToOrderColumns = true;
             dgvProjections.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvProjections.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowFrame;
-            dataGridViewCellStyle4.SelectionBackColor = Color.MidnightBlue;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvProjections.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowFrame;
+            dataGridViewCellStyle1.SelectionBackColor = Color.MidnightBlue;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvProjections.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvProjections.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.MidnightBlue;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvProjections.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.MidnightBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvProjections.DefaultCellStyle = dataGridViewCellStyle2;
             dgvProjections.GridColor = Color.MidnightBlue;
             dgvProjections.Location = new Point(71, 155);
             dgvProjections.Margin = new Padding(0);
             dgvProjections.Name = "dgvProjections";
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.MidnightBlue;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgvProjections.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.MidnightBlue;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvProjections.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvProjections.RowHeadersWidth = 62;
             dgvProjections.RowTemplate.Height = 65;
             dgvProjections.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -185,10 +186,10 @@
             // 
             btnDatumNazad.BackColor = Color.AliceBlue;
             btnDatumNazad.FlatStyle = FlatStyle.Flat;
-            btnDatumNazad.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDatumNazad.Location = new Point(71, 105);
+            btnDatumNazad.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDatumNazad.Location = new Point(72, 115);
             btnDatumNazad.Name = "btnDatumNazad";
-            btnDatumNazad.Size = new Size(40, 35);
+            btnDatumNazad.Size = new Size(33, 26);
             btnDatumNazad.TabIndex = 14;
             btnDatumNazad.Text = "<";
             btnDatumNazad.UseVisualStyleBackColor = false;
@@ -198,10 +199,10 @@
             // 
             btnDatumNaprijed.BackColor = Color.AliceBlue;
             btnDatumNaprijed.FlatStyle = FlatStyle.Flat;
-            btnDatumNaprijed.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDatumNaprijed.Location = new Point(384, 105);
+            btnDatumNaprijed.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDatumNaprijed.Location = new Point(376, 115);
             btnDatumNaprijed.Name = "btnDatumNaprijed";
-            btnDatumNaprijed.Size = new Size(40, 35);
+            btnDatumNaprijed.Size = new Size(33, 26);
             btnDatumNaprijed.TabIndex = 14;
             btnDatumNaprijed.Text = ">";
             btnDatumNaprijed.UseVisualStyleBackColor = false;

@@ -59,7 +59,7 @@ namespace KinoPlus.WinUI.Projections
             {
                 var apiService = new APIService("projections/cancel");
 
-                var isCanceled = await apiService.Update<bool>(ProjectionUpdateObject.Id!.Value, new object());
+                var isCanceled = await apiService.Update<bool>(ProjectionUpdateObject.Id!.Value, new { });
 
                 if (isCanceled)
                 {

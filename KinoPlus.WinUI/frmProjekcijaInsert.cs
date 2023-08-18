@@ -62,8 +62,8 @@ namespace KinoPlus.WinUI
             {
                 locations = Cache.Locations;
             }
-            var font = new Font("Dubai", 12, FontStyle.Underline);
-            var font2 = new Font("Dubai", 11);
+            var font = new Font("Verdana", 12, FontStyle.Underline);
+            var font2 = new Font("Verdana", 11);
 
             var locationLbl = lblLokacije.Location;
             var hallsLbl = lblDvorane.Location;

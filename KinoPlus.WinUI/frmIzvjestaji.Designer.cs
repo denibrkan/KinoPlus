@@ -52,59 +52,59 @@
             // 
             // dtpDatumOd
             // 
-            dtpDatumOd.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDatumOd.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             dtpDatumOd.Format = DateTimePickerFormat.Short;
-            dtpDatumOd.Location = new Point(110, 160);
+            dtpDatumOd.Location = new Point(111, 164);
             dtpDatumOd.Name = "dtpDatumOd";
-            dtpDatumOd.Size = new Size(161, 30);
+            dtpDatumOd.Size = new Size(161, 26);
             dtpDatumOd.TabIndex = 14;
             // 
             // lblDatumOd
             // 
             lblDatumOd.AutoSize = true;
             lblDatumOd.FlatStyle = FlatStyle.System;
-            lblDatumOd.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDatumOd.Font = new Font("Verdana", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblDatumOd.ForeColor = SystemColors.ControlDarkDark;
-            lblDatumOd.Location = new Point(110, 132);
+            lblDatumOd.Location = new Point(111, 144);
             lblDatumOd.Name = "lblDatumOd";
-            lblDatumOd.Size = new Size(27, 24);
+            lblDatumOd.Size = new Size(28, 17);
             lblDatumOd.TabIndex = 15;
             lblDatumOd.Text = "Od";
             // 
             // dtpDatumDo
             // 
-            dtpDatumDo.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDatumDo.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             dtpDatumDo.Format = DateTimePickerFormat.Short;
-            dtpDatumDo.Location = new Point(354, 160);
+            dtpDatumDo.Location = new Point(355, 164);
             dtpDatumDo.Name = "dtpDatumDo";
-            dtpDatumDo.Size = new Size(148, 30);
+            dtpDatumDo.Size = new Size(148, 26);
             dtpDatumDo.TabIndex = 16;
             // 
             // lblDatumDo
             // 
             lblDatumDo.AutoSize = true;
             lblDatumDo.FlatStyle = FlatStyle.System;
-            lblDatumDo.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDatumDo.Font = new Font("Verdana", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblDatumDo.ForeColor = SystemColors.ControlDarkDark;
-            lblDatumDo.Location = new Point(354, 132);
+            lblDatumDo.Location = new Point(355, 144);
             lblDatumDo.Name = "lblDatumDo";
-            lblDatumDo.Size = new Size(26, 24);
+            lblDatumDo.Size = new Size(28, 17);
             lblDatumDo.TabIndex = 17;
             lblDatumDo.Text = "Do";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(107, 86);
             label1.Name = "label1";
-            label1.Size = new Size(338, 22);
+            label1.Size = new Size(478, 18);
             label1.TabIndex = 18;
             label1.Text = "Generiraj izvještaj o projekcijama unutar datumskog intervala:";
             // 
             // btnOsvjezi
             // 
-            btnOsvjezi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnOsvjezi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnOsvjezi.Location = new Point(1208, 155);
             btnOsvjezi.Name = "btnOsvjezi";
             btnOsvjezi.Size = new Size(108, 35);
@@ -115,22 +115,22 @@
             // 
             // cmbLokacija
             // 
-            cmbLokacija.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbLokacija.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbLokacija.FormattingEnabled = true;
-            cmbLokacija.Location = new Point(579, 160);
+            cmbLokacija.Location = new Point(580, 164);
             cmbLokacija.Name = "cmbLokacija";
-            cmbLokacija.Size = new Size(187, 30);
+            cmbLokacija.Size = new Size(187, 26);
             cmbLokacija.TabIndex = 21;
             // 
             // lblLokacija
             // 
             lblLokacija.AutoSize = true;
             lblLokacija.FlatStyle = FlatStyle.System;
-            lblLokacija.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            lblLokacija.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblLokacija.ForeColor = SystemColors.ControlDarkDark;
-            lblLokacija.Location = new Point(579, 135);
+            lblLokacija.Location = new Point(580, 145);
             lblLokacija.Name = "lblLokacija";
-            lblLokacija.Size = new Size(53, 22);
+            lblLokacija.Size = new Size(60, 16);
             lblLokacija.TabIndex = 20;
             lblLokacija.Text = "Lokacija";
             // 
@@ -138,21 +138,21 @@
             // 
             lblFilm.AutoSize = true;
             lblFilm.FlatStyle = FlatStyle.System;
-            lblFilm.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFilm.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblFilm.ForeColor = SystemColors.ControlDarkDark;
-            lblFilm.Location = new Point(819, 135);
+            lblFilm.Location = new Point(820, 145);
             lblFilm.Name = "lblFilm";
-            lblFilm.Size = new Size(33, 22);
+            lblFilm.Size = new Size(32, 16);
             lblFilm.TabIndex = 20;
             lblFilm.Text = "Film";
             // 
             // cmbFilm
             // 
-            cmbFilm.Font = new Font("Dubai", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbFilm.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbFilm.FormattingEnabled = true;
-            cmbFilm.Location = new Point(819, 160);
+            cmbFilm.Location = new Point(820, 164);
             cmbFilm.Name = "cmbFilm";
-            cmbFilm.Size = new Size(187, 30);
+            cmbFilm.Size = new Size(187, 26);
             cmbFilm.TabIndex = 21;
             // 
             // frmIzvjestaji

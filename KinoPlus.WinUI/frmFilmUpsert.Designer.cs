@@ -63,20 +63,21 @@
             // lblNaziv
             // 
             lblNaziv.AutoSize = true;
-            lblNaziv.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNaziv.FlatStyle = FlatStyle.System;
+            lblNaziv.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblNaziv.ForeColor = SystemColors.ControlDarkDark;
             lblNaziv.Location = new Point(296, 80);
             lblNaziv.Name = "lblNaziv";
-            lblNaziv.Size = new Size(45, 25);
+            lblNaziv.Size = new Size(49, 18);
             lblNaziv.TabIndex = 6;
             lblNaziv.Text = "Naziv";
             // 
             // txtNaziv
             // 
-            txtNaziv.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNaziv.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txtNaziv.Location = new Point(296, 108);
             txtNaziv.Name = "txtNaziv";
-            txtNaziv.Size = new Size(321, 35);
+            txtNaziv.Size = new Size(321, 27);
             txtNaziv.TabIndex = 0;
             txtNaziv.Validating += txtNaziv_Validating;
             // 
@@ -84,33 +85,35 @@
             // 
             cmbGodina.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGodina.FlatStyle = FlatStyle.Flat;
-            cmbGodina.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbGodina.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbGodina.FormattingEnabled = true;
             cmbGodina.Location = new Point(712, 108);
             cmbGodina.Name = "cmbGodina";
-            cmbGodina.Size = new Size(127, 35);
+            cmbGodina.Size = new Size(127, 26);
             cmbGodina.TabIndex = 2;
             cmbGodina.Validating += cmbGodina_Validating;
             // 
             // lblGodina
             // 
             lblGodina.AutoSize = true;
-            lblGodina.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblGodina.FlatStyle = FlatStyle.System;
+            lblGodina.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblGodina.ForeColor = SystemColors.ControlDarkDark;
             lblGodina.Location = new Point(712, 81);
             lblGodina.Name = "lblGodina";
-            lblGodina.Size = new Size(56, 25);
+            lblGodina.Size = new Size(60, 18);
             lblGodina.TabIndex = 11;
             lblGodina.Text = "Godina";
             // 
             // lblTrajanje
             // 
             lblTrajanje.AutoSize = true;
-            lblTrajanje.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTrajanje.FlatStyle = FlatStyle.System;
+            lblTrajanje.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblTrajanje.ForeColor = SystemColors.ControlDarkDark;
             lblTrajanje.Location = new Point(927, 80);
             lblTrajanje.Name = "lblTrajanje";
-            lblTrajanje.Size = new Size(98, 25);
+            lblTrajanje.Size = new Size(114, 18);
             lblTrajanje.TabIndex = 6;
             lblTrajanje.Text = "Trajanje (min)";
             // 
@@ -127,7 +130,7 @@
             // 
             // btnOdaberi
             // 
-            btnOdaberi.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            btnOdaberi.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             btnOdaberi.Location = new Point(116, 290);
             btnOdaberi.Name = "btnOdaberi";
             btnOdaberi.Size = new Size(86, 30);
@@ -139,11 +142,12 @@
             // lblStatus
             // 
             lblStatus.AutoSize = true;
-            lblStatus.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStatus.FlatStyle = FlatStyle.System;
+            lblStatus.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblStatus.ForeColor = SystemColors.ControlDarkDark;
             lblStatus.Location = new Point(295, 195);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(51, 25);
+            lblStatus.Size = new Size(56, 18);
             lblStatus.TabIndex = 11;
             lblStatus.Text = "Status";
             // 
@@ -151,17 +155,17 @@
             // 
             cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbStatus.FlatStyle = FlatStyle.Flat;
-            cmbStatus.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbStatus.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbStatus.FormattingEnabled = true;
             cmbStatus.Location = new Point(296, 222);
             cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(189, 35);
+            cmbStatus.Size = new Size(189, 26);
             cmbStatus.TabIndex = 4;
             cmbStatus.Validating += cmbStatus_Validating;
             // 
             // btnSpasi
             // 
-            btnSpasi.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSpasi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnSpasi.Location = new Point(595, 609);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(108, 35);
@@ -176,40 +180,40 @@
             // 
             // lbKategorija
             // 
-            lbKategorija.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbKategorija.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbKategorija.FormattingEnabled = true;
-            lbKategorija.ItemHeight = 27;
+            lbKategorija.ItemHeight = 18;
             lbKategorija.Location = new Point(553, 222);
             lbKategorija.Name = "lbKategorija";
             lbKategorija.SelectionMode = SelectionMode.MultiSimple;
-            lbKategorija.Size = new Size(210, 85);
+            lbKategorija.Size = new Size(210, 76);
             lbKategorija.TabIndex = 5;
             // 
             // lbZanr
             // 
-            lbZanr.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbZanr.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbZanr.FormattingEnabled = true;
-            lbZanr.ItemHeight = 27;
+            lbZanr.ItemHeight = 18;
             lbZanr.Location = new Point(847, 222);
             lbZanr.Name = "lbZanr";
             lbZanr.SelectionMode = SelectionMode.MultiSimple;
-            lbZanr.Size = new Size(210, 85);
+            lbZanr.Size = new Size(210, 76);
             lbZanr.TabIndex = 6;
             // 
             // lbUloge
             // 
-            lbUloge.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbUloge.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbUloge.FormattingEnabled = true;
-            lbUloge.ItemHeight = 27;
+            lbUloge.ItemHeight = 18;
             lbUloge.Location = new Point(296, 354);
             lbUloge.Name = "lbUloge";
             lbUloge.SelectionMode = SelectionMode.MultiSimple;
-            lbUloge.Size = new Size(321, 85);
+            lbUloge.Size = new Size(321, 76);
             lbUloge.TabIndex = 7;
             // 
             // rtbOpis
             // 
-            rtbOpis.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            rtbOpis.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             rtbOpis.Location = new Point(701, 354);
             rtbOpis.Name = "rtbOpis";
             rtbOpis.Size = new Size(356, 167);
@@ -220,74 +224,79 @@
             // lblKategorija
             // 
             lblKategorija.AutoSize = true;
-            lblKategorija.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblKategorija.FlatStyle = FlatStyle.System;
+            lblKategorija.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblKategorija.ForeColor = SystemColors.ControlDarkDark;
             lblKategorija.Location = new Point(553, 195);
             lblKategorija.Name = "lblKategorija";
-            lblKategorija.Size = new Size(73, 25);
+            lblKategorija.Size = new Size(84, 18);
             lblKategorija.TabIndex = 11;
             lblKategorija.Text = "Kategorija";
             // 
             // lblZanr
             // 
             lblZanr.AutoSize = true;
-            lblZanr.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblZanr.FlatStyle = FlatStyle.System;
+            lblZanr.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblZanr.ForeColor = SystemColors.ControlDarkDark;
             lblZanr.Location = new Point(847, 195);
             lblZanr.Name = "lblZanr";
-            lblZanr.Size = new Size(40, 25);
+            lblZanr.Size = new Size(42, 18);
             lblZanr.TabIndex = 11;
-            lblZanr.Text = "Zanr";
+            lblZanr.Text = "Žanr";
             // 
             // lblUloge
             // 
             lblUloge.AutoSize = true;
-            lblUloge.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUloge.FlatStyle = FlatStyle.System;
+            lblUloge.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblUloge.ForeColor = SystemColors.ControlDarkDark;
             lblUloge.Location = new Point(295, 326);
             lblUloge.Name = "lblUloge";
-            lblUloge.Size = new Size(47, 25);
+            lblUloge.Size = new Size(50, 18);
             lblUloge.TabIndex = 11;
             lblUloge.Text = "Uloge";
             // 
             // lbllOpis
             // 
             lbllOpis.AutoSize = true;
-            lbllOpis.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lbllOpis.FlatStyle = FlatStyle.System;
+            lbllOpis.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lbllOpis.ForeColor = SystemColors.ControlDarkDark;
             lbllOpis.Location = new Point(701, 327);
             lbllOpis.Name = "lbllOpis";
-            lbllOpis.Size = new Size(40, 25);
+            lbllOpis.Size = new Size(40, 18);
             lbllOpis.TabIndex = 11;
             lbllOpis.Text = "Opis";
             // 
             // lblTrailer
             // 
             lblTrailer.AutoSize = true;
-            lblTrailer.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTrailer.FlatStyle = FlatStyle.System;
+            lblTrailer.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblTrailer.ForeColor = SystemColors.ControlDarkDark;
             lblTrailer.Location = new Point(296, 464);
             lblTrailer.Name = "lblTrailer";
-            lblTrailer.Size = new Size(73, 25);
+            lblTrailer.Size = new Size(77, 18);
             lblTrailer.TabIndex = 6;
             lblTrailer.Text = "Trailer Url";
             // 
             // txtTrailer
             // 
-            txtTrailer.Font = new Font("Dubai", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTrailer.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             txtTrailer.Location = new Point(296, 492);
             txtTrailer.Name = "txtTrailer";
-            txtTrailer.Size = new Size(321, 29);
+            txtTrailer.Size = new Size(321, 23);
             txtTrailer.TabIndex = 9;
             // 
             // numTrajanje
             // 
-            numTrajanje.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            numTrajanje.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             numTrajanje.Location = new Point(927, 108);
             numTrajanje.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             numTrajanje.Name = "numTrajanje";
             numTrajanje.RightToLeft = RightToLeft.No;
-            numTrajanje.Size = new Size(130, 35);
+            numTrajanje.Size = new Size(130, 27);
             numTrajanje.TabIndex = 3;
             numTrajanje.Validating += numTrajanje_Validating;
             // 
@@ -298,24 +307,25 @@
             // lblPopularnost
             // 
             lblPopularnost.AutoSize = true;
-            lblPopularnost.Font = new Font("Dubai", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPopularnost.FlatStyle = FlatStyle.System;
+            lblPopularnost.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblPopularnost.ForeColor = SystemColors.ControlDarkDark;
             lblPopularnost.Location = new Point(108, 376);
             lblPopularnost.Name = "lblPopularnost";
-            lblPopularnost.Size = new Size(86, 25);
+            lblPopularnost.Size = new Size(96, 18);
             lblPopularnost.TabIndex = 6;
             lblPopularnost.Text = "Popularnost";
             // 
             // numPopularnost
             // 
             numPopularnost.DecimalPlaces = 1;
-            numPopularnost.Font = new Font("Dubai", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            numPopularnost.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             numPopularnost.Location = new Point(108, 404);
             numPopularnost.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
             numPopularnost.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numPopularnost.Name = "numPopularnost";
             numPopularnost.RightToLeft = RightToLeft.No;
-            numPopularnost.Size = new Size(130, 35);
+            numPopularnost.Size = new Size(130, 27);
             numPopularnost.TabIndex = 3;
             numPopularnost.Value = new decimal(new int[] { 8, 0, 0, 0 });
             numPopularnost.Validating += numTrajanje_Validating;

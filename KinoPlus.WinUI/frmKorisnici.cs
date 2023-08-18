@@ -90,5 +90,10 @@ namespace KinoPlus.WinUI
             }
             await loadUsers();
         }
+
+        private void lblPaging_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
