@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KinoPlus.Services.Migrations
 {
     [DbContext(typeof(KinoplusContext))]
-    [Migration("20230614204438_Init")]
-    partial class Init
+    [Migration("20230819082754_InitDb")]
+    partial class InitDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -428,6 +428,9 @@ namespace KinoPlus.Services.Migrations
                     b.Property<int>("HallId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsCanceled")
+                        .HasColumnType("bit");
+
                     b.Property<int>("LocationId")
                         .HasColumnType("int");
 
@@ -628,9 +631,9 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LocationId");
-
                     b.HasIndex(new[] { "ImageId" }, "IX_User_ImageId");
+
+                    b.HasIndex(new[] { "LocationId" }, "IX_User_LocationId");
 
                     b.ToTable("User", (string)null);
                 });

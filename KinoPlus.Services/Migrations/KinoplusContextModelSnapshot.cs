@@ -425,6 +425,9 @@ namespace KinoPlus.Services.Migrations
                     b.Property<int>("HallId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsCanceled")
+                        .HasColumnType("bit");
+
                     b.Property<int>("LocationId")
                         .HasColumnType("int");
 
@@ -625,9 +628,9 @@ namespace KinoPlus.Services.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LocationId");
-
                     b.HasIndex(new[] { "ImageId" }, "IX_User_ImageId");
+
+                    b.HasIndex(new[] { "LocationId" }, "IX_User_LocationId");
 
                     b.ToTable("User", (string)null);
                 });

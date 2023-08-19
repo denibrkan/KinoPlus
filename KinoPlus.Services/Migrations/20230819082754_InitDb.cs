@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace KinoPlus.Services.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class InitDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -401,7 +401,8 @@ namespace KinoPlus.Services.Migrations
                     MovieId = table.Column<int>(type: "int", nullable: false),
                     RecurringProjectionId = table.Column<int>(type: "int", nullable: true),
                     LocationId = table.Column<int>(type: "int", nullable: false),
-                    HallId = table.Column<int>(type: "int", nullable: false)
+                    HallId = table.Column<int>(type: "int", nullable: false),
+                    IsCanceled = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
