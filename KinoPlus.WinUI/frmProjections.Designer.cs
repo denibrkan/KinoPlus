@@ -1,6 +1,6 @@
 ﻿namespace KinoPlus.WinUI
 {
-    partial class frmProjekcije
+    partial class frmProjections
     {
         /// <summary>
         /// Required designer variable.
@@ -157,7 +157,7 @@
             dgvProjections.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = Color.MidnightBlue;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -208,7 +208,7 @@
             btnDatumNaprijed.UseVisualStyleBackColor = false;
             btnDatumNaprijed.Click += btnDatumNaprijed_Click;
             // 
-            // frmProjekcije
+            // frmProjections
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -226,7 +226,7 @@
             Controls.Add(dtpDatum);
             Controls.Add(btnDodaj);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "frmProjekcije";
+            Name = "frmProjections";
             Text = "Projekcije";
             Load += frmProjekcije_Load;
             ((System.ComponentModel.ISupportInitialize)dgvProjections).EndInit();

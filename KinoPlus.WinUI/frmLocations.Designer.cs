@@ -1,6 +1,6 @@
 ﻿namespace KinoPlus.WinUI
 {
-    partial class frmKategorije
+    partial class frmLocations
     {
         /// <summary>
         /// Required designer variable.
@@ -30,20 +30,20 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            dgvKategorije = new DataGridView();
+            dgvLocations = new DataGridView();
             lblPaging = new Label();
             btnNaprijed = new Button();
             btnNazad = new Button();
             txtTrazi = new TextBox();
             btnTrazi = new Button();
             btnDodaj = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvKategorije).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvLocations).BeginInit();
             SuspendLayout();
             // 
-            // dgvKategorije
+            // dgvLocations
             // 
-            dgvKategorije.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvKategorije.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvLocations.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvLocations.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
@@ -51,34 +51,34 @@
             dataGridViewCellStyle1.SelectionBackColor = Color.IndianRed;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvKategorije.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvKategorije.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLocations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvLocations.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvKategorije.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvKategorije.GridColor = Color.Navy;
-            dgvKategorije.Location = new Point(91, 133);
-            dgvKategorije.Name = "dgvKategorije";
-            dgvKategorije.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvKategorije.RowTemplate.DefaultCellStyle.BackColor = Color.White;
-            dgvKategorije.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.MidnightBlue;
-            dgvKategorije.RowTemplate.Height = 50;
-            dgvKategorije.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvKategorije.Size = new Size(1072, 547);
-            dgvKategorije.TabIndex = 0;
-            dgvKategorije.CellDoubleClick += dgvKategorije_CellDoubleClick;
+            dgvLocations.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvLocations.GridColor = Color.Navy;
+            dgvLocations.Location = new Point(91, 133);
+            dgvLocations.Name = "dgvLocations";
+            dgvLocations.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvLocations.RowTemplate.DefaultCellStyle.BackColor = Color.White;
+            dgvLocations.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.MidnightBlue;
+            dgvLocations.RowTemplate.Height = 50;
+            dgvLocations.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvLocations.Size = new Size(1072, 547);
+            dgvLocations.TabIndex = 0;
+            dgvLocations.CellDoubleClick += dgvLocations_CellDoubleClick;
             // 
             // lblPaging
             // 
             lblPaging.Anchor = AnchorStyles.Bottom;
             lblPaging.AutoSize = true;
             lblPaging.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPaging.Location = new Point(597, 721);
+            lblPaging.Location = new Point(619, 714);
             lblPaging.Name = "lblPaging";
             lblPaging.Size = new Size(28, 16);
             lblPaging.TabIndex = 11;
@@ -110,17 +110,17 @@
             // 
             // txtTrazi
             // 
-            txtTrazi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtTrazi.Location = new Point(93, 96);
+            txtTrazi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTrazi.Location = new Point(90, 96);
             txtTrazi.Name = "txtTrazi";
             txtTrazi.PlaceholderText = "Traži";
-            txtTrazi.Size = new Size(240, 26);
+            txtTrazi.Size = new Size(240, 27);
             txtTrazi.TabIndex = 13;
             // 
             // btnTrazi
             // 
             btnTrazi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnTrazi.Location = new Point(345, 96);
+            btnTrazi.Location = new Point(342, 96);
             btnTrazi.Name = "btnTrazi";
             btnTrazi.Size = new Size(86, 27);
             btnTrazi.TabIndex = 14;
@@ -134,16 +134,16 @@
             btnDodaj.BackColor = Color.MidnightBlue;
             btnDodaj.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnDodaj.ForeColor = Color.White;
-            btnDodaj.Location = new Point(1041, 87);
+            btnDodaj.Location = new Point(1041, 83);
             btnDodaj.Margin = new Padding(4, 3, 4, 3);
             btnDodaj.Name = "btnDodaj";
-            btnDodaj.Size = new Size(122, 35);
+            btnDodaj.Size = new Size(122, 40);
             btnDodaj.TabIndex = 15;
             btnDodaj.Text = "Dodaj";
             btnDodaj.UseVisualStyleBackColor = false;
             btnDodaj.Click += btnDodaj_Click;
             // 
-            // frmKategorije
+            // frmLocations
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -155,19 +155,19 @@
             Controls.Add(lblPaging);
             Controls.Add(btnNaprijed);
             Controls.Add(btnNazad);
-            Controls.Add(dgvKategorije);
+            Controls.Add(dgvLocations);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "frmKategorije";
-            Text = "Kategorije";
-            Load += frmKategorije_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvKategorije).EndInit();
+            Name = "frmLocations";
+            Text = "Lokacije";
+            Load += frmLokacije_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvLocations).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dgvKategorije;
+        private DataGridView dgvLocations;
         private Label lblPaging;
         private Button btnNaprijed;
         private Button btnNazad;

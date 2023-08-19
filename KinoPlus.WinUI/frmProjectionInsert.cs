@@ -4,14 +4,14 @@ using KinoPlus.WinUI.Utils;
 
 namespace KinoPlus.WinUI
 {
-    public partial class frmProjekcijaInsert : Form
+    public partial class frmProjectionInsert : Form
     {
         public APIService ProjectionService { get; set; } = new APIService("projections");
         public APIService LocationService { get; set; } = new APIService("locations");
         public List<Tuple<CheckBox, ComboBox>> LocationHalls { get; set; } = new List<Tuple<CheckBox, ComboBox>>();
         public DateTime? InsertedProjectionDate { get; set; }
 
-        public frmProjekcijaInsert(DateTime date)
+        public frmProjectionInsert(DateTime date)
         {
             InitializeComponent();
             dtpDatumProjekcije.Value = date;

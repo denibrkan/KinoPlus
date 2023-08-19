@@ -37,7 +37,7 @@
         {
             this.ActiveMdiChild?.Close();
 
-            var frmFilmovi = new frmFilmovi();
+            var frmFilmovi = new frmMovies();
             frmFilmovi.MdiParent = this;
             frmFilmovi.WindowState = FormWindowState.Maximized;
 
@@ -48,7 +48,7 @@
         {
             this.ActiveMdiChild?.Close();
 
-            var frmKategorije = new frmKategorije();
+            var frmKategorije = new frmCategories();
             frmKategorije.MdiParent = this;
             frmKategorije.WindowState = FormWindowState.Maximized;
 
@@ -59,7 +59,7 @@
         {
             this.ActiveMdiChild?.Close();
 
-            var frmProjekcije = new frmProjekcije();
+            var frmProjekcije = new frmProjections();
             frmProjekcije.MdiParent = this;
             frmProjekcije.WindowState = FormWindowState.Maximized;
 
@@ -70,7 +70,7 @@
         {
             this.ActiveMdiChild?.Close();
 
-            var frmLokacije = new frmLokacije();
+            var frmLokacije = new frmLocations();
             frmLokacije.MdiParent = this;
             frmLokacije.WindowState = FormWindowState.Maximized;
 
@@ -81,7 +81,7 @@
         {
             this.ActiveMdiChild?.Close();
 
-            var frmIzvjestaji = new frmIzvjestaji();
+            var frmIzvjestaji = new frmReports();
             frmIzvjestaji.MdiParent = this;
             frmIzvjestaji.WindowState = FormWindowState.Maximized;
 
@@ -92,7 +92,7 @@
         {
             this.ActiveMdiChild?.Close();
 
-            var frmKorisnici = new frmKorisnici();
+            var frmKorisnici = new frmUsers();
             frmKorisnici.MdiParent = this;
             frmKorisnici.WindowState = FormWindowState.Maximized;
 

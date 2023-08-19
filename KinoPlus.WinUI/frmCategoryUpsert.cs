@@ -4,13 +4,13 @@ using KinoPlus.WinUI.Utils;
 
 namespace KinoPlus.WinUI
 {
-    public partial class frmKategorijaUpsert : Form
+    public partial class frmCategoryUpsert : Form
     {
         public APIService CategoryService { get; set; } = new APIService("categories");
         public bool IsEdit { get; set; }
         public CategoryDto? EditCategory { get; set; }
 
-        public frmKategorijaUpsert(CategoryDto? category)
+        public frmCategoryUpsert(CategoryDto? category)
         {
             InitializeComponent();
 
@@ -18,7 +18,7 @@ namespace KinoPlus.WinUI
             {
                 IsEdit = true;
                 EditCategory = category;
-                this.Text = "Edit Kategorija";
+                this.Text = "Uredi Kategoriju";
             }
         }
 
@@ -71,6 +71,9 @@ namespace KinoPlus.WinUI
             if (categoryDto != null)
             {
                 Cache.Remove<CategoryDto>();
+                var message = !IsEdit ? "Uspješno dodana nova kategorija" : "Uspješno izmijenjena kategorija";
+                MessageBox.Show(message);
+
                 this.DialogResult = DialogResult.OK;
                 Close();
             }

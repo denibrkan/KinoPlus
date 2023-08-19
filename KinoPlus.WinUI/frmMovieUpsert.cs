@@ -7,21 +7,21 @@ using System.Net.Http.Json;
 
 namespace KinoPlus.WinUI
 {
-    public partial class frmFilmUpsert : Form
+    public partial class frmMovieUpsert : Form
     {
         public APIService MovieService { get; set; } = new APIService("movies");
         public Guid? MovieImageId { get; set; }
         public bool isEdit { get; set; }
         public int? EditMovieId { get; set; }
 
-        public frmFilmUpsert(int? movieId = null)
+        public frmMovieUpsert(int? movieId = null)
         {
             InitializeComponent();
             if (movieId != null)
             {
                 isEdit = true;
                 EditMovieId = movieId;
-                this.Text = "Edit Film";
+                this.Text = "Uredi Film";
             }
         }
 

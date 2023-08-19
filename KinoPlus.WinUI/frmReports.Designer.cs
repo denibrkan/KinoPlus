@@ -1,6 +1,6 @@
 ﻿namespace KinoPlus.WinUI
 {
-    partial class frmIzvjestaji
+    partial class frmReports
     {
         /// <summary>
         /// Required designer variable.

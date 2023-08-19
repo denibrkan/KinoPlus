@@ -5,14 +5,14 @@ using System.Data;
 
 namespace KinoPlus.WinUI
 {
-    public partial class frmKategorije : Form
+    public partial class frmCategories : Form
     {
         public APIService APIService { get; set; } = new APIService("categories");
         public int PageNumber = 1;
         public int PageSize = 10;
         public List<CategoryDto> Categories { get; set; } = new List<CategoryDto>();
 
-        public frmKategorije()
+        public frmCategories()
         {
             InitializeComponent();
         }
@@ -94,7 +94,7 @@ namespace KinoPlus.WinUI
 
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
-            var frmKategorijeUpsert = new frmKategorijaUpsert(null);
+            var frmKategorijeUpsert = new frmCategoryUpsert(null);
 
             if (frmKategorijeUpsert.ShowDialog() == DialogResult.OK)
             {
@@ -107,7 +107,7 @@ namespace KinoPlus.WinUI
             var categoryId = dgvKategorije.Rows[e.RowIndex].Cells["Id"].Value as int?;
 
             var category = Categories.SingleOrDefault(c => c.Id == categoryId);
-            var frmEdit = new frmKategorijaUpsert(category);
+            var frmEdit = new frmCategoryUpsert(category);
 
             if (frmEdit.ShowDialog() == DialogResult.OK)
             {

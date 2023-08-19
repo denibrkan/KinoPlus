@@ -1,6 +1,6 @@
 ﻿namespace KinoPlus.WinUI
 {
-    partial class frmLokacijaUpsert
+    partial class frmLocationUpsert
     {
         /// <summary>
         /// Required designer variable.
@@ -46,10 +46,10 @@
             // 
             // txtNaziv
             // 
-            txtNaziv.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNaziv.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtNaziv.Location = new Point(120, 141);
             txtNaziv.Name = "txtNaziv";
-            txtNaziv.Size = new Size(259, 27);
+            txtNaziv.Size = new Size(259, 26);
             txtNaziv.TabIndex = 1;
             txtNaziv.Validating += txtNaziv_Validating;
             // 
@@ -59,7 +59,7 @@
             lblNaziv.FlatStyle = FlatStyle.System;
             lblNaziv.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblNaziv.ForeColor = SystemColors.ControlDarkDark;
-            lblNaziv.Location = new Point(120, 113);
+            lblNaziv.Location = new Point(120, 118);
             lblNaziv.Name = "lblNaziv";
             lblNaziv.Size = new Size(49, 18);
             lblNaziv.TabIndex = 8;
@@ -71,7 +71,7 @@
             lblAdresa.FlatStyle = FlatStyle.System;
             lblAdresa.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblAdresa.ForeColor = SystemColors.ControlDarkDark;
-            lblAdresa.Location = new Point(458, 113);
+            lblAdresa.Location = new Point(458, 118);
             lblAdresa.Name = "lblAdresa";
             lblAdresa.Size = new Size(59, 18);
             lblAdresa.TabIndex = 8;
@@ -79,10 +79,10 @@
             // 
             // txtAdresa
             // 
-            txtAdresa.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtAdresa.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtAdresa.Location = new Point(458, 141);
             txtAdresa.Name = "txtAdresa";
-            txtAdresa.Size = new Size(259, 27);
+            txtAdresa.Size = new Size(259, 26);
             txtAdresa.TabIndex = 2;
             txtAdresa.Validating += txtAdresa_Validating;
             // 
@@ -90,7 +90,7 @@
             // 
             cmbGrad.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGrad.FlatStyle = FlatStyle.Flat;
-            cmbGrad.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbGrad.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbGrad.FormattingEnabled = true;
             cmbGrad.Location = new Point(809, 141);
             cmbGrad.Name = "cmbGrad";
@@ -104,7 +104,7 @@
             lblGrad.FlatStyle = FlatStyle.System;
             lblGrad.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblGrad.ForeColor = SystemColors.ControlDarkDark;
-            lblGrad.Location = new Point(809, 114);
+            lblGrad.Location = new Point(809, 119);
             lblGrad.Name = "lblGrad";
             lblGrad.Size = new Size(44, 18);
             lblGrad.TabIndex = 13;
@@ -112,7 +112,7 @@
             // 
             // lbDvorane
             // 
-            lbDvorane.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbDvorane.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lbDvorane.FormattingEnabled = true;
             lbDvorane.ItemHeight = 18;
             lbDvorane.Location = new Point(644, 258);
@@ -123,7 +123,7 @@
             // 
             // lbVrstaProjekcije
             // 
-            lbVrstaProjekcije.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbVrstaProjekcije.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lbVrstaProjekcije.FormattingEnabled = true;
             lbVrstaProjekcije.ItemHeight = 18;
             lbVrstaProjekcije.Location = new Point(120, 258);
@@ -138,7 +138,7 @@
             lblDvorane.FlatStyle = FlatStyle.System;
             lblDvorane.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDvorane.ForeColor = SystemColors.ControlDarkDark;
-            lblDvorane.Location = new Point(644, 230);
+            lblDvorane.Location = new Point(644, 235);
             lblDvorane.Name = "lblDvorane";
             lblDvorane.Size = new Size(71, 18);
             lblDvorane.TabIndex = 16;
@@ -150,7 +150,7 @@
             lblVrstaProjekcije.FlatStyle = FlatStyle.System;
             lblVrstaProjekcije.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblVrstaProjekcije.ForeColor = SystemColors.ControlDarkDark;
-            lblVrstaProjekcije.Location = new Point(120, 231);
+            lblVrstaProjekcije.Location = new Point(120, 236);
             lblVrstaProjekcije.Name = "lblVrstaProjekcije";
             lblVrstaProjekcije.Size = new Size(125, 18);
             lblVrstaProjekcije.TabIndex = 18;
@@ -172,7 +172,7 @@
             // 
             errorProvider.ContainerControl = this;
             // 
-            // frmLokacijaUpsert
+            // frmLocationUpsert
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -188,7 +188,7 @@
             Controls.Add(lblAdresa);
             Controls.Add(txtNaziv);
             Controls.Add(lblNaziv);
-            Name = "frmLokacijaUpsert";
+            Name = "frmLocationUpsert";
             Text = "Nova Lokacija";
             Load += frmLokacijaUpsert_Load;
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();

@@ -1,6 +1,6 @@
 ﻿namespace KinoPlus.WinUI
 {
-    partial class frmKategorijaUpsert
+    partial class frmCategoryUpsert
     {
         /// <summary>
         /// Required designer variable.
@@ -45,10 +45,10 @@
             // 
             // txtNaziv
             // 
-            txtNaziv.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNaziv.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtNaziv.Location = new Point(116, 118);
             txtNaziv.Name = "txtNaziv";
-            txtNaziv.Size = new Size(359, 27);
+            txtNaziv.Size = new Size(359, 26);
             txtNaziv.TabIndex = 1;
             txtNaziv.Validating += txtNaziv_Validating;
             // 
@@ -58,7 +58,7 @@
             lblNaziv.FlatStyle = FlatStyle.System;
             lblNaziv.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblNaziv.ForeColor = SystemColors.ControlDarkDark;
-            lblNaziv.Location = new Point(116, 90);
+            lblNaziv.Location = new Point(116, 95);
             lblNaziv.Name = "lblNaziv";
             lblNaziv.Size = new Size(49, 18);
             lblNaziv.TabIndex = 8;
@@ -70,7 +70,7 @@
             lblOrderPoeni.FlatStyle = FlatStyle.System;
             lblOrderPoeni.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblOrderPoeni.ForeColor = SystemColors.ControlDarkDark;
-            lblOrderPoeni.Location = new Point(572, 91);
+            lblOrderPoeni.Location = new Point(572, 96);
             lblOrderPoeni.Name = "lblOrderPoeni";
             lblOrderPoeni.Size = new Size(95, 18);
             lblOrderPoeni.TabIndex = 8;
@@ -82,7 +82,7 @@
             lblFilmovi.FlatStyle = FlatStyle.System;
             lblFilmovi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblFilmovi.ForeColor = SystemColors.ControlDarkDark;
-            lblFilmovi.Location = new Point(116, 208);
+            lblFilmovi.Location = new Point(116, 213);
             lblFilmovi.Name = "lblFilmovi";
             lblFilmovi.Size = new Size(60, 18);
             lblFilmovi.TabIndex = 18;
@@ -102,18 +102,18 @@
             // 
             // numOrderPoints
             // 
-            numOrderPoints.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            numOrderPoints.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             numOrderPoints.Increment = new decimal(new int[] { 10, 0, 0, 0 });
             numOrderPoints.Location = new Point(572, 119);
             numOrderPoints.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             numOrderPoints.Name = "numOrderPoints";
             numOrderPoints.RightToLeft = RightToLeft.No;
-            numOrderPoints.Size = new Size(130, 27);
+            numOrderPoints.Size = new Size(130, 26);
             numOrderPoints.TabIndex = 2;
             // 
             // lbFilmovi
             // 
-            lbFilmovi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbFilmovi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lbFilmovi.FormattingEnabled = true;
             lbFilmovi.ItemHeight = 18;
             lbFilmovi.Location = new Point(116, 236);
@@ -141,7 +141,7 @@
             lblPrikazan.FlatStyle = FlatStyle.System;
             lblPrikazan.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblPrikazan.ForeColor = SystemColors.ControlDarkDark;
-            lblPrikazan.Location = new Point(771, 91);
+            lblPrikazan.Location = new Point(771, 96);
             lblPrikazan.Name = "lblPrikazan";
             lblPrikazan.Size = new Size(163, 18);
             lblPrikazan.TabIndex = 20;
@@ -151,7 +151,7 @@
             // 
             errorProvider.ContainerControl = this;
             // 
-            // frmKategorijaUpsert
+            // frmCategoryUpsert
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -165,7 +165,7 @@
             Controls.Add(lblOrderPoeni);
             Controls.Add(txtNaziv);
             Controls.Add(lblNaziv);
-            Name = "frmKategorijaUpsert";
+            Name = "frmCategoryUpsert";
             Text = "Nova Kategorija";
             Load += frmKategorijaUpsert_Load;
             ((System.ComponentModel.ISupportInitialize)numOrderPoints).EndInit();

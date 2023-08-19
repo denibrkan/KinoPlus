@@ -1,6 +1,6 @@
 ﻿namespace KinoPlus.WinUI
 {
-    partial class frmFilmUpsert
+    partial class frmMovieUpsert
     {
         /// <summary>
         /// Required designer variable.
@@ -66,7 +66,7 @@
             lblNaziv.FlatStyle = FlatStyle.System;
             lblNaziv.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblNaziv.ForeColor = SystemColors.ControlDarkDark;
-            lblNaziv.Location = new Point(296, 80);
+            lblNaziv.Location = new Point(296, 83);
             lblNaziv.Name = "lblNaziv";
             lblNaziv.Size = new Size(49, 18);
             lblNaziv.TabIndex = 6;
@@ -74,10 +74,10 @@
             // 
             // txtNaziv
             // 
-            txtNaziv.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNaziv.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtNaziv.Location = new Point(296, 108);
             txtNaziv.Name = "txtNaziv";
-            txtNaziv.Size = new Size(321, 27);
+            txtNaziv.Size = new Size(321, 26);
             txtNaziv.TabIndex = 0;
             txtNaziv.Validating += txtNaziv_Validating;
             // 
@@ -85,7 +85,7 @@
             // 
             cmbGodina.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGodina.FlatStyle = FlatStyle.Flat;
-            cmbGodina.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbGodina.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbGodina.FormattingEnabled = true;
             cmbGodina.Location = new Point(712, 108);
             cmbGodina.Name = "cmbGodina";
@@ -99,7 +99,7 @@
             lblGodina.FlatStyle = FlatStyle.System;
             lblGodina.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblGodina.ForeColor = SystemColors.ControlDarkDark;
-            lblGodina.Location = new Point(712, 81);
+            lblGodina.Location = new Point(712, 84);
             lblGodina.Name = "lblGodina";
             lblGodina.Size = new Size(60, 18);
             lblGodina.TabIndex = 11;
@@ -111,7 +111,7 @@
             lblTrajanje.FlatStyle = FlatStyle.System;
             lblTrajanje.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblTrajanje.ForeColor = SystemColors.ControlDarkDark;
-            lblTrajanje.Location = new Point(927, 80);
+            lblTrajanje.Location = new Point(927, 83);
             lblTrajanje.Name = "lblTrajanje";
             lblTrajanje.Size = new Size(114, 18);
             lblTrajanje.TabIndex = 6;
@@ -145,7 +145,7 @@
             lblStatus.FlatStyle = FlatStyle.System;
             lblStatus.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblStatus.ForeColor = SystemColors.ControlDarkDark;
-            lblStatus.Location = new Point(295, 195);
+            lblStatus.Location = new Point(295, 198);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(56, 18);
             lblStatus.TabIndex = 11;
@@ -155,7 +155,7 @@
             // 
             cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbStatus.FlatStyle = FlatStyle.Flat;
-            cmbStatus.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbStatus.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbStatus.FormattingEnabled = true;
             cmbStatus.Location = new Point(296, 222);
             cmbStatus.Name = "cmbStatus";
@@ -165,7 +165,7 @@
             // 
             // btnSpasi
             // 
-            btnSpasi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSpasi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnSpasi.Location = new Point(595, 609);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(108, 35);
@@ -180,7 +180,7 @@
             // 
             // lbKategorija
             // 
-            lbKategorija.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbKategorija.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lbKategorija.FormattingEnabled = true;
             lbKategorija.ItemHeight = 18;
             lbKategorija.Location = new Point(553, 222);
@@ -191,7 +191,7 @@
             // 
             // lbZanr
             // 
-            lbZanr.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbZanr.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lbZanr.FormattingEnabled = true;
             lbZanr.ItemHeight = 18;
             lbZanr.Location = new Point(847, 222);
@@ -202,7 +202,7 @@
             // 
             // lbUloge
             // 
-            lbUloge.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbUloge.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lbUloge.FormattingEnabled = true;
             lbUloge.ItemHeight = 18;
             lbUloge.Location = new Point(296, 354);
@@ -213,7 +213,7 @@
             // 
             // rtbOpis
             // 
-            rtbOpis.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            rtbOpis.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             rtbOpis.Location = new Point(701, 354);
             rtbOpis.Name = "rtbOpis";
             rtbOpis.Size = new Size(356, 167);
@@ -227,7 +227,7 @@
             lblKategorija.FlatStyle = FlatStyle.System;
             lblKategorija.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblKategorija.ForeColor = SystemColors.ControlDarkDark;
-            lblKategorija.Location = new Point(553, 195);
+            lblKategorija.Location = new Point(553, 198);
             lblKategorija.Name = "lblKategorija";
             lblKategorija.Size = new Size(84, 18);
             lblKategorija.TabIndex = 11;
@@ -239,7 +239,7 @@
             lblZanr.FlatStyle = FlatStyle.System;
             lblZanr.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblZanr.ForeColor = SystemColors.ControlDarkDark;
-            lblZanr.Location = new Point(847, 195);
+            lblZanr.Location = new Point(847, 198);
             lblZanr.Name = "lblZanr";
             lblZanr.Size = new Size(42, 18);
             lblZanr.TabIndex = 11;
@@ -251,7 +251,7 @@
             lblUloge.FlatStyle = FlatStyle.System;
             lblUloge.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblUloge.ForeColor = SystemColors.ControlDarkDark;
-            lblUloge.Location = new Point(295, 326);
+            lblUloge.Location = new Point(295, 329);
             lblUloge.Name = "lblUloge";
             lblUloge.Size = new Size(50, 18);
             lblUloge.TabIndex = 11;
@@ -263,7 +263,7 @@
             lbllOpis.FlatStyle = FlatStyle.System;
             lbllOpis.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lbllOpis.ForeColor = SystemColors.ControlDarkDark;
-            lbllOpis.Location = new Point(701, 327);
+            lbllOpis.Location = new Point(701, 330);
             lbllOpis.Name = "lbllOpis";
             lbllOpis.Size = new Size(40, 18);
             lbllOpis.TabIndex = 11;
@@ -275,7 +275,7 @@
             lblTrailer.FlatStyle = FlatStyle.System;
             lblTrailer.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblTrailer.ForeColor = SystemColors.ControlDarkDark;
-            lblTrailer.Location = new Point(296, 464);
+            lblTrailer.Location = new Point(296, 467);
             lblTrailer.Name = "lblTrailer";
             lblTrailer.Size = new Size(77, 18);
             lblTrailer.TabIndex = 6;
@@ -291,12 +291,12 @@
             // 
             // numTrajanje
             // 
-            numTrajanje.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            numTrajanje.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             numTrajanje.Location = new Point(927, 108);
             numTrajanje.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             numTrajanje.Name = "numTrajanje";
             numTrajanje.RightToLeft = RightToLeft.No;
-            numTrajanje.Size = new Size(130, 27);
+            numTrajanje.Size = new Size(130, 26);
             numTrajanje.TabIndex = 3;
             numTrajanje.Validating += numTrajanje_Validating;
             // 
@@ -310,7 +310,7 @@
             lblPopularnost.FlatStyle = FlatStyle.System;
             lblPopularnost.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblPopularnost.ForeColor = SystemColors.ControlDarkDark;
-            lblPopularnost.Location = new Point(108, 376);
+            lblPopularnost.Location = new Point(108, 379);
             lblPopularnost.Name = "lblPopularnost";
             lblPopularnost.Size = new Size(96, 18);
             lblPopularnost.TabIndex = 6;
@@ -319,18 +319,18 @@
             // numPopularnost
             // 
             numPopularnost.DecimalPlaces = 1;
-            numPopularnost.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            numPopularnost.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             numPopularnost.Location = new Point(108, 404);
             numPopularnost.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
             numPopularnost.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numPopularnost.Name = "numPopularnost";
             numPopularnost.RightToLeft = RightToLeft.No;
-            numPopularnost.Size = new Size(130, 27);
+            numPopularnost.Size = new Size(130, 26);
             numPopularnost.TabIndex = 3;
             numPopularnost.Value = new decimal(new int[] { 8, 0, 0, 0 });
             numPopularnost.Validating += numTrajanje_Validating;
             // 
-            // frmFilmUpsert
+            // frmMovieUpsert
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -358,7 +358,7 @@
             Controls.Add(lblTrailer);
             Controls.Add(txtNaziv);
             Controls.Add(lblNaziv);
-            Name = "frmFilmUpsert";
+            Name = "frmMovieUpsert";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Novi Film";
             Load += frmFilmUpsert_Load;

@@ -5,13 +5,13 @@ using System.Data;
 
 namespace KinoPlus.WinUI
 {
-    public partial class frmKorisnici : Form
+    public partial class frmUsers : Form
     {
         public APIService APIService { get; set; } = new APIService("users");
         public int PageNumber = 1;
         public int PageSize = 10;
 
-        public frmKorisnici()
+        public frmUsers()
         {
             InitializeComponent();
         }

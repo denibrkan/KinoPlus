@@ -5,10 +5,10 @@ using Microsoft.Reporting.WinForms;
 
 namespace KinoPlus.WinUI
 {
-    public partial class frmIzvjestaji : Form
+    public partial class frmReports : Form
     {
         public APIService APIService { get; set; } = new APIService("projections");
-        public frmIzvjestaji()
+        public frmReports()
         {
             InitializeComponent();
 

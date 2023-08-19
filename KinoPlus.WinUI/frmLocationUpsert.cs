@@ -4,13 +4,13 @@ using KinoPlus.WinUI.Utils;
 
 namespace KinoPlus.WinUI
 {
-    public partial class frmLokacijaUpsert : Form
+    public partial class frmLocationUpsert : Form
     {
         public APIService LocationService { get; set; } = new APIService("locations");
         public bool IsEdit { get; set; }
         public int? EditLocationId { get; set; }
 
-        public frmLokacijaUpsert(int? locationId = null)
+        public frmLocationUpsert(int? locationId = null)
         {
             InitializeComponent();
 
@@ -18,7 +18,7 @@ namespace KinoPlus.WinUI
             {
                 IsEdit = true;
                 EditLocationId = locationId;
-                this.Text = "Edit Lokacija";
+                this.Text = "Uredi Lokaciju";
             }
         }
 
@@ -96,6 +96,9 @@ namespace KinoPlus.WinUI
             if (locationDto != null)
             {
                 Cache.Remove<LocationDto>();
+                var message = !IsEdit ? "Uspješno dodana nova lokacija" : "Uspješno izmijenjena lokacija";
+                MessageBox.Show(message);
+
                 this.DialogResult = DialogResult.OK;
                 Close();
             }

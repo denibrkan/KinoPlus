@@ -5,13 +5,13 @@ using System.Data;
 
 namespace KinoPlus.WinUI
 {
-    public partial class frmLokacije : Form
+    public partial class frmLocations : Form
     {
         public APIService APIService { get; set; } = new APIService("locations");
         public int PageNumber = 1;
         public int PageSize = 10;
 
-        public frmLokacije()
+        public frmLocations()
         {
             InitializeComponent();
         }
@@ -53,6 +53,7 @@ namespace KinoPlus.WinUI
                 dgvLocations.Columns["BrojDvorana"].HeaderText = "Broj dvorana";
                 dgvLocations.Columns["BrojDvorana"].Width = 100;
                 dgvLocations.Columns["VrsteProjekcije"].HeaderText = "Vrste projekcije";
+                dgvLocations.Columns["Drzava"].HeaderText = "Država";
 
                 lblPaging.Text = "Stranica " + PageNumber;
             }
@@ -94,7 +95,7 @@ namespace KinoPlus.WinUI
 
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
-            var frmLokacijeUpsert = new frmLokacijaUpsert();
+            var frmLokacijeUpsert = new frmLocationUpsert();
 
             if (frmLokacijeUpsert.ShowDialog() == DialogResult.OK)
             {
@@ -106,7 +107,7 @@ namespace KinoPlus.WinUI
         {
             var locationId = dgvLocations.Rows[e.RowIndex].Cells["Id"].Value as int?;
 
-            var frmEdit = new frmLokacijaUpsert(locationId);
+            var frmEdit = new frmLocationUpsert(locationId);
 
             if (frmEdit.ShowDialog() == DialogResult.OK)
             {

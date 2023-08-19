@@ -1,6 +1,6 @@
 ﻿namespace KinoPlus.WinUI
 {
-    partial class frmFilmovi
+    partial class frmMovies
     {
         /// <summary>
         /// Required designer variable.
@@ -62,7 +62,7 @@
             dgvMovies.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = Color.MidnightBlue;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -218,7 +218,7 @@
             btnReset.UseVisualStyleBackColor = true;
             btnReset.Click += btnReset_Click;
             // 
-            // frmFilmovi
+            // frmMovies
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -237,7 +237,7 @@
             Controls.Add(btnDodaj);
             Controls.Add(dgvMovies);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "frmFilmovi";
+            Name = "frmMovies";
             Text = "Filmovi";
             Load += frmFilmovi_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMovies).EndInit();

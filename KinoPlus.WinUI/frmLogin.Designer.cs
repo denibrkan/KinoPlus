@@ -37,10 +37,10 @@
             // 
             // txtKorisnickoIme
             // 
-            txtKorisnickoIme.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtKorisnickoIme.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtKorisnickoIme.Location = new Point(120, 113);
             txtKorisnickoIme.Name = "txtKorisnickoIme";
-            txtKorisnickoIme.Size = new Size(240, 27);
+            txtKorisnickoIme.Size = new Size(240, 26);
             txtKorisnickoIme.TabIndex = 0;
             // 
             // lblKorisnickoIme
@@ -49,7 +49,7 @@
             lblKorisnickoIme.FlatStyle = FlatStyle.System;
             lblKorisnickoIme.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblKorisnickoIme.ForeColor = SystemColors.ControlDarkDark;
-            lblKorisnickoIme.Location = new Point(120, 92);
+            lblKorisnickoIme.Location = new Point(120, 90);
             lblKorisnickoIme.Name = "lblKorisnickoIme";
             lblKorisnickoIme.Size = new Size(115, 18);
             lblKorisnickoIme.TabIndex = 1;
@@ -61,7 +61,7 @@
             lblPassword.FlatStyle = FlatStyle.System;
             lblPassword.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblPassword.ForeColor = SystemColors.ControlDarkDark;
-            lblPassword.Location = new Point(120, 167);
+            lblPassword.Location = new Point(120, 165);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(65, 18);
             lblPassword.TabIndex = 3;
@@ -69,10 +69,10 @@
             // 
             // txtPassword
             // 
-            txtPassword.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPassword.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtPassword.Location = new Point(120, 188);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(240, 27);
+            txtPassword.Size = new Size(240, 26);
             txtPassword.TabIndex = 2;
             txtPassword.UseSystemPasswordChar = true;
             // 

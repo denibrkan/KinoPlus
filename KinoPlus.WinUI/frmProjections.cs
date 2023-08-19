@@ -7,14 +7,14 @@ using System.Data;
 
 namespace KinoPlus.WinUI
 {
-    public partial class frmProjekcije : Form
+    public partial class frmProjections : Form
     {
         public APIService APIService { get; set; } = new APIService("projections");
         public int PageNumber = 1;
         public int PageSize = 10;
         private bool Loading = false;
 
-        public frmProjekcije()
+        public frmProjections()
         {
             InitializeComponent();
 
@@ -65,6 +65,7 @@ namespace KinoPlus.WinUI
 
                 dgvProjections.DataSource = bindProjections;
 
+                dgvProjections.Columns["Naziv"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dgvProjections.Columns["Id"].Visible = false;
                 dgvProjections.Columns["VrstaProjekcije"].HeaderText = "Vrsta projekcije";
                 dgvProjections.Columns["Slika"].HeaderText = "";
@@ -121,7 +122,7 @@ namespace KinoPlus.WinUI
 
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
-            var frmProjekcijaInsert = new frmProjekcijaInsert(dtpDatum.Value);
+            var frmProjekcijaInsert = new frmProjectionInsert(dtpDatum.Value);
 
             if (frmProjekcijaInsert.ShowDialog() == DialogResult.OK)
             {

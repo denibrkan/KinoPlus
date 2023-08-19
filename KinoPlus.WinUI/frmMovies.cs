@@ -6,14 +6,14 @@ using System.Data;
 
 namespace KinoPlus.WinUI
 {
-    public partial class frmFilmovi : Form
+    public partial class frmMovies : Form
     {
         public APIService APIService { get; set; } = new APIService("movies");
         private bool Loading = false;
         public int PageNumber = 1;
         public int PageSize = 10;
 
-        public frmFilmovi()
+        public frmMovies()
         {
             InitializeComponent();
         }
@@ -54,11 +54,11 @@ namespace KinoPlus.WinUI
                         Zanr = string.Join(", ", m.Genres.Select(g => g.Name)),
                         Trajanje = m.Duration,
                         Godina = m.Year.Name,
-                        Popularnost = $"{m.Popularity}/10",
+                        Popularnost = $"{m.Popularity:F1}/10",
                         Kategorija = string.Join(", ", m.Categories.Select(g => g.Name)),
                         Status = m.Status.Name,
                         DatumDodavanja = m.DateCreated.ToShortDateString(),
-                        Ocjena = m.AverageRating != 0 ? m.AverageRating.ToString("F") + "/5" : "-",
+                        Ocjena = m.AverageRating != 0 ? $"{m.AverageRating:F}/5" : "-",
                     })
                     .ToList();
 
@@ -66,6 +66,8 @@ namespace KinoPlus.WinUI
 
                 dgvMovies.Columns["Id"].Visible = false;
                 dgvMovies.Columns["Slika"].HeaderText = "";
+                dgvMovies.Columns["Zanr"].HeaderText = "Žanr";
+                dgvMovies.Columns["DatumDodavanja"].HeaderText = "Datum dodavanja";
                 dgvMovies.Columns["Naziv"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dgvMovies.Columns["Zanr"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dgvMovies.Columns["Kategorija"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -145,7 +147,7 @@ namespace KinoPlus.WinUI
 
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
-            var frmDodaj = new frmFilmUpsert();
+            var frmDodaj = new frmMovieUpsert();
 
             if (frmDodaj.ShowDialog() == DialogResult.OK)
             {
@@ -157,7 +159,7 @@ namespace KinoPlus.WinUI
         {
             var movieId = dgvMovies.Rows[e.RowIndex].Cells["Id"].Value as int?;
 
-            var frmEdit = new frmFilmUpsert(movieId);
+            var frmEdit = new frmMovieUpsert(movieId);
 
             if (frmEdit.ShowDialog() == DialogResult.OK)
             {
