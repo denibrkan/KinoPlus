@@ -15,6 +15,7 @@ namespace KinoPlus.WinUI
         public static List<CityDto> Cities { get; set; } = new List<CityDto>();
         public static List<HallDto> Halls { get; set; } = new List<HallDto>();
         public static List<WeekDayDto> WeekDays { get; set; } = new List<WeekDayDto>();
+        public static List<RoleDto> Roles { get; set; } = new List<RoleDto>();
 
 
         public static List<T> GetList<T>()
@@ -63,6 +64,10 @@ namespace KinoPlus.WinUI
             {
                 return (List<T>)(object)WeekDays;
             }
+            if (typeof(List<T>) == Roles.GetType())
+            {
+                return (List<T>)(object)Roles;
+            }
 
             throw new Exception("non existant cache entity");
         }
@@ -82,6 +87,11 @@ namespace KinoPlus.WinUI
             if (typeof(List<T>) == Categories.GetType())
             {
                 Categories.Clear();
+                return;
+            }
+            if (typeof(List<T>) == Roles.GetType())
+            {
+                Roles.Clear();
                 return;
             }
 

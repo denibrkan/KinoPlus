@@ -36,6 +36,8 @@
             btnNazad = new Button();
             txtTrazi = new TextBox();
             btnTrazi = new Button();
+            cmbRole = new ComboBox();
+            lblRole = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvKorisnici).BeginInit();
             SuspendLayout();
             // 
@@ -81,7 +83,6 @@
             lblPaging.Size = new Size(28, 16);
             lblPaging.TabIndex = 11;
             lblPaging.Text = "???";
-            lblPaging.Click += lblPaging_Click;
             // 
             // btnNaprijed
             // 
@@ -127,12 +128,38 @@
             btnTrazi.UseVisualStyleBackColor = true;
             btnTrazi.Click += btnTrazi_Click;
             // 
+            // cmbRole
+            // 
+            cmbRole.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbRole.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cmbRole.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbRole.FormattingEnabled = true;
+            cmbRole.Location = new Point(480, 91);
+            cmbRole.Name = "cmbRole";
+            cmbRole.Size = new Size(187, 26);
+            cmbRole.TabIndex = 16;
+            cmbRole.SelectedValueChanged += cmbRole_SelectedValueChanged;
+            // 
+            // lblRole
+            // 
+            lblRole.AutoSize = true;
+            lblRole.FlatStyle = FlatStyle.System;
+            lblRole.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            lblRole.ForeColor = SystemColors.ControlDarkDark;
+            lblRole.Location = new Point(480, 72);
+            lblRole.Name = "lblRole";
+            lblRole.Size = new Size(43, 16);
+            lblRole.TabIndex = 15;
+            lblRole.Text = "Uloga";
+            // 
             // frmUsers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1275, 797);
             ControlBox = false;
+            Controls.Add(cmbRole);
+            Controls.Add(lblRole);
             Controls.Add(txtTrazi);
             Controls.Add(btnTrazi);
             Controls.Add(lblPaging);
@@ -156,5 +183,7 @@
         private Button btnNazad;
         private TextBox txtTrazi;
         private Button btnTrazi;
+        private ComboBox cmbRole;
+        private Label lblRole;
     }
 }

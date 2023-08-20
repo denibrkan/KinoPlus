@@ -1,6 +1,7 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
 using KinoPlus.WinUI.Constants;
+using KinoPlus.WinUI.Utils;
 using System.Data;
 
 namespace KinoPlus.WinUI
@@ -11,6 +12,8 @@ namespace KinoPlus.WinUI
         public int PageNumber = 1;
         public int PageSize = 10;
 
+        private bool _loading = false;
+
         public frmUsers()
         {
             InitializeComponent();
@@ -19,17 +22,22 @@ namespace KinoPlus.WinUI
         private async void frmKorisnici_Load(object sender, EventArgs e)
         {
             btnNazad.Enabled = false;
+            _loading = true;
+            await loadRoles();
             await loadUsers();
+            _loading = false;
         }
 
         public async Task loadUsers()
         {
             var search = txtTrazi.Text;
+            var roleId = (int?)cmbRole.SelectedValue;
             object queryParams = new UserSearchObject
             {
                 Page = PageNumber,
                 PageSize = PageSize,
-                NameFTS = search
+                NameFTS = search,
+                RoleId = roleId
             };
             try
             {
@@ -62,6 +70,11 @@ namespace KinoPlus.WinUI
 
         }
 
+        public async Task loadRoles()
+        {
+            await ListControlHelper.loadControlEntity<RoleDto>(cmbRole, "Roles", "Name");
+        }
+
         private async void btnTrazi_Click(object sender, EventArgs e)
         {
             await loadUsers();
@@ -91,9 +104,10 @@ namespace KinoPlus.WinUI
             await loadUsers();
         }
 
-        private void lblPaging_Click(object sender, EventArgs e)
+        private async void cmbRole_SelectedValueChanged(object sender, EventArgs e)
         {
-
+            if (!_loading)
+                await loadUsers();
         }
     }
 }

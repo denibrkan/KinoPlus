@@ -42,6 +42,7 @@ namespace KinoPlus.API.Extensions
             services.AddScoped<IWeekDayService, WeekDayService>();
             services.AddScoped<IMovieReactionService, MovieReactionService>();
             services.AddScoped<IRecommendationService, RecommendationService>();
+            services.AddScoped<IRoleService, RoleService>();
         }
 
         public static void AddBearerAuthentication(

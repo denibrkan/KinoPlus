@@ -24,6 +24,10 @@ namespace KinoPlus.Services
                 query = query.Where(l => (l.FirstName + " " + l.LastName).Contains(search.NameFTS) ||
                                         (l.LastName + " " + l.FirstName).Contains(search.NameFTS));
             }
+            if (search.RoleId.HasValue)
+            {
+                query = query.Where(u => u.UserRoles.Any(ur => ur.RoleId == search.RoleId.Value));
+            }
 
             return query;
         }

@@ -78,7 +78,7 @@
             lblPaging.Anchor = AnchorStyles.Bottom;
             lblPaging.AutoSize = true;
             lblPaging.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPaging.Location = new Point(619, 714);
+            lblPaging.Location = new Point(599, 720);
             lblPaging.Name = "lblPaging";
             lblPaging.Size = new Size(28, 16);
             lblPaging.TabIndex = 11;
