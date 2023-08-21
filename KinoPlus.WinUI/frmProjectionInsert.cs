@@ -158,10 +158,10 @@ namespace KinoPlus.WinUI
                 MessageBox.Show($"Zakazano ukupno {projections.Count} {LetterEnding.GetLetterEnding(projections.Count, "projekcija")} na {projectionInsert.Locations.Count} {LetterEnding.GetLetterEnding(projectionInsert.Locations.Count, "lokacija")}");
 
                 InsertedProjectionDate = projections.FirstOrDefault()?.StartsAt;
-            }
 
-            this.DialogResult = DialogResult.OK;
-            Close();
+                this.DialogResult = DialogResult.OK;
+                Close();
+            }
         }
 
         private void cmbFilm_Validating(object sender, System.ComponentModel.CancelEventArgs e)

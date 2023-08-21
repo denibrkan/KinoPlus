@@ -1,6 +1,7 @@
 ﻿using Flurl;
 using Flurl.Http;
 using KinoPlus.Models;
+using KinoPlus.WinUI.Extensions;
 using KinoPlus.WinUI.Properties;
 
 namespace eProdaja.WinUI
@@ -19,75 +20,36 @@ namespace eProdaja.WinUI
 
         public async Task<T?> Get<T>(object? queryParams = null)
         {
-            try
+            return await HandleApiResponseAsync<T>(async () =>
             {
-                Cursor.Current = Cursors.WaitCursor;
-                var resource = await $"{_apiUrl}{_resource}".SetQueryParams(queryParams).WithOAuthBearerToken(Token).GetJsonAsync<T>();
-                Cursor.Current = Cursors.Arrow;
-
-                return resource;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
-                return default;
-            }
+                return await $"{_apiUrl}{_resource}".SetQueryParams(queryParams).WithOAuthBearerToken(Token).GetJsonAsync<T>();
+            });
         }
 
         public async Task<T?> GetById<T>(object id)
         {
-            try
+            return await HandleApiResponseAsync<T>(async () =>
             {
-                Cursor.Current = Cursors.WaitCursor;
-                var resource = await $"{_apiUrl}{_resource}/{id}".WithOAuthBearerToken(Token).GetJsonAsync<T>();
-                Cursor.Current = Cursors.Arrow;
-
-                return resource;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
-                return default;
-            }
+                return await $"{_apiUrl}{_resource}/{id}".WithOAuthBearerToken(Token).GetJsonAsync<T>();
+            });
         }
 
         public async Task<T?> Post<T>(object data)
         {
-            try
+            return await HandleApiResponseAsync<T>(async () =>
             {
-                Cursor.Current = Cursors.WaitCursor;
-                var resource = await $"{_apiUrl}{_resource}".WithOAuthBearerToken(Token).PostJsonAsync(data).ReceiveJson<T>();
-                Cursor.Current = Cursors.Arrow;
-
-                return resource;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
-                return default;
-            }
+                return await $"{_apiUrl}{_resource}".WithOAuthBearerToken(Token).PostJsonAsync(data).ReceiveJson<T>();
+            });
         }
 
         public async Task<T?> Update<T>(int id, object data)
         {
-            try
+            return await HandleApiResponseAsync<T>(async () =>
             {
-                Cursor.Current = Cursors.WaitCursor;
-                var resource = await $"{_apiUrl}{_resource}/{id}".WithOAuthBearerToken(Token).PutJsonAsync(data).ReceiveJson<T>();
-                Cursor.Current = Cursors.Arrow;
-
-                return resource;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
-                return default;
-            }
+                return await $"{_apiUrl}{_resource}/{id}".WithOAuthBearerToken(Token).PutJsonAsync(data).ReceiveJson<T>();
+            });
         }
+
         public async Task<UserDto?> Login(string korisnickoIme, string password)
         {
             var login = new LoginDto
@@ -95,20 +57,50 @@ namespace eProdaja.WinUI
                 Username = korisnickoIme,
                 Password = password,
             };
+
+            var user = await HandleApiResponseAsync<UserDto>(async () =>
+            {
+                return await $"{_apiUrl}{_resource}/login".PostJsonAsync(login).ReceiveJson<UserDto>();
+            });
+
+            if (user == null)
+                return null;
+
+            Token = user.Token;
+            return user;
+        }
+
+        private async Task<T?> HandleApiResponseAsync<T>(Func<Task<T>> apiCall)
+        {
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                var user = await $"{_apiUrl}{_resource}/login".PostJsonAsync(login).ReceiveJson<UserDto>();
+                var resource = await apiCall();
                 Cursor.Current = Cursors.Arrow;
 
-                Token = user.Token;
-
-                return user;
+                return resource;
             }
             catch (FlurlHttpException ex)
             {
-                var error = await ex.GetResponseStringAsync();
-                MessageBox.Show(error);
+                var responseString = await ex.GetResponseStringAsync();
+
+                if (responseString.IsJson())
+                {
+                    var error = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiException>(responseString);
+                    if (!string.IsNullOrWhiteSpace(error?.Message))
+                    {
+                        MessageBox.Show(error.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        var errorDetails = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDetails>(responseString);
+                        MessageBox.Show(errorDetails!.ToErrorString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(responseString, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
                 return default;
             }

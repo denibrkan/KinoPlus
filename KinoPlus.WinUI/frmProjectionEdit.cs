@@ -50,10 +50,10 @@ namespace KinoPlus.WinUI.Projections
             if (updated != null)
             {
                 MessageBox.Show("Projekcija uspješno izmijenjena", string.Empty);
-                this.DialogResult = DialogResult.OK;
-            }
 
-            this.Close();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
         private async void btnOtkazi_Click(object sender, EventArgs e)
