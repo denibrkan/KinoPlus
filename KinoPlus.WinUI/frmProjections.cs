@@ -149,7 +149,9 @@ namespace KinoPlus.WinUI
         private async void dgvProjections_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var projectionId = dgvProjections.Rows[e.RowIndex].Cells["Id"].Value as int?;
-            if (projectionId == null) return;
+            var isCanceled = (bool)dgvProjections.Rows[e.RowIndex].Cells["Otkazana"].Value;
+
+            if (projectionId == null || isCanceled) return;
 
             var projection = await APIService.GetById<ProjectionDto>(projectionId);
             if (projection == null) return;
@@ -167,6 +169,28 @@ namespace KinoPlus.WinUI
             {
                 await loadProjections();
             }
+        }
+
+        private void dgvProjections_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value == null) return;
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)  // Exclude header cells
+            {
+                DataGridViewRow row = dgvProjections.Rows[e.RowIndex];
+                DataGridViewColumn col = dgvProjections.Columns[e.ColumnIndex];
+
+                if (col.Name == "Otkazana")
+                {
+                    bool value = (bool)e.Value;
+
+                    if (value)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Tomato;
+                        row.DefaultCellStyle.SelectionBackColor = Color.Tomato;
+                    }
+                }
+            }
+
         }
     }
 }

@@ -189,8 +189,12 @@ namespace KinoPlus.Services
         {
             //15 min projection break
             projectionStart = projectionStart.AddMinutes(-15);
+            projectionEnd = projectionEnd.AddMinutes(15);
 
-            var projections = await _context.Projections.Where(p => projectionStart.Date == p.StartsAt.Date).ToListAsync();
+            var projections = await _context.Projections
+                .Where(p => projectionStart.Date == p.StartsAt.Date &&
+                            p.IsCanceled == false)
+                .ToListAsync();
 
             foreach (var projection in projections)
             {

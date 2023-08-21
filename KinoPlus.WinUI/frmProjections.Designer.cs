@@ -181,6 +181,7 @@
             dgvProjections.Size = new Size(1083, 568);
             dgvProjections.TabIndex = 16;
             dgvProjections.CellDoubleClick += dgvProjections_CellDoubleClick;
+            dgvProjections.CellFormatting += dgvProjections_CellFormatting;
             // 
             // btnDatumNazad
             // 
