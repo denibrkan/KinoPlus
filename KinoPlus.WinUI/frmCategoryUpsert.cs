@@ -49,25 +49,23 @@ namespace KinoPlus.WinUI
 
         private async void btnSpasi_Click(object sender, EventArgs e)
         {
-            if (!checkValidation())
+            if (!ValidateForm())
                 return;
 
-            var category = new CategoryUpsertObject();
-
-            category.Name = txtNaziv.Text;
-            category.MovieIds = lbFilmovi.SelectedItems.Cast<MovieDto>().Select(h => h.Id).ToArray();
-            category.OrderPoints = (int)numOrderPoints.Value;
-            category.IsDisplayed = cbPrikazan.Checked;
+            var category = new CategoryUpsertObject
+            {
+                Name = txtNaziv.Text,
+                MovieIds = lbFilmovi.SelectedItems.Cast<MovieDto>().Select(h => h.Id).ToArray(),
+                OrderPoints = (int)numOrderPoints.Value,
+                IsDisplayed = cbPrikazan.Checked
+            };
 
             CategoryDto? categoryDto;
             if (IsEdit)
-            {
                 categoryDto = await CategoryService.Update<CategoryDto>(EditCategory!.Id, category);
-            }
             else
-            {
                 categoryDto = await CategoryService.Post<CategoryDto>(category);
-            }
+
             if (categoryDto != null)
             {
                 Cache.Remove<CategoryDto>();
@@ -79,24 +77,9 @@ namespace KinoPlus.WinUI
             }
         }
 
-        private bool checkValidation()
+        private bool ValidateForm()
         {
-            return ValidateChildren(ValidationConstraints.Enabled);
-        }
-
-        private void txtNaziv_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtNaziv.Text))
-            {
-                e.Cancel = true;
-                txtNaziv.Focus();
-                errorProvider.SetError(txtNaziv, "Naziv nije unesen");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(txtNaziv, "");
-            }
+            return Validator.ValidateControl(txtNaziv, errorProvider, "Naziv nije unesen");
         }
     }
 }

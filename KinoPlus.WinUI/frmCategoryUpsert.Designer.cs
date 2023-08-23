@@ -50,7 +50,6 @@
             txtNaziv.Name = "txtNaziv";
             txtNaziv.Size = new Size(359, 26);
             txtNaziv.TabIndex = 1;
-            txtNaziv.Validating += txtNaziv_Validating;
             // 
             // lblNaziv
             // 

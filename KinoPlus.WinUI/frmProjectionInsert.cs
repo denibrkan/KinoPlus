@@ -113,7 +113,7 @@ namespace KinoPlus.WinUI
 
         private async void btnSpasi_Click(object sender, EventArgs e)
         {
-            if (!ValidateChildren(ValidationConstraints.Enabled))
+            if (!ValidateForm())
                 return;
 
             if (LocationHalls.All(lh => lh.Item1.Checked == false))
@@ -165,51 +165,6 @@ namespace KinoPlus.WinUI
             }
         }
 
-        private void cmbFilm_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (cmbFilm.SelectedValue == null)
-            {
-                e.Cancel = true;
-                cmbFilm.Focus();
-                errorProvider.SetError(cmbFilm, "Film nije odabran");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(cmbFilm, "");
-            }
-        }
-
-        private void cmbVrstaProjekcije_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (cmbVrstaProjekcije.SelectedValue == null)
-            {
-                e.Cancel = true;
-                cmbVrstaProjekcije.Focus();
-                errorProvider.SetError(cmbVrstaProjekcije, "Vrsta projekcije nije odabrana");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(cmbVrstaProjekcije, "");
-            }
-        }
-
-        private void numCijena_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (numCijena.Value == 0)
-            {
-                e.Cancel = true;
-                numCijena.Focus();
-                errorProvider.SetError(numCijena, "Cijena ne smije biti 0");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(numCijena, "");
-            }
-        }
-
         private void cbRedovnaProjekcija_CheckedChanged(object sender, EventArgs e)
         {
             dtpDatumProjekcije.Visible = !dtpDatumProjekcije.Visible;
@@ -235,59 +190,60 @@ namespace KinoPlus.WinUI
             }
         }
 
-        private void dtpDatumProjekcije_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private bool ValidateProjectionDate()
         {
             if (cbRedovnaProjekcija.Checked)
-                return;
+                return true;
 
             var selectedDate = dtpDatumProjekcije.Value.Date;
             var selectedTime = dtpVrijeme.Value.TimeOfDay;
             var now = DateTime.Now;
+
             if (selectedDate < now.Date ||
                 selectedDate == now.Date && selectedTime < now.TimeOfDay)
             {
-                e.Cancel = true;
                 errorProvider.SetError(dtpDatumProjekcije, "Datum i vrijeme projekcije u prošlosti nisu validni");
                 errorProvider.SetError(dtpVrijeme, "Datum i vrijeme projekcije u prošlosti nisu validni");
+
+                return false;
             }
             else
             {
-                e.Cancel = false;
                 errorProvider.SetError(dtpDatumProjekcije, null);
                 errorProvider.SetError(dtpVrijeme, null);
+
+                return true;
             }
         }
 
-        private void dtpDatumPocinje_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private bool ValidateRecurringProjectionStartEndDate()
         {
             if (!cbRedovnaProjekcija.Checked)
-                return;
+                return true;
 
-            checkDatumPocetkaAndDatumZavrsetka(e);
-        }
-
-        private void dtpDatumZavrsava_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (!cbRedovnaProjekcija.Checked)
-                return;
-
-            checkDatumPocetkaAndDatumZavrsetka(e);
-        }
-
-        private void checkDatumPocetkaAndDatumZavrsetka(System.ComponentModel.CancelEventArgs e)
-        {
             if (dtpDatumPocinje.Value.Date >= dtpDatumZavrsava.Value.Date)
             {
-                e.Cancel = true;
                 errorProvider.SetError(dtpDatumPocinje, "Datum početka mora biti prije datuma završetka");
                 errorProvider.SetError(dtpDatumZavrsava, "Datum početka mora biti prije datuma završetka");
+
+                return false;
             }
             else
             {
-                e.Cancel = false;
                 errorProvider.SetError(dtpDatumPocinje, null);
                 errorProvider.SetError(dtpDatumZavrsava, null);
+
+                return true;
             }
+        }
+
+        private bool ValidateForm()
+        {
+            return Validator.ValidateControl(cmbFilm, errorProvider, "Film nije odabran") &&
+                Validator.ValidateControl(cmbVrstaProjekcije, errorProvider, "Vrsta projekcije nije odabrana") &&
+                Validator.ValidateControl(numCijena, errorProvider, "Cijena ne smije biti 0") &&
+                ValidateProjectionDate() &&
+                ValidateRecurringProjectionStartEndDate();
         }
     }
 }

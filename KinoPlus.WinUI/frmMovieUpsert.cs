@@ -131,7 +131,8 @@ namespace KinoPlus.WinUI
 
         private async void btnSpasi_Click(object sender, EventArgs e)
         {
-            if (checkValidation() == false) return;
+            if (!ValidateForm())
+                return;
 
             var movie = new MovieUpsertObject();
 
@@ -164,99 +165,14 @@ namespace KinoPlus.WinUI
             }
         }
 
-        private void rtbOpis_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private bool ValidateForm()
         {
-            if (string.IsNullOrEmpty(rtbOpis.Text))
-            {
-                e.Cancel = true;
-                rtbOpis.Focus();
-                errorProvider.SetError(rtbOpis, "Opis nije unesen");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(rtbOpis, "");
-            }
-        }
-
-        private bool checkValidation()
-        {
-            return ValidateChildren(ValidationConstraints.Enabled);
-        }
-
-        private void cmbGodina_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (cmbGodina.SelectedValue == null)
-            {
-                e.Cancel = true;
-                cmbGodina.Focus();
-                errorProvider.SetError(cmbGodina, "Godina nije odabrana");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(cmbGodina, "");
-            }
-        }
-
-        private void txtNaziv_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtNaziv.Text))
-            {
-                e.Cancel = true;
-                txtNaziv.Focus();
-                errorProvider.SetError(txtNaziv, "Naziv nije unesen");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(txtNaziv, "");
-            }
-        }
-
-        private void cmbStatus_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (cmbStatus.SelectedValue == null)
-            {
-                e.Cancel = true;
-                cmbStatus.Focus();
-                errorProvider.SetError(cmbStatus, "Status nije odabran");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(cmbStatus, "");
-            }
-        }
-
-        private void numTrajanje_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (numTrajanje.Value == 0)
-            {
-                e.Cancel = true;
-                numTrajanje.Focus();
-                errorProvider.SetError(numTrajanje, "Trajanje ne moze biti 0");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(numTrajanje, "");
-            }
-        }
-
-        private void pcbSlika_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (pcbSlika.Image == null)
-            {
-                e.Cancel = true;
-                pcbSlika.Focus();
-                errorProvider.SetError(pcbSlika, "Slika nije odabrana");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(pcbSlika, "");
-            }
+            return Validator.ValidateControl(txtNaziv, errorProvider, "Naziv nije unesen") &&
+                Validator.ValidateControl(numTrajanje, errorProvider, "Trajanje ne smije biti 0") &&
+                Validator.ValidateControl(cmbGodina, errorProvider, "Godina nije odabrana") &&
+                Validator.ValidateControl(pcbSlika, errorProvider, "Slika nije odabrana") &&
+                Validator.ValidateControl(rtbOpis, errorProvider, "Opis nije unesen") &&
+                Validator.ValidateControl(cmbStatus, errorProvider, "Status nije odabran");
         }
     }
 }

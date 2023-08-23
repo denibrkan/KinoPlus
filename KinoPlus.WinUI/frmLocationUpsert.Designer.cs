@@ -51,7 +51,6 @@
             txtNaziv.Name = "txtNaziv";
             txtNaziv.Size = new Size(331, 26);
             txtNaziv.TabIndex = 1;
-            txtNaziv.Validating += txtNaziv_Validating;
             // 
             // lblNaziv
             // 
@@ -84,7 +83,6 @@
             txtAdresa.Name = "txtAdresa";
             txtAdresa.Size = new Size(331, 26);
             txtAdresa.TabIndex = 2;
-            txtAdresa.Validating += txtAdresa_Validating;
             // 
             // cmbGrad
             // 
@@ -96,7 +94,6 @@
             cmbGrad.Name = "cmbGrad";
             cmbGrad.Size = new Size(331, 26);
             cmbGrad.TabIndex = 3;
-            cmbGrad.Validating += cmbGrad_Validating;
             // 
             // lblGrad
             // 
@@ -160,7 +157,7 @@
             // 
             btnSpasi.Anchor = AnchorStyles.Bottom;
             btnSpasi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSpasi.Location = new Point(691, 457);
+            btnSpasi.Location = new Point(691, 453);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(108, 35);
             btnSpasi.TabIndex = 6;
@@ -176,7 +173,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(854, 504);
+            ClientSize = new Size(854, 510);
             Controls.Add(btnSpasi);
             Controls.Add(lbDvorane);
             Controls.Add(lbVrstaProjekcije);

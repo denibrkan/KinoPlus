@@ -79,7 +79,6 @@
             txtNaziv.Name = "txtNaziv";
             txtNaziv.Size = new Size(495, 26);
             txtNaziv.TabIndex = 0;
-            txtNaziv.Validating += txtNaziv_Validating;
             // 
             // cmbGodina
             // 
@@ -91,7 +90,6 @@
             cmbGodina.Name = "cmbGodina";
             cmbGodina.Size = new Size(151, 26);
             cmbGodina.TabIndex = 1;
-            cmbGodina.Validating += cmbGodina_Validating;
             // 
             // lblGodina
             // 
@@ -126,7 +124,6 @@
             pcbSlika.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbSlika.TabIndex = 13;
             pcbSlika.TabStop = false;
-            pcbSlika.Validating += pcbSlika_Validating;
             // 
             // btnOdaberi
             // 
@@ -161,7 +158,6 @@
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(191, 26);
             cmbStatus.TabIndex = 4;
-            cmbStatus.Validating += cmbStatus_Validating;
             // 
             // btnSpasi
             // 
@@ -219,7 +215,6 @@
             rtbOpis.Size = new Size(874, 106);
             rtbOpis.TabIndex = 9;
             rtbOpis.Text = "";
-            rtbOpis.Validating += rtbOpis_Validating;
             // 
             // lblKategorija
             // 
@@ -298,7 +293,6 @@
             numTrajanje.RightToLeft = RightToLeft.No;
             numTrajanje.Size = new Size(130, 26);
             numTrajanje.TabIndex = 2;
-            numTrajanje.Validating += numTrajanje_Validating;
             // 
             // errorProvider
             // 
@@ -328,7 +322,6 @@
             numPopularnost.Size = new Size(191, 26);
             numPopularnost.TabIndex = 7;
             numPopularnost.Value = new decimal(new int[] { 8, 0, 0, 0 });
-            numPopularnost.Validating += numTrajanje_Validating;
             // 
             // frmMovieUpsert
             // 

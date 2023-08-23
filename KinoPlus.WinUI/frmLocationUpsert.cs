@@ -66,7 +66,7 @@ namespace KinoPlus.WinUI
 
         private async void btnSpasi_Click(object sender, EventArgs e)
         {
-            if (!checkValidation())
+            if (!ValidateForm())
                 return;
 
             var location = new LocationUpsertObject();
@@ -104,54 +104,11 @@ namespace KinoPlus.WinUI
             }
         }
 
-        private bool checkValidation()
+        private bool ValidateForm()
         {
-            return ValidateChildren(ValidationConstraints.Enabled);
-        }
-
-        private void cmbGrad_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (cmbGrad.SelectedValue == null)
-            {
-                e.Cancel = true;
-                cmbGrad.Focus();
-                errorProvider.SetError(cmbGrad, "Grad nije odabran");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(cmbGrad, "");
-            }
-        }
-
-        private void txtNaziv_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtNaziv.Text))
-            {
-                e.Cancel = true;
-                txtNaziv.Focus();
-                errorProvider.SetError(txtNaziv, "Naziv nije unesen");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(txtNaziv, "");
-            }
-        }
-
-        private void txtAdresa_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtAdresa.Text))
-            {
-                e.Cancel = true;
-                txtAdresa.Focus();
-                errorProvider.SetError(txtAdresa, "Adresa nije unesena");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider.SetError(txtAdresa, "");
-            }
+            return Validator.ValidateControl(cmbGrad, errorProvider, "Grad nije odabran") &&
+                    Validator.ValidateControl(txtNaziv, errorProvider, "Naziv nije unesen") &&
+                    Validator.ValidateControl(txtAdresa, errorProvider, "Adresa nije unesena");
         }
     }
 }
