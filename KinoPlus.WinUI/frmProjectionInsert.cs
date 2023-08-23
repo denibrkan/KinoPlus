@@ -79,7 +79,6 @@ namespace KinoPlus.WinUI
                     DataSource = location.Halls,
                     ValueMember = "Id",
                     DisplayMember = "Name",
-                    Width = 150
                 };
 
                 cmbHalls.DataSource = location.Halls;
@@ -92,6 +91,8 @@ namespace KinoPlus.WinUI
                     Width = hallsLbl.X - locationLbl.X,
                     Height = cmbHalls.Height,
                 };
+
+                cmbHalls.Width = panel.Width - cbLocation.Width - 20;
 
                 var itemYLocation = (index * cmbHalls.Height + index * 10);
 

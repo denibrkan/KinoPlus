@@ -43,7 +43,7 @@
             dtpDatumVrijeme.Format = DateTimePickerFormat.Custom;
             dtpDatumVrijeme.Location = new Point(78, 95);
             dtpDatumVrijeme.Name = "dtpDatumVrijeme";
-            dtpDatumVrijeme.Size = new Size(200, 26);
+            dtpDatumVrijeme.Size = new Size(273, 26);
             dtpDatumVrijeme.TabIndex = 0;
             // 
             // lblDatumProjekcije
@@ -65,7 +65,7 @@
             lblDvorana.FlatStyle = FlatStyle.System;
             lblDvorana.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDvorana.ForeColor = SystemColors.ControlDarkDark;
-            lblDvorana.Location = new Point(375, 70);
+            lblDvorana.Location = new Point(78, 149);
             lblDvorana.Margin = new Padding(0);
             lblDvorana.Name = "lblDvorana";
             lblDvorana.Size = new Size(71, 18);
@@ -78,9 +78,9 @@
             cmbDvorana.FlatStyle = FlatStyle.Flat;
             cmbDvorana.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbDvorana.FormattingEnabled = true;
-            cmbDvorana.Location = new Point(375, 95);
+            cmbDvorana.Location = new Point(78, 174);
             cmbDvorana.Name = "cmbDvorana";
-            cmbDvorana.Size = new Size(199, 26);
+            cmbDvorana.Size = new Size(273, 26);
             cmbDvorana.TabIndex = 28;
             // 
             // btnOtkazi
@@ -89,7 +89,7 @@
             btnOtkazi.BackColor = Color.Red;
             btnOtkazi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnOtkazi.ForeColor = Color.White;
-            btnOtkazi.Location = new Point(85, 314);
+            btnOtkazi.Location = new Point(78, 286);
             btnOtkazi.Name = "btnOtkazi";
             btnOtkazi.Size = new Size(115, 35);
             btnOtkazi.TabIndex = 29;
@@ -101,7 +101,7 @@
             // 
             btnSpasi.Anchor = AnchorStyles.None;
             btnSpasi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSpasi.Location = new Point(306, 314);
+            btnSpasi.Location = new Point(243, 286);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(108, 35);
             btnSpasi.TabIndex = 29;
@@ -113,7 +113,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(665, 392);
+            ClientSize = new Size(448, 364);
             Controls.Add(btnSpasi);
             Controls.Add(btnOtkazi);
             Controls.Add(cmbDvorana);
