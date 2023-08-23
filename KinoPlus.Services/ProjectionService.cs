@@ -85,11 +85,11 @@ namespace KinoPlus.Services
                 var startsAt = projectionDate.Date.AddHours(projectionTime.Hour).AddMinutes(projectionTime.Minute);
                 var endsAt = startsAt.AddMinutes(movie.Duration);
 
-                if (!await CheckProjectionOverlaping(startsAt, endsAt, insert.Locations))
-                    throw new Exception("Postoji vremensko i lokacijsko preklapanje sa postojećim projekcijama. \n\nObratite pažnju na odabrane lokacije i dvorane projekcije. \n\nNapomena: Obavezni razmak između projekcija je 15 minuta!");
-
                 foreach (var locationHall in insert.Locations)
                 {
+                    if (!await CheckProjectionOverlaping(startsAt, endsAt, locationHall.LocationId!.Value, locationHall.HallId!.Value))
+                        throw new Exception("Postoji vremensko i lokacijsko preklapanje sa postojećim projekcijama. \n\nObratite pažnju na odabrane lokacije i dvorane projekcije. \n\nNapomena: Obavezni razmak između projekcija je 15 minuta!");
+
                     projections.Add
                     (
                         new Projection
@@ -160,7 +160,7 @@ namespace KinoPlus.Services
             var endsAt = startsAt.AddMinutes(movie.Duration);
             var hallId = updateObject.HallId!.Value;
 
-            if (!await CheckProjectionOverlaping(startsAt, endsAt, new[] { new LocationHallInsertObject { HallId = hallId, LocationId = projection.LocationId } }, projection.Id))
+            if (!await CheckProjectionOverlaping(startsAt, endsAt, projection.LocationId, hallId, projection.Id))
                 throw new Exception("Postoji vremensko i lokacijsko preklapanje sa postojećim projekcijama. \n\nObratite pažnju na odabrane lokacije i dvorane projekcije. \n\nNapomena: Obavezni razmak između projekcija je 15 minuta!");
 
             projection.StartsAt = startsAt;
@@ -185,16 +185,18 @@ namespace KinoPlus.Services
             return;
         }
 
-        private async Task<bool> CheckProjectionOverlaping(DateTime projectionStart, DateTime projectionEnd, IEnumerable<LocationHallInsertObject> locationHalls, int? projectionId = null)
+        private async Task<bool> CheckProjectionOverlaping(DateTime projectionStart, DateTime projectionEnd, int locationId, int hallId, int? projectionId = null)
         {
             //15 min projection break
             projectionStart = projectionStart.AddMinutes(-15);
             projectionEnd = projectionEnd.AddMinutes(15);
 
             var projections = await _context.Projections
-                .Where(p => projectionStart.Date == p.StartsAt.Date &&
+                .Where(p => p.Id != projectionId &&
+                            projectionStart.Date == p.StartsAt.Date &&
                             p.IsCanceled == false &&
-                            p.Id != projectionId)
+                            p.LocationId == locationId &&
+                            p.HallId == hallId)
                 .ToListAsync();
 
             foreach (var projection in projections)
@@ -203,10 +205,7 @@ namespace KinoPlus.Services
                 if (projectionStart > projection.StartsAt && projectionStart < projection.EndsAt ||
                     projectionEnd > projection.StartsAt && projectionEnd < projection.EndsAt)
                 {
-                    if (locationHalls.Any(lh => lh.LocationId == projection.LocationId && lh.HallId == projection.HallId))
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
             return true;
