@@ -56,7 +56,7 @@
             dtpDatumOd.Format = DateTimePickerFormat.Short;
             dtpDatumOd.Location = new Point(111, 164);
             dtpDatumOd.Name = "dtpDatumOd";
-            dtpDatumOd.Size = new Size(161, 26);
+            dtpDatumOd.Size = new Size(200, 26);
             dtpDatumOd.TabIndex = 14;
             // 
             // lblDatumOd
@@ -77,7 +77,7 @@
             dtpDatumDo.Format = DateTimePickerFormat.Short;
             dtpDatumDo.Location = new Point(355, 164);
             dtpDatumDo.Name = "dtpDatumDo";
-            dtpDatumDo.Size = new Size(148, 26);
+            dtpDatumDo.Size = new Size(200, 26);
             dtpDatumDo.TabIndex = 16;
             // 
             // lblDatumDo
@@ -117,9 +117,9 @@
             // 
             cmbLokacija.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbLokacija.FormattingEnabled = true;
-            cmbLokacija.Location = new Point(580, 164);
+            cmbLokacija.Location = new Point(596, 164);
             cmbLokacija.Name = "cmbLokacija";
-            cmbLokacija.Size = new Size(187, 26);
+            cmbLokacija.Size = new Size(250, 26);
             cmbLokacija.TabIndex = 21;
             // 
             // lblLokacija
@@ -128,7 +128,7 @@
             lblLokacija.FlatStyle = FlatStyle.System;
             lblLokacija.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblLokacija.ForeColor = SystemColors.ControlDarkDark;
-            lblLokacija.Location = new Point(580, 145);
+            lblLokacija.Location = new Point(596, 145);
             lblLokacija.Name = "lblLokacija";
             lblLokacija.Size = new Size(60, 16);
             lblLokacija.TabIndex = 20;
@@ -140,7 +140,7 @@
             lblFilm.FlatStyle = FlatStyle.System;
             lblFilm.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblFilm.ForeColor = SystemColors.ControlDarkDark;
-            lblFilm.Location = new Point(820, 145);
+            lblFilm.Location = new Point(872, 145);
             lblFilm.Name = "lblFilm";
             lblFilm.Size = new Size(32, 16);
             lblFilm.TabIndex = 20;
@@ -150,12 +150,12 @@
             // 
             cmbFilm.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbFilm.FormattingEnabled = true;
-            cmbFilm.Location = new Point(820, 164);
+            cmbFilm.Location = new Point(872, 164);
             cmbFilm.Name = "cmbFilm";
-            cmbFilm.Size = new Size(187, 26);
+            cmbFilm.Size = new Size(250, 26);
             cmbFilm.TabIndex = 21;
             // 
-            // frmIzvjestaji
+            // frmReports
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -173,7 +173,7 @@
             Controls.Add(lblDatumOd);
             Controls.Add(reportViewer1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "frmIzvjestaji";
+            Name = "frmReports";
             Text = "Izvjestaji";
             Load += frmIzvjestaji_Load;
             ResumeLayout(false);

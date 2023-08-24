@@ -18,7 +18,6 @@ namespace KinoPlus.WinUI
         {
             InitializeComponent();
 
-            btnDatumNaprijed.Visible = true;
         }
 
         private async void frmProjekcije_Load(object sender, EventArgs e)

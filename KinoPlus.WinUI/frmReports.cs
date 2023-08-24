@@ -1,5 +1,6 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
+using KinoPlus.Models.Enumerations.Sorters;
 using KinoPlus.WinUI.Utils;
 using Microsoft.Reporting.WinForms;
 
@@ -29,7 +30,8 @@ namespace KinoPlus.WinUI
 
         public async Task loadMovies()
         {
-            await ListControlHelper.loadControlEntity<MovieDto>(cmbFilm, "Movies", "Title", false);
+            var queryParams = new MovieSearchObject { SortBy = MovieSorting.Title };
+            await ListControlHelper.loadControlEntity<MovieDto>(cmbFilm, "Movies", "Title", queryObject: queryParams);
         }
 
         private async void btnOsvjezi_Click(object sender, EventArgs e)

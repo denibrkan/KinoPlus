@@ -116,5 +116,21 @@ namespace KinoPlus.WinUI
             if (!_loading)
                 await loadUsers();
         }
+
+        private async void txtTrazi_TextChanged(object sender, EventArgs e)
+        {
+            await loadUsers();
+        }
+
+        private async void btnReset_Click(object sender, EventArgs e)
+        {
+            _loading = true;
+            txtTrazi.Text = string.Empty;
+            PageNumber = 1;
+            cmbRole.SelectedItem = null;
+
+            await loadUsers();
+            _loading = false;
+        }
     }
 }

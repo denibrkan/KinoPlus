@@ -35,7 +35,6 @@
             btnNaprijed = new Button();
             btnNazad = new Button();
             txtTrazi = new TextBox();
-            btnTrazi = new Button();
             btnDodaj = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvKategorije).BeginInit();
             SuspendLayout();
@@ -113,20 +112,10 @@
             txtTrazi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtTrazi.Location = new Point(93, 96);
             txtTrazi.Name = "txtTrazi";
-            txtTrazi.PlaceholderText = "Traži";
-            txtTrazi.Size = new Size(240, 26);
+            txtTrazi.PlaceholderText = "Pretražite po nazivu...";
+            txtTrazi.Size = new Size(330, 26);
             txtTrazi.TabIndex = 13;
-            // 
-            // btnTrazi
-            // 
-            btnTrazi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnTrazi.Location = new Point(345, 96);
-            btnTrazi.Name = "btnTrazi";
-            btnTrazi.Size = new Size(86, 27);
-            btnTrazi.TabIndex = 14;
-            btnTrazi.Text = "Pretraga";
-            btnTrazi.UseVisualStyleBackColor = true;
-            btnTrazi.Click += btnTrazi_Click;
+            txtTrazi.TextChanged += txtTrazi_TextChanged;
             // 
             // btnDodaj
             // 
@@ -151,7 +140,6 @@
             ControlBox = false;
             Controls.Add(btnDodaj);
             Controls.Add(txtTrazi);
-            Controls.Add(btnTrazi);
             Controls.Add(lblPaging);
             Controls.Add(btnNaprijed);
             Controls.Add(btnNazad);
@@ -172,7 +160,6 @@
         private Button btnNaprijed;
         private Button btnNazad;
         private TextBox txtTrazi;
-        private Button btnTrazi;
         private Button btnDodaj;
     }
 }

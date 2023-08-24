@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             dgvKorisnici = new DataGridView();
             lblPaging = new Label();
             btnNaprijed = new Button();
             btnNazad = new Button();
             txtTrazi = new TextBox();
-            btnTrazi = new Button();
             cmbRole = new ComboBox();
             lblRole = new Label();
+            btnReset = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvKorisnici).BeginInit();
             SuspendLayout();
             // 
@@ -45,23 +45,23 @@
             // 
             dgvKorisnici.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvKorisnici.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.IndianRed;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvKorisnici.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.IndianRed;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvKorisnici.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvKorisnici.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvKorisnici.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvKorisnici.DefaultCellStyle = dataGridViewCellStyle4;
             dgvKorisnici.GridColor = Color.Navy;
             dgvKorisnici.Location = new Point(91, 133);
             dgvKorisnici.Name = "dgvKorisnici";
@@ -113,20 +113,10 @@
             txtTrazi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtTrazi.Location = new Point(91, 91);
             txtTrazi.Name = "txtTrazi";
-            txtTrazi.PlaceholderText = "Traži";
-            txtTrazi.Size = new Size(240, 26);
+            txtTrazi.PlaceholderText = "Pretražite po imenu i prezimenu...";
+            txtTrazi.Size = new Size(330, 26);
             txtTrazi.TabIndex = 13;
-            // 
-            // btnTrazi
-            // 
-            btnTrazi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnTrazi.Location = new Point(343, 91);
-            btnTrazi.Name = "btnTrazi";
-            btnTrazi.Size = new Size(91, 27);
-            btnTrazi.TabIndex = 14;
-            btnTrazi.Text = "Pretraga";
-            btnTrazi.UseVisualStyleBackColor = true;
-            btnTrazi.Click += btnTrazi_Click;
+            txtTrazi.TextChanged += txtTrazi_TextChanged;
             // 
             // cmbRole
             // 
@@ -134,9 +124,9 @@
             cmbRole.AutoCompleteSource = AutoCompleteSource.ListItems;
             cmbRole.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbRole.FormattingEnabled = true;
-            cmbRole.Location = new Point(480, 91);
+            cmbRole.Location = new Point(460, 91);
             cmbRole.Name = "cmbRole";
-            cmbRole.Size = new Size(187, 26);
+            cmbRole.Size = new Size(250, 26);
             cmbRole.TabIndex = 16;
             cmbRole.SelectedValueChanged += cmbRole_SelectedValueChanged;
             // 
@@ -146,11 +136,23 @@
             lblRole.FlatStyle = FlatStyle.System;
             lblRole.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblRole.ForeColor = SystemColors.ControlDarkDark;
-            lblRole.Location = new Point(480, 72);
+            lblRole.Location = new Point(460, 72);
             lblRole.Name = "lblRole";
             lblRole.Size = new Size(43, 16);
             lblRole.TabIndex = 15;
             lblRole.Text = "Uloga";
+            // 
+            // btnReset
+            // 
+            btnReset.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnReset.Location = new Point(735, 91);
+            btnReset.Margin = new Padding(4, 3, 4, 3);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(72, 27);
+            btnReset.TabIndex = 17;
+            btnReset.Text = "Poništi";
+            btnReset.UseVisualStyleBackColor = true;
+            btnReset.Click += btnReset_Click;
             // 
             // frmUsers
             // 
@@ -158,10 +160,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1275, 797);
             ControlBox = false;
+            Controls.Add(btnReset);
             Controls.Add(cmbRole);
             Controls.Add(lblRole);
             Controls.Add(txtTrazi);
-            Controls.Add(btnTrazi);
             Controls.Add(lblPaging);
             Controls.Add(btnNaprijed);
             Controls.Add(btnNazad);
@@ -182,8 +184,8 @@
         private Button btnNaprijed;
         private Button btnNazad;
         private TextBox txtTrazi;
-        private Button btnTrazi;
         private ComboBox cmbRole;
         private Label lblRole;
+        private Button btnReset;
     }
 }

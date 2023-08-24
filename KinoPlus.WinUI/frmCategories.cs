@@ -122,5 +122,10 @@ namespace KinoPlus.WinUI
                 await loadCategories();
             }
         }
+
+        private async void txtTrazi_TextChanged(object sender, EventArgs e)
+        {
+            await loadCategories();
+        }
     }
 }

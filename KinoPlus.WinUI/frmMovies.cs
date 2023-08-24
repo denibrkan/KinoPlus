@@ -75,6 +75,7 @@ namespace KinoPlus.WinUI
                 dgvMovies.Columns["Naziv"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dgvMovies.Columns["Zanr"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dgvMovies.Columns["Kategorija"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvMovies.Columns["DatumDodavanja"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
                 lblPaging.Text = "Stranica " + PageNumber;
                 if (movies.Count < queryParams.PageSize)
@@ -172,6 +173,11 @@ namespace KinoPlus.WinUI
             {
                 await loadMovies();
             }
+        }
+
+        private async void txtTrazi_TextChanged(object sender, EventArgs e)
+        {
+            await loadMovies();
         }
     }
 }

@@ -41,7 +41,6 @@
             txtTrazi = new TextBox();
             lblKategorija = new Label();
             cmbKategorija = new ComboBox();
-            btnTrazi = new Button();
             btnReset = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvMovies).BeginInit();
             SuspendLayout();
@@ -69,7 +68,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvMovies.DefaultCellStyle = dataGridViewCellStyle2;
             dgvMovies.GridColor = Color.MidnightBlue;
-            dgvMovies.Location = new Point(71, 157);
+            dgvMovies.Location = new Point(94, 157);
             dgvMovies.Margin = new Padding(0);
             dgvMovies.Name = "dgvMovies";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -83,8 +82,8 @@
             dgvMovies.RowHeadersWidth = 62;
             dgvMovies.RowTemplate.Height = 65;
             dgvMovies.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMovies.Size = new Size(1050, 575);
-            dgvMovies.TabIndex = 2;
+            dgvMovies.Size = new Size(1113, 575);
+            dgvMovies.TabIndex = 8;
             dgvMovies.CellDoubleClick += dgvMovies_CellDoubleClick;
             // 
             // btnDodaj
@@ -93,11 +92,11 @@
             btnDodaj.BackColor = Color.MidnightBlue;
             btnDodaj.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnDodaj.ForeColor = Color.White;
-            btnDodaj.Location = new Point(999, 111);
+            btnDodaj.Location = new Point(1085, 110);
             btnDodaj.Margin = new Padding(4, 3, 4, 3);
             btnDodaj.Name = "btnDodaj";
             btnDodaj.Size = new Size(122, 35);
-            btnDodaj.TabIndex = 3;
+            btnDodaj.TabIndex = 5;
             btnDodaj.Text = "Dodaj";
             btnDodaj.UseVisualStyleBackColor = false;
             btnDodaj.Click += btnDodaj_Click;
@@ -108,7 +107,7 @@
             lblStatus.FlatStyle = FlatStyle.System;
             lblStatus.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblStatus.ForeColor = SystemColors.ControlDarkDark;
-            lblStatus.Location = new Point(460, 97);
+            lblStatus.Location = new Point(448, 96);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(51, 16);
             lblStatus.TabIndex = 5;
@@ -120,20 +119,20 @@
             cmbStatus.AutoCompleteSource = AutoCompleteSource.ListItems;
             cmbStatus.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(460, 116);
+            cmbStatus.Location = new Point(448, 115);
             cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(187, 26);
-            cmbStatus.TabIndex = 6;
+            cmbStatus.Size = new Size(250, 26);
+            cmbStatus.TabIndex = 2;
             cmbStatus.SelectedValueChanged += cmbStatus_SelectedValueChanged;
             // 
             // btnNazad
             // 
             btnNazad.Anchor = AnchorStyles.Bottom;
             btnNazad.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnNazad.Location = new Point(479, 752);
+            btnNazad.Location = new Point(538, 752);
             btnNazad.Name = "btnNazad";
             btnNazad.Size = new Size(75, 31);
-            btnNazad.TabIndex = 7;
+            btnNazad.TabIndex = 6;
             btnNazad.Text = "<";
             btnNazad.UseVisualStyleBackColor = true;
             btnNazad.Click += btnNazad_Click;
@@ -142,7 +141,7 @@
             // 
             btnNaprijed.Anchor = AnchorStyles.Bottom;
             btnNaprijed.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnNaprijed.Location = new Point(658, 752);
+            btnNaprijed.Location = new Point(717, 752);
             btnNaprijed.Name = "btnNaprijed";
             btnNaprijed.Size = new Size(75, 31);
             btnNaprijed.TabIndex = 7;
@@ -155,7 +154,7 @@
             lblPaging.Anchor = AnchorStyles.Bottom;
             lblPaging.AutoSize = true;
             lblPaging.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPaging.Location = new Point(572, 761);
+            lblPaging.Location = new Point(631, 761);
             lblPaging.Name = "lblPaging";
             lblPaging.Size = new Size(28, 16);
             lblPaging.TabIndex = 8;
@@ -164,11 +163,12 @@
             // txtTrazi
             // 
             txtTrazi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtTrazi.Location = new Point(71, 115);
+            txtTrazi.Location = new Point(94, 115);
             txtTrazi.Name = "txtTrazi";
-            txtTrazi.PlaceholderText = "Traži";
-            txtTrazi.Size = new Size(240, 26);
-            txtTrazi.TabIndex = 9;
+            txtTrazi.PlaceholderText = "Pretražite po naslovu...";
+            txtTrazi.Size = new Size(330, 26);
+            txtTrazi.TabIndex = 1;
+            txtTrazi.TextChanged += txtTrazi_TextChanged;
             // 
             // lblKategorija
             // 
@@ -176,7 +176,7 @@
             lblKategorija.FlatStyle = FlatStyle.System;
             lblKategorija.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblKategorija.ForeColor = SystemColors.ControlDarkDark;
-            lblKategorija.Location = new Point(669, 97);
+            lblKategorija.Location = new Point(717, 96);
             lblKategorija.Name = "lblKategorija";
             lblKategorija.Size = new Size(73, 16);
             lblKategorija.TabIndex = 5;
@@ -189,31 +189,20 @@
             cmbKategorija.BackColor = SystemColors.Window;
             cmbKategorija.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbKategorija.FormattingEnabled = true;
-            cmbKategorija.Location = new Point(669, 116);
+            cmbKategorija.Location = new Point(717, 115);
             cmbKategorija.Name = "cmbKategorija";
-            cmbKategorija.Size = new Size(187, 26);
-            cmbKategorija.TabIndex = 6;
+            cmbKategorija.Size = new Size(250, 26);
+            cmbKategorija.TabIndex = 3;
             cmbKategorija.SelectedValueChanged += cmbKategorija_SelectedValueChanged;
-            // 
-            // btnTrazi
-            // 
-            btnTrazi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnTrazi.Location = new Point(323, 115);
-            btnTrazi.Name = "btnTrazi";
-            btnTrazi.Size = new Size(85, 27);
-            btnTrazi.TabIndex = 12;
-            btnTrazi.Text = "Pretraga";
-            btnTrazi.UseVisualStyleBackColor = true;
-            btnTrazi.Click += btnTrazi_Click;
             // 
             // btnReset
             // 
             btnReset.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnReset.Location = new Point(875, 116);
+            btnReset.Location = new Point(987, 115);
             btnReset.Margin = new Padding(4, 3, 4, 3);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(72, 27);
-            btnReset.TabIndex = 3;
+            btnReset.TabIndex = 4;
             btnReset.Text = "Poništi";
             btnReset.UseVisualStyleBackColor = true;
             btnReset.Click += btnReset_Click;
@@ -225,7 +214,6 @@
             ClientSize = new Size(1327, 848);
             ControlBox = false;
             Controls.Add(txtTrazi);
-            Controls.Add(btnTrazi);
             Controls.Add(lblPaging);
             Controls.Add(btnNaprijed);
             Controls.Add(btnNazad);
@@ -257,7 +245,6 @@
         private TextBox txtTrazi;
         private Label lblKategorija;
         private ComboBox cmbKategorija;
-        private Button btnTrazi;
         private Button btnReset;
     }
 }

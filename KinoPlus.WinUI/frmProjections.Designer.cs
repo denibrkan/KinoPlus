@@ -49,9 +49,9 @@
             // 
             cmbLokacija.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbLokacija.FormattingEnabled = true;
-            cmbLokacija.Location = new Point(479, 115);
+            cmbLokacija.Location = new Point(468, 115);
             cmbLokacija.Name = "cmbLokacija";
-            cmbLokacija.Size = new Size(187, 26);
+            cmbLokacija.Size = new Size(250, 26);
             cmbLokacija.TabIndex = 11;
             cmbLokacija.SelectedValueChanged += cmbLokacija_SelectedValueChanged;
             // 
@@ -61,7 +61,7 @@
             lblLokacija.FlatStyle = FlatStyle.System;
             lblLokacija.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
             lblLokacija.ForeColor = SystemColors.ControlDarkDark;
-            lblLokacija.Location = new Point(479, 96);
+            lblLokacija.Location = new Point(468, 96);
             lblLokacija.Name = "lblLokacija";
             lblLokacija.Size = new Size(60, 16);
             lblLokacija.TabIndex = 9;
