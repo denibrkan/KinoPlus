@@ -69,6 +69,9 @@ namespace KinoPlus.Services
             {
                 recurringId = await InsertRecurringProjectionAsync(insert);
                 projectionDates = GetProjectionDates(insert);
+
+                if (!projectionDates.Any())
+                    throw new Exception(Strings.ProjectionDatesEmptyError);
             }
             else
             {

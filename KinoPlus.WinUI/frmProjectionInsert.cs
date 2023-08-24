@@ -223,6 +223,12 @@ namespace KinoPlus.WinUI
             if (!cbRedovnaProjekcija.Checked)
                 return true;
 
+            if (dtpDatumPocinje.Value.Date < DateTime.Today)
+            {
+                errorProvider.SetError(dtpDatumPocinje, "Datum početka u prošlosti nije validan");
+                return false;
+            }
+
             if (dtpDatumPocinje.Value.Date >= dtpDatumZavrsava.Value.Date)
             {
                 errorProvider.SetError(dtpDatumPocinje, "Datum početka mora biti prije datuma završetka");

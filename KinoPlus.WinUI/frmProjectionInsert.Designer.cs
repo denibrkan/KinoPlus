@@ -61,7 +61,7 @@
             cmbFilm.FlatStyle = FlatStyle.Flat;
             cmbFilm.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbFilm.FormattingEnabled = true;
-            cmbFilm.Location = new Point(59, 90);
+            cmbFilm.Location = new Point(45, 82);
             cmbFilm.Name = "cmbFilm";
             cmbFilm.Size = new Size(307, 26);
             cmbFilm.TabIndex = 0;
@@ -72,7 +72,7 @@
             lblFilm.FlatStyle = FlatStyle.System;
             lblFilm.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblFilm.ForeColor = SystemColors.ControlDarkDark;
-            lblFilm.Location = new Point(59, 67);
+            lblFilm.Location = new Point(45, 57);
             lblFilm.Name = "lblFilm";
             lblFilm.Size = new Size(38, 18);
             lblFilm.TabIndex = 11;
@@ -84,7 +84,7 @@
             lblVrstaProjekcije.FlatStyle = FlatStyle.System;
             lblVrstaProjekcije.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblVrstaProjekcije.ForeColor = SystemColors.ControlDarkDark;
-            lblVrstaProjekcije.Location = new Point(446, 67);
+            lblVrstaProjekcije.Location = new Point(414, 58);
             lblVrstaProjekcije.Name = "lblVrstaProjekcije";
             lblVrstaProjekcije.Size = new Size(125, 18);
             lblVrstaProjekcije.TabIndex = 12;
@@ -96,7 +96,7 @@
             cmbVrstaProjekcije.FlatStyle = FlatStyle.Flat;
             cmbVrstaProjekcije.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbVrstaProjekcije.FormattingEnabled = true;
-            cmbVrstaProjekcije.Location = new Point(447, 90);
+            cmbVrstaProjekcije.Location = new Point(415, 82);
             cmbVrstaProjekcije.Name = "cmbVrstaProjekcije";
             cmbVrstaProjekcije.Size = new Size(276, 26);
             cmbVrstaProjekcije.TabIndex = 1;
@@ -107,7 +107,7 @@
             lblVrijeme.FlatStyle = FlatStyle.System;
             lblVrijeme.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblVrijeme.ForeColor = SystemColors.ControlDarkDark;
-            lblVrijeme.Location = new Point(762, 67);
+            lblVrijeme.Location = new Point(730, 58);
             lblVrijeme.Name = "lblVrijeme";
             lblVrijeme.Size = new Size(65, 18);
             lblVrijeme.TabIndex = 13;
@@ -119,7 +119,7 @@
             lblCijena.FlatStyle = FlatStyle.System;
             lblCijena.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblCijena.ForeColor = SystemColors.ControlDarkDark;
-            lblCijena.Location = new Point(925, 67);
+            lblCijena.Location = new Point(893, 58);
             lblCijena.Name = "lblCijena";
             lblCijena.Size = new Size(54, 18);
             lblCijena.TabIndex = 14;
@@ -130,7 +130,7 @@
             dtpVrijeme.CustomFormat = "HH:mm";
             dtpVrijeme.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             dtpVrijeme.Format = DateTimePickerFormat.Custom;
-            dtpVrijeme.Location = new Point(762, 90);
+            dtpVrijeme.Location = new Point(730, 82);
             dtpVrijeme.Name = "dtpVrijeme";
             dtpVrijeme.ShowUpDown = true;
             dtpVrijeme.Size = new Size(122, 26);
@@ -140,7 +140,7 @@
             // 
             numCijena.DecimalPlaces = 2;
             numCijena.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            numCijena.Location = new Point(925, 90);
+            numCijena.Location = new Point(893, 82);
             numCijena.Margin = new Padding(1);
             numCijena.Name = "numCijena";
             numCijena.Size = new Size(95, 26);
@@ -152,7 +152,7 @@
             lblLokacije.FlatStyle = FlatStyle.System;
             lblLokacije.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblLokacije.ForeColor = SystemColors.ControlDarkDark;
-            lblLokacije.Location = new Point(447, 187);
+            lblLokacije.Location = new Point(415, 177);
             lblLokacije.Name = "lblLokacije";
             lblLokacije.Size = new Size(69, 18);
             lblLokacije.TabIndex = 20;
@@ -164,7 +164,7 @@
             lblDvorane.FlatStyle = FlatStyle.System;
             lblDvorane.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDvorane.ForeColor = SystemColors.ControlDarkDark;
-            lblDvorane.Location = new Point(762, 187);
+            lblDvorane.Location = new Point(730, 177);
             lblDvorane.Name = "lblDvorane";
             lblDvorane.Size = new Size(71, 18);
             lblDvorane.TabIndex = 21;
@@ -174,7 +174,7 @@
             // 
             btnSpasi.Anchor = AnchorStyles.None;
             btnSpasi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSpasi.Location = new Point(912, 553);
+            btnSpasi.Location = new Point(880, 515);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(108, 35);
             btnSpasi.TabIndex = 10;
@@ -189,7 +189,7 @@
             // dtpDatumProjekcije
             // 
             dtpDatumProjekcije.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpDatumProjekcije.Location = new Point(65, 257);
+            dtpDatumProjekcije.Location = new Point(51, 247);
             dtpDatumProjekcije.Name = "dtpDatumProjekcije";
             dtpDatumProjekcije.Size = new Size(301, 26);
             dtpDatumProjekcije.TabIndex = 5;
@@ -200,7 +200,7 @@
             lblDatumProjekcije.FlatStyle = FlatStyle.System;
             lblDatumProjekcije.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDatumProjekcije.ForeColor = SystemColors.ControlDarkDark;
-            lblDatumProjekcije.Location = new Point(65, 233);
+            lblDatumProjekcije.Location = new Point(51, 223);
             lblDatumProjekcije.Name = "lblDatumProjekcije";
             lblDatumProjekcije.Size = new Size(58, 18);
             lblDatumProjekcije.TabIndex = 16;
@@ -210,7 +210,7 @@
             // 
             cbRedovnaProjekcija.AccessibleDescription = "Redovna projekcija kreira projekcije na svaki odabrani dan u zadanom vremenskom razdoblju";
             cbRedovnaProjekcija.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            cbRedovnaProjekcija.Location = new Point(247, 187);
+            cbRedovnaProjekcija.Location = new Point(233, 177);
             cbRedovnaProjekcija.Name = "cbRedovnaProjekcija";
             cbRedovnaProjekcija.Size = new Size(30, 30);
             cbRedovnaProjekcija.TabIndex = 4;
@@ -221,7 +221,7 @@
             // 
             dtpDatumZavrsava.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             dtpDatumZavrsava.Format = DateTimePickerFormat.Short;
-            dtpDatumZavrsava.Location = new Point(65, 407);
+            dtpDatumZavrsava.Location = new Point(51, 397);
             dtpDatumZavrsava.Name = "dtpDatumZavrsava";
             dtpDatumZavrsava.Size = new Size(301, 26);
             dtpDatumZavrsava.TabIndex = 8;
@@ -230,7 +230,7 @@
             // 
             dtpDatumPocinje.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             dtpDatumPocinje.Format = DateTimePickerFormat.Short;
-            dtpDatumPocinje.Location = new Point(65, 329);
+            dtpDatumPocinje.Location = new Point(51, 319);
             dtpDatumPocinje.Name = "dtpDatumPocinje";
             dtpDatumPocinje.Size = new Size(301, 26);
             dtpDatumPocinje.TabIndex = 7;
@@ -241,7 +241,7 @@
             cmbDan.FlatStyle = FlatStyle.Flat;
             cmbDan.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbDan.FormattingEnabled = true;
-            cmbDan.Location = new Point(65, 257);
+            cmbDan.Location = new Point(51, 247);
             cmbDan.Name = "cmbDan";
             cmbDan.Size = new Size(301, 26);
             cmbDan.TabIndex = 6;
@@ -252,7 +252,7 @@
             lblDatumZavrsava.FlatStyle = FlatStyle.System;
             lblDatumZavrsava.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDatumZavrsava.ForeColor = SystemColors.ControlDarkDark;
-            lblDatumZavrsava.Location = new Point(65, 383);
+            lblDatumZavrsava.Location = new Point(51, 373);
             lblDatumZavrsava.Name = "lblDatumZavrsava";
             lblDatumZavrsava.Size = new Size(84, 18);
             lblDatumZavrsava.TabIndex = 19;
@@ -264,7 +264,7 @@
             lblDatumPocinje.FlatStyle = FlatStyle.System;
             lblDatumPocinje.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDatumPocinje.ForeColor = SystemColors.ControlDarkDark;
-            lblDatumPocinje.Location = new Point(65, 305);
+            lblDatumPocinje.Location = new Point(51, 295);
             lblDatumPocinje.Name = "lblDatumPocinje";
             lblDatumPocinje.Size = new Size(68, 18);
             lblDatumPocinje.TabIndex = 18;
@@ -275,7 +275,7 @@
             lblDan.AutoSize = true;
             lblDan.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDan.ForeColor = SystemColors.ControlDarkDark;
-            lblDan.Location = new Point(65, 233);
+            lblDan.Location = new Point(51, 223);
             lblDan.Name = "lblDan";
             lblDan.Size = new Size(111, 18);
             lblDan.TabIndex = 17;
@@ -287,7 +287,7 @@
             lblRedovnaProjekcija.FlatStyle = FlatStyle.System;
             lblRedovnaProjekcija.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblRedovnaProjekcija.ForeColor = SystemColors.ControlDarkDark;
-            lblRedovnaProjekcija.Location = new Point(65, 190);
+            lblRedovnaProjekcija.Location = new Point(51, 180);
             lblRedovnaProjekcija.Name = "lblRedovnaProjekcija";
             lblRedovnaProjekcija.Size = new Size(159, 18);
             lblRedovnaProjekcija.TabIndex = 15;
@@ -296,7 +296,7 @@
             // panel
             // 
             panel.AutoScroll = true;
-            panel.Location = new Point(447, 216);
+            panel.Location = new Point(415, 206);
             panel.Name = "panel";
             panel.Size = new Size(573, 282);
             panel.TabIndex = 9;
@@ -306,7 +306,7 @@
             AutoScaleDimensions = new SizeF(8F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1093, 616);
+            ClientSize = new Size(1031, 571);
             Controls.Add(lblDvorane);
             Controls.Add(lblLokacije);
             Controls.Add(panel);

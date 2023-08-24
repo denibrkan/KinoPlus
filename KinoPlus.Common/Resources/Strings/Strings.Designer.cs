@@ -61,7 +61,7 @@ namespace KinoPlus.Common.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Greška prilikom učitavanja. Nastavite dalje sa radom.
+        ///   Looks up a localized string similar to Greška prilikom učitavanja. Nastavite dalje sa radom..
         /// </summary>
         public static string LoadingError {
             get {
@@ -84,6 +84,15 @@ namespace KinoPlus.Common.Resources.Strings {
         public static string PasswordRequired {
             get {
                 return ResourceManager.GetString("PasswordRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nije pronađen niti jedan odabrani dan u sedmici za vremenski interval..
+        /// </summary>
+        public static string ProjectionDatesEmptyError {
+            get {
+                return ResourceManager.GetString("ProjectionDatesEmptyError", resourceCulture);
             }
         }
         

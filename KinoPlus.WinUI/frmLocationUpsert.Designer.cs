@@ -47,7 +47,7 @@
             // txtNaziv
             // 
             txtNaziv.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtNaziv.Location = new Point(64, 88);
+            txtNaziv.Location = new Point(41, 68);
             txtNaziv.Name = "txtNaziv";
             txtNaziv.Size = new Size(331, 26);
             txtNaziv.TabIndex = 1;
@@ -58,7 +58,7 @@
             lblNaziv.FlatStyle = FlatStyle.System;
             lblNaziv.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblNaziv.ForeColor = SystemColors.ControlDarkDark;
-            lblNaziv.Location = new Point(64, 65);
+            lblNaziv.Location = new Point(41, 45);
             lblNaziv.Name = "lblNaziv";
             lblNaziv.Size = new Size(49, 18);
             lblNaziv.TabIndex = 8;
@@ -70,7 +70,7 @@
             lblAdresa.FlatStyle = FlatStyle.System;
             lblAdresa.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblAdresa.ForeColor = SystemColors.ControlDarkDark;
-            lblAdresa.Location = new Point(64, 131);
+            lblAdresa.Location = new Point(41, 111);
             lblAdresa.Name = "lblAdresa";
             lblAdresa.Size = new Size(59, 18);
             lblAdresa.TabIndex = 8;
@@ -79,7 +79,7 @@
             // txtAdresa
             // 
             txtAdresa.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtAdresa.Location = new Point(64, 154);
+            txtAdresa.Location = new Point(41, 134);
             txtAdresa.Name = "txtAdresa";
             txtAdresa.Size = new Size(331, 26);
             txtAdresa.TabIndex = 2;
@@ -90,7 +90,7 @@
             cmbGrad.FlatStyle = FlatStyle.Flat;
             cmbGrad.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbGrad.FormattingEnabled = true;
-            cmbGrad.Location = new Point(64, 219);
+            cmbGrad.Location = new Point(41, 199);
             cmbGrad.Name = "cmbGrad";
             cmbGrad.Size = new Size(331, 26);
             cmbGrad.TabIndex = 3;
@@ -101,7 +101,7 @@
             lblGrad.FlatStyle = FlatStyle.System;
             lblGrad.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblGrad.ForeColor = SystemColors.ControlDarkDark;
-            lblGrad.Location = new Point(64, 197);
+            lblGrad.Location = new Point(41, 177);
             lblGrad.Name = "lblGrad";
             lblGrad.Size = new Size(44, 18);
             lblGrad.TabIndex = 13;
@@ -112,7 +112,7 @@
             lbDvorane.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lbDvorane.FormattingEnabled = true;
             lbDvorane.ItemHeight = 18;
-            lbDvorane.Location = new Point(468, 88);
+            lbDvorane.Location = new Point(445, 68);
             lbDvorane.Name = "lbDvorane";
             lbDvorane.SelectionMode = SelectionMode.MultiSimple;
             lbDvorane.Size = new Size(331, 328);
@@ -123,7 +123,7 @@
             lbVrstaProjekcije.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lbVrstaProjekcije.FormattingEnabled = true;
             lbVrstaProjekcije.ItemHeight = 18;
-            lbVrstaProjekcije.Location = new Point(64, 286);
+            lbVrstaProjekcije.Location = new Point(41, 266);
             lbVrstaProjekcije.Name = "lbVrstaProjekcije";
             lbVrstaProjekcije.SelectionMode = SelectionMode.MultiSimple;
             lbVrstaProjekcije.Size = new Size(331, 130);
@@ -135,7 +135,7 @@
             lblDvorane.FlatStyle = FlatStyle.System;
             lblDvorane.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDvorane.ForeColor = SystemColors.ControlDarkDark;
-            lblDvorane.Location = new Point(468, 65);
+            lblDvorane.Location = new Point(445, 45);
             lblDvorane.Name = "lblDvorane";
             lblDvorane.Size = new Size(71, 18);
             lblDvorane.TabIndex = 16;
@@ -147,7 +147,7 @@
             lblVrstaProjekcije.FlatStyle = FlatStyle.System;
             lblVrstaProjekcije.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblVrstaProjekcije.ForeColor = SystemColors.ControlDarkDark;
-            lblVrstaProjekcije.Location = new Point(64, 264);
+            lblVrstaProjekcije.Location = new Point(41, 244);
             lblVrstaProjekcije.Name = "lblVrstaProjekcije";
             lblVrstaProjekcije.Size = new Size(125, 18);
             lblVrstaProjekcije.TabIndex = 18;
@@ -157,7 +157,7 @@
             // 
             btnSpasi.Anchor = AnchorStyles.Bottom;
             btnSpasi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSpasi.Location = new Point(691, 453);
+            btnSpasi.Location = new Point(668, 415);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(108, 35);
             btnSpasi.TabIndex = 6;
@@ -173,7 +173,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(854, 510);
+            ClientSize = new Size(808, 474);
             Controls.Add(btnSpasi);
             Controls.Add(lbDvorane);
             Controls.Add(lbVrstaProjekcije);

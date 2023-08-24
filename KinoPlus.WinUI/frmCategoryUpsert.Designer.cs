@@ -46,7 +46,7 @@
             // txtNaziv
             // 
             txtNaziv.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtNaziv.Location = new Point(68, 90);
+            txtNaziv.Location = new Point(37, 74);
             txtNaziv.Name = "txtNaziv";
             txtNaziv.Size = new Size(359, 26);
             txtNaziv.TabIndex = 1;
@@ -57,7 +57,7 @@
             lblNaziv.FlatStyle = FlatStyle.System;
             lblNaziv.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblNaziv.ForeColor = SystemColors.ControlDarkDark;
-            lblNaziv.Location = new Point(68, 67);
+            lblNaziv.Location = new Point(37, 51);
             lblNaziv.Name = "lblNaziv";
             lblNaziv.Size = new Size(49, 18);
             lblNaziv.TabIndex = 8;
@@ -69,7 +69,7 @@
             lblOrderPoeni.FlatStyle = FlatStyle.System;
             lblOrderPoeni.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblOrderPoeni.ForeColor = SystemColors.ControlDarkDark;
-            lblOrderPoeni.Location = new Point(524, 68);
+            lblOrderPoeni.Location = new Point(436, 48);
             lblOrderPoeni.Name = "lblOrderPoeni";
             lblOrderPoeni.Size = new Size(95, 18);
             lblOrderPoeni.TabIndex = 8;
@@ -81,7 +81,7 @@
             lblFilmovi.FlatStyle = FlatStyle.System;
             lblFilmovi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblFilmovi.ForeColor = SystemColors.ControlDarkDark;
-            lblFilmovi.Location = new Point(68, 147);
+            lblFilmovi.Location = new Point(37, 131);
             lblFilmovi.Name = "lblFilmovi";
             lblFilmovi.Size = new Size(60, 18);
             lblFilmovi.TabIndex = 18;
@@ -91,7 +91,7 @@
             // 
             btnSpasi.Anchor = AnchorStyles.Bottom;
             btnSpasi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSpasi.Location = new Point(766, 487);
+            btnSpasi.Location = new Point(702, 447);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(108, 35);
             btnSpasi.TabIndex = 6;
@@ -103,7 +103,7 @@
             // 
             numOrderPoints.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             numOrderPoints.Increment = new decimal(new int[] { 10, 0, 0, 0 });
-            numOrderPoints.Location = new Point(524, 91);
+            numOrderPoints.Location = new Point(436, 71);
             numOrderPoints.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             numOrderPoints.Name = "numOrderPoints";
             numOrderPoints.RightToLeft = RightToLeft.No;
@@ -115,10 +115,10 @@
             lbFilmovi.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lbFilmovi.FormattingEnabled = true;
             lbFilmovi.ItemHeight = 18;
-            lbFilmovi.Location = new Point(68, 170);
+            lbFilmovi.Location = new Point(37, 154);
             lbFilmovi.Name = "lbFilmovi";
             lbFilmovi.SelectionMode = SelectionMode.MultiSimple;
-            lbFilmovi.Size = new Size(806, 274);
+            lbFilmovi.Size = new Size(773, 274);
             lbFilmovi.TabIndex = 19;
             // 
             // cbPrikazan
@@ -127,7 +127,7 @@
             cbPrikazan.Checked = true;
             cbPrikazan.CheckState = CheckState.Checked;
             cbPrikazan.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            cbPrikazan.Location = new Point(700, 82);
+            cbPrikazan.Location = new Point(612, 62);
             cbPrikazan.Name = "cbPrikazan";
             cbPrikazan.Padding = new Padding(8);
             cbPrikazan.Size = new Size(198, 38);
@@ -143,7 +143,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(935, 547);
+            ClientSize = new Size(845, 505);
             Controls.Add(cbPrikazan);
             Controls.Add(lbFilmovi);
             Controls.Add(numOrderPoints);

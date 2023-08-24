@@ -118,13 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="LoadingError" xml:space="preserve">
-    <value>Greška prilikom učitavanja. Nastavite dalje sa radom</value>
+    <value>Greška prilikom učitavanja. Nastavite dalje sa radom.</value>
   </data>
   <data name="LoginError" xml:space="preserve">
     <value>Pogrešno korisničko ime ili password</value>
   </data>
   <data name="PasswordRequired" xml:space="preserve">
     <value>Lozinka je obavezno polje</value>
+  </data>
+  <data name="ProjectionDatesEmptyError" xml:space="preserve">
+    <value>Nije pronađen niti jedan odabrani dan u sedmici za vremenski interval.</value>
   </data>
   <data name="ProjectionOverlapError" xml:space="preserve">
     <value>Postoji vremensko i lokacijsko preklapanje sa postojećim projekcijama. 
