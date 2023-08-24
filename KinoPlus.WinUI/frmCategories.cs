@@ -26,7 +26,7 @@ namespace KinoPlus.WinUI
         public async Task loadCategories()
         {
             var search = txtTrazi.Text;
-            object queryParams = new CategorySearchObject
+            var queryParams = new CategorySearchObject
             {
                 Page = PageNumber,
                 PageSize = PageSize,
@@ -37,7 +37,10 @@ namespace KinoPlus.WinUI
             try
             {
                 var categories = await APIService.Get<List<CategoryDto>>(queryParams);
-                Categories = categories!;
+                if (categories == null)
+                    return;
+
+                Categories = categories;
                 var bindCategories = Categories
                     .Select(category => new
                     {
@@ -56,6 +59,11 @@ namespace KinoPlus.WinUI
                 dgvKategorije.Columns["BrojFilmova"].HeaderText = "Broj filmova";
 
                 lblPaging.Text = "Stranica " + PageNumber;
+
+                if (categories.Count < queryParams.PageSize)
+                    btnNaprijed.Enabled = false;
+                else
+                    btnNaprijed.Enabled = true;
             }
             catch (Exception)
             {

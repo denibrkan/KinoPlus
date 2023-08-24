@@ -33,19 +33,23 @@ namespace KinoPlus.WinUI
             var search = txtTrazi.Text;
             var statusId = (int?)(cmbStatus.SelectedValue);
             var categoryId = (int?)(cmbKategorija.SelectedValue);
-            object queryParams = new
+
+            var queryParams = new MovieSearchObject
             {
-                page = PageNumber,
-                pageSize = PageSize,
-                titleFTS = search,
-                statusId,
-                categoryId
+                Page = PageNumber,
+                PageSize = PageSize,
+                TitleFTS = search,
+                StatusId = statusId,
+                CategoryId = categoryId,
             };
 
             try
             {
                 var movies = await APIService.Get<List<MovieDto>>(queryParams);
-                var bindMovies = movies?
+                if (movies == null)
+                    return;
+
+                var bindMovies = movies
                     .Select(m => new
                     {
                         Id = m.Id,
@@ -73,12 +77,15 @@ namespace KinoPlus.WinUI
                 dgvMovies.Columns["Kategorija"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
                 lblPaging.Text = "Stranica " + PageNumber;
+                if (movies.Count < queryParams.PageSize)
+                    btnNaprijed.Enabled = false;
+                else
+                    btnNaprijed.Enabled = true;
             }
             catch (Exception)
             {
                 MessageBox.Show(Strings.LoadingError);
             }
-
         }
 
         public async Task loadStatuses()

@@ -35,7 +35,7 @@ namespace KinoPlus.WinUI
             var locationId = (int?)(cmbLokacija.SelectedValue);
             var date = (DateTime)(dtpDatum.Value);
 
-            object queryParams = new ProjectionSearchObject
+            var queryParams = new ProjectionSearchObject
             {
                 Page = PageNumber,
                 PageSize = PageSize,
@@ -46,7 +46,10 @@ namespace KinoPlus.WinUI
             try
             {
                 var projections = await APIService.Get<List<ProjectionDto>>(queryParams);
-                var bindProjections = projections?
+                if (projections == null)
+                    return;
+
+                var bindProjections = projections
                     .Select(p => new
                     {
                         Id = p.Id,
@@ -71,6 +74,10 @@ namespace KinoPlus.WinUI
                 dgvProjections.Columns["Slika"].HeaderText = "";
 
                 lblPaging.Text = "Stranica " + PageNumber;
+                if (projections.Count < queryParams.PageSize)
+                    btnNaprijed.Enabled = false;
+                else
+                    btnNaprijed.Enabled = true;
             }
             catch (Exception)
             {

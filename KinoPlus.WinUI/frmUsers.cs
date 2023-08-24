@@ -32,7 +32,7 @@ namespace KinoPlus.WinUI
         {
             var search = txtTrazi.Text;
             var roleId = (int?)cmbRole.SelectedValue;
-            object queryParams = new UserSearchObject
+            var queryParams = new UserSearchObject
             {
                 Page = PageNumber,
                 PageSize = PageSize,
@@ -42,7 +42,9 @@ namespace KinoPlus.WinUI
             try
             {
                 var users = await APIService.Get<List<UserDto>>(queryParams);
-                var bindUsers = users?
+                if (users == null) return;
+
+                var bindUsers = users
                     .Select(user => new
                     {
                         Id = user.Id,
@@ -62,6 +64,11 @@ namespace KinoPlus.WinUI
                 dgvKorisnici.Columns["LoyaltyPoeni"].HeaderText = "Loyalty poeni";
 
                 lblPaging.Text = "Stranica " + PageNumber;
+
+                if (users.Count < queryParams.PageSize)
+                    btnNaprijed.Enabled = false;
+                else
+                    btnNaprijed.Enabled = true;
             }
             catch (Exception)
             {

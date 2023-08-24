@@ -120,6 +120,7 @@
             // 
             btnNaprijed.Anchor = AnchorStyles.Bottom;
             btnNaprijed.BackColor = SystemColors.Control;
+            btnNaprijed.FlatStyle = FlatStyle.System;
             btnNaprijed.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnNaprijed.Location = new Point(658, 741);
             btnNaprijed.Margin = new Padding(0);
@@ -133,6 +134,7 @@
             // 
             btnNazad.Anchor = AnchorStyles.Bottom;
             btnNazad.BackColor = SystemColors.Control;
+            btnNazad.FlatStyle = FlatStyle.System;
             btnNazad.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnNazad.Location = new Point(479, 741);
             btnNazad.Name = "btnNazad";

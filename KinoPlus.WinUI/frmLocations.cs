@@ -25,7 +25,7 @@ namespace KinoPlus.WinUI
         public async Task loadLocations()
         {
             var search = txtTrazi.Text;
-            object queryParams = new LocationSearchObject
+            var queryParams = new LocationSearchObject
             {
                 Page = PageNumber,
                 PageSize = PageSize,
@@ -35,7 +35,9 @@ namespace KinoPlus.WinUI
             try
             {
                 var locations = await APIService.Get<List<LocationDto>>(queryParams);
-                var bindLocations = locations?
+                if (locations == null) return;
+
+                var bindLocations = locations
                     .Select(l => new
                     {
                         Id = l.Id,
@@ -56,6 +58,11 @@ namespace KinoPlus.WinUI
                 dgvLocations.Columns["Drzava"].HeaderText = "Država";
 
                 lblPaging.Text = "Stranica " + PageNumber;
+
+                if (locations.Count < queryParams.PageSize)
+                    btnNaprijed.Enabled = false;
+                else
+                    btnNaprijed.Enabled = true;
             }
             catch (Exception)
             {
