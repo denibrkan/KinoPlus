@@ -37,8 +37,8 @@
             numOrderPoints = new NumericUpDown();
             lbFilmovi = new ListBox();
             cbPrikazan = new CheckBox();
-            lblPrikazan = new Label();
             errorProvider = new ErrorProvider(components);
+            toolTip = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)numOrderPoints).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
@@ -126,25 +126,14 @@
             cbPrikazan.AutoSize = true;
             cbPrikazan.Checked = true;
             cbPrikazan.CheckState = CheckState.Checked;
-            cbPrikazan.Font = new Font("Verdana", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            cbPrikazan.Location = new Point(723, 91);
+            cbPrikazan.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            cbPrikazan.Location = new Point(700, 82);
             cbPrikazan.Name = "cbPrikazan";
             cbPrikazan.Padding = new Padding(8);
-            cbPrikazan.Size = new Size(31, 30);
+            cbPrikazan.Size = new Size(198, 38);
             cbPrikazan.TabIndex = 21;
+            cbPrikazan.Text = "Prikaži na naslovnici?";
             cbPrikazan.UseVisualStyleBackColor = true;
-            // 
-            // lblPrikazan
-            // 
-            lblPrikazan.AutoSize = true;
-            lblPrikazan.FlatStyle = FlatStyle.System;
-            lblPrikazan.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPrikazan.ForeColor = SystemColors.ControlDarkDark;
-            lblPrikazan.Location = new Point(723, 68);
-            lblPrikazan.Name = "lblPrikazan";
-            lblPrikazan.Size = new Size(163, 18);
-            lblPrikazan.TabIndex = 20;
-            lblPrikazan.Text = "Prikaži na naslovnici?";
             // 
             // errorProvider
             // 
@@ -156,7 +145,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(935, 547);
             Controls.Add(cbPrikazan);
-            Controls.Add(lblPrikazan);
             Controls.Add(lbFilmovi);
             Controls.Add(numOrderPoints);
             Controls.Add(btnSpasi);
@@ -184,7 +172,7 @@
         private Button btnSpasi;
         private NumericUpDown numOrderPoints;
         private CheckBox cbPrikazan;
-        private Label lblPrikazan;
         private ErrorProvider errorProvider;
+        private ToolTip toolTip;
     }
 }

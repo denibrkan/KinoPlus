@@ -1,5 +1,6 @@
 ﻿using eProdaja.WinUI;
 using KinoPlus.Models;
+using KinoPlus.Models.Enumerations.Sorters;
 using KinoPlus.WinUI.Utils;
 
 namespace KinoPlus.WinUI
@@ -24,11 +25,13 @@ namespace KinoPlus.WinUI
 
         private async void frmKategorijaUpsert_Load(object sender, EventArgs e)
         {
+            toolTip.SetToolTip(lblOrderPoeni, "Order poeni se koriste za redanje kategorija na mobilnoj aplikaciji");
+            toolTip.SetToolTip(lblFilmovi, "Odaberite filmove za kategoriju");
+            toolTip.SetToolTip(cbPrikazan, "Da li se kategorija prikazuje na početnoj strani mobilne aplikacije");
+
             await loadMovies();
             if (IsEdit)
-            {
                 loadCategory();
-            }
         }
 
         public void loadCategory()
@@ -44,7 +47,8 @@ namespace KinoPlus.WinUI
 
         public async Task loadMovies()
         {
-            await ListControlHelper.loadControlEntity<MovieDto>(lbFilmovi, "Movies", "Title");
+            var queryParams = new MovieSearchObject { SortBy = MovieSorting.Title };
+            await ListControlHelper.loadControlEntity<MovieDto>(lbFilmovi, "Movies", "Title", queryObject: queryParams);
         }
 
         private async void btnSpasi_Click(object sender, EventArgs e)

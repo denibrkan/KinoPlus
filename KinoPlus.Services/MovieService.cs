@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using KinoPlus.Models;
+using KinoPlus.Models.Enumerations.Sorters;
 using KinoPlus.Services.Database;
-using KinoPlus.Services.Enumerations;
 using KinoPlus.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -156,6 +156,9 @@ namespace KinoPlus.Services
                         break;
                     case MovieSorting.Rating:
                         query = query.OrderByDescending(x => x.MovieReactions.Average(mr => mr.Rating));
+                        break;
+                    case MovieSorting.Title:
+                        query = query.OrderBy(x => x.Title);
                         break;
                 }
             }

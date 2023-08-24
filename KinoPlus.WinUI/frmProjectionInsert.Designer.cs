@@ -58,7 +58,6 @@
             // 
             // cmbFilm
             // 
-            cmbFilm.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFilm.FlatStyle = FlatStyle.Flat;
             cmbFilm.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbFilm.FormattingEnabled = true;
@@ -87,9 +86,9 @@
             lblVrstaProjekcije.ForeColor = SystemColors.ControlDarkDark;
             lblVrstaProjekcije.Location = new Point(446, 67);
             lblVrstaProjekcije.Name = "lblVrstaProjekcije";
-            lblVrstaProjekcije.Size = new Size(47, 18);
+            lblVrstaProjekcije.Size = new Size(125, 18);
             lblVrstaProjekcije.TabIndex = 13;
-            lblVrstaProjekcije.Text = "Vrsta";
+            lblVrstaProjekcije.Text = "Vrsta projekcije";
             // 
             // cmbVrstaProjekcije
             // 
