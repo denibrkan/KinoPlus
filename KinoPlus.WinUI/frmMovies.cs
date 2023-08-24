@@ -1,6 +1,6 @@
 ﻿using eProdaja.WinUI;
+using KinoPlus.Common.Resources.Strings;
 using KinoPlus.Models;
-using KinoPlus.WinUI.Constants;
 using KinoPlus.WinUI.Utils;
 using System.Data;
 
@@ -76,7 +76,7 @@ namespace KinoPlus.WinUI
             }
             catch (Exception)
             {
-                MessageBox.Show(ErrorMessages.LoadingError);
+                MessageBox.Show(Strings.LoadingError);
             }
 
         }

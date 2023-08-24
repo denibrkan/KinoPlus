@@ -14,13 +14,11 @@ namespace KinoPlus.WinUI.Extensions
 
             foreach (var error in errorDetails.Errors)
             {
-                string fieldName = error.Key;
                 List<string> errorMessages = error.Value;
 
-                stringBuilder.AppendLine($"Polje: {fieldName}");
                 foreach (string errorMessage in errorMessages)
                 {
-                    stringBuilder.AppendLine($"Greška: {errorMessage}");
+                    stringBuilder.AppendLine(errorMessage);
                 }
                 stringBuilder.AppendLine();
             }

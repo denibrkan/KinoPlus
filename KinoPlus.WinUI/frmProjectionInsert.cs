@@ -92,7 +92,7 @@ namespace KinoPlus.WinUI
                     Height = cmbHalls.Height,
                 };
 
-                cmbHalls.Width = panel.Width - cbLocation.Width - 20;
+                cmbHalls.Width = panel.Width - cbLocation.Width - 30;
 
                 var itemYLocation = (index * cmbHalls.Height + index * 10);
 

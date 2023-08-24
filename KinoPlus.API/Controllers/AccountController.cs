@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using KinoPlus.API.Constants;
+using KinoPlus.Common.Resources.Strings;
 using KinoPlus.Models;
 using KinoPlus.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -30,14 +30,14 @@ namespace KinoPlus.API.Controllers
         {
             var user = await _userService.GetByUsernameAsync(login.Username);
 
-            if (user == null) return Unauthorized(ErrorMessages.LoginError);
+            if (user == null) return Unauthorized(Strings.LoginError);
 
             using var hmac = new HMACSHA512(Convert.FromBase64String(user.PasswordSalt));
 
             var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(login.Password));
 
             if (user.PasswordHash != Convert.ToBase64String(computedHash))
-                return Unauthorized(ErrorMessages.LoginError);
+                return Unauthorized(Strings.LoginError);
 
             var korisnik = _mapper.Map<UserDto>(user);
 
@@ -50,7 +50,7 @@ namespace KinoPlus.API.Controllers
         public async Task<ActionResult> RegisterAsync([FromForm] RegisterDto register)
         {
             var user = await _userService.GetByUsernameAsync(register.Username);
-            if (user != null) return BadRequest("Korisničko ime već postoji");
+            if (user != null) return BadRequest(Strings.UsernameExists);
 
             Guid? imageId = null;
             if (register.Image != null)
@@ -81,7 +81,7 @@ namespace KinoPlus.API.Controllers
 
             await _userService.InsertAsync(userInsert);
 
-            return Ok("Uspješna registracija");
+            return Ok(Strings.RegistrationSuccess);
         }
 
         [HttpPost("check-username")]

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using KinoPlus.Common.Resources.Strings;
 using KinoPlus.Models;
 using KinoPlus.Services.Database;
 using KinoPlus.Services.Interfaces;
@@ -88,7 +89,7 @@ namespace KinoPlus.Services
                 foreach (var locationHall in insert.Locations)
                 {
                     if (!await CheckProjectionOverlaping(startsAt, endsAt, locationHall.LocationId!.Value, locationHall.HallId!.Value))
-                        throw new Exception("Postoji vremensko i lokacijsko preklapanje sa postojećim projekcijama. \n\nObratite pažnju na odabrane lokacije i dvorane projekcije. \n\nNapomena: Obavezni razmak između projekcija je 15 minuta!");
+                        throw new Exception(Strings.ProjectionOverlapError);
 
                     projections.Add
                     (
@@ -161,7 +162,7 @@ namespace KinoPlus.Services
             var hallId = updateObject.HallId!.Value;
 
             if (!await CheckProjectionOverlaping(startsAt, endsAt, projection.LocationId, hallId, projection.Id))
-                throw new Exception("Postoji vremensko i lokacijsko preklapanje sa postojećim projekcijama. \n\nObratite pažnju na odabrane lokacije i dvorane projekcije. \n\nNapomena: Obavezni razmak između projekcija je 15 minuta!");
+                throw new Exception(Strings.ProjectionOverlapError);
 
             projection.StartsAt = startsAt;
             projection.EndsAt = endsAt;
