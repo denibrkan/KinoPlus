@@ -88,7 +88,11 @@ namespace KinoPlus.Common.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Postoji vremensko i lokacijsko preklapanje sa postojećim projekcijama. \n\nObratite pažnju na odabrane lokacije i dvorane projekcije. \n\nNapomena: Obavezni razmak između projekcija je 15 minuta!.
+        ///   Looks up a localized string similar to Postoji vremensko i lokacijsko preklapanje sa postojećim projekcijama. 
+        ///
+        ///Obratite pažnju na odabrane lokacije i dvorane projekcije. 
+        ///
+        ///Napomena: Obavezni razmak između projekcija je 15 minuta!.
         /// </summary>
         public static string ProjectionOverlapError {
             get {

@@ -51,6 +51,13 @@ namespace KinoPlus.Services
             return query;
         }
 
+        public override IQueryable<Location> AddSorting(IQueryable<Location> query, LocationSearchObject search)
+        {
+            query = query.OrderBy(l => l.Name);
+
+            return query;
+        }
+
         public async override Task<Location> InsertAsync(LocationUpsertObject insert)
         {
             var location = await base.InsertAsync(insert);

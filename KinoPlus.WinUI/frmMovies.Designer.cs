@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgvMovies = new DataGridView();
             btnDodaj = new Button();
             lblStatus = new Label();
@@ -50,40 +50,40 @@
             dgvMovies.AllowUserToOrderColumns = true;
             dgvMovies.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvMovies.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowFrame;
-            dataGridViewCellStyle1.SelectionBackColor = Color.MidnightBlue;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvMovies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Verdana", 9.749999F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowFrame;
+            dataGridViewCellStyle4.SelectionBackColor = Color.MidnightBlue;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvMovies.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvMovies.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.MidnightBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvMovies.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = Color.MidnightBlue;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dgvMovies.DefaultCellStyle = dataGridViewCellStyle5;
             dgvMovies.GridColor = Color.MidnightBlue;
             dgvMovies.Location = new Point(94, 157);
             dgvMovies.Margin = new Padding(0);
             dgvMovies.Name = "dgvMovies";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.MidnightBlue;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvMovies.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.MidnightBlue;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvMovies.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvMovies.RowHeadersWidth = 62;
             dgvMovies.RowTemplate.Height = 65;
             dgvMovies.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMovies.Size = new Size(1113, 575);
-            dgvMovies.TabIndex = 8;
+            dgvMovies.TabIndex = 7;
             dgvMovies.CellDoubleClick += dgvMovies_CellDoubleClick;
             // 
             // btnDodaj
@@ -96,7 +96,7 @@
             btnDodaj.Margin = new Padding(4, 3, 4, 3);
             btnDodaj.Name = "btnDodaj";
             btnDodaj.Size = new Size(122, 35);
-            btnDodaj.TabIndex = 5;
+            btnDodaj.TabIndex = 4;
             btnDodaj.Text = "Dodaj";
             btnDodaj.UseVisualStyleBackColor = false;
             btnDodaj.Click += btnDodaj_Click;
@@ -110,7 +110,7 @@
             lblStatus.Location = new Point(448, 96);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(51, 16);
-            lblStatus.TabIndex = 5;
+            lblStatus.TabIndex = 8;
             lblStatus.Text = "Status";
             // 
             // cmbStatus
@@ -122,7 +122,7 @@
             cmbStatus.Location = new Point(448, 115);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(250, 26);
-            cmbStatus.TabIndex = 2;
+            cmbStatus.TabIndex = 1;
             cmbStatus.SelectedValueChanged += cmbStatus_SelectedValueChanged;
             // 
             // btnNazad
@@ -132,7 +132,7 @@
             btnNazad.Location = new Point(538, 752);
             btnNazad.Name = "btnNazad";
             btnNazad.Size = new Size(75, 31);
-            btnNazad.TabIndex = 6;
+            btnNazad.TabIndex = 5;
             btnNazad.Text = "<";
             btnNazad.UseVisualStyleBackColor = true;
             btnNazad.Click += btnNazad_Click;
@@ -144,7 +144,7 @@
             btnNaprijed.Location = new Point(717, 752);
             btnNaprijed.Name = "btnNaprijed";
             btnNaprijed.Size = new Size(75, 31);
-            btnNaprijed.TabIndex = 7;
+            btnNaprijed.TabIndex = 6;
             btnNaprijed.Text = ">";
             btnNaprijed.UseVisualStyleBackColor = true;
             btnNaprijed.Click += btnNaprijed_Click;
@@ -157,7 +157,7 @@
             lblPaging.Location = new Point(631, 761);
             lblPaging.Name = "lblPaging";
             lblPaging.Size = new Size(28, 16);
-            lblPaging.TabIndex = 8;
+            lblPaging.TabIndex = 10;
             lblPaging.Text = "???";
             // 
             // txtTrazi
@@ -167,7 +167,7 @@
             txtTrazi.Name = "txtTrazi";
             txtTrazi.PlaceholderText = "Pretražite po naslovu...";
             txtTrazi.Size = new Size(330, 26);
-            txtTrazi.TabIndex = 1;
+            txtTrazi.TabIndex = 0;
             txtTrazi.TextChanged += txtTrazi_TextChanged;
             // 
             // lblKategorija
@@ -179,7 +179,7 @@
             lblKategorija.Location = new Point(717, 96);
             lblKategorija.Name = "lblKategorija";
             lblKategorija.Size = new Size(73, 16);
-            lblKategorija.TabIndex = 5;
+            lblKategorija.TabIndex = 9;
             lblKategorija.Text = "Kategorija";
             // 
             // cmbKategorija
@@ -192,7 +192,7 @@
             cmbKategorija.Location = new Point(717, 115);
             cmbKategorija.Name = "cmbKategorija";
             cmbKategorija.Size = new Size(250, 26);
-            cmbKategorija.TabIndex = 3;
+            cmbKategorija.TabIndex = 2;
             cmbKategorija.SelectedValueChanged += cmbKategorija_SelectedValueChanged;
             // 
             // btnReset
@@ -202,7 +202,7 @@
             btnReset.Margin = new Padding(4, 3, 4, 3);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(72, 27);
-            btnReset.TabIndex = 4;
+            btnReset.TabIndex = 3;
             btnReset.Text = "Poništi";
             btnReset.UseVisualStyleBackColor = true;
             btnReset.Click += btnReset_Click;

@@ -52,7 +52,7 @@
             cmbLokacija.Location = new Point(468, 115);
             cmbLokacija.Name = "cmbLokacija";
             cmbLokacija.Size = new Size(250, 26);
-            cmbLokacija.TabIndex = 11;
+            cmbLokacija.TabIndex = 2;
             cmbLokacija.SelectedValueChanged += cmbLokacija_SelectedValueChanged;
             // 
             // lblLokacija
@@ -87,7 +87,7 @@
             dtpDatum.MinimumSize = new Size(0, 26);
             dtpDatum.Name = "dtpDatum";
             dtpDatum.Size = new Size(256, 26);
-            dtpDatum.TabIndex = 8;
+            dtpDatum.TabIndex = 6;
             dtpDatum.ValueChanged += dtpDatum_ValueChanged;
             // 
             // btnDodaj
@@ -100,7 +100,7 @@
             btnDodaj.Margin = new Padding(4, 3, 4, 3);
             btnDodaj.Name = "btnDodaj";
             btnDodaj.Size = new Size(122, 35);
-            btnDodaj.TabIndex = 7;
+            btnDodaj.TabIndex = 3;
             btnDodaj.Text = "Dodaj";
             btnDodaj.UseVisualStyleBackColor = false;
             btnDodaj.Click += btnDodaj_Click;
@@ -113,7 +113,7 @@
             lblPaging.Location = new Point(569, 750);
             lblPaging.Name = "lblPaging";
             lblPaging.Size = new Size(28, 16);
-            lblPaging.TabIndex = 15;
+            lblPaging.TabIndex = 10;
             lblPaging.Text = "???";
             // 
             // btnNaprijed
@@ -126,7 +126,7 @@
             btnNaprijed.Margin = new Padding(0);
             btnNaprijed.Name = "btnNaprijed";
             btnNaprijed.Size = new Size(75, 31);
-            btnNaprijed.TabIndex = 13;
+            btnNaprijed.TabIndex = 5;
             btnNaprijed.Text = ">";
             btnNaprijed.UseVisualStyleBackColor = false;
             // 
@@ -139,7 +139,7 @@
             btnNazad.Location = new Point(479, 741);
             btnNazad.Name = "btnNazad";
             btnNazad.Size = new Size(75, 31);
-            btnNazad.TabIndex = 14;
+            btnNazad.TabIndex = 4;
             btnNazad.Text = "<";
             btnNazad.UseVisualStyleBackColor = false;
             // 
@@ -181,7 +181,7 @@
             dgvProjections.RowTemplate.Height = 65;
             dgvProjections.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProjections.Size = new Size(1083, 568);
-            dgvProjections.TabIndex = 16;
+            dgvProjections.TabIndex = 8;
             dgvProjections.CellDoubleClick += dgvProjections_CellDoubleClick;
             dgvProjections.CellFormatting += dgvProjections_CellFormatting;
             // 
@@ -193,7 +193,7 @@
             btnDatumNazad.Location = new Point(72, 115);
             btnDatumNazad.Name = "btnDatumNazad";
             btnDatumNazad.Size = new Size(33, 26);
-            btnDatumNazad.TabIndex = 14;
+            btnDatumNazad.TabIndex = 1;
             btnDatumNazad.Text = "<";
             btnDatumNazad.UseVisualStyleBackColor = false;
             btnDatumNazad.Click += btnDatumNazad_Click;
@@ -206,7 +206,7 @@
             btnDatumNaprijed.Location = new Point(376, 115);
             btnDatumNaprijed.Name = "btnDatumNaprijed";
             btnDatumNaprijed.Size = new Size(33, 26);
-            btnDatumNaprijed.TabIndex = 14;
+            btnDatumNaprijed.TabIndex = 0;
             btnDatumNaprijed.Text = ">";
             btnDatumNaprijed.UseVisualStyleBackColor = false;
             btnDatumNaprijed.Click += btnDatumNaprijed_Click;

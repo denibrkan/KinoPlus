@@ -167,12 +167,12 @@ namespace KinoPlus.WinUI
 
         private bool ValidateForm()
         {
-            return Validator.ValidateControl(txtNaziv, errorProvider, "Naziv nije unesen") &&
-                Validator.ValidateControl(numTrajanje, errorProvider, "Trajanje ne smije biti 0") &&
+            return Validator.ValidateControl(pcbSlika, errorProvider, "Slika nije odabrana") &&
+                Validator.ValidateControl(txtNaziv, errorProvider, "Naziv nije unesen") &&
                 Validator.ValidateControl(cmbGodina, errorProvider, "Godina nije odabrana") &&
-                Validator.ValidateControl(pcbSlika, errorProvider, "Slika nije odabrana") &&
-                Validator.ValidateControl(rtbOpis, errorProvider, "Opis nije unesen") &&
-                Validator.ValidateControl(cmbStatus, errorProvider, "Status nije odabran");
+                Validator.ValidateControl(numTrajanje, errorProvider, "Trajanje ne smije biti 0") &&
+                Validator.ValidateControl(cmbStatus, errorProvider, "Status nije odabran") &&
+                Validator.ValidateControl(rtbOpis, errorProvider, "Opis nije unesen");
         }
     }
 }

@@ -41,7 +41,7 @@
             dtpDatumVrijeme.CustomFormat = "dd/MM/yyyy HH:mm";
             dtpDatumVrijeme.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             dtpDatumVrijeme.Format = DateTimePickerFormat.Custom;
-            dtpDatumVrijeme.Location = new Point(78, 95);
+            dtpDatumVrijeme.Location = new Point(39, 69);
             dtpDatumVrijeme.Name = "dtpDatumVrijeme";
             dtpDatumVrijeme.Size = new Size(273, 26);
             dtpDatumVrijeme.TabIndex = 0;
@@ -52,7 +52,7 @@
             lblDatumProjekcije.FlatStyle = FlatStyle.System;
             lblDatumProjekcije.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDatumProjekcije.ForeColor = SystemColors.ControlDarkDark;
-            lblDatumProjekcije.Location = new Point(78, 70);
+            lblDatumProjekcije.Location = new Point(39, 44);
             lblDatumProjekcije.Margin = new Padding(0);
             lblDatumProjekcije.Name = "lblDatumProjekcije";
             lblDatumProjekcije.Size = new Size(127, 18);
@@ -65,7 +65,7 @@
             lblDvorana.FlatStyle = FlatStyle.System;
             lblDvorana.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblDvorana.ForeColor = SystemColors.ControlDarkDark;
-            lblDvorana.Location = new Point(78, 149);
+            lblDvorana.Location = new Point(39, 121);
             lblDvorana.Margin = new Padding(0);
             lblDvorana.Name = "lblDvorana";
             lblDvorana.Size = new Size(71, 18);
@@ -78,7 +78,7 @@
             cmbDvorana.FlatStyle = FlatStyle.Flat;
             cmbDvorana.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbDvorana.FormattingEnabled = true;
-            cmbDvorana.Location = new Point(78, 174);
+            cmbDvorana.Location = new Point(39, 142);
             cmbDvorana.Name = "cmbDvorana";
             cmbDvorana.Size = new Size(273, 26);
             cmbDvorana.TabIndex = 28;
@@ -89,9 +89,9 @@
             btnOtkazi.BackColor = Color.Red;
             btnOtkazi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnOtkazi.ForeColor = Color.White;
-            btnOtkazi.Location = new Point(78, 286);
+            btnOtkazi.Location = new Point(39, 220);
             btnOtkazi.Name = "btnOtkazi";
-            btnOtkazi.Size = new Size(115, 35);
+            btnOtkazi.Size = new Size(273, 35);
             btnOtkazi.TabIndex = 29;
             btnOtkazi.Text = "Otkaži";
             btnOtkazi.UseVisualStyleBackColor = false;
@@ -101,9 +101,9 @@
             // 
             btnSpasi.Anchor = AnchorStyles.None;
             btnSpasi.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSpasi.Location = new Point(243, 286);
+            btnSpasi.Location = new Point(39, 261);
             btnSpasi.Name = "btnSpasi";
-            btnSpasi.Size = new Size(108, 35);
+            btnSpasi.Size = new Size(273, 35);
             btnSpasi.TabIndex = 29;
             btnSpasi.Text = "Spasi";
             btnSpasi.UseVisualStyleBackColor = true;
@@ -113,7 +113,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(448, 364);
+            ClientSize = new Size(338, 320);
             Controls.Add(btnSpasi);
             Controls.Add(btnOtkazi);
             Controls.Add(cmbDvorana);

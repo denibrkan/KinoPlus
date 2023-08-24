@@ -106,9 +106,9 @@ namespace KinoPlus.WinUI
 
         private bool ValidateForm()
         {
-            return Validator.ValidateControl(cmbGrad, errorProvider, "Grad nije odabran") &&
-                    Validator.ValidateControl(txtNaziv, errorProvider, "Naziv nije unesen") &&
-                    Validator.ValidateControl(txtAdresa, errorProvider, "Adresa nije unesena");
+            return Validator.ValidateControl(txtNaziv, errorProvider, "Naziv nije unesen") &&
+                    Validator.ValidateControl(txtAdresa, errorProvider, "Adresa nije unesena") &&
+                Validator.ValidateControl(cmbGrad, errorProvider, "Grad nije odabran");
         }
     }
 }

@@ -64,7 +64,7 @@
             cmbFilm.Location = new Point(59, 90);
             cmbFilm.Name = "cmbFilm";
             cmbFilm.Size = new Size(307, 26);
-            cmbFilm.TabIndex = 1;
+            cmbFilm.TabIndex = 0;
             // 
             // lblFilm
             // 
@@ -75,7 +75,7 @@
             lblFilm.Location = new Point(59, 67);
             lblFilm.Name = "lblFilm";
             lblFilm.Size = new Size(38, 18);
-            lblFilm.TabIndex = 13;
+            lblFilm.TabIndex = 11;
             lblFilm.Text = "Film";
             // 
             // lblVrstaProjekcije
@@ -87,7 +87,7 @@
             lblVrstaProjekcije.Location = new Point(446, 67);
             lblVrstaProjekcije.Name = "lblVrstaProjekcije";
             lblVrstaProjekcije.Size = new Size(125, 18);
-            lblVrstaProjekcije.TabIndex = 13;
+            lblVrstaProjekcije.TabIndex = 12;
             lblVrstaProjekcije.Text = "Vrsta projekcije";
             // 
             // cmbVrstaProjekcije
@@ -99,7 +99,7 @@
             cmbVrstaProjekcije.Location = new Point(447, 90);
             cmbVrstaProjekcije.Name = "cmbVrstaProjekcije";
             cmbVrstaProjekcije.Size = new Size(276, 26);
-            cmbVrstaProjekcije.TabIndex = 2;
+            cmbVrstaProjekcije.TabIndex = 1;
             // 
             // lblVrijeme
             // 
@@ -122,7 +122,7 @@
             lblCijena.Location = new Point(925, 67);
             lblCijena.Name = "lblCijena";
             lblCijena.Size = new Size(54, 18);
-            lblCijena.TabIndex = 13;
+            lblCijena.TabIndex = 14;
             lblCijena.Text = "Cijena";
             // 
             // dtpVrijeme
@@ -134,7 +134,7 @@
             dtpVrijeme.Name = "dtpVrijeme";
             dtpVrijeme.ShowUpDown = true;
             dtpVrijeme.Size = new Size(122, 26);
-            dtpVrijeme.TabIndex = 3;
+            dtpVrijeme.TabIndex = 2;
             // 
             // numCijena
             // 
@@ -144,7 +144,7 @@
             numCijena.Margin = new Padding(1);
             numCijena.Name = "numCijena";
             numCijena.Size = new Size(95, 26);
-            numCijena.TabIndex = 4;
+            numCijena.TabIndex = 3;
             // 
             // lblLokacije
             // 
@@ -155,7 +155,7 @@
             lblLokacije.Location = new Point(447, 187);
             lblLokacije.Name = "lblLokacije";
             lblLokacije.Size = new Size(69, 18);
-            lblLokacije.TabIndex = 13;
+            lblLokacije.TabIndex = 20;
             lblLokacije.Text = "Lokacije";
             // 
             // lblDvorane
@@ -167,7 +167,7 @@
             lblDvorane.Location = new Point(762, 187);
             lblDvorane.Name = "lblDvorane";
             lblDvorane.Size = new Size(71, 18);
-            lblDvorane.TabIndex = 13;
+            lblDvorane.TabIndex = 21;
             lblDvorane.Text = "Dvorane";
             // 
             // btnSpasi
@@ -177,7 +177,7 @@
             btnSpasi.Location = new Point(912, 553);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(108, 35);
-            btnSpasi.TabIndex = 6;
+            btnSpasi.TabIndex = 10;
             btnSpasi.Text = "Spasi";
             btnSpasi.UseVisualStyleBackColor = true;
             btnSpasi.Click += btnSpasi_Click;
@@ -192,7 +192,7 @@
             dtpDatumProjekcije.Location = new Point(65, 257);
             dtpDatumProjekcije.Name = "dtpDatumProjekcije";
             dtpDatumProjekcije.Size = new Size(301, 26);
-            dtpDatumProjekcije.TabIndex = 25;
+            dtpDatumProjekcije.TabIndex = 5;
             // 
             // lblDatumProjekcije
             // 
@@ -203,7 +203,7 @@
             lblDatumProjekcije.Location = new Point(65, 233);
             lblDatumProjekcije.Name = "lblDatumProjekcije";
             lblDatumProjekcije.Size = new Size(58, 18);
-            lblDatumProjekcije.TabIndex = 26;
+            lblDatumProjekcije.TabIndex = 16;
             lblDatumProjekcije.Text = "Datum";
             // 
             // cbRedovnaProjekcija
@@ -213,7 +213,7 @@
             cbRedovnaProjekcija.Location = new Point(247, 187);
             cbRedovnaProjekcija.Name = "cbRedovnaProjekcija";
             cbRedovnaProjekcija.Size = new Size(30, 30);
-            cbRedovnaProjekcija.TabIndex = 24;
+            cbRedovnaProjekcija.TabIndex = 4;
             cbRedovnaProjekcija.UseVisualStyleBackColor = true;
             cbRedovnaProjekcija.CheckedChanged += cbRedovnaProjekcija_CheckedChanged;
             // 
@@ -224,7 +224,7 @@
             dtpDatumZavrsava.Location = new Point(65, 407);
             dtpDatumZavrsava.Name = "dtpDatumZavrsava";
             dtpDatumZavrsava.Size = new Size(301, 26);
-            dtpDatumZavrsava.TabIndex = 18;
+            dtpDatumZavrsava.TabIndex = 8;
             // 
             // dtpDatumPocinje
             // 
@@ -233,7 +233,7 @@
             dtpDatumPocinje.Location = new Point(65, 329);
             dtpDatumPocinje.Name = "dtpDatumPocinje";
             dtpDatumPocinje.Size = new Size(301, 26);
-            dtpDatumPocinje.TabIndex = 19;
+            dtpDatumPocinje.TabIndex = 7;
             // 
             // cmbDan
             // 
@@ -244,7 +244,7 @@
             cmbDan.Location = new Point(65, 257);
             cmbDan.Name = "cmbDan";
             cmbDan.Size = new Size(301, 26);
-            cmbDan.TabIndex = 17;
+            cmbDan.TabIndex = 6;
             // 
             // lblDatumZavrsava
             // 
@@ -255,7 +255,7 @@
             lblDatumZavrsava.Location = new Point(65, 383);
             lblDatumZavrsava.Name = "lblDatumZavrsava";
             lblDatumZavrsava.Size = new Size(84, 18);
-            lblDatumZavrsava.TabIndex = 20;
+            lblDatumZavrsava.TabIndex = 19;
             lblDatumZavrsava.Text = "Završava:";
             // 
             // lblDatumPocinje
@@ -267,7 +267,7 @@
             lblDatumPocinje.Location = new Point(65, 305);
             lblDatumPocinje.Name = "lblDatumPocinje";
             lblDatumPocinje.Size = new Size(68, 18);
-            lblDatumPocinje.TabIndex = 21;
+            lblDatumPocinje.TabIndex = 18;
             lblDatumPocinje.Text = "Počinje:";
             // 
             // lblDan
@@ -278,7 +278,7 @@
             lblDan.Location = new Point(65, 233);
             lblDan.Name = "lblDan";
             lblDan.Size = new Size(111, 18);
-            lblDan.TabIndex = 22;
+            lblDan.TabIndex = 17;
             lblDan.Text = "Dan u sedmici";
             // 
             // lblRedovnaProjekcija
@@ -290,7 +290,7 @@
             lblRedovnaProjekcija.Location = new Point(65, 190);
             lblRedovnaProjekcija.Name = "lblRedovnaProjekcija";
             lblRedovnaProjekcija.Size = new Size(159, 18);
-            lblRedovnaProjekcija.TabIndex = 23;
+            lblRedovnaProjekcija.TabIndex = 15;
             lblRedovnaProjekcija.Text = "Redovna projekcija?";
             // 
             // panel
@@ -299,7 +299,7 @@
             panel.Location = new Point(447, 216);
             panel.Name = "panel";
             panel.Size = new Size(573, 282);
-            panel.TabIndex = 27;
+            panel.TabIndex = 9;
             // 
             // frmProjectionInsert
             // 

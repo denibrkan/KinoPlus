@@ -127,7 +127,11 @@
     <value>Lozinka je obavezno polje</value>
   </data>
   <data name="ProjectionOverlapError" xml:space="preserve">
-    <value>Postoji vremensko i lokacijsko preklapanje sa postojećim projekcijama. \n\nObratite pažnju na odabrane lokacije i dvorane projekcije. \n\nNapomena: Obavezni razmak između projekcija je 15 minuta!</value>
+    <value>Postoji vremensko i lokacijsko preklapanje sa postojećim projekcijama. 
+
+Obratite pažnju na odabrane lokacije i dvorane projekcije. 
+
+Napomena: Obavezni razmak između projekcija je 15 minuta!</value>
   </data>
   <data name="RegistrationSuccess" xml:space="preserve">
     <value>Uspješna registracija</value>

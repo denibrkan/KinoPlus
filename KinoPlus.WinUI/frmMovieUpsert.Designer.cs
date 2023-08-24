@@ -69,7 +69,7 @@
             lblNaziv.Location = new Point(262, 53);
             lblNaziv.Name = "lblNaziv";
             lblNaziv.Size = new Size(49, 18);
-            lblNaziv.TabIndex = 6;
+            lblNaziv.TabIndex = 11;
             lblNaziv.Text = "Naziv";
             // 
             // txtNaziv
@@ -78,7 +78,7 @@
             txtNaziv.Location = new Point(262, 78);
             txtNaziv.Name = "txtNaziv";
             txtNaziv.Size = new Size(495, 26);
-            txtNaziv.TabIndex = 0;
+            txtNaziv.TabIndex = 1;
             // 
             // cmbGodina
             // 
@@ -89,7 +89,7 @@
             cmbGodina.Location = new Point(787, 77);
             cmbGodina.Name = "cmbGodina";
             cmbGodina.Size = new Size(151, 26);
-            cmbGodina.TabIndex = 1;
+            cmbGodina.TabIndex = 2;
             // 
             // lblGodina
             // 
@@ -100,7 +100,7 @@
             lblGodina.Location = new Point(787, 53);
             lblGodina.Name = "lblGodina";
             lblGodina.Size = new Size(60, 18);
-            lblGodina.TabIndex = 11;
+            lblGodina.TabIndex = 12;
             lblGodina.Text = "Godina";
             // 
             // lblTrajanje
@@ -112,7 +112,7 @@
             lblTrajanje.Location = new Point(992, 54);
             lblTrajanje.Name = "lblTrajanje";
             lblTrajanje.Size = new Size(114, 18);
-            lblTrajanje.TabIndex = 6;
+            lblTrajanje.TabIndex = 13;
             lblTrajanje.Text = "Trajanje (min)";
             // 
             // pcbSlika
@@ -131,7 +131,7 @@
             btnOdaberi.Location = new Point(47, 321);
             btnOdaberi.Name = "btnOdaberi";
             btnOdaberi.Size = new Size(191, 30);
-            btnOdaberi.TabIndex = 10;
+            btnOdaberi.TabIndex = 0;
             btnOdaberi.Text = "Odaberi";
             btnOdaberi.UseVisualStyleBackColor = true;
             btnOdaberi.Click += btnOdaberi_Click;
@@ -145,7 +145,7 @@
             lblStatus.Location = new Point(47, 380);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(56, 18);
-            lblStatus.TabIndex = 11;
+            lblStatus.TabIndex = 20;
             lblStatus.Text = "Status";
             // 
             // cmbStatus
@@ -157,7 +157,7 @@
             cmbStatus.Location = new Point(47, 404);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(191, 26);
-            cmbStatus.TabIndex = 4;
+            cmbStatus.TabIndex = 10;
             // 
             // btnSpasi
             // 
@@ -165,7 +165,7 @@
             btnSpasi.Location = new Point(1029, 542);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(108, 35);
-            btnSpasi.TabIndex = 10;
+            btnSpasi.TabIndex = 11;
             btnSpasi.Text = "Spasi";
             btnSpasi.UseVisualStyleBackColor = true;
             btnSpasi.Click += btnSpasi_Click;
@@ -213,7 +213,7 @@
             rtbOpis.Location = new Point(263, 401);
             rtbOpis.Name = "rtbOpis";
             rtbOpis.Size = new Size(874, 106);
-            rtbOpis.TabIndex = 9;
+            rtbOpis.TabIndex = 8;
             rtbOpis.Text = "";
             // 
             // lblKategorija
@@ -225,7 +225,7 @@
             lblKategorija.Location = new Point(263, 134);
             lblKategorija.Name = "lblKategorija";
             lblKategorija.Size = new Size(84, 18);
-            lblKategorija.TabIndex = 11;
+            lblKategorija.TabIndex = 14;
             lblKategorija.Text = "Kategorija";
             // 
             // lblZanr
@@ -237,7 +237,7 @@
             lblZanr.Location = new Point(549, 134);
             lblZanr.Name = "lblZanr";
             lblZanr.Size = new Size(42, 18);
-            lblZanr.TabIndex = 11;
+            lblZanr.TabIndex = 15;
             lblZanr.Text = "Žanr";
             // 
             // lblUloge
@@ -249,7 +249,7 @@
             lblUloge.Location = new Point(787, 133);
             lblUloge.Name = "lblUloge";
             lblUloge.Size = new Size(50, 18);
-            lblUloge.TabIndex = 11;
+            lblUloge.TabIndex = 16;
             lblUloge.Text = "Uloge";
             // 
             // lbllOpis
@@ -261,7 +261,7 @@
             lbllOpis.Location = new Point(262, 377);
             lbllOpis.Name = "lbllOpis";
             lbllOpis.Size = new Size(40, 18);
-            lbllOpis.TabIndex = 11;
+            lbllOpis.TabIndex = 18;
             lbllOpis.Text = "Opis";
             // 
             // lblTrailer
@@ -273,7 +273,7 @@
             lblTrailer.Location = new Point(262, 298);
             lblTrailer.Name = "lblTrailer";
             lblTrailer.Size = new Size(77, 18);
-            lblTrailer.TabIndex = 6;
+            lblTrailer.TabIndex = 17;
             lblTrailer.Text = "Trailer Url";
             // 
             // txtTrailer
@@ -282,7 +282,7 @@
             txtTrailer.Location = new Point(262, 324);
             txtTrailer.Name = "txtTrailer";
             txtTrailer.Size = new Size(860, 23);
-            txtTrailer.TabIndex = 8;
+            txtTrailer.TabIndex = 7;
             // 
             // numTrajanje
             // 
@@ -292,7 +292,7 @@
             numTrajanje.Name = "numTrajanje";
             numTrajanje.RightToLeft = RightToLeft.No;
             numTrajanje.Size = new Size(130, 26);
-            numTrajanje.TabIndex = 2;
+            numTrajanje.TabIndex = 3;
             // 
             // errorProvider
             // 
@@ -307,7 +307,7 @@
             lblPopularnost.Location = new Point(47, 457);
             lblPopularnost.Name = "lblPopularnost";
             lblPopularnost.Size = new Size(96, 18);
-            lblPopularnost.TabIndex = 6;
+            lblPopularnost.TabIndex = 19;
             lblPopularnost.Text = "Popularnost";
             // 
             // numPopularnost
@@ -321,7 +321,7 @@
             numPopularnost.Name = "numPopularnost";
             numPopularnost.RightToLeft = RightToLeft.No;
             numPopularnost.Size = new Size(191, 26);
-            numPopularnost.TabIndex = 7;
+            numPopularnost.TabIndex = 9;
             numPopularnost.Value = new decimal(new int[] { 8, 0, 0, 0 });
             // 
             // frmMovieUpsert
