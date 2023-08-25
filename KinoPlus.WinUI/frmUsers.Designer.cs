@@ -120,8 +120,8 @@
             // 
             // cmbRole
             // 
-            cmbRole.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cmbRole.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cmbRole.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbRole.FlatStyle = FlatStyle.Flat;
             cmbRole.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbRole.FormattingEnabled = true;
             cmbRole.Location = new Point(460, 91);

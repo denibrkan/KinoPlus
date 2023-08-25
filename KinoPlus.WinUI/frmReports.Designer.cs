@@ -115,6 +115,7 @@
             // 
             // cmbLokacija
             // 
+            cmbLokacija.FlatStyle = FlatStyle.Flat;
             cmbLokacija.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbLokacija.FormattingEnabled = true;
             cmbLokacija.Location = new Point(596, 164);
@@ -148,6 +149,7 @@
             // 
             // cmbFilm
             // 
+            cmbFilm.FlatStyle = FlatStyle.Flat;
             cmbFilm.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbFilm.FormattingEnabled = true;
             cmbFilm.Location = new Point(872, 164);

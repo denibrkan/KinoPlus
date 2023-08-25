@@ -47,6 +47,8 @@
             // 
             // cmbLokacija
             // 
+            cmbLokacija.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbLokacija.FlatStyle = FlatStyle.Flat;
             cmbLokacija.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbLokacija.FormattingEnabled = true;
             cmbLokacija.Location = new Point(468, 115);

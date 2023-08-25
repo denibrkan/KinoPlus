@@ -115,8 +115,8 @@
             // 
             // cmbStatus
             // 
-            cmbStatus.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cmbStatus.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbStatus.FlatStyle = FlatStyle.Flat;
             cmbStatus.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbStatus.FormattingEnabled = true;
             cmbStatus.Location = new Point(448, 115);
@@ -187,6 +187,8 @@
             cmbKategorija.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cmbKategorija.AutoCompleteSource = AutoCompleteSource.ListItems;
             cmbKategorija.BackColor = SystemColors.Window;
+            cmbKategorija.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbKategorija.FlatStyle = FlatStyle.Flat;
             cmbKategorija.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             cmbKategorija.FormattingEnabled = true;
             cmbKategorija.Location = new Point(717, 115);
