@@ -160,6 +160,9 @@ namespace KinoPlus.WinUI
             if (movieDto != null)
             {
                 Cache.Remove<MovieDto>();
+                var message = !isEdit ? "Uspješno dodan novi film" : "Uspješno izmijenjen film";
+                MessageBox.Show(message);
+
                 this.DialogResult = DialogResult.OK;
                 Close();
             }
