@@ -65,6 +65,7 @@ class _ProjectionsTabState extends State<ProjectionsTab> {
     params['movieId'] = widget.movieId.toString();
     params['date'] = selectedDate.toString();
     params['locationId'] = selectedLocation!.id.toString();
+    params['isCanceled'] = 'false';
 
     var data = await _projectionProvider.get(params);
 

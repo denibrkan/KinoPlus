@@ -39,15 +39,17 @@ namespace KinoPlus.Services
                 query = query.Where(p => p.StartsAt.Date >= search.DateFrom.Value.Date &&
                                          p.StartsAt.Date <= search.DateTo.Value.Date);
             }
-
             if (search.LocationId != null)
             {
                 query = query.Where(p => p.LocationId == search.LocationId);
             }
-
             if (search.MovieId != null)
             {
                 query = query.Where(p => p.MovieId == search.MovieId);
+            }
+            if (search.IsCanceled.HasValue)
+            {
+                query = query.Where(p => p.IsCanceled == search.IsCanceled.Value);
             }
 
             return query;

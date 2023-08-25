@@ -9,5 +9,6 @@ namespace KinoPlus.Models
         public DateTime? DateTo { get; set; }
         public int? LocationId { get; set; }
         public int? MovieId { get; set; }
+        public bool? IsCanceled { get; set; }
     }
 }
