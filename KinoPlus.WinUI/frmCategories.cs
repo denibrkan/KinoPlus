@@ -112,6 +112,9 @@ namespace KinoPlus.WinUI
 
         private async void dgvKategorije_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0)
+                return;
+
             var categoryId = dgvKategorije.Rows[e.RowIndex].Cells["Id"].Value as int?;
 
             var category = Categories.SingleOrDefault(c => c.Id == categoryId);

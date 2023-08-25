@@ -97,7 +97,7 @@ namespace KinoPlus.Common.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Postoji vremensko i lokacijsko preklapanje sa postojećim projekcijama. 
+        ///   Looks up a localized string similar to Dvorana zauzeta u odabranom terminu. 
         ///
         ///Obratite pažnju na odabrane lokacije i dvorane projekcije. 
         ///

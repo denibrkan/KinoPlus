@@ -130,7 +130,7 @@
     <value>Nije pronađen niti jedan odabrani dan u sedmici za vremenski interval.</value>
   </data>
   <data name="ProjectionOverlapError" xml:space="preserve">
-    <value>Postoji vremensko i lokacijsko preklapanje sa postojećim projekcijama. 
+    <value>Dvorana zauzeta u odabranom terminu. 
 
 Obratite pažnju na odabrane lokacije i dvorane projekcije. 
 

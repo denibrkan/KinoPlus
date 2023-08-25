@@ -154,6 +154,9 @@ namespace KinoPlus.WinUI
 
         private async void dgvProjections_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0)
+                return;
+
             var projectionId = dgvProjections.Rows[e.RowIndex].Cells["Id"].Value as int?;
             var isCanceled = (bool)dgvProjections.Rows[e.RowIndex].Cells["Otkazana"].Value;
 

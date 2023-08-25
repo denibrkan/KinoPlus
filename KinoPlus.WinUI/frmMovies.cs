@@ -165,6 +165,9 @@ namespace KinoPlus.WinUI
 
         private async void dgvMovies_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0)
+                return;
+
             var movieId = dgvMovies.Rows[e.RowIndex].Cells["Id"].Value as int?;
 
             var frmEdit = new frmMovieUpsert(movieId);

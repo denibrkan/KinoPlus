@@ -112,6 +112,9 @@ namespace KinoPlus.WinUI
 
         private async void dgvLocations_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0)
+                return;
+
             var locationId = dgvLocations.Rows[e.RowIndex].Cells["Id"].Value as int?;
 
             var frmEdit = new frmLocationUpsert(locationId);
