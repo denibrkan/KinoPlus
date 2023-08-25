@@ -42,7 +42,7 @@ namespace KinoPlus.WinUI
 
         public async Task loadMovies()
         {
-            var queryParams = new MovieSearchObject { SortBy = MovieSorting.Title };
+            var queryParams = new MovieSearchObject { SortBy = MovieSorting.Title, ActiveOnly = true };
             await ListControlHelper.loadControlEntity<MovieDto>(cmbFilm, "Movies", "Title", queryObject: queryParams);
         }
 
