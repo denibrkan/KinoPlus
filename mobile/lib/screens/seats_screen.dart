@@ -69,41 +69,45 @@ class _SeatsScreenState extends State<SeatsScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            _buildProjectionHeader(),
-            const Divider(
-              height: 2,
-              color: Colors.grey,
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            _buildCinemaScreen(),
-            Container(
-              constraints: const BoxConstraints(minHeight: 300),
-              margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 50),
-              child: seats.isNotEmpty
-                  ? GridView.count(
-                      shrinkWrap: true,
-                      crossAxisCount: 10,
-                      crossAxisSpacing: 15,
-                      mainAxisSpacing: 25,
-                      children: _buildSeats(),
-                    )
-                  : const Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.lightBlueAccent,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildProjectionHeader(),
+              const Divider(
+                height: 2,
+                color: Colors.grey,
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              _buildCinemaScreen(),
+              Container(
+                constraints: const BoxConstraints(minHeight: 300),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 50),
+                child: seats.isNotEmpty
+                    ? GridView.count(
+                        shrinkWrap: true,
+                        crossAxisCount: 10,
+                        crossAxisSpacing: 15,
+                        mainAxisSpacing: 25,
+                        primary: false,
+                        children: _buildSeats(),
+                      )
+                    : const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.lightBlueAccent,
+                        ),
                       ),
-                    ),
-            ),
-            const Divider(
-              height: 2,
-              color: Colors.grey,
-            ),
-            _buildInfoBoxes(),
-            _buildBottomBar(),
-          ],
+              ),
+              const Divider(
+                height: 2,
+                color: Colors.grey,
+              ),
+              _buildInfoBoxes(),
+              _buildBottomBar(),
+            ],
+          ),
         ),
       ),
     );
