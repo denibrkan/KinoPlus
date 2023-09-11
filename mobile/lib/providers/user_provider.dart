@@ -8,10 +8,10 @@ import 'package:mobile/providers/base_provider.dart';
 import 'package:mobile/utils/authorization.dart';
 import 'dart:io';
 
-class UserProvider extends BaseProvider {
+class UserProvider extends BaseProvider<User> {
   User? user;
 
-  UserProvider() : super('account');
+  UserProvider() : super('users');
 
   refreshUser() async {
     user = await getById(user!.id, null);
@@ -19,7 +19,7 @@ class UserProvider extends BaseProvider {
 
   @override
   Future<User> getById(int id, Map<String, String>? params) async {
-    var uri = Uri.parse('$apiUrl/users/$id');
+    var uri = Uri.parse('$apiUrl/$endpoint/$id');
 
     if (params != null) {
       uri = uri.replace(queryParameters: params);
@@ -38,7 +38,7 @@ class UserProvider extends BaseProvider {
   }
 
   Future<User> loginAsync(String username, String password) async {
-    var url = '$apiUrl/$endpoint/login';
+    var url = '$apiUrl/account/login';
     final response = await http.post(
       Uri.parse(url),
       headers: <String, String>{
@@ -63,7 +63,7 @@ class UserProvider extends BaseProvider {
   }
 
   Future registerAsync(Register data, File? imageFile) async {
-    var uri = Uri.parse('$apiUrl/$endpoint/register');
+    var uri = Uri.parse('$apiUrl/account/register');
     http.MultipartRequest request = http.MultipartRequest("POST", uri);
 
     http.MultipartFile multipartFile;
@@ -95,7 +95,7 @@ class UserProvider extends BaseProvider {
   }
 
   Future<bool> checkUsername(String username) async {
-    var url = '$apiUrl/$endpoint/check-username';
+    var url = '$apiUrl/account/check-username';
     final response = await http.post(Uri.parse(url),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
@@ -116,7 +116,7 @@ class UserProvider extends BaseProvider {
   }
 
   @override
-  fromJson(data) {
+  User fromJson(data) {
     return User.fromJson(data);
   }
 }

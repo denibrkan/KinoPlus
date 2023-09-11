@@ -43,6 +43,7 @@ namespace KinoPlus.API.Extensions
             services.AddScoped<IMovieReactionService, MovieReactionService>();
             services.AddScoped<IRecommendationService, RecommendationService>();
             services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IFITPasosService, FITPasosService>();
         }
 
         public static void AddBearerAuthentication(

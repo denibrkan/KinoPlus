@@ -8,6 +8,7 @@ import 'package:mobile/helpers/themes.dart';
 import 'package:mobile/models/movie.dart';
 import 'package:mobile/models/projection.dart';
 import 'package:mobile/providers/category_provider.dart';
+import 'package:mobile/providers/fitpasos_provider.dart';
 import 'package:mobile/providers/genre_provider.dart';
 import 'package:mobile/providers/location_provider.dart';
 import 'package:mobile/providers/movie_provider.dart';
@@ -21,6 +22,8 @@ import 'package:mobile/screens/home_screen.dart';
 import 'package:mobile/screens/login_screen.dart';
 import 'package:mobile/screens/movie_detail_screen.dart';
 import 'package:mobile/screens/movies_screen.dart';
+import 'package:mobile/screens/pasos_create_screen.dart';
+import 'package:mobile/screens/pasosi_screen.dart';
 import 'package:mobile/screens/payment_screen.dart';
 import 'package:mobile/screens/profile_screen.dart';
 import 'package:mobile/screens/register_screen.dart';
@@ -61,6 +64,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => MovieTabProvider()),
           ChangeNotifierProvider(create: (_) => ReactionProvider()),
           ChangeNotifierProvider(create: (_) => GenreProvider()),
+          ChangeNotifierProvider(create: (_) => FITPasosProvider()),
         ],
         child: AdaptiveTheme(
           light: ThemeClass.lightTheme,
@@ -78,6 +82,8 @@ class MyApp extends StatelessWidget {
               LoginScreen.routeName: (context) => const LoginScreen(),
               PaymentScreen.routeName: (context) => const PaymentScreen(),
               ProfileScreen.routeName: (context) => const ProfileScreen(),
+              PasosCreateScreen.routeName: (context) =>
+                  const PasosCreateScreen(),
             },
             onGenerateRoute: (settings) {
               if (settings.name == MovieDetailScreen.routeName) {
@@ -121,6 +127,7 @@ class _MainState extends State<Main> {
     const HomeScreen(title: appTitle),
     const MoviesScreen(),
     const TicketsScreen(),
+    const PasosiScreen(),
     const ProfileScreen(),
   ];
 
@@ -192,6 +199,12 @@ class _MainState extends State<Main> {
                 Icons.local_activity,
               ),
               label: 'Ticket',
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(
+                Icons.menu_book,
+              ),
+              label: 'Passport',
             ),
             BottomNavigationBarItem(
               icon: userIcon,

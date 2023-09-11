@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace KinoPlus.Services.Database;
 
@@ -22,6 +20,8 @@ public partial class KinoplusContext : DbContext
     public virtual DbSet<City> Cities { get; set; }
 
     public virtual DbSet<Country> Countries { get; set; }
+
+    public virtual DbSet<Fitpasos> Fitpasos { get; set; }
 
     public virtual DbSet<Genre> Genres { get; set; }
 
@@ -67,6 +67,10 @@ public partial class KinoplusContext : DbContext
 
     public virtual DbSet<Year> Years { get; set; }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Data Source=localhost; Initial Catalog=kinoplus;TrustServerCertificate=True;Trusted_Connection=true");
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Actor>(entity =>
@@ -102,6 +106,19 @@ public partial class KinoplusContext : DbContext
             entity.ToTable("Country");
 
             entity.Property(e => e.Name).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<Fitpasos>(entity =>
+        {
+            entity.ToTable("FITPasos");
+
+            entity.Property(e => e.DateIssued).HasColumnType("datetime");
+            entity.Property(e => e.ValidUntil).HasColumnType("datetime");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Fitpasosi)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_FITPasos_User");
         });
 
         modelBuilder.Entity<Genre>(entity =>

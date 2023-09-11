@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace KinoPlus.Services.Database;
+﻿namespace KinoPlus.Services.Database;
 
 public partial class User
 {
@@ -34,4 +31,5 @@ public partial class User
     public virtual ICollection<Ticket> Tickets { get; } = new List<Ticket>();
 
     public virtual ICollection<UserRole> UserRoles { get; } = new List<UserRole>();
+    public virtual ICollection<Fitpasos> Fitpasosi { get; } = new List<Fitpasos>();
 }
