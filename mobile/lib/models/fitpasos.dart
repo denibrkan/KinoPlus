@@ -5,12 +5,13 @@ class FITPasos {
   late DateTime validUntil;
   late DateTime dateIssued;
   late bool isValid;
-  late User user;
+  late User? user;
 
   FITPasos(
       {required this.id,
       required this.validUntil,
       required this.dateIssued,
+      required this.isValid,
       required this.user});
 
   FITPasos.fromJson(Map<String, dynamic> json) {
@@ -18,6 +19,6 @@ class FITPasos {
     isValid = json['isValid'];
     validUntil = DateTime.parse(json['validUntil']);
     dateIssued = DateTime.parse(json['dateIssued']);
-    user = User.fromJson(json['user']);
+    user = json['user'] != null ? User.fromJson(json['user']) : null;
   }
 }

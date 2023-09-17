@@ -23,7 +23,9 @@ import 'package:mobile/screens/login_screen.dart';
 import 'package:mobile/screens/movie_detail_screen.dart';
 import 'package:mobile/screens/movies_screen.dart';
 import 'package:mobile/screens/pasos_create_screen.dart';
+import 'package:mobile/screens/pasos_create_screen2.dart';
 import 'package:mobile/screens/pasosi_screen.dart';
+import 'package:mobile/screens/pasosi_screen2.dart';
 import 'package:mobile/screens/payment_screen.dart';
 import 'package:mobile/screens/profile_screen.dart';
 import 'package:mobile/screens/register_screen.dart';
@@ -84,6 +86,8 @@ class MyApp extends StatelessWidget {
               ProfileScreen.routeName: (context) => const ProfileScreen(),
               PasosCreateScreen.routeName: (context) =>
                   const PasosCreateScreen(),
+              PasosCreateScreen2.routeName: (context) =>
+                  const PasosCreateScreen2(),
             },
             onGenerateRoute: (settings) {
               if (settings.name == MovieDetailScreen.routeName) {
@@ -127,7 +131,7 @@ class _MainState extends State<Main> {
     const HomeScreen(title: appTitle),
     const MoviesScreen(),
     const TicketsScreen(),
-    const PasosiScreen(),
+    const PasosiScreen2(),
     const ProfileScreen(),
   ];
 

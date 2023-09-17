@@ -100,7 +100,7 @@ class _PasosiScreenState extends State<PasosiScreen> {
             (pasos) => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(pasos.user.username),
+                  Text(pasos.user!.username),
                   Text(DateFormat.yM().format(pasos.validUntil)),
                   Text(pasos.isValid.toString()),
                 ]),
